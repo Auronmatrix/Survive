@@ -15,4 +15,5 @@ Any value defined here will override the pom.xml file value but is only applicab
 -->
         <netbeans.hint.j2eeVersion>1.6-web</netbeans.hint.j2eeVersion>
     </properties>
+   
 </project-shared-configuration>
