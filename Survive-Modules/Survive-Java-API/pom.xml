@@ -35,11 +35,6 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>Survive</artifactId>
-      <version>${project.version}</version>
-    </dependency>
     
     
     <!-- Split dependencies -->
@@ -118,10 +113,11 @@
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>
             <version>5.4.0</version>
-        </dependency>  
-                    
-                            
-                                    
-                                                    
+        </dependency>
+    <dependency>
+      <groupId>com.muni.fi.pa165</groupId>
+      <artifactId>Survive-Java-Core</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>
