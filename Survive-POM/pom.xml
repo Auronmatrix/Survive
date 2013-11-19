@@ -10,5 +10,6 @@
         <module>../Survive-Modules/Survive-Java</module>
         <module>../Survive-Modules/Survive-Web</module>
         <module>../Survive-Modules/Survive-Java-API</module>
+        <module>../Survive-Modules/Survive-Java-Core</module>
     </modules>
 </project>
