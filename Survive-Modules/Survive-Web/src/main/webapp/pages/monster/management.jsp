@@ -4,7 +4,7 @@
 
 <s:layout-render name="/layout.jsp" titlekey="index.title">
     <s:layout-component name="body">
-        <!-- PUT CONTENT HERE --/>
+        <h1>Monster Management</h1>
          
     </s:layout-component>
 </s:layout-render>

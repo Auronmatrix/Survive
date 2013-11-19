@@ -15,14 +15,15 @@
 
             <title><f:message key="${titlekey}"/></title>
             <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
-                $(document).ready(function () {
-                                $('ul.nav > li').click(function (e) {
-                                e.preventDefault();
-                                        $('ul.nav > li').removeClass('active');
-                                        $(this).addClass('active');
-                                }); }                
+                $(document).ready(function() {
+                    $('ul.nav > li').click(function(e) {
+                        e.preventDefault();
+                        $('ul.nav > li').removeClass('active');
+                        $(this).addClass('active');
+                    });
+                }
             </script>
- 
+
             <!-- Bootstrap core CSS -->
             <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
             <!-- Bootstrap theme -->
@@ -39,10 +40,10 @@
               <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
               <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
             <![endif]-->
-            
-              
+
+
             <s:layout-component name="header"/>
-            
+
         </head>
 
 
@@ -62,15 +63,15 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                             
-                           <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
-                            <li ><a href="index.jsp"><f:message key="navigation.index"/></a></li>
-                            <li ><a href="template.jsp"><f:message key="navigation.template"/></a></li>
-                            <li ><a href="signin.jsp"><f:message key="navigation.signin"/></a></li>
+
+                            <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
+                            <li ><a href="${pageContext.request.contextPath}/index.jsp"><f:message key="navigation.index"/></a></li>
+                            <li ><a href="${pageContext.request.contextPath}/template.jsp"><f:message key="navigation.template"/></a></li>
+                            <li ><a href="${pageContext.request.contextPath}/signin.jsp"><f:message key="navigation.signin"/></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/pages/monster/management.jsp"><f:message key="navigation.monstermanagement"/></a></li>
                                     <li><a href="#">Another action</a></li>
                                     <li><a href="#">Something else here</a></li>
                                     <li class="divider"></li>
@@ -79,6 +80,16 @@
                                     <li><a href="#">One more separated link</a></li>
                                 </ul>
                             </li>
+                        </ul>
+<!--                                Aubrey: Could be form for login-->
+<!--                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>-->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="logout.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>

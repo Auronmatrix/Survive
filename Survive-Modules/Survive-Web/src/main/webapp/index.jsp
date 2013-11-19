@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<s:layout-render name="layout.jsp" titlekey="index.title">
+<s:layout-render name="/layout.jsp" titlekey="index.title">
     <s:layout-component name="body">
 
          <h1>Post Apocalyptic 2165 - Systems Utility for Recording and Virtual Indexing of Violent Enemies</h1>
