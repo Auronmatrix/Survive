@@ -6,48 +6,69 @@
 <s:layout-render name="/layout.jsp" titlekey="index.title">
     <s:layout-component name="body">
         <h1><f:message key="monster.title"/></h1>
-    
+
         <s:useActionBean beanclass="com.muni.fi.pa165.monster.MonsterActionBean" var="actionBean"/>
 
         <p><f:message key="monster.list.allmonsters"/></p>
-
-        <table class="basic">
-            <tr>
-                <th>id</th>
-                <th><f:message key="monster.id"/></th>
-                <th><f:message key="monster.class"/></th>
-                <th><f:message key="monster.height"/></th>
-                <th><f:message key="monster.agility"/></th>
-                <th><f:message key="monster.strength"/></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <c:forEach items="${actionBean.monsters}" var="monster">
+        <div class="table-responsive">
+            <table class="table">
                 <tr>
-                    <td>${monster.id}</td>
-                    <td><c:out value="${monster.id}"/></td>
-                    <td><c:out value="${monster.dangerLevel}"/></td>
-                    <td><c:out value="${monster.height}"/></td>
-                    <td><c:out value="${monster.agility}"/></td>
-                    <td>
-                     <s:link beanclass="com.muni.fi.pa165.monster.MonsterActionBean" event="edit"><s:param name="monster.id" value="${monster.id}"/>edit</s:link>
-                    </td>
-                    <td>
-                        <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean">
-                            <s:hidden name="monster.id" value="${monster.id}"/>
-                            <s:submit name="delete"><f:message key="monster.list.delete"/></s:submit>
-                        </s:form>
-                    </td>
+                    <th><f:message key="monster.image"/></th>
+                    <th><f:message key="monster.id"/></th>
+                    <th><f:message key="monster.name"/></th>                
+                    <th><f:message key="monster.stamina"/></th>                    
+                    <th><f:message key="monster.height"/></th>
+                    <th><f:message key="monster.strength"/></th>
+                    <th><f:message key="monster.agility"/></th>
+                    <th><f:message key="monster.dangerLevel"/></th>
+                    <th><f:message key="monster.weight"/></th>
+                    <th><f:message key="monster.class"/></th>
+                    <th><f:message key="monster.description"/></th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach items="${actionBean.monsters}" var="monster">
+                    <tr>
+                        <td>
+                            <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean">
+                                <s:hidden name="monster.id" value="${monster.id}"/>                                   
+                                <s:image src="${monster.imagePath}" class="img img-circle" name="${monster.id}" style="width: 60px; height: 60px" />
+                            </s:form>
+                        </td> 
+                        <td><c:out value="${monster.id}" /></td>
+                        <td><c:out value="${monster.name}" /></td>
+                        <td><c:out value="${monster.stamina}" /></td>
 
-        <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean">
+                        <td><c:out value="${monster.height}" /></td>
+                        <td><c:out value="${monster.strength}" /></td>
+                        <td><c:out value="${monster.agility}" /></td>
+                        <td><c:out value="${monster.dangerLevel}" /></td>
+                        <td><c:out value="${monster.weight}" /></td>
+                        <td><c:out value="${monster.monsterClass}" /></td>
+                        <td><c:out value="${monster.description}" /></td>                 
+
+                        <td>                            
+                            <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean" action="edit">
+                                <s:hidden name="monster.id" value="${monster.id}"/>
+                                <s:submit class="btn btn-warning" name="edit"><f:message key="monster.list.edit"/></s:submit>
+                            </s:form>
+                        </td>
+                        <td>                            
+                            <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean" action="delete">
+                                <s:hidden name="monster.id" value="${monster.id}"/>
+                                <s:submit class="btn btn-danger" name="delete"><f:message key="monster.list.delete"/></s:submit>
+                            </s:form>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+        <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean" class="form-horizontal">
             <fieldset><legend><f:message key="monster.list.newmonster"/></legend>
                 <%@include file="form.jsp"%>
-                <s:submit name="add">Save new monster</s:submit>
+                <s:submit class="btn btn-info" name="add">Save new monster</s:submit>
+                
             </fieldset>
-        </s:form>
-    </s:layout-component>
+    </s:form>
+</s:layout-component>
 </s:layout-render>
-        

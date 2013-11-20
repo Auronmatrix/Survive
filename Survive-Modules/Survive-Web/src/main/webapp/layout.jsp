@@ -11,7 +11,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content="">
             <meta name="author" content="">
-            <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+            <link rel="shortcut icon" href="/docs-assets/ico/favicon.ico">
 
             <title><f:message key="${titlekey}"/></title>
             <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
@@ -30,7 +30,7 @@
             <link href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css" rel="stylesheet">
 
             <!-- Custom styles for this template -->
-            <link href="theme.css" rel="stylesheet">
+<!--            <link href="theme.css" rel="stylesheet">-->
 
             <!-- Just for debugging purposes. Don't actually copy this line! -->
             <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -65,9 +65,9 @@
                         <ul class="nav navbar-nav">
 
                             <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
-                            <li ><a href="index.jsp"><f:message key="navigation.index"/></a></li>
-                            <li ><a href="template.jsp"><f:message key="navigation.template"/></a></li>
-                            <li ><a href="signin.jsp"><f:message key="navigation.signin"/></a></li>
+                            <li ><a href="/Survive-Web/index.jsp"><f:message key="navigation.index"/></a></li>
+                            <li ><a href="/Survive-Web/template.jsp"><f:message key="navigation.template"/></a></li>
+                            <li ><a href="/Survive-Web/signin.jsp"><f:message key="navigation.signin"/></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -116,8 +116,8 @@
             ================================================== -->
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="../docs-assets/js/holder.js"></script>
+            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+            <script src="${pageContext.request.contextPath}/docs-assets/js/holder.js"></script>
         </body>
     </html>
 </s:layout-definition>
