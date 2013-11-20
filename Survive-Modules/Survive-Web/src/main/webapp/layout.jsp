@@ -59,7 +59,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">PROJECT SURVIVE</a>
+                        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-leaf">&nbsp;</span><f:message key="navigation.core.title"/></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -99,6 +99,7 @@
 
                 <!-- Main jumbotron for a primary marketing message or call to action -->
                 <div class="jumbotron">
+                    <image src="${pageContext.request.contextPath}/docs-assets/images/banner.png" />
                     <!--        <h1>Post Apocalyptic 2165 - Systems Utility for Recording and Virtual Indexing of Violent Enemies</h1>
                             <p><a href="#" class="btn btn-primary btn-lg" role="button">Help human kind survive, contribute today &raquo;</a></p>-->
                 </div>
