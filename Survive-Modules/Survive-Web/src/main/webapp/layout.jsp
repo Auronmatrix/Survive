@@ -65,13 +65,13 @@
                         <ul class="nav navbar-nav">
 
                             <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
-                            <li ><a href="${pageContext.request.contextPath}/index.jsp"><f:message key="navigation.index"/></a></li>
-                            <li ><a href="${pageContext.request.contextPath}/template.jsp"><f:message key="navigation.template"/></a></li>
-                            <li ><a href="${pageContext.request.contextPath}/signin.jsp"><f:message key="navigation.signin"/></a></li>
+                            <li ><a href="index.jsp"><f:message key="navigation.index"/></a></li>
+                            <li ><a href="template.jsp"><f:message key="navigation.template"/></a></li>
+                            <li ><a href="signin.jsp"><f:message key="navigation.signin"/></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="${pageContext.request.contextPath}/pages/monster/management.jsp"><f:message key="navigation.monstermanagement"/></a></li>
+                                    <li><s:link beanclass="com.muni.fi.pa165.monster.MonsterActionBean"><f:message key="navigation.monstermanagement"/></s:link></li>
                                     <li><a href="#">Another action</a></li>
                                     <li><a href="#">Something else here</a></li>
                                     <li class="divider"></li>
