@@ -9,6 +9,8 @@ import com.muni.fi.pa165.dao.MonsterDao;
 import com.muni.fi.pa165.dto.MonsterDto;
 
 import com.muni.fi.pa165.entities.Monster;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Service;
@@ -69,4 +71,16 @@ public class MonsterServiceImpl implements MonsterService {
       public void setMapper(Mapper mapper) {
         this.mapper = mapper;
     }
+      
+    @Override
+      public List<MonsterDto> findAll()
+      { 
+          List<Monster> daoList = dao.findAll();
+          List<MonsterDto> dtoList = new ArrayList<>();
+          for(Monster o : daoList)
+          {
+              dtoList.add(this.mapper.map(o, MonsterDto.class));              
+          }
+          return dtoList;
+      }
 }

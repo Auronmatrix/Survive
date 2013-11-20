@@ -5,6 +5,7 @@
 package com.muni.fi.pa165.dao.service;
 
 import com.muni.fi.pa165.dto.MonsterDto;
+import java.util.List;
 
 
 /**
@@ -41,6 +42,8 @@ public interface MonsterService {
 	 */
    
     public MonsterDto findById(Long id);
+    
+    public List<MonsterDto> findAll();
 }
     
 

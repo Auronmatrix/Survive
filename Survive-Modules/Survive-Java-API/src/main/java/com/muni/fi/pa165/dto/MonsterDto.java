@@ -30,8 +30,8 @@ public class MonsterDto {
     private Double stamina;
     private Double dangerLevel;
     private String imagePath;
-    private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
-    private List<MonsterAreaDto> locations = new ArrayList<>();
+//    private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
+//    private List<MonsterAreaDto> locations = new ArrayList<>();
    
 
     //Getters and setters
@@ -123,21 +123,21 @@ public class MonsterDto {
         this.imagePath = imagePath;
     }
     
-    public List<MonsterWeaponDto> getEfficiencies() {
-        return efficiencies;
-    }
-
-    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
-        this.efficiencies = efficiencies;
-    }
-
-    public List<MonsterAreaDto> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<MonsterAreaDto> locations) {
-        this.locations = locations;
-    }
+//    public List<MonsterWeaponDto> getEfficiencies() {
+//        return efficiencies;
+//    }
+//
+//    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
+//        this.efficiencies = efficiencies;
+//    }
+//
+//    public List<MonsterAreaDto> getLocations() {
+//        return locations;
+//    }
+//
+//    public void setLocations(List<MonsterAreaDto> locations) {
+//        this.locations = locations;
+//    }
 
     @Override
     public int hashCode() {

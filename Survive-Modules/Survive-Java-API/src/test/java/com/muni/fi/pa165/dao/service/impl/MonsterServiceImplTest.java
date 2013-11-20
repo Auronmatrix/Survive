@@ -86,14 +86,14 @@ public class MonsterServiceImplTest   extends AbstractIntegrationTest {
         List<MonsterAreaDto> list = new ArrayList<>();  
         list.add(monsterAreaDto1);
         list.add(monsterAreaDto2);
-        dto.setLocations(list);
+       // dto.setLocations(list);
                 
     
         Monster entity = mapper.map(dto, Monster.class);
         when(mockDAO.save(any(Monster.class))).thenReturn(entity);
         MonsterDto returned = service.save(dto);
         assertEquals(returned, dto);
-        assertEquals(list, returned.getLocations());
+       // assertEquals(list, returned.getLocations());
     }
 
     /**
