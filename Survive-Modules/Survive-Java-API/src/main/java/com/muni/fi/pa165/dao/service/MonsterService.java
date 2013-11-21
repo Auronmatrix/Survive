@@ -33,7 +33,7 @@ public interface MonsterService {
 	 */
     public void delete(MonsterDto dto);
     
-    
+    public void delete(Long id);
 	/**
 	 * Finds WeaponDto by id
          * 
