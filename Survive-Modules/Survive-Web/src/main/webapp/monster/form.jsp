@@ -3,18 +3,11 @@
 <s:errors/> 
 
 <div class="form-group">
-            <div class="form-group">
-                <s:label for="id"  class="col-sm-2 control-label" name="monster.id" />
-                <div class="col-sm-10">
-                    <s:text disabled="true" class="form-control" id="id" name="monster.id"/>
-                </div>
-            </div>
-
         <div class="form-group">
             <div class="form-group">
                 <s:label for="name"  class="col-sm-2 control-label" name="monster.name" />
                 <div class="col-sm-10">
-                    <s:text class="form-control" id="monster.name" name="monster.name"/>
+                    <s:text class="form-control" id="name" name="monster.name"/>
                 </div>
             </div>
             <div class="form-group">
@@ -70,10 +63,7 @@
             <div class="form-group">
                 <s:label for="imagePath" class="col-sm-2 control-label" title="monster.image"/>
                 <div class="col-sm-10">
-                    <s:text name="monster.imagePath" class="form-control" id="imagePath" />
+                    <s:text name="monster.imagePathx" class="form-control" id="imagePath" />
                 </div>
             </div>
         </div>
-                
-                  <s:label for="b2" name="Monster.Name"/>
-       <s:text id="b2" name="Monster.Mame"/>

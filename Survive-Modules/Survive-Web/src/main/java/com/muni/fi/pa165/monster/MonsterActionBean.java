@@ -22,10 +22,14 @@ import java.util.List;
  *
  * @author Aubrey Oosthuizen
  */
-@UrlBinding("/monster/{$event}/{monster.id}{monster.name}")
+@UrlBinding("/monster/{$event}/{monster.id}")
 public class MonsterActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(MonsterActionBean.class);
+    
+    @SpringBean //Spring can inject even to private and protected fields
+    protected MonsterService monsterService;
+    
     //--- part for showing a list of monsters ----
     private List<MonsterDto> monsters;
 
@@ -48,8 +52,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     }
     //--- part for adding a monster ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "id", required = true),
-        @Validate(on = {"add", "save"}, field = "name", required = true),
+        @Validate(on = {"add", "save", "edit"}, field = "monster.name", required = false),
         @Validate(on = {"add", "save"}, field = "stamina", required = true), 
         @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0),
         @Validate(on = {"add", "save"}, field = "strength", required = true, minvalue = 0),
@@ -61,22 +64,17 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
          @Validate(on = {"add", "save"}, field = "imagePath", required = true, minvalue = 0)
             
     })
-    private MonsterDto monster = null;
-    @SpringBean //Spring can inject even to private and protected fields
-    protected MonsterService monsterService;
+    private MonsterDto monster;
+    
 
     public Resolution add() {
         log.debug("add() monster={}", monster);
-
-
         try {
             monster = monsterService.save(monster);
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-
         }
         getContext().getMessages().add(new LocalizableMessage("monster.add.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));
-
         return new RedirectResolution(this.getClass(), "list");
     }
 
@@ -101,14 +99,12 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         log.debug("delete({})", monster.getId());
         //only id is filled by the form
         monster = monsterService.findById(monster.getId());
-        try {
-
-            monsterService.delete(monster.getId());
-        } catch (Exception ex) {
-            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-
-        }
-        getContext().getMessages().add(new LocalizableMessage("monster.delete.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));
+       // try {
+            monsterService.delete(monster);
+      //  } catch (Exception ex) {
+       //     getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+            getContext().getMessages().add(new LocalizableMessage("monster.delete.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));        
+      //  }
         return new RedirectResolution(this.getClass(), "list");
     }
 
@@ -116,11 +112,8 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadMonsterFromDatabase() {
         String ids = getContext().getRequest().getParameter("monster.id");
-        if (ids == null) {
-            return;
-        }
-        monster = monsterService.findById(Long.parseLong(ids));
-        
+        if (ids == null) return;
+        monster = monsterService.findById(Long.parseLong(ids));        
         getContext().getMessages().add(new SimpleMessage("Loaded monster from DB"));
     }
 
@@ -135,33 +128,8 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         return new RedirectResolution(this.getClass(), "list");
     }
 
-    public Resolution select() {
-        log.debug("select() monster={}", monster);
-        this.setMonster(monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monster.id"))));
-        return new RedirectResolution(this.getClass(), "list");
-    }
-
     public Resolution cancel() {
         log.debug("cancel");
-        return new RedirectResolution("/monster/list.jsp");
-    }
-
-    @Override
-    public void preBind() {
-        String idStr = getContext().getRequest().getParameter("monster.id");
-
-        if (idStr == null) {
-            this.monster = new MonsterDto();
-        } else {
-            this.monster = monsterService.findById(Long.parseLong(idStr));
-        }
-    }
-
-    public List<Object> getBoundObjects() {
-        List<Object> lst = new ArrayList<Object>();
-
-        lst.add(getMonster());
-
-        return lst;
+        return new RedirectResolution(this.getClass(), "list");
     }
 }
