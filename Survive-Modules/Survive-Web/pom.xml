@@ -12,7 +12,6 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-         
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.test.skip>true</maven.test.skip>
         <org.springframework.version>3.2.4.RELEASE</org.springframework.version>
@@ -24,7 +23,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>cz.muni.fi.pa165</groupId>
+            <groupId>com.muni.fi.pa165</groupId>
             <artifactId>Survive-Java-API</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -36,12 +35,6 @@
         </dependency>
         
                 <!-- servlet, JSP, JSTL -->
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>

@@ -52,7 +52,7 @@
                             </s:form>
                         </td>
                         <td>                            
-                            <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean">
+                            <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean" action="delete">
                                 <s:hidden name="monster.id" value="${monster.id}"/>
                                 <s:submit class="btn btn-danger" name="delete"><f:message key="monster.list.delete"/></s:submit>
                             </s:form>
@@ -61,7 +61,7 @@
                 </c:forEach>
             </table>
         </div>
-        <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean" class="form-horizontal">
+        <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean"  action="add" class="form-horizontal">
             <fieldset><legend><f:message key="monster.list.newmonster"/></legend>
                 <%@include file="form.jsp"%>
                 <s:submit class="btn btn-info" name="add"><f:message key="monster.edit.save" /></s:submit>
