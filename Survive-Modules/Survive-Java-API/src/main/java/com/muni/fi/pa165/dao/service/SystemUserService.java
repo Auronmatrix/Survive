@@ -4,7 +4,6 @@
  */
 package com.muni.fi.pa165.dao.service;
 
-import com.muni.fi.pa165.dao.jpa.SystemUserJpaDaoImpl;
 import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.dto.SystemUserDto;
 import com.muni.fi.pa165.dto.WeaponDto;

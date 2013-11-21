@@ -55,6 +55,11 @@ public class MonsterServiceImpl implements MonsterService {
             dao.delete(mapper.map(dto, Monster.class));
        
     }
+    
+    public void delete(Long id)
+    {
+        dao.delete(id);
+    }
 
     @Override
     @Transactional
