@@ -5,68 +5,65 @@
 
         <div class="form-group">
             <div class="form-group">
-                <s:label for="inputName"  class="col-sm-2 control-label" title="monster.name" />
+                <s:label for="name"  class="col-sm-2 control-label" title="monster.name" />
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="ienputPassword3" placeholder="Add monster name">
+                    <s:text class="form-control" id="name" name="monster.name"/>
                 </div>
             </div>
             <div class="form-group">
-                <s:label for="inputStamina" class="col-sm-2 control-label" title="monster.stamina" />
+                <s:label for="stamina" class="col-sm-2 control-label" title="monster.res.stamina" />
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputStamina"  min="0" max="100" step="1">
+                    <s:text class="form-control" id="stamina" name="monster.stamina"/>
                 </div>
             </div>
             <div class="form-group">
-                <s:label for="inputHeight" class="col-sm-2 control-label"  title="monster.height"/>
+                <s:label for="height" class="col-sm-2 control-label"  title="monster.res.height"/>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputHeight"   min="0" max="100" step="1">
+                    <s:text  class="form-control" id="height" name="monster.height"/>
                 </div>
             </div>
             <div class="form-group">
-                <s:label for="inputStrength" class="col-sm-2 control-label" title="monster.strength"/>
+                <s:label for="strength" class="col-sm-2 control-label" title="monster.strength"/>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputStrength"  min="0" max="100" step="1">
+                    <s:text  class="form-control" id="strength" name="monster.strength"/>
                 </div>
             </div>
             <div class="form-group">
-                <s:label for="inputAgility" class="col-sm-2 control-label" title="monster.agility"/>
+                <s:label for="agility" class="col-sm-2 control-label" title="monster.res.agility"/>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputAgility"  min="0" max="100" step="1">
+                    <s:text  class="form-control" id="agility" name="monster.agility"/>
                 </div>
             </div>
             <div class="form-group">
-                <s:label for="inputDangerLevel" class="col-sm-2 control-label" title="monster.dangerLevel"/>
+                <s:label for="dangerLevel" class="col-sm-2 control-label" title="monster.res.dangerLevel"/>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputDangerLevel"  min="0" max="100" step="1">
+                    <s:text  class="form-control" id="dangerLevel" name="monster.dangerLevel"/>
                 </div>
             </div>
             <div class="form-group">
-                <s:label for="inputWeight" class="col-sm-2 control-label" title="monster.weight"/>
+                <s:label for="weight" class="col-sm-2 control-label" title="monster.res.weight"/>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputWeight"  min="0" max="100" step="1">
+                    <s:text class="form-control" id="weight"  name="monster.weight"/>
                 </div>
             </div>
             <div class="form-group">
-                <s:label for="inputClass" class="col-sm-2 control-label" title="monster.class"/>
+                <s:label for="monsterClass" class="col-sm-2 control-label" title="monster.res.class"/>
                 <div class="col-sm-10">
-                    <s:select id="inputClass" name="monster.class"><s:options-enumeration enum="com.muni.fi.pa165.enums.MonsterClass"/></s:select>
+                    <s:select  id="monsterClass" name="monster.class"><s:options-enumeration enum="com.muni.fi.pa165.enums.MonsterClass"/></s:select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                <s:label for="inputDescription" class="col-sm-2 control-label" title="monster.description"/>
+                <s:label for="description" class="col-sm-2 control-label" title="monster.res.description"/>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" id="inputDescription"></textarea>
+                    <s:textarea class="form-control" name="monster.description" rows="3" id="description"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <s:label for="inputImage" class="col-sm-2 control-label" title="monster.image"/>
+                <s:label for="imagePath" class="col-sm-2 control-label" title="monster.res.image"/>
                 <div class="col-sm-10">
-                    <input type="url" class="form-control" id="inputImage" >
+                    <s:text name="monster.imagePath" class="form-control" id="imagePath" />
                 </div>
             </div>
         </div>
-
-
-

@@ -13,11 +13,12 @@ import org.apache.taglibs.standard.functions.Functions;
  * @author Auron
  */
     public abstract class BaseActionBean implements ActionBean {
-    private ActionBeanContext context;
+    private ActionBeanContext context = null;
 
     @Override
     public void setContext(ActionBeanContext context) {
         this.context = context;
+        preBind();
     }
 
     @Override
@@ -28,4 +29,8 @@ import org.apache.taglibs.standard.functions.Functions;
     public static String escapeHTML(String s) {
         return Functions.escapeXml(s);
     }
+    
+    protected void preBind()
+	{
+	}
 }

@@ -30,7 +30,7 @@
             <link href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css" rel="stylesheet">
 
             <!-- Custom styles for this template -->
-<!--            <link href="theme.css" rel="stylesheet">-->
+            <!--            <link href="theme.css" rel="stylesheet">-->
 
             <!-- Just for debugging purposes. Don't actually copy this line! -->
             <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -72,24 +72,24 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><s:link beanclass="com.muni.fi.pa165.monster.MonsterActionBean"><f:message key="navigation.monstermanagement"/></s:link></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-header">Nav header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-<!--                                Aubrey: Could be form for login-->
-<!--                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>-->
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="logout.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">Nav header</li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!--                                Aubrey: Could be form for login-->
+                            <!--                        <form class="navbar-form navbar-left" role="search">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Search">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-default">Submit</button>
+                                                    </form>-->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="logout.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -105,13 +105,13 @@
                 </div>
 
 
-                <div id="content">
-                    <s:messages/>
+                <div id="content">                    
                     <s:layout-component name="body"/>
                 </div>
 
             </div> <!-- /container -->
-
+            <div class="alert alert-info alert-dismissable" style="margin-top: 30px">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><span class="glyphicon glyphicon-fire"></span>&nbsp;<s:messages/></div>  
 
             <!-- Bootstrap core JavaScript
             ================================================== -->
