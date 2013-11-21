@@ -43,6 +43,7 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
 //            throw new IllegalArgumentException("entity to be created is null");
 //        }
 
+        
         entityManager.persist(entity);
         return entity;
     }
@@ -55,6 +56,13 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
 
     @Override
     public void delete(T entity) {
+        getEntityManager().merge(entity);
+        getEntityManager().remove(entity);
+    }
+    
+    @Override
+    public void delete(Long id) {
+        T entity = (T) getEntityManager().find(getPersistentClass(), id);
         getEntityManager().remove(entity);
     }
 
