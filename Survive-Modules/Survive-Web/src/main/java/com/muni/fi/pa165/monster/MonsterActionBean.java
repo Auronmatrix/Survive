@@ -48,14 +48,18 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     }
     //--- part for adding a monster ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "name", required = false),
-        @Validate(on = {"add", "save"}, field = "stamina", required = false), //           @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0),
-    //             @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 0),
-    //     @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 0),
-    //     @Validate(on = {"add", "save"}, field = "dangerLevel", required = false, minvalue = 0),
-    //     @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 0),
-    //     @Validate(on = {"add", "save"}, field = "monsterClass"),
-    //     @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 0)    
+        @Validate(on = {"add", "save"}, field = "id", required = true),
+        @Validate(on = {"add", "save"}, field = "name", required = true),
+        @Validate(on = {"add", "save"}, field = "stamina", required = true), 
+        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0),
+        @Validate(on = {"add", "save"}, field = "strength", required = true, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "agility", required = true, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "dangerLevel", required = true, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "weight", required = true, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "monsterClass"),
+         @Validate(on = {"add", "save"}, field = "description", required = true, minvalue = 0),    
+         @Validate(on = {"add", "save"}, field = "imagePath", required = true, minvalue = 0)
+            
     })
     private MonsterDto monster = null;
     @SpringBean //Spring can inject even to private and protected fields
@@ -116,12 +120,13 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
             return;
         }
         monster = monsterService.findById(Long.parseLong(ids));
+        
         getContext().getMessages().add(new SimpleMessage("Loaded monster from DB"));
     }
 
     public Resolution edit() {
         log.debug("edit() monster={}", monster);
-        return new ForwardResolution("/monster/list.jsp");
+        return new ForwardResolution("/monster/edit.jsp");
     }
 
     public Resolution save() {
@@ -132,7 +137,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
 
     public Resolution select() {
         log.debug("select() monster={}", monster);
-        monster = monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monster.id")));
+        this.setMonster(monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monster.id"))));
         return new RedirectResolution(this.getClass(), "list");
     }
 
@@ -141,22 +146,22 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         return new RedirectResolution("/monster/list.jsp");
     }
 
-//    @Override
-//    public void preBind() {
-//        String idStr = getContext().getRequest().getParameter("monster.id");
-//
-//        if (idStr == null) {
-//            this.monster = new MonsterDto();
-//        } else {
-//            this.monster = monsterService.findById(Long.parseLong(idStr));
-//        }
-//    }
+    @Override
+    public void preBind() {
+        String idStr = getContext().getRequest().getParameter("monster.id");
 
-//    public List<Object> getBoundObjects() {
-//        List<Object> lst = new ArrayList<Object>();
-//
-//        lst.add(getMonster());
-//
-//        return lst;
-//    }
+        if (idStr == null) {
+            this.monster = new MonsterDto();
+        } else {
+            this.monster = monsterService.findById(Long.parseLong(idStr));
+        }
+    }
+
+    public List<Object> getBoundObjects() {
+        List<Object> lst = new ArrayList<Object>();
+
+        lst.add(getMonster());
+
+        return lst;
+    }
 }
