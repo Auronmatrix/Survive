@@ -33,7 +33,7 @@ public class MonsterServiceImpl implements MonsterService {
     @Transactional
     public MonsterDto save(MonsterDto dto) {
             Monster entity = mapper.map(dto, Monster.class);
-            dao.save(entity);
+            entity = dao.save(entity);
             return mapper.map(entity, MonsterDto.class);
 
     }
