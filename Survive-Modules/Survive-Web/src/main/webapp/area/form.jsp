@@ -3,14 +3,7 @@
 <s:errors/> 
 
 <div class="form-group">
-            <div class="form-group">
-                <s:label for="id"  class="col-sm-2 control-label" name="area.id" />
-                <div class="col-sm-10">
-                    <s:text disabled="true" class="form-control" id="id" name="area.id"/>
-                </div>
-            </div>
-
-        <div class="form-group">
+           <div class="form-group">
             <div class="form-group">
                 <s:label for="name"  class="col-sm-2 control-label" name="area.name" />
                 <div class="col-sm-10">
@@ -34,5 +27,4 @@
             </div>
         </div>
                 
-                  <s:label for="b2" name="Area.Name"/>
-       <s:text id="b2" name="Area.Name"/>
+            

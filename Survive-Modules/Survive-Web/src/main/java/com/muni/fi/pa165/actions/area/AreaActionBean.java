@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author Irina Sedyukova
  */
-@UrlBinding("/area/{$event}/{area.id}{area.name}")
+@UrlBinding("/area/{$event}/{area.id}")
 public class AreaActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(AreaActionBean.class);
@@ -34,20 +34,11 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
-//        AreaDto dto =areaService.findById(Long.parseLong("1"));
-//        areas = new ArrayList<AreaDto>();
-//        areas.add(dto);
-//        areas = areaService.findAll();
-        areas = null;
+        areas = areaService.findAll();
         return new ForwardResolution("/area/list.jsp");
     }
 
-//    public Resolution AreaActionBean()
-//    {
-//        log.debug("default or constructor()");
-//        area = areaService.findAll();
-//        return new ForwardResolution("/area/lolololol.jsp");
-//    }
+
     public List<AreaDto> getAreas() {
         return areas;
     }
@@ -60,7 +51,7 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
       
             
     })
-    private AreaDto area = null;
+    private AreaDto area;
     @SpringBean //Spring can inject even to private and protected fields
     protected AreaService areaService;
 

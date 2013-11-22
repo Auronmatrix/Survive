@@ -23,10 +23,10 @@
       <a>description</a>
       <b>description</b>
     </field>  
-     <field>
+<!--     <field>
       <a>locations</a>
       <b>locations</b>
       <b-hint>com.muni.fi.pa165.entities.MonsterArea</b-hint>
-    </field> 
+    </field> -->
   </mapping> 
 </mappings>
