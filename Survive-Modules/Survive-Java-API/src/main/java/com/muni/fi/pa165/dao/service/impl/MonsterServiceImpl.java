@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Auron
  */
-@Transactional
+@Service
 public class MonsterServiceImpl implements MonsterService {
 
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());

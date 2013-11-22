@@ -5,6 +5,7 @@
 package com.muni.fi.pa165.dao.service.impl;
 
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
+import com.muni.fi.pa165.dao.service.MonsterService;
 import com.muni.fi.pa165.dao.service.MonsterWeaponService;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.entities.Monster;
@@ -14,13 +15,13 @@ import javax.inject.Inject;
 import org.dozer.Mapper;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author irina
  */
-@Transactional
+@Service
 public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());
@@ -28,6 +29,8 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     private MonsterWeaponDao dao;
     @Inject
     private Mapper mapper;
+    @Inject
+    private MonsterService service;
 
     @Override
     public MonsterWeaponDto save(MonsterWeaponDto dto) {
@@ -63,8 +66,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     @Override
     public List<MonsterWeaponDto> findByMonsterId(Long id) {
-        MonsterServiceImpl mn = new MonsterServiceImpl();
-        Monster monster = mapper.map(mn.findById(id), Monster.class);
+        Monster monster = mapper.map(service.findById(id), Monster.class);
         List<MonsterWeapon> mw = dao.getMonsterWeaponsForThisMonsterType(monster);
         List<MonsterWeaponDto> result = new ArrayList<>();
         for (MonsterWeapon monsterW : mw) {
