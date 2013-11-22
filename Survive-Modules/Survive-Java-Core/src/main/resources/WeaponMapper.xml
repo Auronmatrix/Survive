@@ -39,10 +39,10 @@
       <a>description</a>
       <b>description</b>
     </field> 
-    <field>
+<!--    <field>
       <a>efficiencies</a>
       <b>efficiencies</b>
       <b-hint>com.muni.fi.pa165.entities.MonsterWeapon</b-hint>
-    </field>
+    </field>-->
   </mapping> 
 </mappings>

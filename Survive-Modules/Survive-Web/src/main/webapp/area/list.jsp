@@ -7,7 +7,7 @@
     <s:layout-component name="body">
         <h1><f:message key="area.title"/></h1>
 
-        <s:useActionBean beanclass="com.muni.fi.pa165.area.AreaActionBean" var="actionBean"/>
+        <s:useActionBean beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" var="actionBean"/>
 
         <p><f:message key="area.list.allareas"/></p>
         <div class="table-responsive">
@@ -28,13 +28,13 @@
                         <td><c:out value="${area.description}" /></td>                 
 
                         <td>         
-                             <s:form beanclass="com.muni.fi.pa165.area.AreaActionBean" action="edit">
+                             <s:form beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" action="edit">
                                 <s:hidden name="area.id" value="${area.id}"/>
                                 <s:submit class="btn btn-warning" name="edit"><f:message key="area.list.edit"/></s:submit>
                             </s:form>
                         </td>
                         <td>                            
-                            <s:form beanclass="com.muni.fi.pa165.area.AreaActionBean" action="delete">
+                            <s:form beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" action="delete">
                                 <s:hidden name="area.id" value="${area.id}"/>
                                 <s:submit class="btn btn-danger" name="delete"><f:message key="area.list.delete"/></s:submit>
                             </s:form>
@@ -43,7 +43,7 @@
                 </c:forEach>
             </table>
         </div>
-            <s:form beanclass="com.muni.fi.pa165.area.AreaActionBean" class="form-horizontal" action="add">
+            <s:form beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" class="form-horizontal" action="add">
             <fieldset><legend><f:message key="area.list.newarea"/></legend>
                 <s:hidden id="_sourcePage" name="_sourcePage" />
                 <s:hidden  name="area.id" value="${area.id}" />

@@ -12,13 +12,13 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-         
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.test.skip>true</maven.test.skip>
         <org.springframework.version>3.2.4.RELEASE</org.springframework.version>
         <tomcat.version>7.0.33</tomcat.version>
         <slf4j.version>1.7.5</slf4j.version>
         <jetty.version>9.0.6.v20130930</jetty.version>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
    
 
@@ -36,12 +36,6 @@
         </dependency>
         
                 <!-- servlet, JSP, JSTL -->
-<!--        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
-        </dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
@@ -70,6 +64,9 @@
             <artifactId>cos</artifactId>
             <version>05Nov2002</version>
         </dependency>
+        
+ 
+
 
         <!-- slf4j -->
 

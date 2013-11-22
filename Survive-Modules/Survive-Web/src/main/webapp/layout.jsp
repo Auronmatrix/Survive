@@ -66,18 +66,18 @@
 
                             <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
                             <li ><a href="/Survive-Web/index.jsp"><f:message key="navigation.index"/></a></li>
-                            <li ><a href="/Survive-Web/template.jsp"><f:message key="navigation.template"/></a></li>
-                            <li ><a href="/Survive-Web/signin.jsp"><f:message key="navigation.signin"/></a></li>
-                            <li class="dropdown">
+                            <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monsters"/></s:link></li>
+                            <li ><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><f:message key="navigation.areas"/></s:link></li>
+                            <li ><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean"><f:message key="navigation.weapons"/></s:link></li>
+                              <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><s:link beanclass="com.muni.fi.pa165.monster.MonsterActionBean"><f:message key="navigation.monstermanagement"/></s:link></li>
-                                        <li><a href="#">Another action</a></li>
+                                    <li></li>
+                                        <li><a href="/Survive-Web/signin.jsp"><f:message key="navigation.signin"/></li>
                                         <li><a href="#">Something else here</a></li>
                                         <li class="divider"></li>
-                                        <li class="dropdown-header">Nav header</li>
-                                        <li><a href="#">Separated link</a></li>
-                                        <li><a href="#">One more separated link</a></li>
+                                        <li class="dropdown-header">Additional Resources</li>
+                                        <li><a href="/Survive-Web/template.jsp"><f:message key="navigation.template"/></a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -89,7 +89,7 @@
                                                         <button type="submit" class="btn btn-default">Submit</button>
                                                     </form>-->
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="logout.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
+                                <li><a href="/Survive-Web/signin.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>

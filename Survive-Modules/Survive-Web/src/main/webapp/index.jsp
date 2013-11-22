@@ -25,7 +25,7 @@
                     <div class="caption">
                         <h3>Monster Management</h3>
                         <p>Access monster logs and classification files. Update spotted monsters</p>
-                        <p><s:link beanclass="com.muni.fi.pa165.monster.MonsterActionBean" class="btn btn-primary">Access Monster Files</s:link></p>
+                        <p><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" class="btn btn-primary">Access Monster Files</s:link></p>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <div class="caption">
                         <h3>Area Management</h3>
                         <p>Access current humanly safe locations and their respective threat analysis/p>
-                        <p><s:link beanclass="com.muni.fi.pa165.area.AreaActionBean" class="btn btn-primary">Access Area Files</s:link></p>
+                        <p><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" class="btn btn-primary">Access Area Files</s:link></p>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                     <div class="caption">
                         <h3>Weapon Management</h3>
                         <p>Access custom built weapons and efficiency logs to see which weapons kicks a punch</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Access Weapon Files</a></p>
+                        <p><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean" class="btn btn-primary">Access Monster Files</s:link></p>
                     </div>
                 </div>
             </div>

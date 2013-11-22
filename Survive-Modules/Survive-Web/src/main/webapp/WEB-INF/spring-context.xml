@@ -9,7 +9,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 ">
 
-<context:component-scan base-package="com.muni.fi.pa165"/>
+<context:component-scan base-package="com.muni.fi.pa165.actions"/>
+
+    <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
          </bean>
@@ -17,6 +19,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
+    
+    
     
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     
@@ -35,13 +39,23 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     
     
 
-    <bean id="monsterService" name="monsterService" class="com.muni.fi.pa165.dao.service.impl.MonsterServiceImpl" >
-    </bean>
-    
-    <bean id="monster" name="monster" class="com.muni.fi.pa165.dto.MonsterDto" ></bean>
-    
-   <bean id="areaService" name="areaService" class="com.muni.fi.pa165.dao.service.impl.AreaServiceImpl" >
-        </bean>
+
+<!-- Mapping Services -->
+<bean name="areaService" class="com.muni.fi.pa165.dao.service.impl.AreaServiceImpl"/>
+<bean name="monsterAreaService" class="com.muni.fi.pa165.dao.service.impl.MonsterAreaServiceImpl"/>
+<bean name="monsterService" class="com.muni.fi.pa165.dao.service.impl.MonsterServiceImpl"/>
+<bean name="monsterWeaponService" class="com.muni.fi.pa165.dao.service.impl.MonsterWeaponServiceImpl"/>
+<bean name="weaponService" class="com.muni.fi.pa165.dao.service.impl.WeaponServiceImpl"/>
+<bean name="systemUserService" class="com.muni.fi.pa165.dao.service.impl.SystemUserServiceImpl"/>
+
+<!-- Mapping DAO -->
+<bean name="areaDao" class="com.muni.fi.pa165.dao.jpa.AreaJpaDaoImpl"/>
+<bean name="monsterAreaDao" class="com.muni.fi.pa165.dao.jpa.MonsterAreaJpaDaoImpl"/>
+<bean name="monsterDao" class="com.muni.fi.pa165.dao.jpa.MonsterJpaDaoImpl"/>
+<bean name="monsterWeaponDao" class="com.muni.fi.pa165.dao.jpa.MonsterWeaponJpaDaoImpl"/>
+<bean name="weaponDao" class="com.muni.fi.pa165.dao.jpa.WeaponJpaDaoImpl"/>
+<bean name="systemUserDao" class="com.muni.fi.pa165.dao.jpa.SystemUserJpaDaoImpl"/>
+
 
         <bean id="area" name="area" class="com.muni.fi.pa165.dto.AreaDto" ></bean>
     

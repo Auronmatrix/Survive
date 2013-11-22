@@ -32,6 +32,6 @@
     <logger name="net.sourceforge.stripes" level="info"/>
     <logger name="org.springframework" level="warn"/>
     <logger name="org.springframework.web.context.ContextLoader" level="info"/>
-    <logger name="cz" level="debug"/>
+    <logger name="com" level="debug"/>
 
 </configuration>

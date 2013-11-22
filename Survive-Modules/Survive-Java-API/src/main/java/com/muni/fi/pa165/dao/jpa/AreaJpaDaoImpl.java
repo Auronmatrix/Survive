@@ -9,6 +9,7 @@ import com.muni.fi.pa165.dao.commons.GenericJpaDao;
 import com.muni.fi.pa165.entities.Area;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 

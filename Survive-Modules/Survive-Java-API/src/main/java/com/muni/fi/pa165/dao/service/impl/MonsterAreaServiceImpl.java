@@ -14,14 +14,14 @@ import javax.inject.Inject;
 import org.dozer.Mapper;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author irina
  */
-@Service
+
+@Transactional
 public class MonsterAreaServiceImpl implements MonsterAreaService {
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());
 
@@ -31,7 +31,6 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     private Mapper mapper;
 
     @Override
-    @Transactional
     public MonsterAreaDto save(MonsterAreaDto dto) {
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
         dao.save(entity);
@@ -40,7 +39,6 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     }
 
     @Override
-    @Transactional
     public MonsterAreaDto update(MonsterAreaDto dto) {
 
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
@@ -50,7 +48,6 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     }
 
     @Override
-    @Transactional
     public void delete(MonsterAreaDto dto) {
 
         dao.delete(mapper.map(dto, MonsterArea.class));
@@ -87,5 +84,19 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
             result.add(mapper.map(monsterA, MonsterAreaDto.class));
         }
         return result;
+    }
+
+    @Override
+    public List<MonsterAreaDto> findAll() {
+        List<MonsterAreaDto> dtoList = new ArrayList<>();
+        for (MonsterArea o : dao.findAll()) {
+            dtoList.add(this.mapper.map(o, MonsterAreaDto.class));
+        }
+        return dtoList;
+    }
+
+    @Override
+    public void delete(Long id) {
+        dao.delete(id);
     }
 }

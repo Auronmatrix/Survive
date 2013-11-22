@@ -26,7 +26,7 @@ public class WeaponDto {
     private Double caliber;
     private Integer rounds;
     private String description;
-    private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
+   // private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
 
     public Double getCaliber() {
         return caliber;
@@ -97,13 +97,13 @@ public class WeaponDto {
         this.description = description;
     }
     
-    public List<MonsterWeaponDto> getEfficiencies() {
-        return efficiencies;
-    }
-
-    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
-        this.efficiencies = efficiencies;
-    }
+//    public List<MonsterWeaponDto> getEfficiencies() {
+//        return efficiencies;
+//    }
+//
+//    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
+//        this.efficiencies = efficiencies;
+//    }
 
     @Override
     public int hashCode() {

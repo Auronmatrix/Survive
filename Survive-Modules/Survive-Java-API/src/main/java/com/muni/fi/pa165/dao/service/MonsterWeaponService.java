@@ -5,6 +5,7 @@
 package com.muni.fi.pa165.dao.service;
 
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
+import com.muni.fi.pa165.dto.WeaponDto;
 import java.util.List;
 
 
@@ -46,4 +47,8 @@ public interface MonsterWeaponService {
 	 * @return list object of type MonsterWeaponDto
 	 */
     public List<MonsterWeaponDto> findByWeaponId(Long id);
+    
+      public List<MonsterWeaponDto> findAll();
+      
+       public void delete(Long id);
 }

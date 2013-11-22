@@ -1,7 +1,6 @@
-package com.muni.fi.pa165.area;
+package com.muni.fi.pa165.actions.area;
 
-import com.muni.fi.pa165.base.BaseActionBean;
-import static com.muni.fi.pa165.base.BaseActionBean.escapeHTML;
+import com.muni.fi.pa165.actions.base.BaseActionBean;
 import com.muni.fi.pa165.dao.service.AreaService;
 import com.muni.fi.pa165.dao.service.MonsterService;
 import com.muni.fi.pa165.dto.AreaDto;
