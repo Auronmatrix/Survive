@@ -21,7 +21,7 @@ public class AreaDto implements Serializable {
     private String name;
     private TerrainType terrain;
     private String description;
-    private List<MonsterAreaDto> locations = new ArrayList<>();
+    //private List<MonsterAreaDto> locations = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -55,13 +55,13 @@ public class AreaDto implements Serializable {
         this.description = description;
     }
     
-     public List<MonsterAreaDto> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<MonsterAreaDto> efficiencies) {
-        this.locations = locations;
-    }
+//     public List<MonsterAreaDto> getLocations() {
+//        return locations;
+//    }
+//
+//    public void setLocations(List<MonsterAreaDto> efficiencies) {
+//        this.locations = locations;
+//    }
     
     @Override
     public boolean equals(Object obj) {

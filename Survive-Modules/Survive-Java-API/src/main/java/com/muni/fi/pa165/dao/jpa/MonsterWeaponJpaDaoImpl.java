@@ -30,7 +30,7 @@ public class MonsterWeaponJpaDaoImpl extends GenericJpaDao<MonsterWeapon, Long> 
 
     @Override
     public List<Weapon> getAllWeaponsForThisMonsterType(Monster monster) {
-        TypedQuery<Weapon> query = getEntityManager().createQuery("select m.weapon from MonsterTypeWeaponEfficiency m where m.monster = :name", Weapon.class);
+        TypedQuery<Weapon> query = getEntityManager().createQuery("select m.weapon from MonsterWeapon m where m.monster = :name", Weapon.class);
         query.setParameter("name", monster.getId());
         return query.getResultList();
 
@@ -38,7 +38,7 @@ public class MonsterWeaponJpaDaoImpl extends GenericJpaDao<MonsterWeapon, Long> 
 
     @Override
     public List<Monster> getAllMonstersForThisWeaponType(Weapon weapon) {
-        TypedQuery<Monster> query = getEntityManager().createQuery("select m.monster from MonsterTypeWeaponEfficiency m where m.weapon = :name", Monster.class);
+        TypedQuery<Monster> query = getEntityManager().createQuery("select m.monster from MonsterWeapon m where m.weapon = :name", Monster.class);
         query.setParameter("name", weapon.getId());
         return query.getResultList();
 
@@ -47,14 +47,14 @@ public class MonsterWeaponJpaDaoImpl extends GenericJpaDao<MonsterWeapon, Long> 
 
     @Override
     public List<MonsterWeapon> getMonsterWeaponsForThisMonsterType(Monster monster) {
-        TypedQuery<MonsterWeapon> query = getEntityManager().createQuery("select m from MonsterTypeWeaponEfficiency m where m.monster = :name", MonsterWeapon.class);
+        TypedQuery<MonsterWeapon> query = getEntityManager().createQuery("select m from MonsterWeapon m where m.monster = :name", MonsterWeapon.class);
         query.setParameter("name", monster.getId());
         return query.getResultList();
     }
 
     @Override
     public List<MonsterWeapon> getMonsterWeaponsForThisWeaponType(Weapon weapon) {
-         TypedQuery<MonsterWeapon> query = getEntityManager().createQuery("select m from MonsterTypeWeaponEfficiency m where m.weapon = :name", MonsterWeapon.class);
+         TypedQuery<MonsterWeapon> query = getEntityManager().createQuery("select m from MonsterWeapon m where m.weapon = :name", MonsterWeapon.class);
         query.setParameter("name", weapon.getId());
         return query.getResultList();
     }
