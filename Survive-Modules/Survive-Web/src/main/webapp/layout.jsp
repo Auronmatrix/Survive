@@ -67,7 +67,7 @@
                             <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
                             <li ><a href="/Survive-Web/index.jsp"><f:message key="navigation.index"/></a></li>
                             <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monsters"/></s:link></li>
-                            <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.areas"/></s:link></li>
+                            <li ><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><f:message key="navigation.areas"/></s:link></li>
                             <li ><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean"><f:message key="navigation.weapons"/></s:link></li>
                               <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>

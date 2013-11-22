@@ -35,7 +35,7 @@
                     <div class="caption">
                         <h3>Area Management</h3>
                         <p>Access current humanly safe locations and their respective threat analysis/p>
-                        <p><a href="#" class="btn btn-primary" role="button">Access Area Files</a></p>
+                        <p><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" class="btn btn-primary">Access Area Files</s:link></p>
                     </div>
                 </div>
             </div>
