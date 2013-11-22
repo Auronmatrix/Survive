@@ -53,27 +53,26 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
     //--- part for adding a weapon ----
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "name", required = false),
-        @Validate(on = {"add", "save"}, field = "stamina", required = false), 
-        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "dangerLevel", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 0),    
-         @Validate(on = {"add", "save"}, field = "imagePath", required = false, minvalue = 0)
-            
+        @Validate(on = {"add", "save"}, field = "weaponType", required = false), 
+        @Validate(on = {"add", "save"}, field = "weaponClass", required = false, minvalue = 0),
+        @Validate(on = {"add", "save"}, field = "range", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "caliber", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "rounds", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 0)
     })
     private WeaponDto weapon;
     
 
     public Resolution add() {
         log.debug("add() weapon={}", weapon);
+        getContext().getMessages().add(new SimpleMessage("Called method add"));
         try {
             weapon = weaponService.save(weapon);
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+            getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(weapon.getName()), escapeHTML(weapon.getDescription().toString())));
+        
         }
-        getContext().getMessages().add(new LocalizableMessage("weapon.add.message", escapeHTML(weapon.getName()), escapeHTML(weapon.getDescription().toString())));
         return new RedirectResolution(this.getClass(), "list");
     }
 
@@ -95,6 +94,7 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
 
     //--- part for deleting a weapon ----
     public Resolution delete() {
+         getContext().getMessages().add(new SimpleMessage("Called method delete"));
         log.debug("delete({})", weapon.getId());
         //only id is filled by the form
         weapon = weaponService.findById(weapon.getId());
@@ -102,7 +102,7 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
             weaponService.delete(weapon.getId());
        } catch (Exception ex) {
            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-            getContext().getMessages().add(new LocalizableMessage("weapon.delete.message", escapeHTML(weapon.getName()), escapeHTML(weapon.getDescription().toString())));        
+            getContext().getMessages().add(new LocalizableMessage("delete.message", escapeHTML(weapon.getName()), escapeHTML(weapon.getDescription().toString())));        
         }
         return new RedirectResolution(this.getClass(), "list");
     }
@@ -118,16 +118,19 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
 
     public Resolution edit() {
         log.debug("edit() weapon={}", weapon);
+         getContext().getMessages().add(new SimpleMessage("Called method edit"));
         return new ForwardResolution("/weapon/edit.jsp");
     }
 
     public Resolution save() {
+         getContext().getMessages().add(new SimpleMessage("Called method save"));
         log.debug("save() weapon={}", weapon);
         weaponService.update(weapon);
         return new RedirectResolution(this.getClass(), "list");
     }
 
     public Resolution cancel() {
+         getContext().getMessages().add(new SimpleMessage("Called method cancel"));
         log.debug("cancel");
         return new RedirectResolution(this.getClass(), "list");
     }

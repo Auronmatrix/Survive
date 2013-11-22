@@ -74,7 +74,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
         }
-        getContext().getMessages().add(new LocalizableMessage("monster.add.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));
+        getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));
         return new RedirectResolution(this.getClass(), "list");
     }
 
@@ -103,7 +103,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
             monsterService.delete(monster.getId());
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-            getContext().getMessages().add(new LocalizableMessage("monster.delete.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));        
+            getContext().getMessages().add(new LocalizableMessage("delete.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));        
        }
         return new RedirectResolution(this.getClass(), "list");
     }
