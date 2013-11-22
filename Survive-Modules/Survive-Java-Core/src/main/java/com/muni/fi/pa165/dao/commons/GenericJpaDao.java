@@ -66,7 +66,8 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
     @Transactional
     public void delete(Long id) {
     
-        T entity =  entityManager.getReference(getPersistentClass(), id);
+        T entity =  entityManager.find(getPersistentClass(), id);
+        entityManager.merge(entity);
        entityManager.remove(entity);
    }
     
