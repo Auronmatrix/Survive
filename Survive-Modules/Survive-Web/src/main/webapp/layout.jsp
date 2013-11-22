@@ -74,7 +74,7 @@
                                 <ul class="dropdown-menu">
                                     <li></li>
                                         <li><a href="/Survive-Web/signin.jsp"><f:message key="navigation.signin"/></li>
-                                        <li><a href="#">Something else here</a></li>
+                                        <li><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterWeaponActionBean"><f:message key="navigation.efficiencies"/></s:link></li>
                                         <li class="divider"></li>
                                         <li class="dropdown-header">Additional Resources</li>
                                         <li><a href="/Survive-Web/template.jsp"><f:message key="navigation.template"/></a></li>
