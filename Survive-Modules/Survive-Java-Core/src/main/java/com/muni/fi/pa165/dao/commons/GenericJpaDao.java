@@ -7,14 +7,12 @@ package com.muni.fi.pa165.dao.commons;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Aubrey Oosthuizen Abstract class used for implementing CRUD operations on generic types. Used to decouple
  * data access and persistence from business layer. Will be extended by each DAO object class for every entity type
  */
-
 public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
 
     private Class<T> persistentClass;
@@ -38,7 +36,6 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
     }
 
     @Override
-    @Transactional
     public T save(T entity) {
 
         //not necessary - entityManager.persist(null) throws the same exception
@@ -46,7 +43,8 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
 //            throw new IllegalArgumentException("entity to be created is null");
 //        }
 
-        entityManager.persist(entity);       
+        entityManager.persist(entity);
+        flush();
         return entity;
     }
 
@@ -57,21 +55,17 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
     }
 
     @Override
-    @Transactional
     public void delete(T entity) {
-     entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
+        getEntityManager().merge(entity);
+        getEntityManager().remove(entity);
     }
     
-    @Override   
-    @Transactional
+    @Override
     public void delete(Long id) {
-    
-        T entity =  entityManager.getReference(getPersistentClass(), id);
-       entityManager.remove(entity);
-   }
-    
-       //  entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
-   
+        flush();
+        T entity = (T) getEntityManager().find(getPersistentClass(), id);
+        getEntityManager().remove(entity);
+    }
 
     @Override
     public T findById(ID id) {
