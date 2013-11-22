@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Auron
  */
-@Service
+@Transactional
 public class MonsterServiceImpl implements MonsterService {
 
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());
@@ -30,7 +30,6 @@ public class MonsterServiceImpl implements MonsterService {
     private Mapper mapper;
 
     @Override
-    @Transactional
     public MonsterDto save(MonsterDto dto) {
             Monster entity = mapper.map(dto, Monster.class);
             entity = dao.save(entity);
@@ -39,7 +38,6 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    @Transactional
     public MonsterDto update(MonsterDto dto) {
        
             Monster entity = mapper.map(dto, Monster.class);
@@ -63,7 +61,6 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    @Transactional
     public MonsterDto findById(Long id) {
         
             return mapper.map(dao.findById(id), MonsterDto.class);

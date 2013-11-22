@@ -40,6 +40,8 @@ public interface MonsterService {
 	 * @param id ID of the weapon
 	 * @return Weapon object of type WeaponDto
 	 */
+    
+    
    
     public MonsterDto findById(Long id);
     

@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author irina
  */
 @Service
+@Transactional
 public class MonsterAreaServiceImpl implements MonsterAreaService {
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());
 
@@ -30,8 +31,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     @Inject
     private Mapper mapper;
 
-    @Override
-    @Transactional
+    @Override   
     public MonsterAreaDto save(MonsterAreaDto dto) {
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
         dao.save(entity);
@@ -40,7 +40,6 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     }
 
     @Override
-    @Transactional
     public MonsterAreaDto update(MonsterAreaDto dto) {
 
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
@@ -50,7 +49,6 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     }
 
     @Override
-    @Transactional
     public void delete(MonsterAreaDto dto) {
 
         dao.delete(mapper.map(dto, MonsterArea.class));
@@ -65,6 +63,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
         this.mapper = mapper;
     }
 
+    
     @Override
     public List<MonsterAreaDto> findByMonsterId(Long id) {
         MonsterServiceImpl mn = new MonsterServiceImpl();
