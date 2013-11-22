@@ -39,5 +39,10 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     </bean>
     
     <bean id="monster" name="monster" class="com.muni.fi.pa165.dto.MonsterDto" ></bean>
+    
+   <bean id="areaService" name="areaService" class="com.muni.fi.pa165.dao.service.impl.AreaServiceImpl" >
+        </bean>
 
+        <bean id="area" name="area" class="com.muni.fi.pa165.dto.AreaDto" ></bean>
+    
 </beans>

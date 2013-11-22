@@ -100,15 +100,15 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     public Resolution delete() {
         log.debug("delete({})", monster.getId());
         //only id is filled by the form
-        monster = monsterService.findById(monster.getId());
-        try {
-
-            monsterService.delete(monster.getId());
-        } catch (Exception ex) {
-            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-
-        }
-        getContext().getMessages().add(new LocalizableMessage("monster.delete.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));
+//        monster = monsterService.findById(monster.getId());
+//        try {
+//
+//            monsterService.delete(monster.getId());
+//        } catch (Exception ex) {
+//            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+//
+//        }
+//        getContext().getMessages().add(new LocalizableMessage("monster.delete.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));
         return new RedirectResolution(this.getClass(), "list");
     }
 

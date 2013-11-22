@@ -8,6 +8,8 @@ import com.muni.fi.pa165.dao.AreaDao;
 import com.muni.fi.pa165.dao.service.AreaService;
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.entities.Area;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import org.dozer.Mapper;
@@ -72,5 +74,15 @@ public class AreaServiceImpl implements AreaService {
         this.mapper = mapper;
     }
     
-    
+    @Override
+      public List<AreaDto> findAll()
+      { 
+//          List<Area> daoList = dao.findAll();
+          List<AreaDto> dtoList = new ArrayList<>();
+   //       for(Area area : daoList)
+   //       {
+    //          dtoList.add(this.mapper.map(area, AreaDto.class));              
+    //      }
+          return dtoList;
+      }
 }

@@ -6,6 +6,7 @@ package com.muni.fi.pa165.dao.service;
 
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.entities.Area;
+import java.util.List;
 
 /**
  *
@@ -41,4 +42,5 @@ public interface AreaService {
 	 */
    
     public AreaDto findById(Long id);
+    public List<AreaDto> findAll();
 }
