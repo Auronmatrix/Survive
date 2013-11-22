@@ -28,7 +28,7 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
         return entityManager;
     }
 
-    @PersistenceContext(unitName = "ProjectPU")
+    @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
