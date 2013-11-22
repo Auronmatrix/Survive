@@ -1,7 +1,7 @@
-package com.muni.fi.pa165.monster;
+package com.muni.fi.pa165.actions.monster;
 
-import com.muni.fi.pa165.base.BaseActionBean;
-import static com.muni.fi.pa165.base.BaseActionBean.escapeHTML;
+import com.muni.fi.pa165.actions.base.BaseActionBean;
+import static com.muni.fi.pa165.actions.base.BaseActionBean.escapeHTML;
 import com.muni.fi.pa165.dao.service.MonsterService;
 import com.muni.fi.pa165.dto.MonsterDto;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import sun.print.resources.serviceui;
 
 /**
  * Stripes ActionBean for handling monster operations.
@@ -52,16 +53,15 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     }
     //--- part for adding a monster ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save", "edit"}, field = "monster.name", required = false),
-        @Validate(on = {"add", "save"}, field = "stamina", required = true), 
+        @Validate(on = {"add", "save"}, field = "name", required = false),
+        @Validate(on = {"add", "save"}, field = "stamina", required = false), 
         @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "strength", required = true, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "agility", required = true, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "dangerLevel", required = true, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "weight", required = true, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "monsterClass"),
-         @Validate(on = {"add", "save"}, field = "description", required = true, minvalue = 0),    
-         @Validate(on = {"add", "save"}, field = "imagePath", required = true, minvalue = 0)
+        @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "dangerLevel", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 0),    
+         @Validate(on = {"add", "save"}, field = "imagePath", required = false, minvalue = 0)
             
     })
     private MonsterDto monster;
@@ -99,12 +99,12 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         log.debug("delete({})", monster.getId());
         //only id is filled by the form
         monster = monsterService.findById(monster.getId());
-       // try {
-            monsterService.delete(monster);
-      //  } catch (Exception ex) {
-       //     getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+        try {
+            monsterService.delete(monster.getId());
+        } catch (Exception ex) {
+            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
             getContext().getMessages().add(new LocalizableMessage("monster.delete.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));        
-      //  }
+       }
         return new RedirectResolution(this.getClass(), "list");
     }
 

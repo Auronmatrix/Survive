@@ -71,7 +71,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><s:link beanclass="com.muni.fi.pa165.monster.MonsterActionBean"><f:message key="navigation.monstermanagement"/></s:link></li>
+                                    <li><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monstermanagement"/></s:link></li>
                                         <li><a href="#">Another action</a></li>
                                         <li><a href="#">Something else here</a></li>
                                         <li class="divider"></li>

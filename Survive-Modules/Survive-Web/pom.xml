@@ -18,6 +18,7 @@
         <tomcat.version>7.0.33</tomcat.version>
         <slf4j.version>1.7.5</slf4j.version>
         <jetty.version>9.0.6.v20130930</jetty.version>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
    
 
@@ -63,6 +64,9 @@
             <artifactId>cos</artifactId>
             <version>05Nov2002</version>
         </dependency>
+        
+ 
+
 
         <!-- slf4j -->
 

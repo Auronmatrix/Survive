@@ -4,25 +4,17 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <s:layout-render name="/layout.jsp" titlekey="monster.edit.title">
     <s:layout-component name="body">
-        <s:useActionBean beanclass="com.muni.fi.pa165.monster.MonsterActionBean" var="actionBean"/>
+        <s:useActionBean beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" var="actionBean"/>
 
-
-        <div>
-            <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean" class="form-horizontal">
-                 <s:hidden name="monster.id"/>
-                <fieldset><legend><f:message key="monster.edit.edit"/></legend>
-                    <%@include file="form.jsp"%>
-            </s:form>
-            <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean" class="form-horizontal" action="save"> 
-                <s:hidden name="monster.id"/>
-                    <s:submit  class="btn btn-info" name="save" ><f:message key="monster.edit.save"/></s:submit> 
-                    </fieldset>
-            </s:form>
-            <s:form beanclass="com.muni.fi.pa165.monster.MonsterActionBean" class="form-horizontal" action="cancel">
-                <s:submit class="btn btn-warning" name="cancel" ><f:message key="monster.edit.cancel" /></s:submit>  
-            </s:form>
-
-        </div>
+        <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" class="form-horizontal">
+            <s:hidden name="monster.id"/>
+            <fieldset><legend><f:message key="monster.edit.edit"/></legend>
+                <%@include file="form.jsp"%>
+               <div><s:submit class="btn btn-info" name="save"><f:message key="forms.save"/></s:submit> </div>              
+                </fieldset>
+        </s:form>
+        
+     
 
 
     </s:layout-component>
