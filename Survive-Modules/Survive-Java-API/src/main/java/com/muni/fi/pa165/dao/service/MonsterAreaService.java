@@ -46,5 +46,10 @@ public interface MonsterAreaService {
 	 * @return list object of type MonsterAreaDto
 	 */
     public List<MonsterAreaDto> findByMonsterId(Long id);
+    
+      public List<MonsterAreaDto> findAll();
+      
+       public void delete(Long id);
 }
+
     

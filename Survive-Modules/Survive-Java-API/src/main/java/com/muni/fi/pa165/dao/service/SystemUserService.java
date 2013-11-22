@@ -8,6 +8,7 @@ import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.dto.SystemUserDto;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.SystemUser;
+import java.util.List;
 
 /**
  *
@@ -43,5 +44,9 @@ public interface SystemUserService {
 	 */
    
     public SystemUserDto findById(Long id);
+    
+      public List<SystemUserDto> findAll();
+      
+       public void delete(Long id);
 }
     

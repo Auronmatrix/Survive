@@ -21,6 +21,7 @@ import org.springframework.dao.DataAccessException;
  *
  * @author Michal Vinkler
  */
+
 public class GenericJpaDaoTest extends AbstractIntegrationTest {
 
     @Autowired

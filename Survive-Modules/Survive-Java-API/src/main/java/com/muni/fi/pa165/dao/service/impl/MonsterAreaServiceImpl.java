@@ -14,14 +14,13 @@ import javax.inject.Inject;
 import org.dozer.Mapper;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author irina
  */
-@Service
+
 @Transactional
 public class MonsterAreaServiceImpl implements MonsterAreaService {
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());
@@ -31,7 +30,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     @Inject
     private Mapper mapper;
 
-    @Override   
+    @Override
     public MonsterAreaDto save(MonsterAreaDto dto) {
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
         dao.save(entity);
@@ -63,7 +62,6 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
         this.mapper = mapper;
     }
 
-    
     @Override
     public List<MonsterAreaDto> findByMonsterId(Long id) {
         MonsterServiceImpl mn = new MonsterServiceImpl();
@@ -86,5 +84,19 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
             result.add(mapper.map(monsterA, MonsterAreaDto.class));
         }
         return result;
+    }
+
+    @Override
+    public List<MonsterAreaDto> findAll() {
+        List<MonsterAreaDto> dtoList = new ArrayList<>();
+        for (MonsterArea o : dao.findAll()) {
+            dtoList.add(this.mapper.map(o, MonsterAreaDto.class));
+        }
+        return dtoList;
+    }
+
+    @Override
+    public void delete(Long id) {
+        dao.delete(id);
     }
 }

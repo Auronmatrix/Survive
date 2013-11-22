@@ -8,19 +8,19 @@ import com.muni.fi.pa165.dao.WeaponDao;
 import com.muni.fi.pa165.dao.service.WeaponService;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Weapon;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Michal Vinkler
  */
-@Service
+@Transactional
 public class WeaponServiceImpl implements WeaponService {
 
-    
     @Inject
     private WeaponDao dao;
     @Inject
@@ -32,7 +32,7 @@ public class WeaponServiceImpl implements WeaponService {
         Weapon entity = mapper.map(dto, Weapon.class);
         dao.save(entity);
         return mapper.map(entity, WeaponDto.class);
-     }
+    }
 
     @Override
     @Transactional
@@ -53,7 +53,7 @@ public class WeaponServiceImpl implements WeaponService {
     public WeaponDto findById(Long id) {
         return mapper.map(dao.findById(id), WeaponDto.class);
     }
-    
+
     @Override
     public boolean checkAvailable(String name) {
         return dao.checkAvailable(name);
@@ -62,8 +62,23 @@ public class WeaponServiceImpl implements WeaponService {
     public void setDao(WeaponDao dao) {
         this.dao = dao;
     }
-    
-      public void setMapper(Mapper mapper) {
+
+    public void setMapper(Mapper mapper) {
         this.mapper = mapper;
+    }
+
+    @Override
+    public List<WeaponDto> findAll() {
+        List<WeaponDto> dtoList = new ArrayList<>();
+        for (Weapon o : dao.findAll()) {
+            dtoList.add(this.mapper.map(o, WeaponDto.class));
+        }
+        return dtoList;
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        dao.delete(id);
     }
 }
