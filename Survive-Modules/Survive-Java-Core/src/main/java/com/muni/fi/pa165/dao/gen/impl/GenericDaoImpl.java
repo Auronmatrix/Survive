@@ -18,7 +18,7 @@ import org.springframework.util.Assert;
 @Repository
 public class GenericDaoImpl extends GenericJpaDao<GenericEntity, Long> {
 
-    public GenericJpaDaoImpl() {
+    public GenericDaoImpl() {
         super(GenericEntity.class);
     }
 
