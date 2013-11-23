@@ -49,23 +49,5 @@ public class SystemUserDto {
         this.accessLevel = accessLevel;
     }
 
-    @Override
-    public boolean equals(Object object) {
-
-        if (!(object instanceof SystemUserDto)) {
-            return false;
-        }
-        SystemUserDto other = (SystemUserDto) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
+  
 }

@@ -99,50 +99,5 @@ public class WeaponDto {
 //    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
 //        this.efficiencies = efficiencies;
 //    }
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.name);
-        hash = 89 * hash + Objects.hashCode(this.weaponType);
-        hash = 89 * hash + Objects.hashCode(this.weaponClass);
-        hash = 89 * hash + Objects.hashCode(this.range);
-        hash = 89 * hash + Objects.hashCode(this.caliber);
-        hash = 89 * hash + Objects.hashCode(this.rounds);
-        hash = 89 * hash + Objects.hashCode(this.description);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final WeaponDto other = (WeaponDto) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (this.weaponType != other.weaponType) {
-            return false;
-        }
-        if (this.weaponClass != other.weaponClass) {
-            return false;
-        }
-        if (!Objects.equals(this.range, other.range)) {
-            return false;
-        }
-        if (!Objects.equals(this.caliber, other.caliber)) {
-            return false;
-        }
-        if (!Objects.equals(this.rounds, other.rounds)) {
-            return false;
-        }
-        return true;
-    }
+    
 }
