@@ -72,7 +72,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
         }
-        getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monster.getName()), escapeHTML(monster.getAgility().toString())));
+        getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monster.getName())));
         return new RedirectResolution(this.getClass(), "list");
     }
 
