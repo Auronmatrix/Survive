@@ -4,7 +4,10 @@
  */
 package com.muni.fi.pa165.dao.gen.impl;
 
-import com.muni.fi.pa165.entities.GenericEntity;
+
+ 
+ import com.muni.fi.pa165.entities.Monster;
+ import com.muni.fi.pa165.entities.Monsterarea;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
