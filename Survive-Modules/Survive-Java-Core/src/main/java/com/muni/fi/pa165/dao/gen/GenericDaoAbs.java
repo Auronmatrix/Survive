@@ -20,12 +20,12 @@ import org.springframework.transaction.annotation.Transactional;
  * data access and persistence from business layer. Will be extended by each DAO object class for every entity type
  */
 
-public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
+public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
 
     private Class<T> persistentClass;
     private EntityManagerFactory emf;
 
-    public GenericJpaDao(Class<T> persistenceClass) {
+    public GenericDaoAbs(Class<T> persistenceClass) {
         this.persistentClass = persistenceClass;
     }
     
