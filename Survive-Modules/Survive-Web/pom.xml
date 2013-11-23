@@ -24,9 +24,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.muni.fi.pa165</groupId>
-            <artifactId>Survive-Java-API</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Survive-Java-Business-API</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -131,12 +131,12 @@
                             <warRunDependencies>
                                 <warRunDependency>
                                     <dependency>
-                                        <groupId>Survie-Group-ID</groupId>
+                                        <groupId>com.muni.fi.pa165</groupId>
                                         <artifactId>Survive-Web</artifactId>
                                         <version>1.0-SNAPSHOT</version>
                                         <type>war</type>
                                     </dependency>
-                                    <contextPath>/</contextPath>
+                                    <contextPath>/pa165</contextPath>
                                 </warRunDependency>
                             </warRunDependencies>
                             <!-- naming is disable by default so use true to enable it -->

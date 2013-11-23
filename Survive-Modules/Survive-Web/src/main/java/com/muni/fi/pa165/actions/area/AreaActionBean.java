@@ -2,9 +2,7 @@ package com.muni.fi.pa165.actions.area;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
 import com.muni.fi.pa165.service.AreaService;
-import com.muni.fi.pa165.service.MonsterService;
 import com.muni.fi.pa165.dto.AreaDto;
-import com.muni.fi.pa165.dto.MonsterDto;
 import java.util.ArrayList;
 import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;

@@ -43,23 +43,26 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     
 
 
-<!-- Mapping Services -->
-<!--<bean name="areaService" class="com.muni.fi.pa165.dao.service.impl.AreaServiceImpl"/>
-<bean name="monsterAreaService" class="com.muni.fi.pa165.dao.service.impl.MonsterAreaServiceImpl"/>
-<bean name="monsterService" class="com.muni.fi.pa165.dao.service.impl.MonsterServiceImpl"/>
-<bean name="monsterWeaponService" class="com.muni.fi.pa165.dao.service.impl.MonsterWeaponServiceImpl"/>
-<bean name="weaponService" class="com.muni.fi.pa165.dao.service.impl.WeaponServiceImpl"/>
-<bean name="systemUserService" class="com.muni.fi.pa165.dao.service.impl.SystemUserServiceImpl"/>-->
+ <!--Mapping Services--> 
+<!--<bean name="areaService" class="com.muni.fi.pa165.service.impl.AreaServiceImpl"/>
+<bean name="monsterAreaService" class="com.muni.fi.pa165.service.impl.MonsterAreaServiceImpl"/>
+<bean name="monsterService" class="com.muni.fi.pa165.service.impl.MonsterServiceImpl"/>
+<bean name="monsterWeaponService" class="com.muni.fi.pa165.service.impl.MonsterWeaponServiceImpl"/>
+<bean name="weaponService" class="com.muni.fi.pa165.service.impl.WeaponServiceImpl"/>
+<bean name="systemUserService" class="com.muni.fi.pa165.service.impl.SystemUserServiceImpl"/>-->
 
-<!-- Mapping DAO -->
-<!--<bean name="areaDao" class="com.muni.fi.pa165.dao.jpa.AreaJpaDaoImpl"/>
-<bean name="monsterAreaDao" class="com.muni.fi.pa165.dao.jpa.MonsterAreaJpaDaoImpl"/>
-<bean name="monsterDao" class="com.muni.fi.pa165.dao.jpa.MonsterJpaDaoImpl"/>
-<bean name="monsterWeaponDao" class="com.muni.fi.pa165.dao.jpa.MonsterWeaponJpaDaoImpl"/>
-<bean name="weaponDao" class="com.muni.fi.pa165.dao.jpa.WeaponJpaDaoImpl"/>
-<bean name="systemUserDao" class="com.muni.fi.pa165.dao.jpa.SystemUserJpaDaoImpl"/>-->
+ <!--Mapping DAO--> 
+<!--<bean name="areaDao" class="com.muni.fi.pa165.dao.impl.AreaDaoImpl"/>
+<bean name="monsterAreaDao" class="com.muni.fi.pa165.dao.impl.MonsterAreaDaoImpl"/>
+<bean name="monsterDao" class="com.muni.fi.pa165.dao.impl.MonsterDaoImpl"/>
+<bean name="monsterWeaponDao" class="com.muni.fi.pa165.dao.impl.MonsterWeaponDaoImpl"/>
+<bean name="weaponDao" class="com.muni.fi.pa165.dao.impl.WeaponDaoImpl"/>
+<bean name="systemUserDao" class="com.muni.fi.pa165.dao.impl.SystemUserDaoImpl"/>-->
+
+<!-- Mapping DTO -->
+<bean name="areaDto" class="com.muni.fi.pa165.dto.AreaDto" />
 
 
-        <bean id="area" name="area" class="com.muni.fi.pa165.dto.AreaDto" ></bean>
-    
+<!--        <bean id="area" name="area" class="com.muni.fi.pa165.dto.AreaDto" ></bean>
+    -->
 </beans>
