@@ -4,8 +4,6 @@
  */
 package com.muni.fi.pa165.dto;
 
-import com.muni.fi.pa165.entities.Area;
-import com.muni.fi.pa165.entities.Monster;
 import java.util.Objects;
 
 /**
@@ -14,24 +12,24 @@ import java.util.Objects;
  */
 public class MonsterAreaDto {
 
-    private Monster monster;
-    private Area area;
+    private Long monsterID;
+    private Long areaID;
     private int monsterQuantity;
 
-    public Monster getMonster() {
-        return monster;
+    public Long getMonsterID() {
+        return monsterID;
     }
 
-    public void setMonster(Monster monster) {
-        this.monster = monster;
+    public void setMonsterID(Long monsterID) {
+        this.monsterID = monsterID;
     }
 
-    public Area getArea() {
-        return area;
+    public Long getAreaID() {
+        return areaID;
     }
 
-    public void setArea(Area area) {
-        this.area = area;
+    public void setAreaID(Long areaID) {
+        this.areaID = areaID;
     }
 
     public int getMonsterQuantity() {
@@ -42,30 +40,11 @@ public class MonsterAreaDto {
         this.monsterQuantity = monsterQuantity;
     }
 
+    
+    
     @Override
     public int hashCode() {
         int hash = 3;
         return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final MonsterAreaDto other = (MonsterAreaDto) obj;
-        if (!Objects.equals(this.monster, other.monster)) {
-            return false;
-        }
-        if (!Objects.equals(this.area, other.area)) {
-            return false;
-        }
-        if (this.monsterQuantity != other.monsterQuantity) {
-            return false;
-        }
-        return true;
     }
 }
