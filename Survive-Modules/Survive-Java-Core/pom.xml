@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.muni.fi.pa165</groupId>
-    <artifactId>Survive-Java-Core</artifactId>
+    <artifactId>Survive-Java-Persistence</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Survive-Java-Core</name>
+    <name>Survive-Java-Persistence</name>
     <url>http://maven.apache.org</url>
     <build>
         <plugins>
