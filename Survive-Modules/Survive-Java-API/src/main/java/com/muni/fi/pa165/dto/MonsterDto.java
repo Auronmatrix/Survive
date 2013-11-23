@@ -137,5 +137,65 @@ public class MonsterDto {
 //    public void setLocations(List<MonsterAreaDto> locations) {
 //        this.locations = locations;
 //    }
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.monsterClass);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + Objects.hashCode(this.height);
+        hash = 97 * hash + Objects.hashCode(this.weight);
+        hash = 97 * hash + Objects.hashCode(this.agility);
+        hash = 97 * hash + Objects.hashCode(this.strength);
+        hash = 97 * hash + Objects.hashCode(this.stamina);
+        hash = 97 * hash + Objects.hashCode(this.dangerLevel);
+        hash = 97 * hash + Objects.hashCode(this.imagePath);
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MonsterDto other = (MonsterDto) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (this.monsterClass != other.monsterClass) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.height, other.height)) {
+            return false;
+        }
+        if (!Objects.equals(this.weight, other.weight)) {
+            return false;
+        }
+        if (!Objects.equals(this.agility, other.agility)) {
+            return false;
+        }
+        if (!Objects.equals(this.strength, other.strength)) {
+            return false;
+        }
+        if (!Objects.equals(this.stamina, other.stamina)) {
+            return false;
+        }
+        if (!Objects.equals(this.dangerLevel, other.dangerLevel)) {
+            return false;
+        }
+        if (!Objects.equals(this.imagePath, other.imagePath)) {
+            return false;
+        }
+        return true;
+    }
 }

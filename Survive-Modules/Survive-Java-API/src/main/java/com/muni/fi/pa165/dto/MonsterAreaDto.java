@@ -41,4 +41,10 @@ public class MonsterAreaDto {
     }
 
     
+    
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
 }

@@ -69,4 +69,6 @@ public class MonsterWeaponDto {
         this.description = description;
     }
 
+    
+    
 }

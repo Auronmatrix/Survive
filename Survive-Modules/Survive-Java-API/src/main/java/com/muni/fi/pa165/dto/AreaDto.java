@@ -62,5 +62,25 @@ public class AreaDto implements Serializable {
 //    public void setLocations(List<MonsterAreaDto> efficiencies) {
 //        this.locations = locations;
 //    }
-  
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AreaDto other = (AreaDto) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
 }
