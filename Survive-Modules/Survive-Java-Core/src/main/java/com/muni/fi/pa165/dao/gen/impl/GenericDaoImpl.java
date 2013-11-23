@@ -4,35 +4,48 @@
  */
 package com.muni.fi.pa165.dao.gen.impl;
 
-import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
-import com.muni.fi.pa165.entities.Genericentity;
+import com.muni.fi.pa165.entities.GenericEntity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 /**
  *
- * @author Aubrey Oosthuizen Implementation class used for unit testing the GenericDaoAbs class
+ * @author Aubrey Oosthuizen Implementation class used for unit testing the GenericJpaDao class
  */
 @Repository
-public class GenericDaoImpl extends GenericDaoAbs<Genericentity, Long> {
+public class GenericJpaDaoImpl extends GenericJpaDao<GenericEntity, Long> {
 
-    public GenericDaoImpl() {
-        super(Genericentity.class);
+    public GenericJpaDaoImpl() {
+        super(GenericEntity.class);
     }
 
     public boolean checkAvailable(String name){
         Assert.notNull(name);
-        TypedQuery<Genericentity> query = getEntityManager().createQuery("SELECT a from " + getPersistentClass().getSimpleName() + " a where a.name = :name", Genericentity.class);
-        Genericentity obj = null;
+        EntityManager em =super.getEntityManagerFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
         try {
-            obj = query.getSingleResult();
-        } catch (Exception ex) {
+                TypedQuery<GenericEntity> query = em.createQuery("SELECT a from " + getPersistentClass().getSimpleName() + " a where a.name = :name", GenericEntity.class);
+            GenericEntity obj = null;
+            try {
+                tx.begin();
+                obj = query.getSingleResult();
+            } catch (Exception ex) {
+            }
+            if (obj != null) {
+                return true;
+            }
+            return false;
         }
-        if (obj != null) {
-            return true;
+        finally {
+            tx.commit();
+            if (em != null) {
+                em.close();
+            }
         }
-        return false;
+        
 
     }
 }
