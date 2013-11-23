@@ -7,6 +7,7 @@ package com.muni.fi.pa165.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -32,14 +33,14 @@ public class MonsterArea implements Serializable {
      * Type of a monster on this area.
      */
     @Id
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @PrimaryKeyJoinColumn(name = "MONSTERID", referencedColumnName = "id")
     private Monster monster;
     /**
      * Type of this area.
      */
     @Id
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @PrimaryKeyJoinColumn(name = "AREAID", referencedColumnName = "id")
     private Area area;
     /**

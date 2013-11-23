@@ -52,12 +52,12 @@ public class Monster implements Serializable {
     /**
      * List of all the weapon efficiencies bound to this monster.
      */
-    @OneToMany(mappedBy = "monster",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "monster")
     private List<MonsterWeapon> efficiencies = new ArrayList<>();
     /**
      * List of all locations where this type of a monster was spotted.
      */
-    @OneToMany(mappedBy = "monster",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "monster")
     private List<MonsterArea> locations = new ArrayList<>();
 
     //Getters and setters

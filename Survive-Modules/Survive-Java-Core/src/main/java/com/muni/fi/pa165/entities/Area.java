@@ -39,7 +39,7 @@ public class Area implements Serializable {
     @Enumerated(EnumType.STRING)
     private TerrainType terrain;
     private String description;
-    @OneToMany(mappedBy = "area", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "area")
     private List<MonsterArea> locations = new ArrayList<>();
 
     //Getters and setters

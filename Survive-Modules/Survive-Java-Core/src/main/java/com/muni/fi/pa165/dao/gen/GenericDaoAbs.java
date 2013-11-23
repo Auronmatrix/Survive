@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muni.fi.pa165.dao.commons;
+package com.muni.fi.pa165.dao.gen;
 
+import com.muni.fi.pa165.dao.GenericDao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -15,12 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
  * data access and persistence from business layer. Will be extended by each DAO object class for every entity type
  */
 
-public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
+public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
 
     private Class<T> persistentClass;
     private EntityManager entityManager;
 
-    public GenericJpaDao(Class<T> persistenceClass) {
+    public GenericDaoAbs(Class<T> persistenceClass) {
         this.persistentClass = persistenceClass;
     }
 
@@ -38,7 +38,6 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
     }
 
     @Override
-    @Transactional
     public T save(T entity) {
 
         //not necessary - entityManager.persist(null) throws the same exception
@@ -57,18 +56,18 @@ public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
     }
 
     @Override
-    @Transactional
     public void delete(T entity) {
-     entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
+        
+        getEntityManager().remove(entity);
+    // entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
     }
     
     @Override   
-    @Transactional
     public void delete(Long id) {
     
-        T entity =  entityManager.find(getPersistentClass(), id);
-        entityManager.merge(entity);
-       entityManager.remove(entity);
+       T entity =  getEntityManager().getReference(getPersistentClass(), id);
+       getEntityManager().remove(entity);
+       
    }
     
        //  entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));

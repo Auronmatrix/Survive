@@ -18,24 +18,21 @@
         <property name="persistenceUnitName" value="ProjectPU"/>
     </bean>
 
+   <bean id="translator" class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
+
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
     
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     
-   
+<!--       <bean name="areaDao" class="com.muni.fi.pa165.dao.impl.AreaJpaDaoImpl"/>
+    <bean name="monsterAreaDao" class="com.muni.fi.pa165.dao.impl.MonsterAreaJpaDaoImpl"/>
+    <bean name="monsterDao" class="com.muni.fi.pa165.dao.impl.MonsterJpaDaoImpl"/>
+    <bean name="monsterWeaponDao" class="com.muni.fi.pa165.dao.impl.MonsterWeaponJpaDaoImpl"/>
+    <bean name="weaponDao" class="com.muni.fi.pa165.dao.impl.WeaponJpaDaoImpl"/>
+    <bean name="systemUserDao" class="com.muni.fi.pa165.dao.impl.SystemUserJpaDaoImpl"/> -->
     
-    <bean id="mapper" class="org.dozer.DozerBeanMapper">
-        <property name="mappingFiles">
-            <list>
-                <value>AreaMapper.xml</value>
-                <value>MonsterAreaMapper.xml</value>
-                <value>WeaponMapper.xml</value>
-                <value>SystemUserMapper.xml</value>	
-                <value>MonsterMapper.xml</value>
-                <value>MonsterWeaponMapper.xml</value>
-            </list>
-        </property>
-    </bean>
+    
+
 </beans>

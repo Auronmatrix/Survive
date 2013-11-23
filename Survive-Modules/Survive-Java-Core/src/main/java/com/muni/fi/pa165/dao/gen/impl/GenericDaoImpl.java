@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muni.fi.pa165.dao.commons;
+package com.muni.fi.pa165.dao.gen.impl;
 
+import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
 import com.muni.fi.pa165.entities.GenericEntity;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
@@ -11,12 +12,12 @@ import org.springframework.util.Assert;
 
 /**
  *
- * @author Aubrey Oosthuizen Implementation class used for unit testing the GenericJpaDao class
+ * @author Aubrey Oosthuizen Implementation class used for unit testing the GenericDaoAbs class
  */
 @Repository
-public class GenericJpaDaoImpl extends GenericJpaDao<GenericEntity, Long> {
+public class GenericDaoImpl extends GenericDaoAbs<GenericEntity, Long> {
 
-    public GenericJpaDaoImpl() {
+    public GenericDaoImpl() {
         super(GenericEntity.class);
     }
 

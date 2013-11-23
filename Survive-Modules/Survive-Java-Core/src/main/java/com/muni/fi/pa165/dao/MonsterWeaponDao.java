@@ -5,7 +5,6 @@
  */
 package com.muni.fi.pa165.dao;
 
-import com.muni.fi.pa165.dao.commons.GenericDao;
 import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.entities.MonsterWeapon;
 import com.muni.fi.pa165.entities.Weapon;
@@ -29,7 +28,7 @@ public interface MonsterWeaponDao extends GenericDao<MonsterWeapon, Long> {
      *
      * @return list of all monsterWeapons which related with given monster
      */
-    List<MonsterWeapon> getMonsterWeaponsForThisMonsterType(Monster monster);
+    List<MonsterWeapon> getMonsterWeaponsForThisMonsterType(Long id);
     /**
      * This method returns all the monsters which are vulnerable to the given type of the weapon.
      *

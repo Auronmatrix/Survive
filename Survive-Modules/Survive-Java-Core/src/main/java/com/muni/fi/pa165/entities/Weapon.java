@@ -36,7 +36,7 @@ public class Weapon implements Serializable {
     private Double caliber;
     private Integer rounds;
     private String description;
-    @OneToMany(mappedBy = "weapon",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "weapon")
     private List<MonsterWeapon> efficiencies = new ArrayList<MonsterWeapon>();
 
     //Getters and setters

@@ -6,6 +6,7 @@ package com.muni.fi.pa165.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -26,13 +27,14 @@ public class MonsterWeapon implements Serializable {
     private static final long serialVersionUID = 10002L;
     //Entity Attributes
     @Id
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @PrimaryKeyJoinColumn(name = "MONSTERID", referencedColumnName = "id")
     private Monster monster;
     @Id
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @PrimaryKeyJoinColumn(name = "WEAPONID", referencedColumnName = "id")
     private Weapon weapon;
+    
     private double hitRate;
     private double damage;
     private double efficiency;
