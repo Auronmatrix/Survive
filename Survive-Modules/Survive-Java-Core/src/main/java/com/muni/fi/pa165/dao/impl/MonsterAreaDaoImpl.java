@@ -9,6 +9,7 @@ import com.muni.fi.pa165.dao.MonsterAreaDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
 import com.muni.fi.pa165.entities.Monsterarea;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
@@ -28,15 +29,16 @@ public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> impleme
 
     @Override
     public List<Monsterarea> getByMonsterId(Long id){
-
-        TypedQuery<Monsterarea> query = getEntityManager().createQuery("select m from " + getPersistentClass().getSimpleName()  + " m where m.monster.id = :id", Monsterarea.class);
+ EntityManager em = this.getEntityManagerFactory().createEntityManager();
+        TypedQuery<Monsterarea> query = em.createQuery("select m from " + getPersistentClass().getSimpleName()  + " m where m.monster.id = :id", Monsterarea.class);
         query.setParameter("id", id);
        return query.getResultList();
     }
 
     @Override
     public List<Monsterarea> getByAreaId(Long id) {
-           TypedQuery<Monsterarea> query = getEntityManager().createQuery("select m from " + getPersistentClass().getSimpleName()  + " m where m.weapon.id = :id", Monsterarea.class);
+        EntityManager em = this.getEntityManagerFactory().createEntityManager();
+           TypedQuery<Monsterarea> query = em.createQuery("select m from " + getPersistentClass().getSimpleName()  + " m where m.weapon.id = :id", Monsterarea.class);
         query.setParameter("id", id);
        return query.getResultList(); 
     }

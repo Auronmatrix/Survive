@@ -7,6 +7,7 @@ package com.muni.fi.pa165.dao.impl;
 import com.muni.fi.pa165.dao.WeaponDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
 import com.muni.fi.pa165.entities.Weapon;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
@@ -35,7 +36,8 @@ public class WeaponDaoImpl extends GenericDaoAbs<Weapon, Long> implements Weapon
 //        Assert.notNull(name); //Use to make sure no null object is passed. org.springframework.util.Assert;
 
         System.out.println("Trying to look for weapon named " + name);
-        TypedQuery<Weapon> query = getEntityManager().createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Weapon.class);
+        EntityManager em = this.getEntityManagerFactory().createEntityManager();
+        TypedQuery<Weapon> query = em.createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Weapon.class);
         query.setParameter("name", name);
         if (!query.getResultList().isEmpty()) {
             return true;
@@ -47,8 +49,8 @@ public class WeaponDaoImpl extends GenericDaoAbs<Weapon, Long> implements Weapon
     public Weapon getByName(String name) {
         Assert.notNull(name);
         Weapon obj = null;
-
-        TypedQuery<Weapon> query = getEntityManager().createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Weapon.class);
+EntityManager em = this.getEntityManagerFactory().createEntityManager();
+        TypedQuery<Weapon> query = em.createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Weapon.class);
         query.setParameter("name", name);
 
         //I think the try catch can be removed. Need to verify at seminar

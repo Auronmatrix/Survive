@@ -9,6 +9,7 @@ import com.muni.fi.pa165.dao.MonsterDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
 import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.enums.MonsterClass;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
@@ -36,8 +37,8 @@ public class MonsterDaoImpl extends GenericDaoAbs<Monster, Long> implements Mons
         }
 
 //        Assert.notNull(monsterClass);
-
-        TypedQuery<Monster> query = getEntityManager().createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.monsterclass = :class", Monster.class);
+EntityManager em = this.getEntityManagerFactory().createEntityManager();
+        TypedQuery<Monster> query = em.createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.monsterclass = :class", Monster.class);
         query.setParameter("class", monsterClass);
 
         if (!query.getResultList().isEmpty()) {
@@ -51,8 +52,8 @@ public class MonsterDaoImpl extends GenericDaoAbs<Monster, Long> implements Mons
     public Monster getMonsterByName(String name) {
         Assert.notNull(name);
         Monster monster = null;
-
-        TypedQuery<Monster> query = getEntityManager().createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Monster.class);
+EntityManager em = this.getEntityManagerFactory().createEntityManager();
+        TypedQuery<Monster> query = em.createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Monster.class);
         query.setParameter("name", name.toString());
 
         //I think since this is a typed query we can remove the try catch. Will verify at seminar

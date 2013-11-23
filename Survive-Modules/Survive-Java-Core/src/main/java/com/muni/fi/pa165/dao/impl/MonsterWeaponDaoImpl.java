@@ -9,6 +9,7 @@ import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
 import com.muni.fi.pa165.entities.Monsterweapon;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
@@ -29,14 +30,16 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
 
     @Override   
     public List<Monsterweapon> getByMonsterId(Long id) {
-       TypedQuery<Monsterweapon> query = getEntityManager().createQuery("select o from Monsterweapon o where o.monster.id = :id", Monsterweapon.class);
+        EntityManager em = this.getEntityManagerFactory().createEntityManager();
+       TypedQuery<Monsterweapon> query = em.createQuery("select o from Monsterweapon o where o.monster.id = :id", Monsterweapon.class);
        query.setParameter("id", id);
        return query.getResultList();
     }
 
     @Override
     public List<Monsterweapon> getByWeaponId(Long id) {
-        TypedQuery<Monsterweapon> query = getEntityManager().createQuery("select o from Monsterweapon o where o.weapon.id = :id", Monsterweapon.class);
+        EntityManager em = this.getEntityManagerFactory().createEntityManager();
+        TypedQuery<Monsterweapon> query = em.createQuery("select o from Monsterweapon o where o.weapon.id = :id", Monsterweapon.class);
        query.setParameter("id", id);
        return query.getResultList();
     }
