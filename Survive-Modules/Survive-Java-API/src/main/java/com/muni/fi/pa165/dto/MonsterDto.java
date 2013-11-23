@@ -32,7 +32,6 @@ public class MonsterDto {
     private String imagePath;
 //    private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
 //    private List<MonsterAreaDto> locations = new ArrayList<>();
-   
 
     //Getters and setters
     public Long getId() {
@@ -122,7 +121,7 @@ public class MonsterDto {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-    
+
 //    public List<MonsterWeaponDto> getEfficiencies() {
 //        return efficiencies;
 //    }
@@ -138,7 +137,6 @@ public class MonsterDto {
 //    public void setLocations(List<MonsterAreaDto> locations) {
 //        this.locations = locations;
 //    }
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -200,7 +198,4 @@ public class MonsterDto {
         }
         return true;
     }
-
-   
-
 }

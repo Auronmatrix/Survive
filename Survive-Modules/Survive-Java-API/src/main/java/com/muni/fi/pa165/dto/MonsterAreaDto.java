@@ -13,10 +13,10 @@ import java.util.Objects;
  * @author irina
  */
 public class MonsterAreaDto {
+
     private Monster monster;
     private Area area;
     private int monsterQuantity;
-    
 
     public Monster getMonster() {
         return monster;
@@ -41,8 +41,8 @@ public class MonsterAreaDto {
     public void setMonsterQuantity(int monsterQuantity) {
         this.monsterQuantity = monsterQuantity;
     }
-    
- @Override
+
+    @Override
     public int hashCode() {
         int hash = 3;
         return hash;

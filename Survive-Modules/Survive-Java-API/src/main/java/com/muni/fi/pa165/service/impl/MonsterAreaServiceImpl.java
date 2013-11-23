@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author irina
  */
-
 @Transactional
 public class MonsterAreaServiceImpl implements MonsterAreaService {
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());

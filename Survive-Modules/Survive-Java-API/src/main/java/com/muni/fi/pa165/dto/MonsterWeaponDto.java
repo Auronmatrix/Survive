@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author irina
  */
 public class MonsterWeaponDto {
-   
+
     private Monster monster;
     private Weapon weapon;
     private double hitRate;
@@ -21,8 +21,6 @@ public class MonsterWeaponDto {
     private double efficiency;
     private String description;
 
-    
-    
     public Monster getMonster() {
         return monster;
     }
@@ -70,8 +68,8 @@ public class MonsterWeaponDto {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-     @Override
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -100,7 +98,8 @@ public class MonsterWeaponDto {
         }
         return true;
     }
-     @Override
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 71 * hash + Objects.hashCode(this.monster);

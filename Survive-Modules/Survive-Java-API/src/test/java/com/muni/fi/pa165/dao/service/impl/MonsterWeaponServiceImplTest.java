@@ -32,26 +32,24 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
  *
  * @author irina
  */
-    
-    public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest {
+public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest {
+
     @Inject
     private MonsterWeaponDao mockDAO;
     private MonsterWeaponServiceImpl service;
-    
     @Inject
     private Mapper mapper;
-    
     private Monster monster = new Monster();
-    private Weapon weapon = new Weapon(); 
+    private Weapon weapon = new Weapon();
     private MonsterWeaponDto monsterWeaponDto = new MonsterWeaponDto();
-    
+
     @Before
     public void setUp() {
         service = new MonsterWeaponServiceImpl();
-        mockDAO = mock (MonsterWeaponDao.class);
+        mockDAO = mock(MonsterWeaponDao.class);
         service.setDao(mockDAO);
         service.setMapper(mapper);
-        
+
         monster.setId(Long.MIN_VALUE);
         monster.setAgility(11.0);
         monster.setDangerLevel(22.4);
@@ -63,7 +61,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
         monster.setStrength(11.8);
         monster.setWeight(11.2);
         monster.setName("HeadlessNick");
-       
+
         weapon.setId(Long.MIN_VALUE);
         weapon.setName("TESTAK47");
         weapon.setCaliber(Double.MIN_NORMAL);
@@ -72,7 +70,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
         weapon.setRange(100);
         weapon.setWeaponClass(WeaponClass.Ranged);
         weapon.setWeaponType(WeaponType.Gun);
-        
+
         monsterWeaponDto.setWeapon(weapon);
         monsterWeaponDto.setMonster(monster);
         monsterWeaponDto.setHitRate(5.0);
@@ -80,14 +78,15 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
         monsterWeaponDto.setEfficiency(55.0);
         monsterWeaponDto.setDescription("Russian bomb");
     }
-        
+
     @AfterClass
     public static void tearDownClass() {
     }
 
     @After
-    public void tearDown() {   
+    public void tearDown() {
     }
+
     /**
      * Test of save method, of class MonsterWeaponServiceImpl.
      */
@@ -100,7 +99,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
         verify(mockDAO, times(1)).save(entity);
         assertEquals(returned, monsterWeaponDto);
     }
-    
+
     /**
      * Test of update method, of class MonsterWeaponServiceImpl.
      */
@@ -114,18 +113,17 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
         verifyNoMoreInteractions(mockDAO);
         assertEquals(returned, monsterWeaponDto);
     }
-        
-        /**
+
+    /**
      * Test of delete method, of class MonsterWeaponServiceImpl.
      */
-        @Test
-        public void testDelete() {
-            
-          MonsterWeapon entity = mapper.map(monsterWeaponDto, MonsterWeapon.class);
-          service.delete(monsterWeaponDto);
-          verify(mockDAO, times(1)).delete(entity);
-          verifyNoMoreInteractions(mockDAO);
-       
+    @Test
+    public void testDelete() {
+
+        MonsterWeapon entity = mapper.map(monsterWeaponDto, MonsterWeapon.class);
+        service.delete(monsterWeaponDto);
+        verify(mockDAO, times(1)).delete(entity);
+        verifyNoMoreInteractions(mockDAO);
+
     }
 }
-    

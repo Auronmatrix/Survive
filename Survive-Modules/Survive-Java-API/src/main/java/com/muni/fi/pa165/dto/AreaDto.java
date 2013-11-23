@@ -16,7 +16,7 @@ import javax.persistence.Enumerated;
  * @author irina
  */
 public class AreaDto implements Serializable {
-    
+
     private Long id;
     private String name;
     private TerrainType terrain;
@@ -54,7 +54,7 @@ public class AreaDto implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
 //     public List<MonsterAreaDto> getLocations() {
 //        return locations;
 //    }
@@ -62,7 +62,6 @@ public class AreaDto implements Serializable {
 //    public void setLocations(List<MonsterAreaDto> efficiencies) {
 //        this.locations = locations;
 //    }
-    
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -77,7 +76,7 @@ public class AreaDto implements Serializable {
         }
         return true;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -85,4 +84,3 @@ public class AreaDto implements Serializable {
         return hash;
     }
 }
-

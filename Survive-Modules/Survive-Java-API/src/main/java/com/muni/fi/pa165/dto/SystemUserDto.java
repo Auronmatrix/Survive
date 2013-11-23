@@ -11,6 +11,7 @@ import java.util.Objects;
  * @author irina
  */
 public class SystemUserDto {
+
     private Long id;
     private String username;
     private String password;
@@ -47,10 +48,10 @@ public class SystemUserDto {
     public void setAccessLevel(Integer accessLevel) {
         this.accessLevel = accessLevel;
     }
-    
-     @Override
+
+    @Override
     public boolean equals(Object object) {
-        
+
         if (!(object instanceof SystemUserDto)) {
             return false;
         }
@@ -60,7 +61,7 @@ public class SystemUserDto {
         }
         return true;
     }
-  
+
     @Override
     public int hashCode() {
         int hash = 3;

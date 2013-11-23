@@ -66,7 +66,7 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
     @Test
     public void testUpdate() {
 //        System.out.println("Testing update");
-        
+
         AreaDto dto = new AreaDto();
         dto.setName("Farm");
         dto.setTerrain(TerrainType.SNOW);
@@ -76,18 +76,17 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
         verify(mockDAO, times(1)).update(entity);
         verifyNoMoreInteractions(mockDAO);
         assertEquals(returned, dto);
-        
-        
+
+
     }
-    
-    
+
     /**
      * Test of delete method, of class AreaServiceImpl.
      */
     @Test
     public void testDelete() {
 //        System.out.println("Testing delete");
-        
+
         AreaDto dto = new AreaDto();
         dto.setId(1L);
         dto.setName("Farm");
@@ -99,9 +98,9 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
 
         verify(mockDAO, times(1)).delete(entity);
         verifyNoMoreInteractions(mockDAO);
-        
-        
-  
+
+
+
     }
 
     /**
@@ -110,7 +109,7 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
     @Test
     public void testFindById() {
 //        System.out.println("Testing FindById");
-        
+
         AreaDto dto = new AreaDto();
 
         dto.setId(1L);
@@ -118,7 +117,7 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setTerrain(TerrainType.OCEANIC);
 
         Area entity = mapper.map(dto, Area.class);
-        
+
         when(mockDAO.findById(dto.getId())).thenReturn(entity);
 
         AreaDto returned = service.findById(dto.getId());

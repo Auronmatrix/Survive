@@ -16,37 +16,33 @@ import java.util.List;
  */
 public interface SystemUserService {
 
-   
     boolean exists(Long id) throws IllegalArgumentException;
 
-        public SystemUserDto save(SystemUserDto dto);
-    
-	/**
-	 * Updates WeaponDto
-         * 
-	 * @param weapon object of type WeaponDto
-	 */
-    public SystemUserDto update(SystemUserDto dto);
-	
+    public SystemUserDto save(SystemUserDto dto);
+
     /**
-	 * Deletes WeaponDto
-         * 
-	 * @param weapon object of type WeaponDto
-	 */
+     * Updates WeaponDto
+     *
+     * @param weapon object of type WeaponDto
+     */
+    public SystemUserDto update(SystemUserDto dto);
+
+    /**
+     * Deletes WeaponDto
+     *
+     * @param weapon object of type WeaponDto
+     */
     public void delete(SystemUserDto dto);
-    
-    
-	/**
-	 * Finds WeaponDto by id
-         * 
-	 * @param id ID of the weapon
-	 * @return Weapon object of type WeaponDto
-	 */
-   
+
+    /**
+     * Finds WeaponDto by id
+     *
+     * @param id ID of the weapon
+     * @return Weapon object of type WeaponDto
+     */
     public SystemUserDto findById(Long id);
-    
-      public List<SystemUserDto> findAll();
-      
-       public void delete(Long id);
+
+    public List<SystemUserDto> findAll();
+
+    public void delete(Long id);
 }
-    

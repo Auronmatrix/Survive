@@ -66,7 +66,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     @Override
     public List<MonsterWeaponDto> findByMonsterId(Long id) {
-   //     Monster monster = mapper.map(service.findById(id), Monster.class);
+        //     Monster monster = mapper.map(service.findById(id), Monster.class);
         List<MonsterWeapon> mw = monsterWeaponDao.getMonsterWeaponsForThisMonsterType(id);
         List<MonsterWeaponDto> result = new ArrayList<>();
         for (MonsterWeapon monsterW : mw) {

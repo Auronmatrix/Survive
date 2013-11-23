@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.muni.fi.pa165</groupId>
-  <artifactId>Survive-Java-API</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>com.muni.fi.pa165</groupId>
+    <artifactId>Survive-Java-Business-API</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>Survive-Java-API</name>
-  <url>http://maven.apache.org</url>
+    <name>Survive-Java-Business-API</name>
+    <url>http://maven.apache.org</url>
     <build>
         <plugins>
             <plugin>
@@ -23,28 +23,28 @@
         </plugins>
     </build>
     <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <org.springframework.version>3.2.4.RELEASE</org.springframework.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.springframework.version>3.2.4.RELEASE</org.springframework.version>
         <org.apache.derby.version>10.10.1.1</org.apache.derby.version>
-  </properties>
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    
-    
-    <!-- Split dependencies -->
-    
-           <!--The javax.inject API-->
+    <dependencies>
         <dependency>
-		<groupId>javax.inject</groupId>
-		<artifactId>javax.inject</artifactId>
-		<version>1</version>
-	</dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    
+    
+        <!-- Split dependencies -->
+    
+        <!--The javax.inject API-->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
         <!--Spring Context-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -91,7 +91,7 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.2.6.Final</version>
         </dependency>
-           <!--Contains the core Apache Derby database engine, which also includes the embedded JDBC driver.-->
+        <!--Contains the core Apache Derby database engine, which also includes the embedded JDBC driver.-->
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
@@ -103,7 +103,7 @@
             <artifactId>derbyclient</artifactId>
             <version>${org.apache.derby.version}</version>
         </dependency>
-<!--        Java(TM) EE 7 Specification APIs
+        <!--        Java(TM) EE 7 Specification APIs
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
@@ -114,22 +114,22 @@
             <artifactId>dozer</artifactId>
             <version>5.4.0</version>
         </dependency>
-    <dependency>
-      <groupId>com.muni.fi.pa165</groupId>
-      <artifactId>Survive-Java-Core</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
+        <dependency>
+            <groupId>com.muni.fi.pa165</groupId>
+            <artifactId>Survive-Java-Core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     
-           <!-- Added this for aspectj -->
+        <!-- Added this for aspectj -->
         <dependency> 
-     <groupId>org.springframework</groupId> 
-     <artifactId>spring-aspects</artifactId> 
-     <version>3.1.2.RELEASE</version> 
-</dependency>
-<dependency>
-    <groupId>org.aspectj</groupId>
-    <artifactId>aspectjrt</artifactId>
-    <version>1.6.12</version>
-</dependency>
-  </dependencies>
+            <groupId>org.springframework</groupId> 
+            <artifactId>spring-aspects</artifactId> 
+            <version>3.1.2.RELEASE</version> 
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.12</version>
+        </dependency>
+    </dependencies>
 </project>

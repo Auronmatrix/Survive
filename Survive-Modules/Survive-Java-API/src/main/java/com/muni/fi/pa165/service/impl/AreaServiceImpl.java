@@ -38,7 +38,7 @@ public class AreaServiceImpl implements AreaService {
 
     }
 
-    @Override    
+    @Override
     public AreaDto update(AreaDto dto) {
 
         Area entity = mapper.map(dto, Area.class);
@@ -47,14 +47,14 @@ public class AreaServiceImpl implements AreaService {
 
     }
 
-    @Override    
+    @Override
     public void delete(AreaDto dto) {
 
         areaDao.delete(mapper.map(dto, Area.class));
 
     }
 
-    @Override    
+    @Override
     public AreaDto findById(Long id) {
 
         return mapper.map(areaDao.findById(id), AreaDto.class);
@@ -69,7 +69,7 @@ public class AreaServiceImpl implements AreaService {
         this.mapper = mapper;
     }
 
-    @Override    
+    @Override
     public void delete(Long id) {
         areaDao.delete(id);
     }

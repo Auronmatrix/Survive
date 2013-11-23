@@ -51,7 +51,7 @@ public class MonsterServiceImpl implements MonsterService {
     @Override
     @Transactional
     public void delete(MonsterDto dto) {
-        
+
         monsterDao.delete(mapper.map(dto, Monster.class));
 
     }

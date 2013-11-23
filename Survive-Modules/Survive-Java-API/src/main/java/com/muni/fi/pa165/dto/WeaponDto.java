@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *  Data transfer object for the {@link Weapon}.
+ * Data transfer object for the {@link Weapon}.
  *
  * @author Michal Vinkler
  */
@@ -26,15 +26,12 @@ public class WeaponDto {
     private Double caliber;
     private Integer rounds;
     private String description;
-   // private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
+    // private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
 
     public Double getCaliber() {
         return caliber;
     }
 
-
-    
-    
     public String getName() {
         return name;
     }
@@ -75,8 +72,6 @@ public class WeaponDto {
         this.range = range;
     }
 
-
-
     public void setCaliber(Double caliber) {
         this.caliber = caliber;
     }
@@ -96,7 +91,7 @@ public class WeaponDto {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
 //    public List<MonsterWeaponDto> getEfficiencies() {
 //        return efficiencies;
 //    }
@@ -104,7 +99,6 @@ public class WeaponDto {
 //    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
 //        this.efficiencies = efficiencies;
 //    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -151,7 +145,4 @@ public class WeaponDto {
         }
         return true;
     }
-
-    
-
 }

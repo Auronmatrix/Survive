@@ -32,18 +32,15 @@ import static org.mockito.Mockito.when;
  * @author irina
  */
 public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
+
     @Inject
     private MonsterAreaDao mockDAO;
     private MonsterAreaServiceImpl service;
-    
     @Inject
     private Mapper mapper;
-    
-    
     private Monster monster = new Monster();
-    private Area area = new Area(); 
+    private Area area = new Area();
     private MonsterAreaDto monsterAreaDto = new MonsterAreaDto();
-    
 
     @Before
     public void setUp() {
@@ -51,7 +48,7 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
         mockDAO = mock(MonsterAreaDao.class);
         service.setDao(mockDAO);
         service.setMapper(mapper);
-        
+
         monster.setId(1L);
         monster.setAgility(11.0);
         monster.setDangerLevel(22.4);
@@ -63,10 +60,10 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
         monster.setStrength(11.8);
         monster.setWeight(11.2);
         monster.setName("HeadlessNick");
-        
+
         area.setName("Farm");
         area.setTerrain(TerrainType.SNOW);
-        
+
         monsterAreaDto.setArea(area);
         monsterAreaDto.setMonster(monster);
         monsterAreaDto.setMonsterQuantity(5);
@@ -79,7 +76,8 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
     @After
     public void tearDown() {
     }
-/**
+
+    /**
      * Test of save method, of class MonsterAreaServiceImpl.
      */
     @Test
@@ -90,8 +88,9 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
         MonsterAreaDto returned = service.save(monsterAreaDto);
         verify(mockDAO, times(1)).save(entity);
         assertEquals(returned, monsterAreaDto);
-          
+
     }
+
     /**
      * Test of update method, of class MonsterAreaServiceImpl.
      */
@@ -104,18 +103,18 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
         verify(mockDAO, times(1)).update(entity);
         verifyNoMoreInteractions(mockDAO);
         assertEquals(returned, monsterAreaDto);
-}
-      /**
+    }
+
+    /**
      * Test of delete method, of class MonsterAreaServiceImpl.
      */
-        @Test
-        public void testDelete() {
-            
-          MonsterArea entity = mapper.map(monsterAreaDto, MonsterArea.class);
-          service.delete(monsterAreaDto);
-          verify(mockDAO, times(1)).delete(entity);
-          verifyNoMoreInteractions(mockDAO);
-       
-    }   
+    @Test
+    public void testDelete() {
+
+        MonsterArea entity = mapper.map(monsterAreaDto, MonsterArea.class);
+        service.delete(monsterAreaDto);
+        verify(mockDAO, times(1)).delete(entity);
+        verifyNoMoreInteractions(mockDAO);
+
+    }
 }
-              

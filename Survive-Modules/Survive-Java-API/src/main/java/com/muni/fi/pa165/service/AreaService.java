@@ -13,36 +13,31 @@ import java.util.List;
  */
 public interface AreaService {
 
-
-
-  
     public AreaDto save(AreaDto dto);
-    
-	/**
-	 * Updates WeaponDto
-         * 
-	 * @param weapon object of type WeaponDto
-	 */
-    public AreaDto update(AreaDto dto);
-	
+
     /**
-	 * Deletes WeaponDto
-         * 
-	 * @param weapon object of type WeaponDto
-	 */
+     * Updates WeaponDto
+     *
+     * @param weapon object of type WeaponDto
+     */
+    public AreaDto update(AreaDto dto);
+
+    /**
+     * Deletes WeaponDto
+     *
+     * @param weapon object of type WeaponDto
+     */
     public void delete(AreaDto dto);
-    
+
     public void delete(Long id);
-    
-    
-	/**
-	 * Finds WeaponDto by id
-         * 
-	 * @param id ID of the weapon
-	 * @return Weapon object of type WeaponDto
-	 */
-   
+
+    /**
+     * Finds WeaponDto by id
+     *
+     * @param id ID of the weapon
+     * @return Weapon object of type WeaponDto
+     */
     public AreaDto findById(Long id);
-    
-      public List<AreaDto> findAll();
+
+    public List<AreaDto> findAll();
 }

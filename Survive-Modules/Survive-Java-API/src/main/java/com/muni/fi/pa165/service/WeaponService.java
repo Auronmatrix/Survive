@@ -4,7 +4,6 @@
  */
 package com.muni.fi.pa165.service;
 
-
 import com.muni.fi.pa165.dto.WeaponDto;
 import java.util.List;
 
@@ -42,10 +41,10 @@ public interface WeaponService {
      * @return Weapon object of type WeaponDto
      */
     public WeaponDto findById(Long id);
-    
+
     public List<WeaponDto> findAll();
 
     public boolean checkAvailable(String name);
-    
-     public void delete(Long id);
+
+    public void delete(Long id);
 }
