@@ -5,9 +5,8 @@
  */
 package com.muni.fi.pa165.dao;
 
-import com.muni.fi.pa165.entities.Area;
-import com.muni.fi.pa165.entities.MonsterArea;
 import com.muni.fi.pa165.entities.Monster;
+import com.muni.fi.pa165.entities.Monsterarea;
 import java.util.List;
 
 /**
@@ -15,23 +14,13 @@ import java.util.List;
  *
  * @author Michal Vinkler
  */
-public interface MonsterAreaDao extends GenericDao<MonsterArea, Long> {
+public interface MonsterAreaDao extends GenericDao<Monsterarea, Long> {
 
-    /**
-     * This method returns all the areas where the given type of a monster has been spotted.
-     *
-     * @return list of all areas where the monsterType was spotted
-     */
-    List<Area> getAllAreasForThisMonsterType(Monster monster);
-    
-    List<MonsterArea> getMonsterAreaForThisMonsterType(Monster monster);
 
-    /**
-     * This method returns all the spotted monsters for the specified area
-     *
-     * @return list of all the spotted monsters
-     */
-    List<Monster> getAllMonsterTypesForThisArea(Area area);
+   
+    List<Monsterarea> getByMonsterId(Long id);
+
+   
+    List<Monsterarea> getByAreaId(Long id);
     
-    List<MonsterArea> getMonsterAreaForThisAreaType(Area Area);
 }

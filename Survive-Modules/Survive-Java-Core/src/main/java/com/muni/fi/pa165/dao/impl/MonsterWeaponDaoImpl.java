@@ -1,5 +1,5 @@
 /* ------------------------------------------------
- * MonsterWeaponDaoImpl.java
+ * MonsterweaponDaoImpl.java
  * 
  * ------------------------------------------------
  */
@@ -7,12 +7,11 @@ package com.muni.fi.pa165.dao.impl;
 
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
-import com.muni.fi.pa165.entities.Monster;
-import com.muni.fi.pa165.entities.MonsterWeapon;
-import com.muni.fi.pa165.entities.Weapon;
+import com.muni.fi.pa165.entities.Monsterweapon;
 import java.util.List;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
+
 
 /**
  * This class represents the implementation of all basic operations. Typed JpaDao objects extending the GenericDaoAbs
@@ -22,40 +21,23 @@ import org.springframework.stereotype.Repository;
  * @author Michal Vikler
  */
 @Repository
-public class MonsterWeaponDaoImpl extends GenericDaoAbs<MonsterWeapon, Long> implements MonsterWeaponDao {
+public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> implements MonsterWeaponDao {
 
     public MonsterWeaponDaoImpl() {
-        super(MonsterWeapon.class);
+        super(Monsterweapon.class);
+    }
+
+    @Override   
+    public List<Monsterweapon> getByMonsterId(Long id) {
+       TypedQuery<Monsterweapon> query = getEntityManager().createQuery("select o from Monsterweapon o where o.monster.id = :id", Monsterweapon.class);
+       query.setParameter("id", id);
+       return query.getResultList();
     }
 
     @Override
-    public List<Weapon> getAllWeaponsForThisMonsterType(Monster monster) {
-        TypedQuery<Weapon> query = getEntityManager().createQuery("select m.weapon from MonsterWeapon m where m.monster = :id", Weapon.class);
-        query.setParameter("id", monster);
-        return query.getResultList();
-
-    }
-
-    @Override
-    public List<Monster> getAllMonstersForThisWeaponType(Weapon weapon) {
-        TypedQuery<Monster> query = getEntityManager().createQuery("select m.monster from MonsterWeapon m where m.weapon = :name", Monster.class);
-        query.setParameter("name", weapon.getId());
-        return query.getResultList();
-
-
-    }
-
-    @Override
-    public List<MonsterWeapon> getMonsterWeaponsForThisMonsterType(Long id) {
-        TypedQuery<MonsterWeapon> query = getEntityManager().createQuery("select m from MonsterWeapon m where m.monster.id = :name", MonsterWeapon.class);
-        query.setParameter("name", id);
-        return query.getResultList();
-    }
-
-    @Override
-    public List<MonsterWeapon> getMonsterWeaponsForThisWeaponType(Weapon weapon) {
-         TypedQuery<MonsterWeapon> query = getEntityManager().createQuery("select m from MonsterWeapon m where m.weapon = :name", MonsterWeapon.class);
-        query.setParameter("name", weapon.getId());
-        return query.getResultList();
+    public List<Monsterweapon> getByWeaponId(Long id) {
+        TypedQuery<Monsterweapon> query = getEntityManager().createQuery("select o from Monsterweapon o where o.weapon.id = :id", Monsterweapon.class);
+       query.setParameter("id", id);
+       return query.getResultList();
     }
 }

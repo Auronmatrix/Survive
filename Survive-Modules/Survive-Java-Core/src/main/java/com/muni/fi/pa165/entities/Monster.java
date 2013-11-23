@@ -1,88 +1,111 @@
-/* ------------------------------------------------
- * Monster.java
- * 
- * ------------------------------------------------
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.muni.fi.pa165.entities;
 
 import com.muni.fi.pa165.enums.MonsterClass;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.Set;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
- * Entity Monster represents one type of a monster.
  *
- *
- * @author Michal Vinkler
+ * @author Auron
  */
 @Entity
+@Table(name = "MONSTER")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Monster.findAll", query = "SELECT m FROM Monster m"),
+    @NamedQuery(name = "Monster.findById", query = "SELECT m FROM Monster m WHERE m.id = :id"),
+    @NamedQuery(name = "Monster.findByAgility", query = "SELECT m FROM Monster m WHERE m.agility = :agility"),
+    @NamedQuery(name = "Monster.findByDangerlevel", query = "SELECT m FROM Monster m WHERE m.dangerlevel = :dangerlevel"),
+    @NamedQuery(name = "Monster.findByDescription", query = "SELECT m FROM Monster m WHERE m.description = :description"),
+    @NamedQuery(name = "Monster.findByHeight", query = "SELECT m FROM Monster m WHERE m.height = :height"),
+    @NamedQuery(name = "Monster.findByImagepath", query = "SELECT m FROM Monster m WHERE m.imagepath = :imagepath"),
+    @NamedQuery(name = "Monster.findByMonsterclass", query = "SELECT m FROM Monster m WHERE m.monsterclass = :monsterclass"),
+    @NamedQuery(name = "Monster.findByName", query = "SELECT m FROM Monster m WHERE m.name = :name"),
+    @NamedQuery(name = "Monster.findByStamina", query = "SELECT m FROM Monster m WHERE m.stamina = :stamina"),
+    @NamedQuery(name = "Monster.findByStrength", query = "SELECT m FROM Monster m WHERE m.strength = :strength"),
+    @NamedQuery(name = "Monster.findByWeight", query = "SELECT m FROM Monster m WHERE m.weight = :weight")})
 public class Monster implements Serializable {
-
-    private static final long serialVersionUID = 10001L;
-    /**
-     * Id of this type of monster.
-     */
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID")
     private Long id;
-    /**
-     * Class of a monster - represented by enumeration.
-     */
-    @Enumerated(EnumType.STRING)
-    private MonsterClass monsterClass;
-    private String name;
-    private String description;
-    private Double height;
-    private Double weight;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "AGILITY")
     private Double agility;
-    private Double strength;
+    @Column(name = "DANGERLEVEL")
+    private Double dangerlevel;
+    @Column(name = "DESCRIPTION")
+    private String description;
+    @Column(name = "HEIGHT")
+    private Double height;
+    @Column(name = "IMAGEPATH")
+    private String imagepath;
+    @Column(name = "MONSTERCLASS")    
+    @Enumerated(EnumType.STRING)
+    private MonsterClass monsterclass;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "STAMINA")
     private Double stamina;
-    private Double dangerLevel;
-    private String imagePath;
-    /**
-     * List of all the weapon efficiencies bound to this monster.
-     */
-    @OneToMany(mappedBy = "monster")
-    private List<MonsterWeapon> efficiencies = new ArrayList<>();
-    /**
-     * List of all locations where this type of a monster was spotted.
-     */
-    @OneToMany(mappedBy = "monster")
-    private List<MonsterArea> locations = new ArrayList<>();
+    @Column(name = "STRENGTH")
+    private Double strength;
+    @Column(name = "WEIGHT")
+    private Double weight;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "monster")
+    private Set<Monsterweapon> monsterweaponSet;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "monster")
+    private Set<Monsterarea> monsterareaSet;
 
-    //Getters and setters
+    public Monster() {
+    }
+
+    public Monster(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
 
-    public void setId(Long monsterId) {
-        this.id = monsterId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public MonsterClass getMonsterClass() {
-        return monsterClass;
+    public Double getAgility() {
+        return agility;
     }
 
-    public void setMonsterClass(MonsterClass monsterClass) {
-        this.monsterClass = monsterClass;
+    public void setAgility(Double agility) {
+        this.agility = agility;
     }
 
-    public String getName() {
-        return name;
+    public Double getDangerlevel() {
+        return dangerlevel;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDangerlevel(Double dangerlevel) {
+        this.dangerlevel = dangerlevel;
     }
 
     public String getDescription() {
@@ -101,28 +124,30 @@ public class Monster implements Serializable {
         this.height = height;
     }
 
-    public Double getWeight() {
-        return weight;
+    public String getImagepath() {
+        return imagepath;
     }
 
-    public void setWeight(Double weight) {
-        this.weight = weight;
+    public void setImagepath(String imagepath) {
+        this.imagepath = imagepath;
     }
 
-    public Double getAgility() {
-        return agility;
+    public MonsterClass getMonsterclass() {
+        return monsterclass;
     }
 
-    public void setAgility(Double agility) {
-        this.agility = agility;
+    public void setMonsterclass(MonsterClass monsterclass) {
+        this.monsterclass = monsterclass;
     }
 
-    public Double getStrength() {
-        return strength;
+  
+
+    public String getName() {
+        return name;
     }
 
-    public void setStrength(Double strength) {
-        this.strength = strength;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Double getStamina() {
@@ -133,37 +158,63 @@ public class Monster implements Serializable {
         this.stamina = stamina;
     }
 
-    public Double getDangerLevel() {
-        return dangerLevel;
+    public Double getStrength() {
+        return strength;
     }
 
-    public void setDangerLevel(Double dangerLevel) {
-        this.dangerLevel = dangerLevel;
+    public void setStrength(Double strength) {
+        this.strength = strength;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public Double getWeight() {
+        return weight;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
-    public List<MonsterWeapon> getEfficiencies() {
-        return efficiencies;
+    @XmlTransient
+    public Set<Monsterweapon> getMonsterweaponSet() {
+        return monsterweaponSet;
     }
 
-    public void setEfficiencies(List<MonsterWeapon> efficiencies) {
-        this.efficiencies = efficiencies;
+    public void setMonsterweaponSet(Set<Monsterweapon> monsterweaponSet) {
+        this.monsterweaponSet = monsterweaponSet;
     }
 
-    public List<MonsterArea> getLocations() {
-        return locations;
+    @XmlTransient
+    public Set<Monsterarea> getMonsterareaSet() {
+        return monsterareaSet;
     }
 
-    public void setLocations(List<MonsterArea> locations) {
-        this.locations = locations;
+    public void setMonsterareaSet(Set<Monsterarea> monsterareaSet) {
+        this.monsterareaSet = monsterareaSet;
     }
 
- 
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Monster)) {
+            return false;
+        }
+        Monster other = (Monster) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.muni.fi.pa165.entities.Monster[ id=" + id + " ]";
+    }
+    
 }

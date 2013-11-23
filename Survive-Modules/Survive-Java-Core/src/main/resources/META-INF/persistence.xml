@@ -3,13 +3,12 @@
   <persistence-unit name="ProjectPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>com.muni.fi.pa165.entities.Area</class>
-    <class>com.muni.fi.pa165.entities.GenericEntity</class>
+    <class>com.muni.fi.pa165.entities.Genericentity</class>
     <class>com.muni.fi.pa165.entities.Monster</class>
-    <class>com.muni.fi.pa165.entities.MonsterArea</class>
-    <class>com.muni.fi.pa165.entities.MonsterWeapon</class>
+    <class>com.muni.fi.pa165.entities.Monsterarea</class>
+    <class>com.muni.fi.pa165.entities.Monsterweapon</class>
+    <class>com.muni.fi.pa165.entities.Systemuser</class>
     <class>com.muni.fi.pa165.entities.Weapon</class>
-    <!--<exclude-unlisted-classes>false</exclude-unlisted-classes>-->
-    <class>com.muni.fi.pa165.entities.SystemUser</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>

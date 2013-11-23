@@ -32,8 +32,8 @@ public class WeaponTest {
         weapon.setDescription("Africa's favourite");
         weapon.setRounds(44);
         weapon.setRange(100);
-        weapon.setWeaponClass(WeaponClass.Ranged);
-        weapon.setWeaponType(WeaponType.Gun);
+        weapon.setWeaponclass(WeaponClass.Ranged);
+        weapon.setWeapontype(WeaponType.Gun);
     }
 
     @AfterClass
@@ -82,7 +82,7 @@ public class WeaponTest {
 //        System.out.println("getWeaponType");
         Weapon instance = weapon;
         WeaponType expResult = WeaponType.Gun;
-        WeaponType result = instance.getWeaponType();
+        WeaponType result = instance.getWeapontype();
         assertEquals(expResult, result);
 
     }
@@ -95,8 +95,8 @@ public class WeaponTest {
 //        System.out.println("setWeaponType");
         WeaponType weaponType = WeaponType.Explosive;
         Weapon instance = new Weapon();
-        instance.setWeaponType(weaponType);
-        assertEquals(weaponType, instance.getWeaponType());
+        instance.setWeapontype(weaponType);
+        assertEquals(weaponType, instance.getWeapontype());
     }
 
     /**
@@ -107,7 +107,7 @@ public class WeaponTest {
 //        System.out.println("getWeaponClass");
         Weapon instance = weapon;
         WeaponClass expResult = WeaponClass.Ranged;
-        WeaponClass result = instance.getWeaponClass();
+        WeaponClass result = instance.getWeaponclass();
         assertEquals(expResult, result);
 
     }
@@ -120,9 +120,10 @@ public class WeaponTest {
 //        System.out.println("setWeaponClass");
         WeaponClass weaponClass = WeaponClass.Melee;
         Weapon instance = new Weapon();
-        instance.setWeaponClass(weaponClass);
-        assertEquals(weaponClass, instance.getWeaponClass());
+        instance.setWeaponclass(weaponClass);
+        assertEquals(weaponClass, instance.getWeaponclass());
     }
+    
 
     /**
      * Test of getRange method, of class Weapon.

@@ -37,7 +37,7 @@ public class MonsterDaoImpl extends GenericDaoAbs<Monster, Long> implements Mons
 
 //        Assert.notNull(monsterClass);
 
-        TypedQuery<Monster> query = getEntityManager().createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.monsterClass = :class", Monster.class);
+        TypedQuery<Monster> query = getEntityManager().createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.monsterclass = :class", Monster.class);
         query.setParameter("class", monsterClass);
 
         if (!query.getResultList().isEmpty()) {

@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 
 /**
  *
@@ -29,11 +28,11 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
     public void setUp() {
         entity = new Monster();
         entity.setAgility(11.0);
-        entity.setDangerLevel(22.4);
+        entity.setDangerlevel(22.4);
         entity.setDescription("Headless Zombie");
         entity.setHeight(11.4);
-        entity.setImagePath("C:\\image.png");
-        entity.setMonsterClass(MonsterClass.Zombie);
+        entity.setImagepath("C:\\image.png");
+        entity.setMonsterclass(MonsterClass.Zombie);
         entity.setStamina(11.5);
         entity.setStrength(11.8);
         entity.setWeight(11.2);

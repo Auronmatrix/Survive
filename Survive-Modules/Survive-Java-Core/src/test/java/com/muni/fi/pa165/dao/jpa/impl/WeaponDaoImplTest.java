@@ -44,8 +44,8 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
         entity.setDescription("Africa's favourite");
         entity.setRounds(44);
         entity.setRange(100);
-        entity.setWeaponClass(WeaponClass.Ranged);
-        entity.setWeaponType(WeaponType.Gun);
+        entity.setWeaponclass(WeaponClass.Ranged);
+        entity.setWeapontype(WeaponType.Gun);
         dao.save(entity);
 
     }
