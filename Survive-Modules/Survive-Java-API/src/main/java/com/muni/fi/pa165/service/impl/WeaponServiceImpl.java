@@ -12,12 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Michal Vinkler
  */
+@Service
 @Transactional
 public class WeaponServiceImpl implements WeaponService {
 

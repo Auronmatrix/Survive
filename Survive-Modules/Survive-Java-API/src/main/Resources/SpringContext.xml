@@ -56,6 +56,12 @@
         </property>
     </bean>
     
+  <!--       <bean name="areaDao" class="com.muni.fi.pa165.dao.impl.AreaJpaDaoImpl"/>
+    <bean name="monsterAreaDao" class="com.muni.fi.pa165.dao.impl.MonsterAreaJpaDaoImpl"/>
+    <bean name="monsterDao" class="com.muni.fi.pa165.dao.impl.MonsterJpaDaoImpl"/>
+    <bean name="monsterWeaponDao" class="com.muni.fi.pa165.dao.impl.MonsterWeaponJpaDaoImpl"/>
+    <bean name="weaponDao" class="com.muni.fi.pa165.dao.impl.WeaponJpaDaoImpl"/>
+    <bean name="systemUserDao" class="com.muni.fi.pa165.dao.impl.SystemUserJpaDaoImpl"/> -->
     
     
 </beans>

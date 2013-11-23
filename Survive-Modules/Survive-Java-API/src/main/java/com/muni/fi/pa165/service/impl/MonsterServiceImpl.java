@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Auron
  */
 @Service
+@Transactional
 public class MonsterServiceImpl implements MonsterService {
 
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());

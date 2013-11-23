@@ -13,12 +13,14 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import org.dozer.Mapper;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Maria
  */
+@Service
 @Transactional
 public class SystemUserServiceImpl implements SystemUserService {
 
