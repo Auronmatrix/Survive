@@ -40,4 +40,6 @@ public interface AreaService {
     public AreaDto findById(Long id);
 
     public List<AreaDto> findAll();
+    
+    
 }

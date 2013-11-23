@@ -40,6 +40,27 @@ public class MonsterAreaDto {
         this.monsterQuantity = monsterQuantity;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MonsterAreaDto other = (MonsterAreaDto) obj;
+        if (!Objects.equals(this.monsterID, other.monsterID)) {
+            return false;
+        }
+        if (!Objects.equals(this.areaID, other.areaID)) {
+            return false;
+        }
+        if (this.monsterQuantity != other.monsterQuantity) {
+            return false;
+        }
+        return true;
+    }
+
     
     
     @Override

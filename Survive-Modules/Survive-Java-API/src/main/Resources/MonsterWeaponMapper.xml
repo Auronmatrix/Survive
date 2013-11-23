@@ -6,13 +6,13 @@
           
   <mapping wildcard="false"> 
     <class-a>com.muni.fi.pa165.dto.MonsterWeaponDto</class-a>
-    <class-b>com.muni.fi.pa165.entities.MonsterWeapon</class-b>   
+    <class-b>com.muni.fi.pa165.entities.Monsterweapon</class-b>   
     <field>  
-      <a>monsterId</a>
+      <a>monster</a>
       <b>monster.id</b>
     </field>
     <field>
-      <a>weaponId</a>
+      <a>weapon</a>
       <b>weapon.id</b>
     </field> 
     <field>
@@ -26,10 +26,6 @@
      <field>
       <a>efficiency</a>
       <b>efficiency</b>
-    </field> 
-    <field>
-      <a>description</a>
-      <b>description</b>
     </field> 
   </mapping> 
 </mappings>

@@ -4,7 +4,7 @@
  */
 package com.muni.fi.pa165.dto;
 
-import com.muni.fi.pa165.entities.MonsterWeapon;
+import com.muni.fi.pa165.entities.Weapon;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class WeaponDto {
     private Double caliber;
     private Integer rounds;
     private String description;
-    // private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
+    private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
 
     public Double getCaliber() {
         return caliber;
@@ -92,13 +92,14 @@ public class WeaponDto {
         this.description = description;
     }
 
-//    public List<MonsterWeaponDto> getEfficiencies() {
-//        return efficiencies;
-//    }
-//
-//    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
-//        this.efficiencies = efficiencies;
-//    }
+    public List<MonsterWeaponDto> getEfficiencies() {
+        return efficiencies;
+    }
+
+    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
+        this.efficiencies = efficiencies;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

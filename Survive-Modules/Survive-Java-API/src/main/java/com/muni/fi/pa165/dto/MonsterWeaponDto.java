@@ -14,59 +14,79 @@ import java.util.Objects;
  */
 public class MonsterWeaponDto {
 
-    private Long monsterID;
-    private Long weaponID;
-    private double hitRate;
-    private double damage;
-    private double efficiency;
-    private String description;
+    private Long monster;
+    private Long weapon;
+    private Integer hitRate;
+    private Integer damage;
+    private Integer efficiency;
 
-    public Long getMonsterID() {
-        return monsterID;
+    public Long getMonster() {
+        return monster;
     }
 
-    public void setMonsterID(Long monsterID) {
-        this.monsterID = monsterID;
+    public void setMonster(Long monster) {
+        this.monster = monster;
     }
 
-    public Long getWeaponID() {
-        return weaponID;
+    public Long getWeapon() {
+        return weapon;
     }
 
-    public void setWeaponID(Long weaponID) {
-        this.weaponID = weaponID;
+    public void setWeapon(Long weapon) {
+        this.weapon = weapon;
     }
 
-    public double getHitRate() {
+   
+
+    public Integer getHitRate() {
         return hitRate;
     }
 
-    public void setHitRate(double hitRate) {
+    public void setHitRate(Integer hitRate) {
         this.hitRate = hitRate;
     }
 
-    public double getDamage() {
+    public Integer getDamage() {
         return damage;
     }
 
-    public void setDamage(double damage) {
+    public void setDamage(Integer damage) {
         this.damage = damage;
     }
 
-    public double getEfficiency() {
+ 
+    public Integer getEfficiency() {
         return efficiency;
     }
 
-    public void setEfficiency(double efficiency) {
+    public void setEfficiency(Integer efficiency) {
         this.efficiency = efficiency;
     }
 
-    public String getDescription() {
-        return description;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.monster);
+        hash = 47 * hash + Objects.hashCode(this.weapon);
+        return hash;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MonsterWeaponDto other = (MonsterWeaponDto) obj;
+        if (!Objects.equals(this.monster, other.monster)) {
+            return false;
+        }
+        if (!Objects.equals(this.weapon, other.weapon)) {
+            return false;
+        }
+        return true;
     }
 
     

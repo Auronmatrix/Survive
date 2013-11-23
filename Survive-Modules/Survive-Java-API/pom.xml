@@ -114,11 +114,6 @@
             <artifactId>dozer</artifactId>
             <version>5.4.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.muni.fi.pa165</groupId>
-            <artifactId>Survive-Java-Core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     
         <!-- Added this for aspectj -->
         <dependency> 
@@ -130,6 +125,11 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
             <version>1.6.12</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Survive-Java-Persistence</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
