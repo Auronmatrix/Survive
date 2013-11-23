@@ -2,7 +2,7 @@ package com.muni.fi.pa165.actions.weapon;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
 import static com.muni.fi.pa165.actions.base.BaseActionBean.escapeHTML;
-import com.muni.fi.pa165.dao.service.WeaponService;
+import com.muni.fi.pa165.service.WeaponService;
 import com.muni.fi.pa165.dto.WeaponDto;
 import java.util.ArrayList;
 import net.sourceforge.stripes.action.*;

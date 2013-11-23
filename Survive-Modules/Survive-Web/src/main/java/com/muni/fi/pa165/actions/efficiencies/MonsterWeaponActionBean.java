@@ -1,7 +1,7 @@
 package com.muni.fi.pa165.actions.efficiencies;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
-import com.muni.fi.pa165.dao.service.MonsterWeaponService;
+import com.muni.fi.pa165.service.MonsterWeaponService;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;

@@ -1,8 +1,8 @@
 package com.muni.fi.pa165.actions.area;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
-import com.muni.fi.pa165.dao.service.AreaService;
-import com.muni.fi.pa165.dao.service.MonsterService;
+import com.muni.fi.pa165.service.AreaService;
+import com.muni.fi.pa165.service.MonsterService;
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.dto.MonsterDto;
 import java.util.ArrayList;
