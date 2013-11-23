@@ -4,10 +4,15 @@
  */
 package com.muni.fi.pa165.dao.gen;
 
-import com.muni.fi.pa165.dao.GenericDao;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -15,77 +20,151 @@ import javax.persistence.PersistenceContext;
  * data access and persistence from business layer. Will be extended by each DAO object class for every entity type
  */
 
-public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
+public abstract class GenericJpaDao<T, ID> implements GenericDao<T, ID> {
 
     private Class<T> persistentClass;
-    private EntityManager entityManager;
+    private EntityManagerFactory emf;
 
-    public GenericDaoAbs(Class<T> persistenceClass) {
+    public GenericJpaDao(Class<T> persistenceClass) {
         this.persistentClass = persistenceClass;
     }
-
-    protected EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
+    
     public Class<T> getPersistentClass() {
         return persistentClass;
     }
 
+    @Autowired
+    @PersistenceUnit
+    public void setEntityManagerFactory(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+    
+    public EntityManagerFactory getEntityManagerFactory() {
+        return emf;
+    }
+    
+
     @Override
     public T save(T entity) {
 
-        //not necessary - entityManager.persist(null) throws the same exception
-//        if (entity == null) {
-//            throw new IllegalArgumentException("entity to be created is null");
-//        }
+        EntityManager em = this.emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
 
-        entityManager.persist(entity);       
-        return entity;
-    }
+        try {
+            tx.begin();
+            em.persist(entity); 
+            tx.commit();
+            return entity;
+        }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+   }
 
     @Override
     public T update(T entity) {
-        T mergedEntity = getEntityManager().merge(entity);
-        return mergedEntity;
+        EntityManager em = this.emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
+        try {
+            tx.begin();
+            T mergedEntity = em.merge(entity);
+            tx.commit();
+            return mergedEntity;
+            }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     @Override
     public void delete(T entity) {
-        
-        getEntityManager().remove(entity);
-    // entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
+        EntityManager em = this.emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
+        try {
+            tx.begin();
+             em.remove(em.contains(entity) ? entity : em.merge(entity));
+             tx.commit();
+             }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
     
     @Override   
     public void delete(Long id) {
-    
-       T entity =  getEntityManager().getReference(getPersistentClass(), id);
-       getEntityManager().remove(entity);
-       
+        EntityManager em = this.emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
+        try {
+                tx.begin();
+               T entity =  em.find(getPersistentClass(), id);
+               em.merge(entity);
+               em.remove(entity);
+               tx.commit();
+               }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
    }
     
-       //  entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
+       
    
 
     @Override
     public T findById(ID id) {
-        T entity = (T) getEntityManager().find(getPersistentClass(), id);
-        return entity;
+        EntityManager em = this.emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
+        try {
+            tx.begin();
+            T entity = (T) em.find(getPersistentClass(), id);
+            tx.commit();
+            return entity;
+            }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     @Override
     public List<T> findAll() {
-        return getEntityManager().createQuery("select e from  " + getPersistentClass().getSimpleName() + " e").getResultList();
+        EntityManager em = this.emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
+        List<T> list = new ArrayList();
+        try {
+            tx.begin();
+            list = em.createQuery("select e from  " + getPersistentClass().getSimpleName() + " e").getResultList();
+            tx.commit();
+            }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return list;
     }
 
     @Override
     public void flush() {
-        getEntityManager().flush();
+        EntityManager em = this.emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
+        try {
+            tx.begin();
+            em.flush();
+            tx.commit();
+            }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 }
