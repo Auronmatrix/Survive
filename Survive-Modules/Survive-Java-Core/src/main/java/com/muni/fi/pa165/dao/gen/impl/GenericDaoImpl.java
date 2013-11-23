@@ -16,7 +16,7 @@ import org.springframework.util.Assert;
  * @author Aubrey Oosthuizen Implementation class used for unit testing the GenericJpaDao class
  */
 @Repository
-public class GenericDaoImpl extends GenericJpaDao<GenericEntity, Long> {
+public class GenericDaoImpl extends GenericDaoAbs<GenericEntity, Long> {
 
     public GenericDaoImpl() {
         super(GenericEntity.class);
