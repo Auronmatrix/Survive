@@ -119,30 +119,5 @@ public class MonsterArea implements Serializable {
         this.area = area;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final MonsterArea other = (MonsterArea) obj;
-        if (!Objects.equals(this.monster, other.monster)) {
-            return false;
-        }
-        if (!Objects.equals(this.area, other.area)) {
-            return false;
-        }
-        if (this.monsterQuantity != other.monsterQuantity) {
-            return false;
-        }
-        return true;
-    }
+   
 }
