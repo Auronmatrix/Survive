@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muni.fi.pa165.dao.service;
+package com.muni.fi.pa165.service;
 
 import com.muni.fi.pa165.dto.MonsterDto;
 import java.util.List;

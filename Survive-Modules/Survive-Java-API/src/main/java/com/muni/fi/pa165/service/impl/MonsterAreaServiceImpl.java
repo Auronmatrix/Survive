@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muni.fi.pa165.dao.service.impl;
+package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.MonsterAreaDao;
-import com.muni.fi.pa165.dao.service.MonsterAreaService;
+import com.muni.fi.pa165.service.MonsterAreaService;
 import com.muni.fi.pa165.dto.MonsterAreaDto;
 import com.muni.fi.pa165.entities.Area;
 import com.muni.fi.pa165.entities.Monster;
@@ -26,14 +26,14 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());
 
     @Inject
-    private MonsterAreaDao dao;
+    private MonsterAreaDao monsterAreaDao;
     @Inject
     private Mapper mapper;
 
     @Override
     public MonsterAreaDto save(MonsterAreaDto dto) {
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
-        dao.save(entity);
+        monsterAreaDao.save(entity);
         return mapper.map(entity, MonsterAreaDto.class);
 
     }
@@ -42,7 +42,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     public MonsterAreaDto update(MonsterAreaDto dto) {
 
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
-        dao.update(entity);
+        monsterAreaDao.update(entity);
         return mapper.map(entity, MonsterAreaDto.class);
 
     }
@@ -50,12 +50,12 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     @Override
     public void delete(MonsterAreaDto dto) {
 
-        dao.delete(mapper.map(dto, MonsterArea.class));
+        monsterAreaDao.delete(mapper.map(dto, MonsterArea.class));
 
     }
 
     public void setDao(MonsterAreaDao dao) {
-        this.dao = dao;
+        this.monsterAreaDao = dao;
     }
 
     public void setMapper(Mapper mapper) {
@@ -66,7 +66,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     public List<MonsterAreaDto> findByMonsterId(Long id) {
         MonsterServiceImpl mn = new MonsterServiceImpl();
         Monster monster = mapper.map(mn.findById(id), Monster.class);
-        List<MonsterArea> ma = dao.getMonsterAreaForThisMonsterType(monster);
+        List<MonsterArea> ma = monsterAreaDao.getMonsterAreaForThisMonsterType(monster);
         List<MonsterAreaDto> result = new ArrayList<>();
         for (MonsterArea monsterA : ma) {
             result.add(mapper.map(monsterA, MonsterAreaDto.class));
@@ -78,7 +78,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     public List<MonsterAreaDto> findByAreaId(Long id) {
         AreaServiceImpl mn = new AreaServiceImpl();
         Area area = mapper.map(mn.findById(id), Area.class);
-        List<MonsterArea> ma = dao.getMonsterAreaForThisAreaType(area);
+        List<MonsterArea> ma = monsterAreaDao.getMonsterAreaForThisAreaType(area);
         List<MonsterAreaDto> result = new ArrayList<>();
         for (MonsterArea monsterA : ma) {
             result.add(mapper.map(monsterA, MonsterAreaDto.class));
@@ -89,7 +89,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     @Override
     public List<MonsterAreaDto> findAll() {
         List<MonsterAreaDto> dtoList = new ArrayList<>();
-        for (MonsterArea o : dao.findAll()) {
+        for (MonsterArea o : monsterAreaDao.findAll()) {
             dtoList.add(this.mapper.map(o, MonsterAreaDto.class));
         }
         return dtoList;
@@ -97,6 +97,6 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
 
     @Override
     public void delete(Long id) {
-        dao.delete(id);
+        monsterAreaDao.delete(id);
     }
 }

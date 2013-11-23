@@ -4,8 +4,9 @@
  */
 package com.muni.fi.pa165.dao.service.impl;
 
+import com.muni.fi.pa165.service.impl.WeaponServiceImpl;
 import com.muni.fi.pa165.dao.WeaponDao;
-import com.muni.fi.pa165.dao.commons.AbstractIntegrationTest;
+import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Weapon;
 import com.muni.fi.pa165.enums.WeaponClass;
@@ -28,7 +29,7 @@ import static org.mockito.Mockito.when;
  *
  * @author Auron
  */
-public class WeaponServiceImplTest extends AbstractIntegrationTest {
+public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
 
     @Inject
     private WeaponDao mockDAO;

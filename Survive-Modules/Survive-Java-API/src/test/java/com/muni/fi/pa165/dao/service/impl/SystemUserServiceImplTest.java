@@ -4,8 +4,9 @@
  */
 package com.muni.fi.pa165.dao.service.impl;
 
+import com.muni.fi.pa165.service.impl.SystemUserServiceImpl;
 import com.muni.fi.pa165.dao.SystemUserDao;
-import com.muni.fi.pa165.dao.commons.AbstractIntegrationTest;
+import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.SystemUserDto;
 import com.muni.fi.pa165.entities.SystemUser;
 import javax.inject.Inject;
@@ -26,7 +27,7 @@ import static org.mockito.Mockito.when;
  *
  * @author Auron
  */
-public class SystemUserServiceImplTest  extends AbstractIntegrationTest {
+public class SystemUserServiceImplTest  extends AbstractServiceIntegrationTest {
     
    @Inject
     private SystemUserDao mockDAO;

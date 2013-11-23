@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muni.fi.pa165.dao.service.impl;
+package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.AreaDao;
-import com.muni.fi.pa165.dao.service.AreaService;
+import com.muni.fi.pa165.service.AreaService;
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.entities.Area;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class AreaServiceImpl implements AreaService {
 
     private static final Logger logger = Logger.getLogger(AreaServiceImpl.class.getName());
     @Inject
-    private AreaDao dao;
+    private AreaDao areaDao;
     @Inject
     private Mapper mapper;
 
@@ -32,7 +32,7 @@ public class AreaServiceImpl implements AreaService {
     public AreaDto save(AreaDto dto) {
 
         Area entity = mapper.map(dto, Area.class);
-        dao.save(entity);
+        areaDao.save(entity);
         return mapper.map(entity, AreaDto.class);
 
 
@@ -42,7 +42,7 @@ public class AreaServiceImpl implements AreaService {
     public AreaDto update(AreaDto dto) {
 
         Area entity = mapper.map(dto, Area.class);
-        dao.update(entity);
+        areaDao.update(entity);
         return mapper.map(entity, AreaDto.class);
 
     }
@@ -50,19 +50,19 @@ public class AreaServiceImpl implements AreaService {
     @Override    
     public void delete(AreaDto dto) {
 
-        dao.delete(mapper.map(dto, Area.class));
+        areaDao.delete(mapper.map(dto, Area.class));
 
     }
 
     @Override    
     public AreaDto findById(Long id) {
 
-        return mapper.map(dao.findById(id), AreaDto.class);
+        return mapper.map(areaDao.findById(id), AreaDto.class);
 
     }
 
     public void setDao(AreaDao dao) {
-        this.dao = dao;
+        this.areaDao = dao;
     }
 
     public void setMapper(Mapper mapper) {
@@ -71,13 +71,13 @@ public class AreaServiceImpl implements AreaService {
 
     @Override    
     public void delete(Long id) {
-        dao.delete(id);
+        areaDao.delete(id);
     }
 
     @Override
     public List<AreaDto> findAll() {
         List<AreaDto> dtoList = new ArrayList<>();
-        for (Area o : dao.findAll()) {
+        for (Area o : areaDao.findAll()) {
             dtoList.add(this.mapper.map(o, AreaDto.class));
         }
         return dtoList;

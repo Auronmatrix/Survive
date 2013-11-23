@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muni.fi.pa165.dao.service.impl;
+package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.WeaponDao;
-import com.muni.fi.pa165.dao.service.WeaponService;
+import com.muni.fi.pa165.service.WeaponService;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Weapon;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class WeaponServiceImpl implements WeaponService {
 
     @Inject
-    private WeaponDao dao;
+    private WeaponDao weaponDao;
     @Inject
     private Mapper mapper;
 
@@ -30,7 +30,7 @@ public class WeaponServiceImpl implements WeaponService {
     @Transactional
     public WeaponDto save(WeaponDto dto) {
         Weapon entity = mapper.map(dto, Weapon.class);
-        dao.save(entity);
+        weaponDao.save(entity);
         return mapper.map(entity, WeaponDto.class);
     }
 
@@ -38,29 +38,29 @@ public class WeaponServiceImpl implements WeaponService {
     @Transactional
     public WeaponDto update(WeaponDto dto) {
         Weapon entity = mapper.map(dto, Weapon.class);
-        dao.update(entity);
+        weaponDao.update(entity);
         return mapper.map(entity, WeaponDto.class);
     }
 
     @Override
     @Transactional
     public void delete(WeaponDto dto) {
-        dao.delete(mapper.map(dto, Weapon.class));
+        weaponDao.delete(mapper.map(dto, Weapon.class));
     }
 
     @Override
     @Transactional
     public WeaponDto findById(Long id) {
-        return mapper.map(dao.findById(id), WeaponDto.class);
+        return mapper.map(weaponDao.findById(id), WeaponDto.class);
     }
 
     @Override
     public boolean checkAvailable(String name) {
-        return dao.checkAvailable(name);
+        return weaponDao.checkAvailable(name);
     }
 
     public void setDao(WeaponDao dao) {
-        this.dao = dao;
+        this.weaponDao = dao;
     }
 
     public void setMapper(Mapper mapper) {
@@ -70,7 +70,7 @@ public class WeaponServiceImpl implements WeaponService {
     @Override
     public List<WeaponDto> findAll() {
         List<WeaponDto> dtoList = new ArrayList<>();
-        for (Weapon o : dao.findAll()) {
+        for (Weapon o : weaponDao.findAll()) {
             dtoList.add(this.mapper.map(o, WeaponDto.class));
         }
         return dtoList;
@@ -79,6 +79,6 @@ public class WeaponServiceImpl implements WeaponService {
     @Override
     @Transactional
     public void delete(Long id) {
-        dao.delete(id);
+        weaponDao.delete(id);
     }
 }

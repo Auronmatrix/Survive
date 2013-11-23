@@ -14,20 +14,48 @@
     
     <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />
     
+        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="ProjectPU"/>
+    </bean>
+    
+       <!-- Mapping DAO -->
+<!--    <bean name="areaDao" class="com.muni.fi.pa165.dao.impl.AreaJpaDaoImpl"/>
+    <bean name="monsterAreaDao" class="com.muni.fi.pa165.dao.impl.MonsterAreaJpaDaoImpl"/>
+    <bean name="monsterDao" class="com.muni.fi.pa165.dao.impl.MonsterJpaDaoImpl"/>
+    <bean name="monsterWeaponDao" class="com.muni.fi.pa165.dao.impl.MonsterWeaponJpaDaoImpl"/>
+    <bean name="weaponDao" class="com.muni.fi.pa165.dao.impl.WeaponJpaDaoImpl"/>
+    <bean name="systemUserDao" class="com.muni.fi.pa165.dao.impl.SystemUserJpaDaoImpl"/> -->
     <!-- Mapping Services -->
-    <bean name="areaService" class="com.muni.fi.pa165.dao.service.impl.AreaServiceImpl"/>
-    <bean name="monsterAreaService" class="com.muni.fi.pa165.dao.service.impl.MonsterAreaServiceImpl"/>
-    <bean name="monsterService" class="com.muni.fi.pa165.dao.service.impl.MonsterServiceImpl"/>
-    <bean name="monsterWeaponService" class="com.muni.fi.pa165.dao.service.impl.MonsterWeaponServiceImpl"/>
-    <bean name="weaponService" class="com.muni.fi.pa165.dao.service.impl.WeaponServiceImpl"/>
-    <bean name="systemUserService" class="com.muni.fi.pa165.dao.service.impl.SystemUserServiceImpl"/>
+<!--    <bean name="areaServiceImpl" class="com.muni.fi.pa165.service.impl.AreaServiceImpl"/>
+    <bean name="monsterAreaService" class="com.muni.fi.pa165.service.impl.MonsterAreaServiceImpl"/>
+    <bean name="monsterService" class="com.muni.fi.pa165.service.impl.MonsterServiceImpl"/>
+    <bean name="monsterWeaponService" class="com.muni.fi.pa165.service.impl.MonsterWeaponServiceImpl"/>
+    <bean name="weaponService" class="com.muni.fi.pa165.service.impl.WeaponServiceImpl"/>
+    <bean name="systemUserService" class="com.muni.fi.pa165.service.impl.SystemUserServiceImpl"/>-->
 
-    <!-- Mapping DAO -->
-    <bean name="areaDao" class="com.muni.fi.pa165.dao.jpa.AreaJpaDaoImpl"/>
-    <bean name="monsterAreaDao" class="com.muni.fi.pa165.dao.jpa.MonsterAreaJpaDaoImpl"/>
-    <bean name="monsterDao" class="com.muni.fi.pa165.dao.jpa.MonsterJpaDaoImpl"/>
-    <bean name="monsterWeaponDao" class="com.muni.fi.pa165.dao.jpa.MonsterWeaponJpaDaoImpl"/>
-    <bean name="weaponDao" class="com.muni.fi.pa165.dao.jpa.WeaponJpaDaoImpl"/>
-    <bean name="systemUserDao" class="com.muni.fi.pa165.dao.jpa.SystemUserJpaDaoImpl"/> 
+ 
+     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+    
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    
+       <bean id="translator" class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
+        
+    
+     <bean id="mapper" class="org.dozer.DozerBeanMapper">
+        <property name="mappingFiles">
+            <list>
+                <value>AreaMapper.xml</value>
+                <value>MonsterAreaMapper.xml</value>
+                <value>WeaponMapper.xml</value>
+                <value>SystemUserMapper.xml</value>	
+                <value>MonsterMapper.xml</value>
+                <value>MonsterWeaponMapper.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+    
     
 </beans>

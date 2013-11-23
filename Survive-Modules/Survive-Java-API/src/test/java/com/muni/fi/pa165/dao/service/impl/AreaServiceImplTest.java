@@ -4,8 +4,9 @@
  */
 package com.muni.fi.pa165.dao.service.impl;
 
+import com.muni.fi.pa165.service.impl.AreaServiceImpl;
 import com.muni.fi.pa165.dao.AreaDao;
-import com.muni.fi.pa165.dao.commons.AbstractIntegrationTest;
+import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.entities.Area;
 import com.muni.fi.pa165.enums.TerrainType;
@@ -23,7 +24,7 @@ import static org.junit.Assert.*;
  *
  * @author Auron
  */
-public class AreaServiceImplTest extends AbstractIntegrationTest {
+public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
 
     @Inject
     private AreaDao mockDAO;

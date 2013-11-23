@@ -4,8 +4,9 @@
  */
 package com.muni.fi.pa165.dao.service.impl;
 
+import com.muni.fi.pa165.service.impl.MonsterAreaServiceImpl;
 import com.muni.fi.pa165.dao.MonsterAreaDao;
-import com.muni.fi.pa165.dao.commons.AbstractIntegrationTest;
+import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.MonsterAreaDto;
 import com.muni.fi.pa165.entities.Area;
 import com.muni.fi.pa165.entities.Monster;
@@ -30,7 +31,7 @@ import static org.mockito.Mockito.when;
  *
  * @author irina
  */
-public class MonsterAreaServiceImplTest extends AbstractIntegrationTest {
+public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
     @Inject
     private MonsterAreaDao mockDAO;
     private MonsterAreaServiceImpl service;

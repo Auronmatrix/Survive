@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muni.fi.pa165.dao.service.impl;
+package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
-import com.muni.fi.pa165.dao.service.MonsterService;
-import com.muni.fi.pa165.dao.service.MonsterWeaponService;
+import com.muni.fi.pa165.service.MonsterService;
+import com.muni.fi.pa165.service.MonsterWeaponService;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.entities.MonsterWeapon;
@@ -26,7 +26,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());
     @Inject
-    private MonsterWeaponDao dao;
+    private MonsterWeaponDao monsterWeaponDao;
     @Inject
     private Mapper mapper;
     @Inject
@@ -35,7 +35,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     @Override
     public MonsterWeaponDto save(MonsterWeaponDto dto) {
         MonsterWeapon entity = mapper.map(dto, MonsterWeapon.class);
-        dao.save(entity);
+        monsterWeaponDao.save(entity);
         return mapper.map(entity, MonsterWeaponDto.class);
 
     }
@@ -44,7 +44,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     public MonsterWeaponDto update(MonsterWeaponDto dto) {
 
         MonsterWeapon entity = mapper.map(dto, MonsterWeapon.class);
-        dao.update(entity);
+        monsterWeaponDao.update(entity);
         return mapper.map(entity, MonsterWeaponDto.class);
 
     }
@@ -52,12 +52,12 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     @Override
     public void delete(MonsterWeaponDto dto) {
 
-        dao.delete(mapper.map(dto, MonsterWeapon.class));
+        monsterWeaponDao.delete(mapper.map(dto, MonsterWeapon.class));
 
     }
 
     public void setDao(MonsterWeaponDao dao) {
-        this.dao = dao;
+        this.monsterWeaponDao = dao;
     }
 
     public void setMapper(Mapper mapper) {
@@ -66,8 +66,8 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     @Override
     public List<MonsterWeaponDto> findByMonsterId(Long id) {
-        Monster monster = mapper.map(service.findById(id), Monster.class);
-        List<MonsterWeapon> mw = dao.getMonsterWeaponsForThisMonsterType(monster);
+   //     Monster monster = mapper.map(service.findById(id), Monster.class);
+        List<MonsterWeapon> mw = monsterWeaponDao.getMonsterWeaponsForThisMonsterType(id);
         List<MonsterWeaponDto> result = new ArrayList<>();
         for (MonsterWeapon monsterW : mw) {
             result.add(mapper.map(monsterW, MonsterWeaponDto.class));
@@ -79,7 +79,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     public List<MonsterWeaponDto> findByWeaponId(Long id) {
         WeaponServiceImpl mn = new WeaponServiceImpl();
         Weapon weapon = mapper.map(mn.findById(id), Weapon.class);
-        List<MonsterWeapon> mw = dao.getMonsterWeaponsForThisWeaponType(weapon);
+        List<MonsterWeapon> mw = monsterWeaponDao.getMonsterWeaponsForThisWeaponType(weapon);
         List<MonsterWeaponDto> result = new ArrayList<>();
         for (MonsterWeapon monsterW : mw) {
             result.add(mapper.map(monsterW, MonsterWeaponDto.class));
@@ -90,7 +90,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     @Override
     public List<MonsterWeaponDto> findAll() {
         List<MonsterWeaponDto> dtoList = new ArrayList<>();
-        for (MonsterWeapon o : dao.findAll()) {
+        for (MonsterWeapon o : monsterWeaponDao.findAll()) {
             dtoList.add(this.mapper.map(o, MonsterWeaponDto.class));
         }
         return dtoList;
@@ -98,6 +98,6 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     @Override
     public void delete(Long id) {
-        dao.delete(id);
+        monsterWeaponDao.delete(id);
     }
 }

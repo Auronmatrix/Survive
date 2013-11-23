@@ -1,4 +1,4 @@
-package com.muni.fi.pa165.dao.commons;
+package com.muni.fi.pa165.service;
 
 import org.junit.runner.RunWith;
 
@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Michal Vinkler
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+@ContextConfiguration(locations = {"classpath:SpringContext.xml"})
 @TransactionConfiguration(transactionManager = "transactionManager")
 @Transactional
-public abstract class AbstractIntegrationTest {
+public abstract class AbstractServiceIntegrationTest {
 }
