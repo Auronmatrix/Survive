@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Michal Vinkler
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:SpringContext.xml"})
+@ContextConfiguration(locations = {"classpath:TestSpringContext.xml"})
 @TransactionConfiguration(transactionManager = "transactionManager")
 @Transactional
 public abstract class AbstractDaoIntegrationTest {
