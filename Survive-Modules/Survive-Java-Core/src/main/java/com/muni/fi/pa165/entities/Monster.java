@@ -62,7 +62,7 @@ public class Monster implements Serializable {
     @Column(name = "IMAGEPATH")
     private String imagepath;
     @Column(name = "MONSTERCLASS")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private MonsterClass monsterclass;
     @Column(name = "NAME")
     private String name;
