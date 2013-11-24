@@ -30,7 +30,8 @@
                 <c:forEach items="${actionBean.monsters}" var="monster">
                     <tr>
                         <td>
-                            <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" action="select">                                                              
+                            <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" action="edit">          
+                                <s:hidden name="monster.id" value="${monster.id}"/>
                                 <s:image src="${monster.imagePath}" class="img img-circle" name="${monster.id}.image" style="width: 60px; height: 60px" />
                             </s:form>
                         </td> 

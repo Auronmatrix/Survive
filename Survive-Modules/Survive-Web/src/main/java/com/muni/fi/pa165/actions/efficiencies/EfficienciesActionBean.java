@@ -21,9 +21,9 @@ import java.util.List;
  * @author Aubrey Oosthuizen
  */
 @UrlBinding("/efficiencies/list/{$event}/{monsterWeapon.monster.id}")
-public class MonsterWeaponActionBean extends BaseActionBean implements ValidationErrorHandler {
+public class EfficienciesActionBean extends BaseActionBean implements ValidationErrorHandler {
 
-    final static Logger log = LoggerFactory.getLogger(MonsterWeaponActionBean.class);
+    final static Logger log = LoggerFactory.getLogger(EfficienciesActionBean.class);
     
     @SpringBean //Spring can inject even to private and protected fields
     protected MonsterWeaponService monsterMonsterWeaponService;
@@ -39,7 +39,7 @@ public class MonsterWeaponActionBean extends BaseActionBean implements Validatio
         return new ForwardResolution("/monsterMonsterWeapon/list.jsp");
     }
 
-//    public Resolution MonsterWeaponActionBean()
+//    public Resolution EfficienciesActionBean()
 //    {
 //        log.debug("default or constructor()");
 //        monsterMonsterWeapons = monsterMonsterWeaponService.findAll();
@@ -93,15 +93,16 @@ public class MonsterWeaponActionBean extends BaseActionBean implements Validatio
     //--- part for deleting a monsterMonsterWeapon ----
     public Resolution delete() {
          getContext().getMessages().add(new SimpleMessage("Called method delete"));
-//        log.debug("delete({})", monsterMonsterWeapon.getMonster());
-//        //only id is filled by the form
-//        monsterMonsterWeapon = monsterMonsterWeaponService.findById(monsterMonsterWeapon.getId());
-//        try {
-//            monsterMonsterWeaponService.delete(monsterMonsterWeapon.getId());
-//       } catch (Exception ex) {
-//           getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-//            getContext().getMessages().add(new LocalizableMessage("delete.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));        
-//        }
+        log.debug("delete({})", monsterMonsterWeapon.getMonster());
+        //only id is filled by the form
+       try {
+            // monsterMonsterWeapon = monsterMonsterWeaponService.findById(monsterMonsterWeapon.getMonster());
+       
+            //monsterMonsterWeaponService.delete(monsterMonsterWeapon.getId());
+       } catch (Exception ex) {
+           getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+          //  getContext().getMessages().add(new LocalizableMessage("delete.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));        
+        }
         return new RedirectResolution(this.getClass(), "list");
     }
 

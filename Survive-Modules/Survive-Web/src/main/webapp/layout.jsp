@@ -11,7 +11,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content="">
             <meta name="author" content="">
-            <link rel="shortcut icon" href="/docs-assets/ico/favicon.ico">
+            <link rel="shortcut icon" href="${pageContext.request.contextPath}/docs-assets/ico/favicon.ico">
 
             <title><f:message key="${titlekey}"/></title>
             <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
@@ -28,6 +28,10 @@
             <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
             <!-- Bootstrap theme -->
             <link href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css" rel="stylesheet">
+
+            <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-image-gallery.min.css">
 
             <!-- Custom styles for this template -->
             <!--            <link href="theme.css" rel="stylesheet">-->
@@ -69,27 +73,28 @@
                             <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monsters"/></s:link></li>
                             <li ><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><f:message key="navigation.areas"/></s:link></li>
                             <li ><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean"><f:message key="navigation.weapons"/></s:link></li>
-                              <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li></li>
-                                        <li><a href="/Survive-Web/signin.jsp"><f:message key="navigation.signin"/></li>
-                                        <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.MonsterWeaponActionBean"><f:message key="navigation.efficiencies"/></s:link></li>
+                                    <li><a href="/Survive-Web/signin.jsp"><f:message key="navigation.signin"/></li>
+                                    <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.MonsterWeaponActionBean"><f:message key="navigation.efficiencies"/></s:link></li>
                                         <li class="divider"></li>
+                                        <li><a href="/Survive-Web/monster/gallery.jsp"  ><f:message key="navigation.gallery"/></a></li>
                                         <li class="dropdown-header">Additional Resources</li>
                                         <li><a href="/Survive-Web/template.jsp"><f:message key="navigation.template"/></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!--                                Aubrey: Could be form for login-->
-                            <!--                        <form class="navbar-form navbar-left" role="search">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Search">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-default">Submit</button>
-                                                    </form>-->
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="/Survive-Web/signin.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--                                Aubrey: Could be form for login-->
+                        <!--                        <form class="navbar-form navbar-left" role="search">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Search">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-default">Submit</button>
+                                                </form>-->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/Survive-Web/signin.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -118,7 +123,9 @@
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-            <script src="${pageContext.request.contextPath}/docs-assets/js/holder.js"></script>
+            <script src="${pageContext.request.contextPath}/docs-assets/js/holder.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/bootstrap-image-gallery.min.js"></script>
         </body>
     </html>
 </s:layout-definition>

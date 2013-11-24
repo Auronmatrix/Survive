@@ -6,15 +6,16 @@
     <s:layout-component name="body">
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" var="actionBean"/>
 
-        <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" class="form-horizontal">
+        <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" class="form-horizontal" focus="" action="/monster/edit.action">
             <s:hidden name="monster.id"/>
-            <fieldset><legend><f:message key="monster.edit.edit"/></legend>
+             <fieldset><legend><f:message key="monster.edit.edit"/></legend>
                 <%@include file="form.jsp"%>
                <div><s:submit class="btn btn-info" name="save"><f:message key="forms.save"/></s:submit> </div>              
                 </fieldset>
         </s:form>
         
-     
+         
+      
 
 
     </s:layout-component>

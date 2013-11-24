@@ -49,6 +49,8 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     public List<MonsterDto> getMonsters() {
         return monsters;
     }
+    
+    
     //--- part for adding a monster ----
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "name", required = false),
@@ -68,7 +70,12 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     public Resolution add() {
         log.debug("add() monster={}", monster);
         try {
+            if (monster.getImagePath()== null || monster.getImagePath().isEmpty())
+            {
+                monster.setImagePath("http://careerconfidential.com/images/no-monsterX400.jpg");
+            }
             monster = monsterService.save(monster);
+            
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
         }
@@ -96,8 +103,9 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     public Resolution delete() {
         log.debug("delete({})", monster.getId());
         //only id is filled by the form
-        monster = monsterService.findById(monster.getId());
-        try {
+       try {
+            monster = monsterService.findById(monster.getId());
+        
             monsterService.delete(monster.getId());
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
@@ -119,9 +127,15 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         log.debug("edit() monster={}", monster);
         return new ForwardResolution("/monster/edit.jsp");
     }
+    
+        public Resolution gallery() {
+        log.debug("edit() monster={}", monster);
+        return new ForwardResolution("/monster/gallery.jsp");
+    }
 
     public Resolution save() {
         log.debug("save() monster={}", monster);
+        monster = getMonster();
         monsterService.update(monster);
         return new RedirectResolution(this.getClass(), "list");
     }

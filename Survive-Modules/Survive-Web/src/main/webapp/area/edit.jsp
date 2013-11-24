@@ -6,7 +6,7 @@
     <s:layout-component name="body">
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" var="actionBean"/>
 
-        <s:form beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" class="form-horizontal">
+        <s:form beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" class="form-horizontal"  focus="" action="/area/edit.action">
             <s:hidden name="area.id"/>
             <fieldset><legend><f:message key="area.edit.edit"/></legend>
                 <%@include file="form.jsp"%>

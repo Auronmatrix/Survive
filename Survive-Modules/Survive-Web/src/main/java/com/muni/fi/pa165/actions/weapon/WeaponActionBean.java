@@ -97,8 +97,9 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
          getContext().getMessages().add(new SimpleMessage("Called method delete"));
         log.debug("delete({})", weapon.getId());
         //only id is filled by the form
-        weapon = weaponService.findById(weapon.getId());
         try {
+            weapon = weaponService.findById(weapon.getId());
+        
             weaponService.delete(weapon.getId());
        } catch (Exception ex) {
            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));

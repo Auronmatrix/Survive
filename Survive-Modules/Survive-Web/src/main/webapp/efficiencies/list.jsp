@@ -7,7 +7,7 @@
     <s:layout-component name="body">
         <h1><f:message key="monster.title"/></h1>
 
-        <s:useActionBean beanclass="com.muni.fi.pa165.actions.monster.MonsterWeaponActionBean" var="actionBean"/>
+        <s:useActionBean beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" var="actionBean"/>
 
         <p><f:message key="monsterWeapon.list.allmonsterWeapons"/></p>
         <div class="table-responsive">

@@ -1,6 +1,7 @@
 package com.muni.fi.pa165.actions.area;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
+import static com.muni.fi.pa165.actions.base.BaseActionBean.escapeHTML;
 import com.muni.fi.pa165.service.AreaService;
 import com.muni.fi.pa165.dto.AreaDto;
 import java.util.ArrayList;
@@ -42,7 +43,6 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
     }
     //--- part for adding a area ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "id", required = true),
         @Validate(on = {"add", "save"}, field = "name", required = true),
         @Validate(on = {"add", "save"}, field = "terrain", required = true), 
         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 0),
@@ -87,17 +87,18 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
     //--- part for deleting a area ----
     public Resolution delete() {
         log.debug("delete({})", area.getId());
-        //only id is filled by the form
-//        area = areaService.findById(area.getId());
-//        try {
-//
-//            areaService.delete(area.getId());
-//        } catch (Exception ex) {
-//            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-//
-//        }
-//        getContext().getMessages().add(new LocalizableMessage("area.delete.message", escapeHTML(area.getName()));
-        return new RedirectResolution(this.getClass(), "list");
+     //   only id is filled by the form
+        
+        try {
+area = areaService.findById(area.getId());
+            areaService.delete(area.getId());
+        } catch (Exception ex) {
+            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+             getContext().getMessages().add(new LocalizableMessage("area.delete.message", escapeHTML(area.getName())));
+        
+
+        }
+       return new RedirectResolution(this.getClass(), "list");
     }
 
     //--- part for editing a area ----
@@ -134,22 +135,5 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
         return new RedirectResolution("/area/list.jsp");
     }
 
-    @Override
-    public void preBind() {
-        String idStr = getContext().getRequest().getParameter("area.id");
-
-        if (idStr == null) {
-            this.area = new AreaDto();
-        } else {
-            this.area = areaService.findById(Long.parseLong(idStr));
-        }
-    }
-
-    public List<Object> getBoundObjects() {
-        List<Object> lst = new ArrayList<Object>();
-
-        lst.add(getArea());
-
-        return lst;
-    }
+  
 }

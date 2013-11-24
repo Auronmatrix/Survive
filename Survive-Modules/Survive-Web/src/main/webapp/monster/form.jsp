@@ -3,6 +3,8 @@
 <s:errors/> 
 
 
+ 
+            
     <div class="form-group">
         <div class="form-group">
             <s:label for="name"  class="col-sm-2 control-label" name="monster.name" />
