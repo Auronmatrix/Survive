@@ -5,6 +5,7 @@
 package com.muni.fi.pa165.dto;
 
 import com.muni.fi.pa165.entities.Monster;
+import com.muni.fi.pa165.entities.MonsterweaponPK;
 import com.muni.fi.pa165.entities.Weapon;
 import java.util.Objects;
 
@@ -14,28 +15,52 @@ import java.util.Objects;
  */
 public class MonsterWeaponDto {
 
-    private Long monster;
-    private Long weapon;
+ 
+    private Monster monster;
+    private Weapon weapon;
     private Integer hitRate;
     private Integer damage;
     private Integer efficiency;
+    private String description;
+    private MonsterweaponPK id;
 
-    public Long getMonster() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public MonsterweaponPK getId() {
+        return id;
+    }
+
+    public void setId(MonsterweaponPK id) {
+        this.id = id;
+    }
+    
+    
+    
+
+
+    public Monster getMonster() {
         return monster;
     }
 
-    public void setMonster(Long monster) {
+    public void setMonster(Monster monster) {
         this.monster = monster;
     }
 
-    public Long getWeapon() {
+    public Weapon getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(Long weapon) {
+    public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 
+    
    
 
     public Integer getHitRate() {

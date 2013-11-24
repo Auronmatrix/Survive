@@ -49,4 +49,6 @@ public interface MonsterWeaponService {
     public List<MonsterWeaponDto> findAll();
 
     public void delete(Long id);
+    
+    public MonsterWeaponDto findById(Long monsterId, Long weaponId);
 }

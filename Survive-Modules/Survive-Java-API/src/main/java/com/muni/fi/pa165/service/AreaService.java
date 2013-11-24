@@ -42,4 +42,5 @@ public interface AreaService {
     public List<AreaDto> findAll();
     
     
+    
 }

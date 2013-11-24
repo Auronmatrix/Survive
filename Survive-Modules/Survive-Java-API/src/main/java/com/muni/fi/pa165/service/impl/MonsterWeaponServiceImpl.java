@@ -8,9 +8,8 @@ import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.service.MonsterService;
 import com.muni.fi.pa165.service.MonsterWeaponService;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
-import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.entities.Monsterweapon;
-import com.muni.fi.pa165.entities.Weapon;
+import com.muni.fi.pa165.entities.MonsterweaponPK;
 import javax.inject.Inject;
 import org.dozer.Mapper;
 import java.util.ArrayList;
@@ -96,5 +95,13 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     @Override
     public void delete(Long id) {
         monsterWeaponDao.delete(id);
+    }
+    
+    @Override
+    public MonsterWeaponDto findById(Long monsterId, Long weaponId)
+    {
+        MonsterweaponPK pk = new MonsterweaponPK(monsterId, weaponId);
+        Monsterweapon entity = monsterWeaponDao.findById(pk);
+        return mapper.map(entity, MonsterWeaponDto.class);
     }
 }

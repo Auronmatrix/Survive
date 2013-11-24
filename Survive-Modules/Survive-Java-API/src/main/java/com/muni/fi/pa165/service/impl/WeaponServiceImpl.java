@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Michal Vinkler
  */
 @Service
-@Transactional
 public class WeaponServiceImpl implements WeaponService {
 
     @Inject
@@ -78,8 +77,7 @@ public class WeaponServiceImpl implements WeaponService {
         return dtoList;
     }
 
-    @Override
-    @Transactional
+    @Override   
     public void delete(Long id) {
         weaponDao.delete(id);
     }
