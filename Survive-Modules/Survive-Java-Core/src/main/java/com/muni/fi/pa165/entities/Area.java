@@ -51,7 +51,7 @@ public class Area implements Serializable {
     @Enumerated(EnumType.STRING)
     private TerrainType terrain;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
-    private Set<Monsterarea> monsterareaSet;
+    private Set<MonsterareaPK> monsterareaSet;
 
     public Area() {
     }
@@ -95,11 +95,11 @@ public class Area implements Serializable {
   
 
     @XmlTransient
-    public Set<Monsterarea> getMonsterareaSet() {
+    public Set<MonsterareaPK> getMonsterareaSet() {
         return monsterareaSet;
     }
 
-    public void setMonsterareaSet(Set<Monsterarea> monsterareaSet) {
+    public void setMonsterareaSet(Set<MonsterareaPK> monsterareaSet) {
         this.monsterareaSet = monsterareaSet;
     }
 
