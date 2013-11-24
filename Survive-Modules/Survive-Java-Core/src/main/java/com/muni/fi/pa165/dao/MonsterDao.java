@@ -30,5 +30,4 @@ public interface MonsterDao extends GenericDao<Monster, Long> {
      *
      * @return a single monster type when record in db exists, null otherwise
      */
-    Monster getMonsterByName(String name);
 }

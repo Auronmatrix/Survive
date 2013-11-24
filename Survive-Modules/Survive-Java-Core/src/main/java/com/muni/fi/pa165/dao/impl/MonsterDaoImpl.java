@@ -48,21 +48,5 @@ EntityManager em = this.getEntityManagerFactory().createEntityManager();
 
     }
 
-    @Override
-    public Monster getMonsterByName(String name) {
-        Assert.notNull(name);
-        Monster monster = null;
-EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        TypedQuery<Monster> query = em.createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Monster.class);
-        query.setParameter("name", name.toString());
-
-        //I think since this is a typed query we can remove the try catch. Will verify at seminar
-        try {
-            monster = query.getSingleResult();
-        } catch (NoResultException ex) {
-            //do nothing
-        }
-        return monster;
-
-    }
+ 
 }

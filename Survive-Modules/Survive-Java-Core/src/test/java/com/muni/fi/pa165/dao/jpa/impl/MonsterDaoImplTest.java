@@ -69,13 +69,4 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
 //
 //    }
 
-    /**
-     * Test of getMonsterByName method, of class MonsterJpaDaoImpl.
-     */
-    @Test
-    public void testGetMonsterTypeByName() {
-//        System.out.println("Test getMonsterTypeByName method.");
-        String name = "HeadlessNick";
-        assertEquals(entity, dao.getMonsterByName(name));
-    }
 }

@@ -82,16 +82,6 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
 //        
 //    }
 
-    /**
-     * Test of getByName method, of class WeaponJpaDaoImpl.
-     */
-    @Test
-    public void testGetWeaponByName() {
-//        System.out.println("getWeaponByName");
-        String weaponName = "TESTAK47";
 
-        Weapon expResult = entity;
-        Weapon result = dao.getByName(weaponName);
-        assertEquals(expResult, result);
-    }
+
 }

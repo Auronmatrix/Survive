@@ -37,7 +37,7 @@ public class WeaponDaoImpl extends GenericDaoAbs<Weapon, Long> implements Weapon
 
         System.out.println("Trying to look for weapon named " + name);
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        TypedQuery<Weapon> query = em.createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Weapon.class);
+        TypedQuery<Weapon> query = em.createQuery("select p from Weapon  p where p.name = :name", Weapon.class);
         query.setParameter("name", name);
         if (!query.getResultList().isEmpty()) {
             return true;
@@ -45,21 +45,5 @@ public class WeaponDaoImpl extends GenericDaoAbs<Weapon, Long> implements Weapon
         return false;
     }
 
-    @Override
-    public Weapon getByName(String name) {
-        Assert.notNull(name);
-        Weapon obj = null;
-EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        TypedQuery<Weapon> query = em.createQuery("select p from " + getPersistentClass().getSimpleName() + " p where p.name = :name", Weapon.class);
-        query.setParameter("name", name);
-
-        //I think the try catch can be removed. Need to verify at seminar
-        try {
-            obj = query.getSingleResult();
-        } catch (NoResultException ex) {
-            //do nothing
-        }
-
-        return obj;
-    }
+   
 }

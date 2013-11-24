@@ -36,20 +36,22 @@ public class AreaDaoImpl extends GenericDaoAbs<Area, Long> implements AreaDao {
         }
 //        Assert.notNull(areaName);
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Area area = null;
-        TypedQuery<Area> query = em.createQuery("SELECT a from " + getPersistentClass().getSimpleName() + " a where a.name = :name", Area.class);
+      
+        TypedQuery<Area> query = em.createQuery("SELECT a from Area a where a.name = :name", Area.class);
         query.setParameter("name", areaName);
+        //query.setMaxResults(1);
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            area = query.getSingleResult();
-            if (area != null) {
+           
+            em.close();
+            if (!query.getResultList().isEmpty()) {
             return true;
         }
         } finally {
-            tx.commit();
+            //tx.commit();
             if (em != null) {
-                em.close();
+                
             }
         }
         
@@ -57,24 +59,5 @@ public class AreaDaoImpl extends GenericDaoAbs<Area, Long> implements AreaDao {
 
     }
 
-    @Override
-    public Area getByName(String areaName) {
-        Assert.notNull(areaName);
-        EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        TypedQuery<Area> query = em.createQuery("Select a from Area a where a.name = " + areaName, Area.class);
-
-        Area area = null;
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            area = query.getSingleResult();
-        } catch (NoResultException ex) {
-        } finally {
-            tx.commit();
-            if (em != null) {
-                em.close();
-            }
-        }
-        return area;
-    }
+  
 }

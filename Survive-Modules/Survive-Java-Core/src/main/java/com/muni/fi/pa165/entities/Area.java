@@ -6,7 +6,7 @@ package com.muni.fi.pa165.entities;
 
 import com.muni.fi.pa165.enums.TerrainType;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,7 +51,7 @@ public class Area implements Serializable {
     @Enumerated(EnumType.STRING)
     private TerrainType terrain;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
-    private Set<MonsterareaPK> monsterareaSet;
+    private Collection<Monsterarea> monsterareaCollection;
 
     public Area() {
     }
@@ -92,15 +92,15 @@ public class Area implements Serializable {
         this.terrain = terrain;
     }
 
-  
+
 
     @XmlTransient
-    public Set<MonsterareaPK> getMonsterareaSet() {
-        return monsterareaSet;
+    public Collection<Monsterarea> getMonsterareaCollection() {
+        return monsterareaCollection;
     }
 
-    public void setMonsterareaSet(Set<MonsterareaPK> monsterareaSet) {
-        this.monsterareaSet = monsterareaSet;
+    public void setMonsterareaCollection(Collection<Monsterarea> monsterareaCollection) {
+        this.monsterareaCollection = monsterareaCollection;
     }
 
     @Override

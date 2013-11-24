@@ -15,5 +15,4 @@ public interface AreaDao extends GenericDao<Area, Long> {
 
     boolean checkAvailable(String areaName);
 
-    Area getByName(String areaName);
 }

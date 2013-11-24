@@ -76,15 +76,5 @@ public class AreaDaoImplTest extends AbstractDaoIntegrationTest {
     /**
      * Test of getAreanByName method, of class AreaJpaDoa.
      */
-    @Test
-    public void testGetByName() {
 
-
-        System.out.println("getAreaByName");
-        String areaName = "CAVS";
-
-        Area expResult = entity;
-        Area result = dao.getByName(areaName);
-        assertEquals(expResult, result);
-    }
 }

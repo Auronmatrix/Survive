@@ -6,7 +6,7 @@ package com.muni.fi.pa165.entities;
 
 import com.muni.fi.pa165.enums.MonsterClass;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -61,8 +61,8 @@ public class Monster implements Serializable {
     private Double height;
     @Column(name = "IMAGEPATH")
     private String imagepath;
-    @Column(name = "MONSTERCLASS")    
-    @Enumerated(EnumType.STRING)
+    @Column(name = "MONSTERCLASS")
+    @Enumerated(EnumType.ORDINAL)
     private MonsterClass monsterclass;
     @Column(name = "NAME")
     private String name;
@@ -73,9 +73,9 @@ public class Monster implements Serializable {
     @Column(name = "WEIGHT")
     private Double weight;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "monster")
-    private Set<MonsterweaponPK> monsterweaponSet;
+    private Collection<Monsterweapon> monsterweaponCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "monster")
-    private Set<MonsterareaPK> monsterareaSet;
+    private Collection<Monsterarea> monsterareaCollection;
 
     public Monster() {
     }
@@ -140,7 +140,7 @@ public class Monster implements Serializable {
         this.monsterclass = monsterclass;
     }
 
-  
+
 
     public String getName() {
         return name;
@@ -175,21 +175,21 @@ public class Monster implements Serializable {
     }
 
     @XmlTransient
-    public Set<MonsterweaponPK> getMonsterweaponSet() {
-        return monsterweaponSet;
+    public Collection<Monsterweapon> getMonsterweaponCollection() {
+        return monsterweaponCollection;
     }
 
-    public void setMonsterweaponSet(Set<MonsterweaponPK> monsterweaponSet) {
-        this.monsterweaponSet = monsterweaponSet;
+    public void setMonsterweaponCollection(Collection<Monsterweapon> monsterweaponCollection) {
+        this.monsterweaponCollection = monsterweaponCollection;
     }
 
     @XmlTransient
-    public Set<MonsterareaPK> getMonsterareaSet() {
-        return monsterareaSet;
+    public Collection<Monsterarea> getMonsterareaCollection() {
+        return monsterareaCollection;
     }
 
-    public void setMonsterareaSet(Set<MonsterareaPK> monsterareaSet) {
-        this.monsterareaSet = monsterareaSet;
+    public void setMonsterareaCollection(Collection<Monsterarea> monsterareaCollection) {
+        this.monsterareaCollection = monsterareaCollection;
     }
 
     @Override

@@ -7,7 +7,7 @@ package com.muni.fi.pa165.entities;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -60,14 +60,13 @@ public class Weapon implements Serializable {
     @Column(name = "ROUNDS")
     private Integer rounds;
     @Column(name = "WEAPONCLASS")
-    
     @Enumerated(EnumType.ORDINAL)
     private WeaponClass weaponclass;
     @Column(name = "WEAPONTYPE")
-     @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.ORDINAL)
     private WeaponType weapontype;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "weapon")
-    private Set<MonsterweaponPK> monsterweaponSet;
+    private Collection<Monsterweapon> monsterweaponCollection;
 
     public Weapon() {
     }
@@ -140,15 +139,15 @@ public class Weapon implements Serializable {
         this.weapontype = weapontype;
     }
 
-  
+
 
     @XmlTransient
-    public Set<MonsterweaponPK> getMonsterweaponSet() {
-        return monsterweaponSet;
+    public Collection<Monsterweapon> getMonsterweaponCollection() {
+        return monsterweaponCollection;
     }
 
-    public void setMonsterweaponSet(Set<MonsterweaponPK> monsterweaponSet) {
-        this.monsterweaponSet = monsterweaponSet;
+    public void setMonsterweaponCollection(Collection<Monsterweapon> monsterweaponCollection) {
+        this.monsterweaponCollection = monsterweaponCollection;
     }
 
     @Override

@@ -7,7 +7,7 @@ package com.muni.fi.pa165.dao.gen.impl;
 
  
  import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
-import com.muni.fi.pa165.entities.GenericEntity;
+import com.muni.fi.pa165.entities.Genericentity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
@@ -19,10 +19,10 @@ import org.springframework.util.Assert;
  * @author Aubrey Oosthuizen Implementation class used for unit testing the GenericJpaDao class
  */
 @Repository
-public class GenericDaoImpl extends GenericDaoAbs<GenericEntity, Long> {
+public class GenericDaoImpl extends GenericDaoAbs<Genericentity, Long> {
 
     public GenericDaoImpl() {
-        super(GenericEntity.class);
+        super(Genericentity.class);
     }
 
     public boolean checkAvailable(String name){
@@ -30,8 +30,8 @@ public class GenericDaoImpl extends GenericDaoAbs<GenericEntity, Long> {
         EntityManager em =super.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction(); 
         try {
-                TypedQuery<GenericEntity> query = em.createQuery("SELECT a from " + getPersistentClass().getSimpleName() + " a where a.name = :name", GenericEntity.class);
-            GenericEntity obj = null;
+                TypedQuery<Genericentity> query = em.createQuery("SELECT a from " + getPersistentClass().getSimpleName() + " a where a.name = :name", Genericentity.class);
+            Genericentity obj = null;
             try {
                 tx.begin();
                 obj = query.getSingleResult();

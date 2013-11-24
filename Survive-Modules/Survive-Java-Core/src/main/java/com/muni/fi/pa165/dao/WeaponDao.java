@@ -15,5 +15,4 @@ public interface WeaponDao extends GenericDao<Weapon, Long> {
 
     boolean checkAvailable(String weaponName);
 
-    Weapon getByName(String weaponName);
 }
