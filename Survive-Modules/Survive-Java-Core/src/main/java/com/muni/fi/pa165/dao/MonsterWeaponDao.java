@@ -6,6 +6,7 @@
 package com.muni.fi.pa165.dao;
 
 import com.muni.fi.pa165.entities.Monsterweapon;
+import com.muni.fi.pa165.entities.MonsterweaponPK;
 import java.util.List;
 
 /**
@@ -18,6 +19,9 @@ public interface MonsterWeaponDao extends GenericDao<Monsterweapon, Long> {
     public List<Monsterweapon> getByMonsterId(Long id);
     
     public List<Monsterweapon> getByWeaponId(Long id);
+    
+    
+    public Monsterweapon findById(MonsterweaponPK id);
     
    
     

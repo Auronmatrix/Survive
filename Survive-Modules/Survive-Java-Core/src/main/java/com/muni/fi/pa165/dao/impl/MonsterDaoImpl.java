@@ -10,10 +10,8 @@ import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
 import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.enums.MonsterClass;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.Assert;
 
 /**
  * This class represents the implementation of all basic operations. Typed JpaDao objects extending the GenericDaoAbs
