@@ -20,56 +20,46 @@ import java.util.List;
  *
  * @author Aubrey Oosthuizen
  */
-@UrlBinding("/efficiencies/list/{$event}/{monsterWeapon.monster.id}")
+@UrlBinding("/efficiencies/{$event}/{weapon.id}")
 public class EfficienciesActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(EfficienciesActionBean.class);
-    
     @SpringBean //Spring can inject even to private and protected fields
-    protected MonsterWeaponService monsterMonsterWeaponService;
-    
+    protected MonsterWeaponService service;
     //--- part for showing a list of monsterMonsterWeapons ----
-    private List<MonsterWeaponDto> monsterMonsterWeapons;
+    private List<MonsterWeaponDto> efficiencies;
 
     //@DontValidate
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
-        monsterMonsterWeapons = monsterMonsterWeaponService.findByMonsterId(Long.parseLong("52"));
-        return new ForwardResolution("/monsterMonsterWeapon/list.jsp");
+        efficiencies = service.findAll();
+        return new ForwardResolution("/efficiencies/list.jsp");
     }
 
 //    public Resolution EfficienciesActionBean()
 //    {
 //        log.debug("default or constructor()");
-//        monsterMonsterWeapons = monsterMonsterWeaponService.findAll();
+//        monsterMonsterWeapons = service.findAll();
 //        return new ForwardResolution("/monsterMonsterWeapon/lolololol.jsp");
 //    }
     public List<MonsterWeaponDto> getMonsterWeapons() {
-        return monsterMonsterWeapons;
+        return efficiencies;
     }
     //--- part for adding a monsterMonsterWeapon ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "name", required = false),
-        @Validate(on = {"add", "save"}, field = "monsterMonsterWeaponType", required = false), 
-        @Validate(on = {"add", "save"}, field = "monsterMonsterWeaponClass", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "range", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "caliber", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "rounds", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 0)
-    })
-    private MonsterWeaponDto monsterMonsterWeapon;
-    
+        @Validate(on = {"add", "save"}, field = "name", required = false),})
+    private MonsterWeaponDto dto;
 
     public Resolution add() {
-        log.debug("add() monsterMonsterWeapon={}", monsterMonsterWeapon);
+        log.debug("add() monsterMonsterWeapon={}", dto);
         getContext().getMessages().add(new SimpleMessage("Called method add"));
         try {
-            monsterMonsterWeapon = monsterMonsterWeaponService.save(monsterMonsterWeapon);
+            dto = service.save(dto);
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-           // getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));
-        
+            // getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));
+
         }
         return new RedirectResolution(this.getClass(), "list");
     }
@@ -77,31 +67,30 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
         //fill up the data for the table if validation errors occured
-        monsterMonsterWeapons = monsterMonsterWeaponService.findAll();
+        efficiencies = service.findAll();
         //return null to let the event handling continue
         return null;
     }
 
     public MonsterWeaponDto getMonsterWeapon() {
-        return monsterMonsterWeapon;
+        return dto;
     }
 
     public void setMonsterWeapon(MonsterWeaponDto monsterMonsterWeapon) {
-        this.monsterMonsterWeapon = monsterMonsterWeapon;
+        this.dto = monsterMonsterWeapon;
     }
 
     //--- part for deleting a monsterMonsterWeapon ----
     public Resolution delete() {
-         getContext().getMessages().add(new SimpleMessage("Called method delete"));
-        log.debug("delete({})", monsterMonsterWeapon.getMonster());
+        getContext().getMessages().add(new SimpleMessage("Called method delete"));
+        log.debug("delete({})", dto.getMonster());
         //only id is filled by the form
-       try {
-            // monsterMonsterWeapon = monsterMonsterWeaponService.findById(monsterMonsterWeapon.getMonster());
-       
+        try {
+            // monsterMonsterWeapon = service.findById(monsterMonsterWeapon.getMonster());
             //monsterMonsterWeaponService.delete(monsterMonsterWeapon.getId());
-       } catch (Exception ex) {
-           getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-          //  getContext().getMessages().add(new LocalizableMessage("delete.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));        
+        } catch (Exception ex) {
+            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+            //  getContext().getMessages().add(new LocalizableMessage("delete.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));        
         }
         return new RedirectResolution(this.getClass(), "list");
     }
@@ -109,27 +98,60 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     //--- part for editing a monsterMonsterWeapon ----
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadMonsterWeaponFromDatabase() {
-//        String ids = getContext().getRequest().getParameter("monsterMonsterWeapon.id");
-//        if (ids == null) return;
-//        monsterMonsterWeapon = monsterMonsterWeaponService.findById(Long.parseLong(ids));        
+        String monsterId = getContext().getRequest().getParameter("monster.id");
+        String weaponId = getContext().getRequest().getParameter("weapon.id");
+        if (monsterId == null || weaponId == null) {
+            return;
+        }
+        try {
+            dto = service.findById(Long.parseLong(monsterId), Long.parseLong(weaponId));
+        } catch (Exception ex) {
+            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+        }
         getContext().getMessages().add(new SimpleMessage("Loaded monsterMonsterWeapon from DB"));
     }
 
+    public Resolution findByMonster() {
+        String monsterId = getContext().getRequest().getParameter("monster.id");
+        if (monsterId == null) {
+            return new RedirectResolution(this.getClass(), "list");
+        }
+        efficiencies = service.findByMonsterId(Long.parseLong(monsterId));
+        return new ForwardResolution("/efficiencies/list.jsp");
+    }
+
+    public Resolution findByWeapon() {
+        String weaponId = getContext().getRequest().getParameter("weapon.id");
+        if (weaponId == null) {
+            return new RedirectResolution(this.getClass(), "list");
+        }
+        efficiencies = service.findByWeaponId(Long.parseLong(weaponId));
+        return new ForwardResolution("/efficiencies/list.jsp");
+    }
+    
+     public Resolution clearFilters() {
+        log.debug("edit() monsterMonsterWeapon={}", dto);
+        getContext().getMessages().add(new SimpleMessage("Called method edit"));
+        efficiencies = service.findAll();
+        return new ForwardResolution("/efficiencies/edit.jsp");
+    }
+
+
     public Resolution edit() {
-        log.debug("edit() monsterMonsterWeapon={}", monsterMonsterWeapon);
-         getContext().getMessages().add(new SimpleMessage("Called method edit"));
-        return new ForwardResolution("/monsterMonsterWeapon/edit.jsp");
+        log.debug("edit() monsterMonsterWeapon={}", dto);
+        getContext().getMessages().add(new SimpleMessage("Called method edit"));
+        return new ForwardResolution("/efficiencies/edit.jsp");
     }
 
     public Resolution save() {
-         getContext().getMessages().add(new SimpleMessage("Called method save"));
-        log.debug("save() monsterMonsterWeapon={}", monsterMonsterWeapon);
-        monsterMonsterWeaponService.update(monsterMonsterWeapon);
+        getContext().getMessages().add(new SimpleMessage("Called method save"));
+        log.debug("save() monsterMonsterWeapon={}", dto);
+        service.update(dto);
         return new RedirectResolution(this.getClass(), "list");
     }
 
     public Resolution cancel() {
-         getContext().getMessages().add(new SimpleMessage("Called method cancel"));
+        getContext().getMessages().add(new SimpleMessage("Called method cancel"));
         log.debug("cancel");
         return new RedirectResolution(this.getClass(), "list");
     }

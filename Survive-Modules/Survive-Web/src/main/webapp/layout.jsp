@@ -71,18 +71,26 @@
                             <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
                             <li ><a href="/Survive-Web/index.jsp"><f:message key="navigation.index"/></a></li>
                             <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monsters"/></s:link></li>
-                            <li ><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><f:message key="navigation.areas"/></s:link></li>
-                            <li ><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean"><f:message key="navigation.weapons"/></s:link></li>
+
+                                <li ><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><f:message key="navigation.areas"/></s:link></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.weapons"/><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean"><span class="glyphicon glyphicon-screenshot">&nbsp;<f:message key="navigation.weapons.management"/></span></s:link></li>
+                                        <li class="divider"></li>
+                                        <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean"><span class="glyphicon glyphicon-flash">&nbsp;<f:message key="navigation.weapons.efficiencies"/></span></s:link></li>
+                                    </ul>
+                                </li>
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li></li>
                                     <li><a href="/Survive-Web/signin.jsp"><f:message key="navigation.signin"/></li>
-                                    <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.MonsterWeaponActionBean"><f:message key="navigation.efficiencies"/></s:link></li>
-                                        <li class="divider"></li>
-                                        <li><a href="/Survive-Web/monster/gallery.jsp"  ><f:message key="navigation.gallery"/></a></li>
-                                        <li class="dropdown-header">Additional Resources</li>
-                                        <li><a href="/Survive-Web/template.jsp"><f:message key="navigation.template"/></a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/Survive-Web/monster/gallery.jsp"  ><f:message key="navigation.gallery"/></a></li>
+                                    <li class="dropdown-header">Additional Resources</li>
+                                    <li><a href="/Survive-Web/template.jsp"><f:message key="navigation.template"/></a></li>
                                 </ul>
                             </li>
                         </ul>
