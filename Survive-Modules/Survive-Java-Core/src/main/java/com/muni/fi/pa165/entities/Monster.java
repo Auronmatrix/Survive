@@ -73,9 +73,9 @@ public class Monster implements Serializable {
     @Column(name = "WEIGHT")
     private Double weight;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "monster")
-    private Set<Monsterweapon> monsterweaponSet;
+    private Set<MonsterweaponPK> monsterweaponSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "monster")
-    private Set<Monsterarea> monsterareaSet;
+    private Set<MonsterareaPK> monsterareaSet;
 
     public Monster() {
     }
@@ -175,20 +175,20 @@ public class Monster implements Serializable {
     }
 
     @XmlTransient
-    public Set<Monsterweapon> getMonsterweaponSet() {
+    public Set<MonsterweaponPK> getMonsterweaponSet() {
         return monsterweaponSet;
     }
 
-    public void setMonsterweaponSet(Set<Monsterweapon> monsterweaponSet) {
+    public void setMonsterweaponSet(Set<MonsterweaponPK> monsterweaponSet) {
         this.monsterweaponSet = monsterweaponSet;
     }
 
     @XmlTransient
-    public Set<Monsterarea> getMonsterareaSet() {
+    public Set<MonsterareaPK> getMonsterareaSet() {
         return monsterareaSet;
     }
 
-    public void setMonsterareaSet(Set<Monsterarea> monsterareaSet) {
+    public void setMonsterareaSet(Set<MonsterareaPK> monsterareaSet) {
         this.monsterareaSet = monsterareaSet;
     }
 

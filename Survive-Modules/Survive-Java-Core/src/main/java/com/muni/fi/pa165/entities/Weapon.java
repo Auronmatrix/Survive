@@ -67,7 +67,7 @@ public class Weapon implements Serializable {
      @Enumerated(EnumType.ORDINAL)
     private WeaponType weapontype;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "weapon")
-    private Set<Monsterweapon> monsterweaponSet;
+    private Set<MonsterweaponPK> monsterweaponSet;
 
     public Weapon() {
     }
@@ -143,11 +143,11 @@ public class Weapon implements Serializable {
   
 
     @XmlTransient
-    public Set<Monsterweapon> getMonsterweaponSet() {
+    public Set<MonsterweaponPK> getMonsterweaponSet() {
         return monsterweaponSet;
     }
 
-    public void setMonsterweaponSet(Set<Monsterweapon> monsterweaponSet) {
+    public void setMonsterweaponSet(Set<MonsterweaponPK> monsterweaponSet) {
         this.monsterweaponSet = monsterweaponSet;
     }
 
