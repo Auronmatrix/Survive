@@ -13,8 +13,7 @@ Code name: `PA165-SURVIVE`
 Team members: 
 Aubrey Oosthuizen,
 Irina Serdyukova,
-Maria Dolgikh,
-Michal Vinkler
+Maria Dolgikh
 
 ## Project Description
 
