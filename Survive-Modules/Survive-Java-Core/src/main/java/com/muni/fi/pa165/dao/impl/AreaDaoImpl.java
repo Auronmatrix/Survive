@@ -15,9 +15,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 /**
- * This class represents the implementation of all basic operations. Typed JpaDao objects extending the GenericJpaDao
- * abstract class and implementing a Type specific interface. This Dao object will be used to perform all operations
- * within the business layer.
+ * This class represents the implementation of all basic operations. Typed
+ * JpaDao objects extending the GenericJpaDao abstract class and implementing a
+ * Type specific interface. This Dao object will be used to perform all
+ * operations within the business layer.
  *
  * @author Aubrey Oosthuizen
  */
@@ -29,45 +30,41 @@ public class AreaDaoImpl extends GenericDaoAbs<Area, Long> implements AreaDao {
     }
 
     @Override
-    public boolean checkAvailable(String areaName){
-        
-        if(areaName == null) {
+    public boolean checkAvailable(String areaName) {
+        if (areaName == null) {
             throw new IllegalArgumentException("Null argument.");
         }
 //        Assert.notNull(areaName);
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-         Area area = null;
+        Area area = null;
         TypedQuery<Area> query = em.createQuery("SELECT a from " + getPersistentClass().getSimpleName() + " a where a.name = :name", Area.class);
         query.setParameter("name", areaName);
-        EntityTransaction tx = em.getTransaction(); 
+        EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-             area = query.getSingleResult();
-           
-           
-
+            area = query.getSingleResult();
+            if (area != null) {
+            return true;
         }
-        finally {
+        } finally {
             tx.commit();
             if (em != null) {
                 em.close();
             }
         }
-        if (area != null) {
-               return true;
-           }
-           return false;
         
+        return false;
+
     }
 
     @Override
-    public Area getByName(String areaName){
+    public Area getByName(String areaName) {
         Assert.notNull(areaName);
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        TypedQuery<Area> query = em.createQuery("SELECT a from " + getPersistentClass().getSimpleName() + " a where a.name = :name", Area.class);
-        query.setParameter("name", areaName);
+        TypedQuery<Area> query = em.createQuery("Select a from Area a where a.name = " + areaName, Area.class);
+
         Area area = null;
-        EntityTransaction tx = em.getTransaction(); 
+        EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
             area = query.getSingleResult();
@@ -81,4 +78,3 @@ public class AreaDaoImpl extends GenericDaoAbs<Area, Long> implements AreaDao {
         return area;
     }
 }
-
