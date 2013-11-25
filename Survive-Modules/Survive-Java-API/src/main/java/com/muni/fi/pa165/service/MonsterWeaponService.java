@@ -4,6 +4,7 @@
  */
 package com.muni.fi.pa165.service;
 
+import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.dto.WeaponDto;
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
  */
 public interface MonsterWeaponService {
 
+    public MonsterWeaponDto save(MonsterWeaponDto dto, MonsterDto monster, WeaponDto weapon);
+
     public MonsterWeaponDto save(MonsterWeaponDto dto);
 
     /**
@@ -22,6 +25,8 @@ public interface MonsterWeaponService {
      * @param dto object of type MonsterWeaponDto
      */
     public MonsterWeaponDto update(MonsterWeaponDto dto);
+
+    public MonsterWeaponDto update(MonsterWeaponDto dto, MonsterDto monster, WeaponDto weapon);
 
     /**
      * Deletes MonsterWeaponDto
