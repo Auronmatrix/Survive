@@ -1,4 +1,1 @@
-/Survive-Modules/Survive-Web/target/
-/Survive-Modules/Survive-Java-API/target/
-/Survive-Modules/Survive-Java-API/
-/Survive-Java-Core/*.log
+*.log
