@@ -69,7 +69,7 @@
                         <ul class="nav navbar-nav">
 
                             <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
-                            <li ><a href="/Survive-Web/index.jsp"><f:message key="navigation.index"/></a></li>
+                            <li ><a href="${pageContext.request.contextPath}/index.jsp"><f:message key="navigation.index"/></a></li>
                             <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monsters"/></s:link></li>
 
                                 <li ><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><f:message key="navigation.areas"/></s:link></li>
@@ -86,11 +86,11 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.dropdown"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li></li>
-                                    <li><a href="/Survive-Web/signin.jsp"><f:message key="navigation.signin"/></li>
+                                    <li><a href="${pageContext.request.contextPath}/signin.jsp"><f:message key="navigation.signin"/></li>
                                     <li class="divider"></li>
-                                    <li><a href="/Survive-Web/monster/gallery.jsp"  ><f:message key="navigation.gallery"/></a></li>
+                                    <li><a href="${pageContext.request.contextPath}/monster/gallery.jsp"  ><f:message key="navigation.gallery"/></a></li>
                                     <li class="dropdown-header">Additional Resources</li>
-                                    <li><a href="/Survive-Web/template.jsp"><f:message key="navigation.template"/></a></li>
+                                    <li><a href="${pageContext.request.contextPath}/template.jsp"><f:message key="navigation.template"/></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -102,7 +102,7 @@
                                                     <button type="submit" class="btn btn-default">Submit</button>
                                                 </form>-->
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/Survive-Web/signin.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
+                            <li><a href="${pageContext.request.contextPath}/signin.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
