@@ -51,7 +51,7 @@
         <div class="form-group">
             <s:label for="monsterClass" class="col-sm-2 control-label" title="monster.class"/>
             <div class="col-sm-10">
-                <s:select class="form-control"   id="monsterClass" name="monster.class"><s:options-enumeration  enum="com.muni.fi.pa165.enums.MonsterClass"/></s:select>
+                <s:select class="form-control"   id="monsterClass" name="monster.monsterClass"><s:options-enumeration  enum="com.muni.fi.pa165.enums.MonsterClass"/></s:select>
                 </div>
             </div>
 

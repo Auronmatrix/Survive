@@ -59,8 +59,8 @@
                         <td><c:out value="${monsterWeapon.description}" /></td>   
                         <td>         
                             <s:form beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" action="edit">
-                                <s:hidden name="monsterWeapon.monster.id" value="${monsterWeapon.monster.id}"/>
-                                <s:hidden name="monsterWeapon.weapon.id" value="${monsterWeapon.weapon.id}"/>
+                                <s:hidden name="monster.id" value="${monsterWeapon.monster.id}"/>
+                                <s:hidden name="weapon.id" value="${monsterWeapon.weapon.id}"/>
                                 <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
                             </s:form>
                         </td>
@@ -77,7 +77,21 @@
         </div>
         <s:form beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean"  action="add" class="form-horizontal">
             <fieldset><legend><f:message key="monsterWeapon.list.newmonsterWeapon"/></legend>
-
+                   <div class="form-group">
+        <div class="form-group">
+            <s:label for="monsterWeapon.monster.id"  class="col-sm-2 control-label" name="monsterWeapon.monster.id" />
+            <div class="col-sm-10">
+                <s:select class="form-control"   id="monsterWeapon.monster.id" name="monsterWeapon.monster.id"><s:options-collection collection="${actionBean.monsters}"  label="name" value="id" /></s:select>
+           </div>
+        </div>
+           
+            <div class="form-group">
+            <s:label for="monsterWeapon.weapon.id"  class="col-sm-2 control-label" name="monsterWeapon.weapon.id" />
+            <div class="col-sm-10">
+                <s:select class="form-control"   id="monsterWeapon.weapon.id" name="monsterWeapon.weapon.id"><s:options-collection collection="${actionBean.weapons}"  label="name" value="id" /></s:select>
+           </div>
+        </div>
+ <%@include file="form.jsp"%>
                 <s:submit class="btn btn-info" name="add"><f:message key="forms.save" /></s:submit>
                 </fieldset>
         </s:form>

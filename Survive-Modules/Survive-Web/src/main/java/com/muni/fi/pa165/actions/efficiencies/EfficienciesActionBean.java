@@ -1,8 +1,12 @@
 package com.muni.fi.pa165.actions.efficiencies;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
+import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.service.MonsterWeaponService;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
+import com.muni.fi.pa165.dto.WeaponDto;
+import com.muni.fi.pa165.service.MonsterService;
+import com.muni.fi.pa165.service.WeaponService;
 import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.integration.spring.SpringBean;
@@ -26,16 +30,56 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     final static Logger log = LoggerFactory.getLogger(EfficienciesActionBean.class);
     @SpringBean //Spring can inject even to private and protected fields
     protected MonsterWeaponService service;
+    
+    @SpringBean
+    protected WeaponService weaponService;
+    
+    @SpringBean
+    protected MonsterService monsterService;
     //--- part for showing a list of monsterMonsterWeapons ----
     private List<MonsterWeaponDto> efficiencies;
+    private List<WeaponDto> weapons;
+    private List<MonsterDto> monsters;
+    
+
 
     //@DontValidate
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
         efficiencies = service.findAll();
+        
+        
         return new ForwardResolution("/efficiencies/list.jsp");
     }
+
+    public List<MonsterWeaponDto> getEfficiencies() {
+        return efficiencies;
+    }
+
+    public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
+        this.efficiencies = efficiencies;
+    }
+
+    public List<WeaponDto> getWeapons() {
+         weapons = weaponService.findAll();
+        return weapons;
+    }
+
+    public void setWeapons(List<WeaponDto> weapons) {
+        this.weapons = weapons;
+    }
+
+    public List<MonsterDto> getMonsters() {
+        monsters = monsterService.findAll();
+        return monsters;
+    }
+
+    public void setMonsters(List<MonsterDto> monsters) {
+        this.monsters = monsters;
+    }
+    
+    
 
 //    public Resolution EfficienciesActionBean()
 //    {
@@ -49,13 +93,15 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     //--- part for adding a monsterMonsterWeapon ----
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "name", required = false),})
-    private MonsterWeaponDto dto;
+    private MonsterWeaponDto monsterWeapon;
 
     public Resolution add() {
-        log.debug("add() monsterMonsterWeapon={}", dto);
+        log.debug("add() monsterMonsterWeapon={}", monsterWeapon);
         getContext().getMessages().add(new SimpleMessage("Called method add"));
         try {
-            dto = service.save(dto);
+            MonsterDto monster = monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id")));
+            WeaponDto weapon = weaponService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.weapon.id")));
+            monsterWeapon = service.save(monsterWeapon, monster, weapon);
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
             // getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));
@@ -73,17 +119,17 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     }
 
     public MonsterWeaponDto getMonsterWeapon() {
-        return dto;
+        return monsterWeapon;
     }
 
     public void setMonsterWeapon(MonsterWeaponDto monsterMonsterWeapon) {
-        this.dto = monsterMonsterWeapon;
+        this.monsterWeapon = monsterMonsterWeapon;
     }
 
     //--- part for deleting a monsterMonsterWeapon ----
     public Resolution delete() {
         getContext().getMessages().add(new SimpleMessage("Called method delete"));
-        log.debug("delete({})", dto.getMonster());
+        log.debug("delete({})", monsterWeapon.getMonster());
         //only id is filled by the form
         try {
             // monsterMonsterWeapon = service.findById(monsterMonsterWeapon.getMonster());
@@ -103,8 +149,9 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         if (monsterId == null || weaponId == null) {
             return;
         }
+        
         try {
-            dto = service.findById(Long.parseLong(monsterId), Long.parseLong(weaponId));
+            monsterWeapon = service.findById(Long.parseLong(monsterId), Long.parseLong(weaponId));
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
         }
@@ -130,7 +177,7 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     }
     
      public Resolution clearFilters() {
-        log.debug("edit() monsterMonsterWeapon={}", dto);
+        log.debug("edit() monsterMonsterWeapon={}", monsterWeapon);
         getContext().getMessages().add(new SimpleMessage("Called method edit"));
         efficiencies = service.findAll();
         return new ForwardResolution("/efficiencies/edit.jsp");
@@ -138,15 +185,26 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
 
 
     public Resolution edit() {
-        log.debug("edit() monsterMonsterWeapon={}", dto);
+        log.debug("edit() monsterMonsterWeapon={}", monsterWeapon);
         getContext().getMessages().add(new SimpleMessage("Called method edit"));
         return new ForwardResolution("/efficiencies/edit.jsp");
     }
 
     public Resolution save() {
         getContext().getMessages().add(new SimpleMessage("Called method save"));
-        log.debug("save() monsterMonsterWeapon={}", dto);
-        service.update(dto);
+        try {
+          //  MonsterDto monster = monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id")));
+          //  WeaponDto weapon = weaponService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.weapon.id")));
+            monsterWeapon =  service.update(monsterWeapon);
+            
+            
+        } catch (Exception ex) {
+            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+            // getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));
+
+        }
+        log.debug("save() monsterMonsterWeapon={}", monsterWeapon);
+       
         return new RedirectResolution(this.getClass(), "list");
     }
 
