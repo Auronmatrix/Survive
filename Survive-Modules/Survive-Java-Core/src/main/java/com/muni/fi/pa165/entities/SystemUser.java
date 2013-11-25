@@ -5,38 +5,61 @@
 package com.muni.fi.pa165.entities;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aubrey Oosthuizen / Maria
+ * @author Auron
  */
 @Entity
-public class SystemUser implements Serializable {
-
+@Table(name = "SYSTEMUSER")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Systemuser.findAll", query = "SELECT s FROM Systemuser s"),
+    @NamedQuery(name = "Systemuser.findById", query = "SELECT s FROM Systemuser s WHERE s.id = :id"),
+    @NamedQuery(name = "Systemuser.findByAccesslevel", query = "SELECT s FROM Systemuser s WHERE s.accesslevel = :accesslevel"),
+    @NamedQuery(name = "Systemuser.findByPassword", query = "SELECT s FROM Systemuser s WHERE s.password = :password"),
+    @NamedQuery(name = "Systemuser.findByUsername", query = "SELECT s FROM Systemuser s WHERE s.username = :username")})
+public class Systemuser implements Serializable {
     private static final long serialVersionUID = 1L;
-    //Entity Attributes
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID")
     private Long id;
-    @Column(nullable = false)
-    private String username;
-    @Column(length = 4, nullable = false)
+    @Basic(optional = false)
+    @Column(name = "ACCESSLEVEL")
+    private int accesslevel;
+    @Basic(optional = false)
+    @Column(name = "PASSWORD")
     private String password;
-    @Column(nullable = false)
-    private Integer accessLevel;
+    @Basic(optional = false)
+    @Column(name = "USERNAME")
+    private String username;
 
-    //Entity Methods
-    //Getters and Setters
-    public void setAccessLevel(Integer accessLevel) {
-        this.accessLevel = accessLevel;
+    public Systemuser() {
     }
-    
-    
+
+    public Systemuser(Long id) {
+        this.id = id;
+    }
+
+    public Systemuser(Long id, int accesslevel, String password, String username) {
+        this.id = id;
+        this.accesslevel = accesslevel;
+        this.password = password;
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,12 +68,12 @@ public class SystemUser implements Serializable {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public int getAccesslevel() {
+        return accesslevel;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAccesslevel(int accesslevel) {
+        this.accesslevel = accesslevel;
     }
 
     public String getPassword() {
@@ -61,15 +84,14 @@ public class SystemUser implements Serializable {
         this.password = password;
     }
 
-    public Integer getAccessLevel() {
-        return accessLevel;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAccessLevel(int accessLevel) {
-        this.accessLevel = accessLevel;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    //Interface methods
     @Override
     public int hashCode() {
         int hash = 0;
@@ -77,5 +99,22 @@ public class SystemUser implements Serializable {
         return hash;
     }
 
-  
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Systemuser)) {
+            return false;
+        }
+        Systemuser other = (Systemuser) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.muni.fi.pa165.entities.Systemuser[ id=" + id + " ]";
+    }
+    
 }

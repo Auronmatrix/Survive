@@ -5,23 +5,44 @@
 package com.muni.fi.pa165.entities;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aubrey Oosthuizen
+ * @author Auron
  */
 @Entity
-//@Table(name="generic_test")
-public class GenericEntity implements Serializable {
-
+@Table(name = "GENERICENTITY")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Genericentity.findAll", query = "SELECT g FROM Genericentity g"),
+    @NamedQuery(name = "Genericentity.findById", query = "SELECT g FROM Genericentity g WHERE g.id = :id"),
+    @NamedQuery(name = "Genericentity.findByName", query = "SELECT g FROM Genericentity g WHERE g.name = :name")})
+public class Genericentity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID")
     private Long id;
+    @Column(name = "NAME")
+    private String name;
+
+    public Genericentity() {
+    }
+
+    public Genericentity(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -30,7 +51,6 @@ public class GenericEntity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    String name;
 
     public String getName() {
         return name;
@@ -50,10 +70,10 @@ public class GenericEntity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GenericEntity)) {
+        if (!(object instanceof Genericentity)) {
             return false;
         }
-        GenericEntity other = (GenericEntity) object;
+        Genericentity other = (Genericentity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -62,6 +82,7 @@ public class GenericEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.muni.fi.pa165.dao.commons.GenericEntity[ id=" + id + " ]";
+        return "com.muni.fi.pa165.entities.Genericentity[ id=" + id + " ]";
     }
+    
 }
