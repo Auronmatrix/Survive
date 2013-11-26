@@ -1,1 +1,20 @@
+# NetBeans specific #
+/Survive-POM/Modules/Survive-Java-Core/target/
+/Survive-POM/Modules/Survive-Java-API/target/
+/Survive-POM/Modules/Survive-Web/target/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
 *.log
