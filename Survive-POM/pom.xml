@@ -7,9 +7,9 @@
     <packaging>pom</packaging>
     <name>Survive-POM</name>
     <modules>
-        <module>Modules/Survive-Java-Core</module>
-        <module>Modules/Survive-Java-API</module>
-        <module>Modules/Survive-Web</module>
+        <module>Survive-Web</module>
+        <module>Survive-Java-Core</module>
+        <module>Survive-Java-API</module>
     </modules>
    
    
