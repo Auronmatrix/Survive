@@ -6,6 +6,7 @@
 package com.muni.fi.pa165.dao;
 
 import com.muni.fi.pa165.entities.Monsterarea;
+import com.muni.fi.pa165.entities.MonsterareaPK;
 import java.util.List;
 
 /**
@@ -21,5 +22,11 @@ public interface MonsterAreaDao extends GenericDao<Monsterarea, Long> {
 
    
     List<Monsterarea> getByAreaId(Long id);
+    
+    List<Monsterarea> findAll();
+    
+    Monsterarea findById(MonsterareaPK id);
+    
+    void delete(MonsterareaPK pk);
     
 }
