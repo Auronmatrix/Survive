@@ -82,7 +82,7 @@ public class Genericentity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.muni.fi.pa165.entities.Genericentity[ id=" + id + " ]";
+        return "com.muni.fi.pa165.dao.impl.Genericentity[ id=" + id + " ]";
     }
     
 }
