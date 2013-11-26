@@ -132,11 +132,11 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         log.debug("delete({})", monsterWeapon.getMonster());
         //only id is filled by the form
         try {
-            // monsterMonsterWeapon = service.findById(monsterMonsterWeapon.getMonster());
-            //monsterMonsterWeaponService.delete(monsterMonsterWeapon.getId());
+            Long monsterId = Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id"));
+            Long weaponId = Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.weapon.id"));
+          service.delete(monsterId, weaponId);
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-            //  getContext().getMessages().add(new LocalizableMessage("delete.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));        
         }
         return new RedirectResolution(this.getClass(), "list");
     }
