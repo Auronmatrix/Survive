@@ -37,9 +37,9 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     @Override
     public MonsterWeaponDto save(MonsterWeaponDto dto, MonsterDto monster, WeaponDto weapon ) {
         
-        dto.setMonster(mapper.map(monster, Monster.class));
-        dto.setWeapon(mapper.map(weapon, Weapon.class));
-        dto.setId(new MonsterweaponPK(dto.getMonster().getId(), dto.getWeapon().getId()));
+//        dto.setMonster(mapper.map(monster, Monster.class));
+//        dto.setWeapon(mapper.map(weapon, Weapon.class));
+//        dto.setId(new MonsterweaponPK(dto.getMonster().getId(), dto.getWeapon().getId()));
         
         Monsterweapon entity = mapper.map(dto, Monsterweapon.class);
         monsterWeaponDao.save(entity);
@@ -58,9 +58,9 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
      @Override
     public MonsterWeaponDto update(MonsterWeaponDto dto, MonsterDto monster, WeaponDto weapon ) {
         
-        dto.setMonster(mapper.map(monster, Monster.class));
-        dto.setWeapon(mapper.map(weapon, Weapon.class));
-        dto.setId(new MonsterweaponPK(dto.getMonster().getId(), dto.getWeapon().getId()));        
+//        dto.setMonster(mapper.map(monster, Monster.class));
+//        dto.setWeapon(mapper.map(weapon, Weapon.class));
+//        dto.setId(new MonsterweaponPK(dto.getMonster().getId(), dto.getWeapon().getId()));        
         Monsterweapon entity = mapper.map(dto, Monsterweapon.class);
         monsterWeaponDao.update(entity);
         return mapper.map(entity, MonsterWeaponDto.class);

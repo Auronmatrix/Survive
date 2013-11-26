@@ -5,7 +5,7 @@
  */
 package com.muni.fi.pa165.dto;
 
-import com.muni.fi.pa165.entities.*;
+
 import com.muni.fi.pa165.enums.MonsterClass;
 import java.util.ArrayList;
 import java.util.List;

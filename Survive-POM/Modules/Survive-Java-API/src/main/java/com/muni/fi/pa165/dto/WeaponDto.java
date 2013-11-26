@@ -4,7 +4,7 @@
  */
 package com.muni.fi.pa165.dto;
 
-import com.muni.fi.pa165.entities.Weapon;
+//import com.muni.fi.pa165.entities.Weapon;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import java.util.ArrayList;

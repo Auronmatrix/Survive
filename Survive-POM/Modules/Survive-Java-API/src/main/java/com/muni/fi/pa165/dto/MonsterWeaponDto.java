@@ -4,9 +4,9 @@
  */
 package com.muni.fi.pa165.dto;
 
-import com.muni.fi.pa165.entities.Monster;
-import com.muni.fi.pa165.entities.MonsterweaponPK;
-import com.muni.fi.pa165.entities.Weapon;
+//import com.muni.fi.pa165.entities.Monster;
+//import com.muni.fi.pa165.entities.Weapon;
+//import com.muni.fi.pa165.entities.MonsterweaponPK;
 import java.util.Objects;
 
 /**
@@ -16,13 +16,13 @@ import java.util.Objects;
 public class MonsterWeaponDto {
 
  
-    private Monster monster;
-    private Weapon weapon;
+    private Long monsterId;
+    private Long weaponId;
     private Integer hitRate;
     private Integer damage;
     private Integer efficiency;
     private String description;
-    private MonsterweaponPK id;
+//    private MonsterweaponPK id;
 
     public String getDescription() {
         return description;
@@ -32,32 +32,32 @@ public class MonsterWeaponDto {
         this.description = description;
     }
 
-    public MonsterweaponPK getId() {
-        return id;
-    }
-
-    public void setId(MonsterweaponPK id) {
-        this.id = id;
-    }
+//    public MonsterweaponPK getId() {
+//        return id;
+//    }
+//
+//    public void setId(MonsterweaponPK id) {
+//        this.id = id;
+//    }
     
     
     
 
 
-    public Monster getMonster() {
-        return monster;
+    public Long getMonster() {
+        return monsterId;
     }
 
-    public void setMonster(Monster monster) {
-        this.monster = monster;
+    public void setMonster(Long monster) {
+        this.monsterId = monster;
     }
 
-    public Weapon getWeapon() {
-        return weapon;
+    public Long getWeapon() {
+        return weaponId;
     }
 
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+    public void setWeapon(Long weapon) {
+        this.weaponId = weapon;
     }
 
     
@@ -91,8 +91,8 @@ public class MonsterWeaponDto {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.monster);
-        hash = 47 * hash + Objects.hashCode(this.weapon);
+        hash = 47 * hash + Objects.hashCode(this.monsterId);
+        hash = 47 * hash + Objects.hashCode(this.weaponId);
         return hash;
     }
 
@@ -105,10 +105,10 @@ public class MonsterWeaponDto {
             return false;
         }
         final MonsterWeaponDto other = (MonsterWeaponDto) obj;
-        if (!Objects.equals(this.monster, other.monster)) {
+        if (!Objects.equals(this.monsterId, other.monsterId)) {
             return false;
         }
-        if (!Objects.equals(this.weapon, other.weapon)) {
+        if (!Objects.equals(this.weaponId, other.weaponId)) {
             return false;
         }
         return true;

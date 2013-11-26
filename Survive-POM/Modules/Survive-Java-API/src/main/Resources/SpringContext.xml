@@ -14,9 +14,9 @@
     
     <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />
     
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+<!--    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="ProjectPU"/>
-    </bean>
+    </bean>-->
     
     <!-- Mapping DAO -->
     <!--    <bean name="areaDao" class="com.muni.fi.pa165.dao.impl.AreaJpaDaoImpl"/>
@@ -38,7 +38,7 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
     
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    <!--<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>-->
     
     <bean id="translator" class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
         

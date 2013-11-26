@@ -71,8 +71,8 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
         weapon.setWeaponclass(WeaponClass.Ranged);
         weapon.setWeapontype(WeaponType.Gun);
 
-        monsterWeaponDto.setWeapon(weapon);
-        monsterWeaponDto.setMonster(monster);
+//        monsterWeaponDto.setWeapon(weapon);
+//        monsterWeaponDto.setMonster(monster);
         monsterWeaponDto.setHitRate(5);
         monsterWeaponDto.setDamage(12);
         monsterWeaponDto.setEfficiency(55);

@@ -114,5 +114,10 @@
             <artifactId>dozer</artifactId>
             <version>5.4.0</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Survive-Java-Business-API</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
