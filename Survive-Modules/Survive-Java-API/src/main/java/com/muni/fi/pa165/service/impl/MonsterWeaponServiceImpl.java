@@ -8,6 +8,7 @@ import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.service.MonsterWeaponService;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
+import com.muni.fi.pa165.dto.MonsterWeaponPkDto;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.entities.Monsterweapon;
@@ -46,6 +47,14 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     }
     
+    public MonsterWeaponPkDto getCompositeKey(Long monsterId, Long weaponId)
+    {
+        MonsterWeaponPkDto dto = new MonsterWeaponPkDto();
+        dto.setMonsterId(monsterId);
+        dto.setWeaponId(weaponId);       
+        return dto;
+    }
+    
      @Override
     public MonsterWeaponDto update(MonsterWeaponDto dto, MonsterDto monster, WeaponDto weapon ) {
         
@@ -77,7 +86,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     }
 
-    @Override
+   
     public void delete(MonsterWeaponDto dto) {
 
         monsterWeaponDao.delete(mapper.map(dto, Monsterweapon.class));
@@ -122,8 +131,9 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     @Override
-    public void delete(Long id) {
-        monsterWeaponDao.delete(id);
+    public void delete(MonsterWeaponPkDto id) {
+        MonsterweaponPK pk = mapper.map(id, MonsterweaponPK.class);
+        monsterWeaponDao.delete(pk);
     }
     
     @Override
@@ -132,5 +142,14 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
         MonsterweaponPK pk = new MonsterweaponPK(monsterId, weaponId);
         Monsterweapon entity = monsterWeaponDao.findById(pk);
         return mapper.map(entity, MonsterWeaponDto.class);
+    }
+
+    @Override
+    public void delete(Long monsterId, Long weaponId) {
+     MonsterWeaponPkDto pkDto = new MonsterWeaponPkDto();
+     pkDto.setMonsterId(monsterId);
+     pkDto.setWeaponId(weaponId);
+     MonsterweaponPK pk = mapper.map(pkDto, MonsterweaponPK.class);
+     monsterWeaponDao.delete(pk);
     }
 }

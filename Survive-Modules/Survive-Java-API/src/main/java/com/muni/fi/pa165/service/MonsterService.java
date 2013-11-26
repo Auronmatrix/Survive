@@ -14,6 +14,8 @@ import java.util.List;
 public interface MonsterService {
 
     public MonsterDto save(MonsterDto dto);
+    
+    
 
     /**
      * Updates WeaponDto
