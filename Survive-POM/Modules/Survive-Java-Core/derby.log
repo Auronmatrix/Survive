@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Nov 26 13:05:59 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0142-944d-3bf9-0000006a0170 
+on database directory memory:C:\Users\Auron\Documents\pa165\Project Survive\Survive-Modules\Survive-Java-Core\test with class loader sun.misc.Launcher$AppClassLoader@1d5550d 
+Loaded from file:/C:/Users/Auron/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_45-b18
+user.dir=C:\Users\Auron\Documents\pa165\Project Survive\Survive-Modules\Survive-Java-Core
+os.name=Windows 7
+os.arch=x86
+os.version=6.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
