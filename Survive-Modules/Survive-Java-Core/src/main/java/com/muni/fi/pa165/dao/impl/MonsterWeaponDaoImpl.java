@@ -11,6 +11,7 @@ import com.muni.fi.pa165.entities.Monsterweapon;
 import com.muni.fi.pa165.entities.MonsterweaponPK;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -40,6 +41,26 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
         List<Monsterweapon> query = em.createNamedQuery("Monsterweapon.findByWeaponid").setParameter("weaponid", id).getResultList();
         return query;
+    }
+    
+    @Override
+    public void delete(MonsterweaponPK pk)
+    {    
+        EntityManager em = this.getEntityManagerFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction(); 
+        try {
+                tx.begin();
+                Monsterweapon entity = findById(pk);
+                em.merge(pk);
+               em.merge(entity);
+               em.remove(entity);
+               tx.commit();
+               }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     @Override

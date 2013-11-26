@@ -20,6 +20,7 @@ public interface MonsterWeaponDao extends GenericDao<Monsterweapon, Long> {
     
     public List<Monsterweapon> getByWeaponId(Long id);
     
+    public void delete(MonsterweaponPK id);
     
     public Monsterweapon findById(MonsterweaponPK id);
     
