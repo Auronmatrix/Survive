@@ -40,6 +40,10 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 //        dto.setMonster(mapper.map(monster, Monster.class));
 //        dto.setWeapon(mapper.map(weapon, Weapon.class));
 //        dto.setId(new MonsterweaponPK(dto.getMonster().getId(), dto.getWeapon().getId()));
+        MonsterWeaponPkDto monsterweapon = new MonsterWeaponPkDto();
+        monsterweapon.setMonsterId(monster.getId());
+        monsterweapon.setWeaponId(weapon.getId());
+        dto.setId(monsterweapon);
         
         Monsterweapon entity = mapper.map(dto, Monsterweapon.class);
         monsterWeaponDao.save(entity);
@@ -125,8 +129,10 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     public List<MonsterWeaponDto> findAll() {
         List<MonsterWeaponDto> dtoList = new ArrayList<>();
         for (Monsterweapon o : monsterWeaponDao.findAll()) {
+            
             dtoList.add(this.mapper.map(o, MonsterWeaponDto.class));
         }
+        
         return dtoList;
     }
 
