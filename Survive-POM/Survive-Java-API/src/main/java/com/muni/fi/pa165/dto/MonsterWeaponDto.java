@@ -6,7 +6,7 @@ package com.muni.fi.pa165.dto;
 
 //import com.muni.fi.pa165.entities.Monster;
 //import com.muni.fi.pa165.entities.Weapon;
-//import com.muni.fi.pa165.entities.MonsterweaponPK;
+import com.muni.fi.pa165.dto.MonsterWeaponPkDto;
 import java.util.Objects;
 
 /**
@@ -22,7 +22,7 @@ public class MonsterWeaponDto {
     private Integer damage;
     private Integer efficiency;
     private String description;
-//    private MonsterweaponPK id;
+    private MonsterWeaponPkDto id;
 
     public String getDescription() {
         return description;
@@ -32,13 +32,13 @@ public class MonsterWeaponDto {
         this.description = description;
     }
 
-//    public MonsterweaponPK getId() {
-//        return id;
-//    }
+    public MonsterWeaponPkDto getId() {
+        return id;
+    }
 //
-//    public void setId(MonsterweaponPK id) {
-//        this.id = id;
-//    }
+    public void setId(MonsterWeaponPkDto id) {
+        this.id = id;
+    }
     
     
     
@@ -104,11 +104,11 @@ public class MonsterWeaponDto {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final MonsterWeaponDto other = (MonsterWeaponDto) obj;
-        if (!Objects.equals(this.monsterId, other.monsterId)) {
+        final MonsterWeaponPkDto other = (MonsterWeaponPkDto) obj;
+        if (!Objects.equals(this.monsterId, other.getMonsterId())) {
             return false;
         }
-        if (!Objects.equals(this.weaponId, other.weaponId)) {
+        if (!Objects.equals(this.weaponId, other.getWeaponId())) {
             return false;
         }
         return true;
