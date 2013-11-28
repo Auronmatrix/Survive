@@ -22,7 +22,7 @@
                 <div class="form-group">
                 <s:label for="description" class="col-sm-2 control-label" name="area.res.description"/>
                 <div class="col-sm-10">
-                    <s:textarea class="form-control" name="area.res.description" rows="3" id="description"/>
+                    <s:textarea class="form-control" name="area.description" rows="3" id="description"/>
                 </div>
             </div>
         </div>
