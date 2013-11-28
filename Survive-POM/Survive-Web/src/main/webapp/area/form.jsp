@@ -5,7 +5,7 @@
 <div class="form-group">
            <div class="form-group">
             <div class="form-group">
-                <s:label for="name"  class="col-sm-2 control-label" name="area.res.gitname" />
+                <s:label for="name"  class="col-sm-2 control-label" name="area.res.name" />
                 <div class="col-sm-10">
                     <s:text class="form-control" id="area.name" name="area.name"/>
                 </div>

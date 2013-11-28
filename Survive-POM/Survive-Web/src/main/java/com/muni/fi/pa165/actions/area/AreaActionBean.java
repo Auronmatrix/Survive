@@ -43,9 +43,9 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
     }
     //--- part for adding a area ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "name", required = true),
-        @Validate(on = {"add", "save"}, field = "terrain", required = true), 
-        @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 0),
+        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
+        @Validate(on = {"add", "save"}, field = "terrain", required = true, maxlength = 20), 
+        @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255),
       
             
     })

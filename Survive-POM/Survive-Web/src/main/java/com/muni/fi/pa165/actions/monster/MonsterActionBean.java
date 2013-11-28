@@ -53,15 +53,15 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     
     //--- part for adding a monster ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "name", required = false),
-        @Validate(on = {"add", "save"}, field = "stamina", required = false), 
-        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "dangerLevel", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 0),    
-         @Validate(on = {"add", "save"}, field = "imagePath", required = false, minvalue = 0)
+        @Validate(on = {"add", "save"}, field = "name", required = false, maxlength = 255),
+        @Validate(on = {"add", "save"}, field = "stamina", required = false, maxlength = 10), 
+        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 10),
+        @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 10),
+         @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 10),
+         @Validate(on = {"add", "save"}, field = "dangerLevel", required = false, minvalue = 10),
+         @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 10),
+         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 255),    
+         @Validate(on = {"add", "save"}, field = "imagePath", required = false, minvalue = 255)
             
     })
     private MonsterDto monster;
@@ -79,7 +79,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
         }
-        getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monster.getName())));
+        getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monster.getName()), escapeHTML(monster.getDescription())));
         return new RedirectResolution(this.getClass(), "list");
     }
 
