@@ -11,14 +11,14 @@
             </div>
         </div>
                 <div class="form-group">
-            <s:label for="weaponClass" class="col-sm-2 control-label" title="weapon.weaponClass"/>
+            <s:label for="weaponClass" class="col-sm-2 control-label" name="weapon.weaponClass"/>
             <div class="col-sm-10">
                 <s:select class="form-control"  id="weaponClass" name="weapon.weaponClass"><s:options-enumeration enum="com.muni.fi.pa165.enums.WeaponClass"/></s:select>
                 </div>
             </div>
 
                     <div class="form-group">
-            <s:label for="weaponType" class="col-sm-2 control-label" title="weapon.weaponType"/>
+            <s:label for="weaponType" class="col-sm-2 control-label" name="weapon.weaponType"/>
             <div class="col-sm-10">
                 <s:select class="form-control"  id="weaponType" name="weapon.weaponType"><s:options-enumeration enum="com.muni.fi.pa165.enums.WeaponType"/></s:select>
                 </div>
@@ -26,19 +26,19 @@
 
 
         <div class="form-group">
-            <s:label for="range" class="col-sm-2 control-label" title="weapon.range" />
+            <s:label for="range" class="col-sm-2 control-label" name="weapon.range" />
             <div class="col-sm-10">
                 <s:text class="form-control" id="range" name="weapon.range"/>
             </div>
         </div>
         <div class="form-group">
-            <s:label for="caliber" class="col-sm-2 control-label"  title="weapon.caliber"/>
+            <s:label for="caliber" class="col-sm-2 control-label"  name="weapon.caliber"/>
             <div class="col-sm-10">
                 <s:text  class="form-control" id="caliber" name="weapon.caliber"/>
             </div>
         </div>
         <div class="form-group">
-            <s:label for="rounds" class="col-sm-2 control-label" title="weapon.rounds"/>
+            <s:label for="rounds" class="col-sm-2 control-label" name="weapon.rounds"/>
             <div class="col-sm-10">
                 <s:text  class="form-control" id="rounds" name="weapon.rounds"/>
             </div>
@@ -46,7 +46,7 @@
         
 
             <div class="form-group">
-            <s:label for="description" class="col-sm-2 control-label" title="weapon.description"/>
+            <s:label for="description" class="col-sm-2 control-label" name="weapon.description"/>
             <div class="col-sm-10">
                 <s:textarea class="form-control" name="weapon.description" rows="3" id="description"/>
             </div>
