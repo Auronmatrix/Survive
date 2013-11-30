@@ -2,13 +2,15 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <s:layout-render name="/layout.jsp" titlekey="index.title">
     <s:layout-component name="body">
 
-        <h1 style="text-align: center">Post Apocalyptic 2165 - Systems Utility for Recording and Virtual Indexing of Violent Enemies</h1>
-        <div style="text-align: center">
-            <p>A handful of survivals must defend themselves against these creatures. There are available various kinds of weapons, each weapon has different usability against some monster. This system should enable storing information about monsters (name, height, weight, agility, ...), areas where the monsters live (name, description, area) and available weapons (name, gun-reach, ammunition used).</p>
-            <p>Administrator of the system should be able to perform CRUD operations on all entities. Ordinary user will use this system to record his experience which weapon could be efficiently used against the monster as well as to assign areas where the creature has been spotted.</p>
+        <h1 style="text-align: center"><f:message key="text.title"/></h1>
+        <div style="text-align: center">         
+            <p><f:message key="index.headline"/></p>
+            <p><f:message key="index.headline2"/></p>
+            
         </div>
 
        
@@ -23,9 +25,9 @@
                 <div class="thumbnail">
                     <img src="docs-assets/images/monsters.png" alt="Monsters" width="400" height="400"/>
                     <div class="caption">
-                        <h3>Monster Management</h3>
-                        <p>Access monster logs and classification files. Update spotted monsters</p>
-                        <p><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" class="btn btn-primary">Access Monster Files</s:link></p>
+                        <h3><f:message key="index.monster.title"/></h3>
+                        <p><f:message key="index.monster.context"/></p>
+                        <p><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" class="btn btn-primary"><f:message key="index.monster.button"/></s:link></p>
                     </div>
                 </div>
             </div>
@@ -33,9 +35,9 @@
                 <div class="thumbnail">
                     <img src="docs-assets/images/areas.png" alt="Area" width="400" height="400"/>
                     <div class="caption">
-                        <h3>Area Management</h3>
-                        <p>Access current humanly safe locations and their respective threat analysis/p>
-                        <p><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" class="btn btn-primary">Access Area Files</s:link></p>
+                        <h3><f:message key="index.area.title"/></h3>
+                        <p><f:message key="index.area.context"/></p>
+                        <p><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" class="btn btn-primary"><f:message key="index.area.button"/></s:link></p>
                     </div>
                 </div>
             </div>
@@ -43,9 +45,9 @@
                 <div class="thumbnail">
                     <img src="docs-assets/images/weapons.png" alt="Weapons" width="400" height="400"/>
                     <div class="caption">
-                        <h3>Weapon Management</h3>
-                        <p>Access custom built weapons and efficiency logs to see which weapons kicks a punch</p>
-                        <p><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean" class="btn btn-primary">Access Monster Files</s:link></p>
+                        <h3><f:message key="index.weapon.title"/></h3>
+                        <p><f:message key="index.weapon.context"/></p>
+                        <p><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean" class="btn btn-primary"><f:message key="index.weapon.button"/></s:link></p>
                     </div>
                 </div>
             </div>
