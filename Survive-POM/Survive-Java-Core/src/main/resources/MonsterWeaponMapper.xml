@@ -9,11 +9,15 @@
     <class-b>com.muni.fi.pa165.entities.Monsterweapon</class-b>   
     <field>  
       <a>monster</a>
-      <b>monster</b>
+      <b>monster</b>      
+      <a-hint>com.muni.fi.pa165.entities.Monster</a-hint>
+      <b-hint>>com.muni.fi.pa165.dto.MonsterDto</b-hint>
     </field>
     <field>
       <a>weapon</a>
       <b>weapon</b>
+      <a-hint>com.muni.fi.pa165.entities.Weapon</a-hint>
+      <b-hint>>com.muni.fi.pa165.dto.WeaponDto</b-hint>
     </field> 
     <field>
       <a>hitRate</a>
@@ -31,10 +35,7 @@
         <a>description</a>
         <b>description</b>
     </field>
-    <field>
-        <a>id</a>
-        <b>monsterweaponPK</b>
-    </field>
+
   </mapping> 
 </mappings>
 

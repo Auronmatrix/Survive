@@ -6,10 +6,14 @@ package com.muni.fi.pa165.dao.service.impl;
 
 import com.muni.fi.pa165.service.impl.MonsterWeaponServiceImpl;
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
+import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
+import com.muni.fi.pa165.dto.MonsterWeaponPkDto;
+import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.entities.Monsterweapon;
+import com.muni.fi.pa165.entities.MonsterweaponPK;
 import com.muni.fi.pa165.entities.Weapon;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.WeaponClass;
@@ -70,9 +74,13 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
         weapon.setRange(100);
         weapon.setWeaponclass(WeaponClass.Ranged);
         weapon.setWeapontype(WeaponType.Gun);
+        
+        MonsterweaponPK pk = new MonsterweaponPK();
+        pk.setMonsterid(monster.getId());
+        pk.setWeaponid(weapon.getId());
 
-//        monsterWeaponDto.setWeapon(weapon);
-//        monsterWeaponDto.setMonster(monster);
+     monsterWeaponDto.setWeapon(mapper.map(weapon, WeaponDto.class));
+       monsterWeaponDto.setMonster(mapper.map(monster, MonsterDto.class));
         monsterWeaponDto.setHitRate(5);
         monsterWeaponDto.setDamage(12);
         monsterWeaponDto.setEfficiency(55);
