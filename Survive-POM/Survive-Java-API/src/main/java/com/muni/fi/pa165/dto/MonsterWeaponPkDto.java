@@ -12,6 +12,18 @@ public class MonsterWeaponPkDto {
     
     private Long monsterId;
     private Long weaponId;
+    
+    public MonsterWeaponPkDto()
+    {
+        
+    }
+    
+    
+    public MonsterWeaponPkDto(Long monsterId, Long weaponId)
+    {
+        this.monsterId = monsterId;
+        this.weaponId = weaponId;
+    }
 
     public Long getMonsterId() {
         return monsterId;

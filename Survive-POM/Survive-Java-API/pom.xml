@@ -35,6 +35,5 @@
         <org.apache.derby.version>10.10.1.1</org.apache.derby.version>
     </properties>
 
-    <dependencies>
-    </dependencies>
+
 </project>
