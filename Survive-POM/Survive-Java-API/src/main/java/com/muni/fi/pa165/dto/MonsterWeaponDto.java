@@ -104,16 +104,14 @@ public class MonsterWeaponDto {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final MonsterWeaponPkDto other = (MonsterWeaponPkDto) obj;
-        if (!Objects.equals(this.monsterId, other.getMonsterId())) {
-            return false;
-        }
-        if (!Objects.equals(this.weaponId, other.getWeaponId())) {
+        final MonsterWeaponDto other = (MonsterWeaponDto) obj;
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
 
+   
     
     
 }
