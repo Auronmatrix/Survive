@@ -1,7 +1,7 @@
 # NetBeans specific #
-/Survive-POM/Modules/Survive-Java-Core/target/
-/Survive-POM/Modules/Survive-Java-API/target/
-/Survive-POM/Modules/Survive-Web/target/
+/Survive-POM/Survive-Java-Core/target/
+/Survive-POM/Survive-Java-API/target/
+/Survive-POM/Survive-Web/target/
 build/
 nbbuild/
 dist/

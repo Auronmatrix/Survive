@@ -9,15 +9,17 @@
     <class-b>com.muni.fi.pa165.entities.Monsterweapon</class-b>   
     <field>  
       <a>monster</a>
-      <b>monster</b>      
-      <a-hint>com.muni.fi.pa165.entities.Monster</a-hint>
-      <b-hint>>com.muni.fi.pa165.dto.MonsterDto</b-hint>
+      <b>monster</b>
+      <a-deep-index-hint>com.muni.fi.pa165.dto.MonsterDto</a-deep-index-hint>
+      <b-deep-index-hint>com.muni.fi.pa165.entities.Monster</b-deep-index-hint>
+     
     </field>
     <field>
       <a>weapon</a>
       <b>weapon</b>
-      <a-hint>com.muni.fi.pa165.entities.Weapon</a-hint>
-      <b-hint>>com.muni.fi.pa165.dto.WeaponDto</b-hint>
+      <a-deep-index-hint>com.muni.fi.pa165.dto.WeaponDto</a-deep-index-hint>
+      <b-deep-index-hint>com.muni.fi.pa165.entities.Weapon</b-deep-index-hint>
+     
     </field> 
     <field>
       <a>hitRate</a>

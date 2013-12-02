@@ -91,11 +91,11 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         return efficiencies;
     }
     //--- part for adding a monsterMonsterWeapon ----
-    @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
-     @Validate(on = {"add", "save"}, field = "damage", required = true, maxlength = 10),
-        @Validate(on = {"add", "save"}, field = "efficiency", required = true, maxlength = 10),
-         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
+//    @ValidateNestedProperties(value = {
+//        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
+//     @Validate(on = {"add", "save"}, field = "damage", required = true, maxlength = 10),
+//        @Validate(on = {"add", "save"}, field = "efficiency", required = true, maxlength = 10),
+//         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
     private MonsterWeaponDto monsterWeapon;
 
     public Resolution add() {
@@ -104,7 +104,9 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         try {
             MonsterDto monster = monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id")));
             WeaponDto weapon = weaponService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.weapon.id")));
-            monsterWeapon = service.save(monsterWeapon, monster, weapon);
+            monsterWeapon.setMonster(monster);
+            monsterWeapon.setWeapon(weapon);
+            monsterWeapon = service.save(monsterWeapon);
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
             // getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));
@@ -147,8 +149,8 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     //--- part for editing a monsterMonsterWeapon ----
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadMonsterWeaponFromDatabase() {
-        String monsterId = getContext().getRequest().getParameter("monster.id");
-        String weaponId = getContext().getRequest().getParameter("weapon.id");
+        String monsterId = getContext().getRequest().getParameter("monsterWeapon.monster.id");
+        String weaponId = getContext().getRequest().getParameter("monsterWeapon.weapon.id");
         if (monsterId == null || weaponId == null) {
             return;
         }
@@ -196,8 +198,11 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     public Resolution save() {
         getContext().getMessages().add(new SimpleMessage("Called method save"));
         try {
-          //  MonsterDto monster = monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id")));
-          //  WeaponDto weapon = weaponService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.weapon.id")));
+            MonsterDto monster = monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monster.id")));
+           WeaponDto weapon = weaponService.findById(Long.parseLong(getContext().getRequest().getParameter("weapon.id")));
+            monsterWeapon.setMonster(monster);
+            monsterWeapon.setWeapon(weapon);
+            
             monsterWeapon =  service.update(monsterWeapon);
             
             

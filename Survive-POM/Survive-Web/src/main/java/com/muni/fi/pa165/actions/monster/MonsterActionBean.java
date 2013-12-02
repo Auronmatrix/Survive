@@ -40,30 +40,24 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         return new ForwardResolution("/monster/list.jsp");
     }
 
-//    public Resolution MonsterActionBean()
-//    {
-//        log.debug("default or constructor()");
-//        monsters = monsterService.findAll();
-//        return new ForwardResolution("/monster/lolololol.jsp");
-//    }
+
     public List<MonsterDto> getMonsters() {
         return monsters;
     }
     
     
     //--- part for adding a monster ----
-    @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "name", required = false, maxlength = 255),
-        @Validate(on = {"add", "save"}, field = "stamina", required = false, maxlength = 10), 
-        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 10),
-        @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 10),
-         @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 10),
-         @Validate(on = {"add", "save"}, field = "dangerLevel", required = false, minvalue = 10),
-         @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 10),
-         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 255),    
-         @Validate(on = {"add", "save"}, field = "imagePath", required = false, minvalue = 255)
-            
-    })
+//    @ValidateNestedProperties(value = {
+////        @Validate(on = {"add", "save"}, field = "name", required = false, maxlength = 255),
+////        @Validate(on = {"add", "save"}, field = "stamina", required = false, maxlength = 10), 
+////        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 10),
+////        @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 10),
+////         @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 10),
+////         @Validate(on = {"add", "save"}, field = "dangerLevel", required = false, minvalue = 10),
+////         @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 10),
+////         @Validate(on = {"add", "save"}, field = "description", required = false, minvalue = 255),    
+////         @Validate(on = {"add", "save"}, field = "imagePath", required = false, minvalue = 255)            
+////    })
     private MonsterDto monster;
     
 
