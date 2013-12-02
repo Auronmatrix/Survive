@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Aubrey Oosthuizen
  */
-@UrlBinding("/efficiencies/{$event}/{weapon.id}")
+@UrlBinding("/efficiencies/{$event}/{monsterWeapon.weapon.id}")
 public class EfficienciesActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(EfficienciesActionBean.class);
