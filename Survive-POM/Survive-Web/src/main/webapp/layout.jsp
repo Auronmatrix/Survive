@@ -70,8 +70,14 @@
 
                             <!-- Aubrey: If there is time, try to fix the active LI item to highlight which menu is currently active. Do do so set li class="active" -->
                             <li ><a href="${pageContext.request.contextPath}/index.jsp"><f:message key="navigation.index"/></a></li>
-                            <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monsters"/></s:link></li>
-
+                             <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Monsters<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><span class="glyphicon glyphicon-plane">&nbsp;Management</span></s:link></li>
+                                <li class="divider"></li>
+                                <!--When Bean for SpottedMonster implemented change <a/> into <link> and name properly beanclass.-->
+                                <li><a class="com.muni.fi.pa165.actions.spottedMonsters.SpottedMonsterActionBean"><span class="glyphicon glyphicon-eye-open">&nbsp;Spotted&nbsp;Monsters</span></a></li>
+                            </ul>
                                 <li ><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><f:message key="navigation.areas"/></s:link></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.weapons"/><b class="caret"></b></a>
@@ -79,7 +85,7 @@
                                     <li><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean"><span class="glyphicon glyphicon-screenshot">&nbsp;<f:message key="navigation.weapons.management"/></span></s:link></li>
                                         <li class="divider"></li>
                                         <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean"><span class="glyphicon glyphicon-flash">&nbsp;<f:message key="navigation.weapons.efficiencies"/></span></s:link></li>
-                                    </ul>
+                                </ul>
                                 </li>
 
                                 <li class="dropdown">
