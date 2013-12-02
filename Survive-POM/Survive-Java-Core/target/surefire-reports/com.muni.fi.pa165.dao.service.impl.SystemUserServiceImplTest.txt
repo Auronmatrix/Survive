@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.muni.fi.pa165.dao.service.impl.SystemUserServiceImplTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec
+=======
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec
+>>>>>>> branch 'master' of https://github.com/Auronspan/Survive.git
