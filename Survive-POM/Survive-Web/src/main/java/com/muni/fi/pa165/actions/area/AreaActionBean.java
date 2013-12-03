@@ -114,9 +114,9 @@ public Resolution delete() throws Exception{
         return new RedirectResolution(this.getClass(), "list");
     }
 
-    public Resolution cancel() {
+ public Resolution cancel() {
         log.debug("cancel");
-        return new RedirectResolution("/area/list.jsp");
+        return new RedirectResolution(this.getClass(), "list");
     }
 
   

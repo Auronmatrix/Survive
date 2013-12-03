@@ -25,7 +25,8 @@
            </div>
         </div>
                 <%@include file="form.jsp"%>
-               <div><s:submit class="btn btn-info" name="save"><f:message key="forms.save"/></s:submit> </div>              
+               <div><s:submit class="btn btn-info" name="save"><f:message key="forms.save"/></s:submit> 
+                   <s:submit class="btn btn-warning" name="cancel" value="cancel" ><f:message key="forms.cancel"/></s:submit> </div>               
                 </fieldset>
         </s:form>
         
