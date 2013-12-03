@@ -116,6 +116,7 @@ public Resolution delete() throws Exception{
     
         public Resolution gallery() {
         log.debug("edit() monster={}", monster);
+        monsters = monsterService.findAll();
         return new ForwardResolution("/monster/gallery.jsp");
     }
 

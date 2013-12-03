@@ -33,18 +33,7 @@
             <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-image-gallery.min.css">
 
-            <!-- Custom styles for this template -->
-            <!--            <link href="theme.css" rel="stylesheet">-->
-
-            <!-- Just for debugging purposes. Don't actually copy this line! -->
-            <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-            <!--[if lt IE 9]>
-              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-              <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-            <![endif]-->
-
+     
 
             <s:layout-component name="header"/>
 
@@ -95,9 +84,10 @@
                                     <li></li>
                                     <li><a href="${pageContext.request.contextPath}/signin.jsp"><f:message key="navigation.signin"/></li>
                                     <li class="divider"></li>
-                                    <li><a href="${pageContext.request.contextPath}/monster/gallery.jsp"  ><f:message key="navigation.gallery"/></a></li>
-                                    <li class="dropdown-header">Additional Resources</li>
-                                    <li><a href="${pageContext.request.contextPath}/template.jsp"><f:message key="navigation.template"/></a></li>
+                                    <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" event="gallery"><f:message key="navigation.gallery"/></s:link></li>
+                                   
+<!--                                    <li class="dropdown-header">Additional Resources</li>
+                                    <li><a href="${pageContext.request.contextPath}/template.jsp"><f:message key="navigation.template"/></a></li>-->
                                 </ul>
                             </li>
                         </ul>
