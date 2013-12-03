@@ -55,24 +55,44 @@
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">${monster.name}</h4>
-                        Description:
-                        ${monster.description}
-                        <br/>
-                        &nbsp;
-                        <s:form class="form-horizontal" beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" action="edit">
-                            <s:hidden name="monster.id" value="${monster.id}"/>
-                            <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
-                        </s:form>
+
+                        <div class="progress progress-striped ">
+                            <div class="progress-bar progress-bar-success" style="width: ${monster.agility}%">
+                                <span class="sr-only"> Agility: ${monster.agility} </span>
+                            </div>
+                        </div>
+                        <div class="progress progress-striped">
+
+                            <div class="progress-bar progress-bar-warning" style="width: ${monster.strength}%">
+                                <span class="sr-only"> Strength: ${monster.strength}% </span>
+                            </div>
+
+                        </div>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-danger" style="width: ${monster.dangerLevel}%">
+                                 <span class="sr-only"> Danger level: ${monster.dangerLevel} </span>
+                            </div>
+                        </div>
                     </div>
+                    &nbsp;
+                    Description:
+                    ${monster.description}
+                    <br/>
+                    &nbsp;
+                    <s:form class="form-horizontal" beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" action="edit">
+                        <s:hidden name="monster.id" value="${monster.id}"/>
+                        <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
+                    </s:form>
                 </div>
+            </div>
 
 
 
 
 
-            </c:forEach>
-        </div>
+        </c:forEach>
+    </div>
 
 
-    </s:layout-component>
+</s:layout-component>
 </s:layout-render>
