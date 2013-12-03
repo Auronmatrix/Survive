@@ -3,7 +3,6 @@
 <s:errors/> 
 
 
- 
                       
        <div class="form-group">
             <s:label for="efficiency" class="col-sm-2 control-label" name="monsterWeapon.efficiency" />

@@ -139,7 +139,8 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         try {
             Long monsterId = Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id"));
             Long weaponId = Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.weapon.id"));
-          service.delete(monsterId, weaponId);
+
+            service.delete(service.getCompositeKey(monsterId, weaponId));
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
         }
@@ -198,18 +199,13 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     public Resolution save() {
         getContext().getMessages().add(new SimpleMessage("Called method save"));
         try {
-            MonsterDto monster = monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monster.id")));
-           WeaponDto weapon = weaponService.findById(Long.parseLong(getContext().getRequest().getParameter("weapon.id")));
-            monsterWeapon.setMonster(monster);
-            monsterWeapon.setWeapon(weapon);
-            
+
             monsterWeapon =  service.update(monsterWeapon);
             
             
         } catch (Exception ex) {
             getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-            // getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));
-
+          
         }
         log.debug("save() monsterMonsterWeapon={}", monsterWeapon);
        

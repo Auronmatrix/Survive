@@ -79,12 +79,15 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
     {    
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction(); 
+        Query query = em.createNamedQuery("Monsterweapon.findById");
+        query.setParameter("monsterweaponPK", pk);
+        Monsterweapon obj = null;
         try {
                 tx.begin();
-                Monsterweapon entity = findById(pk);
-                em.merge(pk);
-               em.merge(entity);
-               em.remove(entity);
+                 obj = (Monsterweapon) query.getSingleResult();
+                //em.merge(pk);
+               em.merge(obj);
+               em.remove(obj);
                tx.commit();
                }
         finally {
@@ -92,6 +95,7 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
                 em.close();
             }
         }
+        
     }
 
     @Override

@@ -8,8 +8,8 @@
 
         <s:form beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" class="form-horizontal"  focus="" action="/efficiencies/edit.action">
                <fieldset><legend><f:message key="monsterWeapon.edit.edit"/></legend>
-                   <s:hidden name="monster.id"/>
-                   <s:hidden name="weapon.id"/>
+                   <s:hidden name="monsterWeapon.monster.id"/>
+                   <s:hidden name="monsterWeapon.weapon.id"/>
                       <div class="form-group">
         <div class="form-group">
             <s:label for="monsterWeapon.monster.id"  class="col-sm-2 control-label" name="monsterWeapon.monster.id" />
