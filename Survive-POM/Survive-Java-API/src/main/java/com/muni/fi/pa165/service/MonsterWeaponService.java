@@ -16,7 +16,6 @@ import java.util.List;
  */
 public interface MonsterWeaponService {
 
-    public MonsterWeaponDto save(MonsterWeaponDto dto, MonsterDto monster, WeaponDto weapon);
 
     public MonsterWeaponDto save(MonsterWeaponDto dto);
     
@@ -29,7 +28,6 @@ public interface MonsterWeaponService {
      */
     public MonsterWeaponDto update(MonsterWeaponDto dto);
 
-    public MonsterWeaponDto update(MonsterWeaponDto dto, MonsterDto monster, WeaponDto weapon);
 
     /**
      * Deletes MonsterWeaponDto
