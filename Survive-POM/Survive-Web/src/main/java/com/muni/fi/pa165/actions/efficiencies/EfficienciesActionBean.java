@@ -165,7 +165,7 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     }
 
     public Resolution findByMonster() {
-        String monsterId = getContext().getRequest().getParameter("monster.id");
+        String monsterId = getContext().getRequest().getParameter("filter.monster.id");
         if (monsterId == null) {
             return new RedirectResolution(this.getClass(), "list");
         }
@@ -174,7 +174,7 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     }
 
     public Resolution findByWeapon() {
-        String weaponId = getContext().getRequest().getParameter("weapon.id");
+        String weaponId = getContext().getRequest().getParameter("filter.weapon.id");
         if (weaponId == null) {
             return new RedirectResolution(this.getClass(), "list");
         }

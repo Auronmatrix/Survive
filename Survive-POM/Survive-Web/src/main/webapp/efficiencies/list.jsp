@@ -37,11 +37,11 @@
                     <tr>
 
                         <td><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" event="edit">
-                                <s:param name="monsterWeapon.monster.id" value="${monsterWeapon.monster.id}" />
+                                <s:param name="monster.id" value="${monsterWeapon.monster.id}" />
                                 <c:out value="${monsterWeapon.monster.id}" /></s:link>
                         </td>
                         <td><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" event="findByMonster">
-                                <s:param name="monsterWeapon.monster.id" value="${monsterWeapon.monster.id}" />
+                                <s:param name="filter.monster.id" value="${monsterWeapon.monster.id}" />
                                 <span class="glyphicon glyphicon-filter"></span>
                             </s:link>
                         </td>                        
@@ -49,12 +49,12 @@
 
 
                         <td><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean" event="edit">
-                                <s:param name="monsterWeapon.weapon.id" value="${monsterWeapon.weapon.id}"/>
+                                <s:param name="weapon.id" value="${monsterWeapon.weapon.id}"/>
                                 <c:out value="${monsterWeapon.weapon.id}" /></s:link>
                         </td>
                         
                         <td><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" event="findByWeapon">
-                                <s:param name="monsterWeapon.weapon.id" value="${monsterWeapon.weapon.id}" />
+                                <s:param name="filter.weapon.id" value="${monsterWeapon.weapon.id}" />
                                 <span class="glyphicon glyphicon-filter"></span>
                             </s:link>
                         </td>
