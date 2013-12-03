@@ -8,7 +8,7 @@
         <h1><f:message key="monster.title"/></h1>
 
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" var="actionBean"/>
-
+      <s:errors/>
         <p><f:message key="monster.list.allmonsters"/></p>
         <div class="table-responsive">
             <table class="table">
