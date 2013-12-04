@@ -26,8 +26,13 @@
         </div>
                 <%@include file="form.jsp"%>
                <div><s:submit class="btn btn-info" name="save"><f:message key="forms.save"/></s:submit> 
-                   <s:submit class="btn btn-warning" name="cancel" value="cancel" ><f:message key="forms.cancel"/></s:submit> </div>               
+                   </div>               
                 </fieldset>
+        </s:form>
+        
+        &nbsp;
+        <s:form beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" class="form-horizontal"  focus="" action="/efficiencies/cancel.action">
+                 <s:submit class="btn btn-warning" name="cancel" value="cancel" ><f:message key="forms.cancel"/></s:submit> 
         </s:form>
         
      

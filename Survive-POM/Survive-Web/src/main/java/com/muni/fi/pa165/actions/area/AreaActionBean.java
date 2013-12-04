@@ -4,7 +4,6 @@ import com.muni.fi.pa165.actions.base.BaseActionBean;
 import static com.muni.fi.pa165.actions.base.BaseActionBean.escapeHTML;
 import com.muni.fi.pa165.service.AreaService;
 import com.muni.fi.pa165.dto.AreaDto;
-import java.util.ArrayList;
 import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.integration.spring.SpringBean;
@@ -25,10 +24,10 @@ import java.util.List;
 @UrlBinding("/area/{$event}/{area.id}")
 public class AreaActionBean extends BaseActionBean implements ValidationErrorHandler {
     final static Logger log = (Logger)LoggerFactory.getLogger(AreaActionBean.class);
-    //--- part for showing a list of areas ----
+   
         private List<AreaDto> areas;
 
-    //@DontValidate
+
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
@@ -40,34 +39,29 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
      public List<AreaDto> getAreas() {
         return areas;
     }
-     @SpringBean //Spring can inject even to private and protected fields
+     @SpringBean 
      protected AreaService areaService;
-    //--- part for adding a area ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
+        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 25),
         @Validate(on = {"add", "save"}, field = "terrain", required = true), 
-        @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255),
-     
-    })
+        @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
     private AreaDto area;
+    
+    
     public Resolution add() {
         log.debug("add() area={}", area);
         try {
             area = areaService.save(area);
         } catch (Exception ex) {
-        getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-
+          log.error(ex.getMessage());
         }
         getContext().getMessages().add(new LocalizableMessage("area.add.message", escapeHTML(area.getName())));
-
         return new RedirectResolution(this.getClass(), "list");
     }
 
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
-        //fill up the data for the table if validation errors occured
        areas = areaService.findAll();
-        //return null to let the event handling continue
         return null;
     }
 
@@ -79,13 +73,11 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
         this.area = area;
     }
 
-//--- part for deleting a area ----
 public Resolution delete() throws Exception{
         log.debug("delete({})", area.getId());
         areaService.delete(area);
         return new RedirectResolution(this.getClass(), "all");
 }
-    //--- part for editing a area ----
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadAreaFromDatabase() {
         String ids = getContext().getRequest().getParameter("area.id");
@@ -93,7 +85,6 @@ public Resolution delete() throws Exception{
             return;
         }
         area = areaService.findById(Long.parseLong(ids));
-        
         getContext().getMessages().add(new SimpleMessage("Loaded area from DB"));
     }
 

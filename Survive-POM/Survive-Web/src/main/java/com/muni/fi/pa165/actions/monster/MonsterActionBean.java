@@ -26,13 +26,11 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
 
     final static Logger log = LoggerFactory.getLogger(MonsterActionBean.class);
     
-    @SpringBean //Spring can inject even to private and protected fields
+    @SpringBean 
     protected MonsterService monsterService;
-    
-    //--- part for showing a list of monsters ----
     private List<MonsterDto> monsters;
 
-    //@DontValidate
+  
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
@@ -46,20 +44,19 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     }
     
     
-    //--- part for adding a monster ----
+  
         @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
-        @Validate(on = {"add", "save"}, field = "stamina", required = false, minvalue  = 0), 
-        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "dangerlevel", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "monsterclass", required = false, minvalue = 0),
-        @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 0),
+        @Validate(on = {"add", "save"}, field = "stamina", required = false, minvalue  = 0, maxvalue = 100), 
+        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "dangerLevel", required = true, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "monsterclass", required = false),
+        @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 0, maxvalue = 999999),
         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255),    
         @Validate(on = {"add", "save"}, field = "imagePath", required = false, maxlength = 255)            
     })
-
     private MonsterDto monster;
     
 
@@ -71,9 +68,8 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
                 monster.setImagePath("http://careerconfidential.com/images/no-monsterX400.jpg");
             }
             monster = monsterService.save(monster);
-            
         } catch (Exception ex) {
-            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+              log.error(ex.getMessage());
         }
         getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monster.getName()), escapeHTML(monster.getDescription())));
         return new RedirectResolution(this.getClass(), "list");
@@ -81,9 +77,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
 
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
-        //fill up the data for the table if validation errors occured
         monsters = monsterService.findAll();
-        //return null to let the event handling continue
         return null;
     }
 
@@ -95,14 +89,14 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         this.monster = monster;
     }
 
-//   //--- part for deleting a area ----
+
 public Resolution delete() throws Exception{
         log.debug("delete({})", monster.getId());
         monsterService.delete(monster.getId());
         return new RedirectResolution(this.getClass(), "all");
     }
 
-    //--- part for editing a monster ----
+
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadMonsterFromDatabase() {
         String ids = getContext().getRequest().getParameter("monster.id");

@@ -28,41 +28,34 @@ import java.util.List;
 public class EfficienciesActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(EfficienciesActionBean.class);
-    @SpringBean //Spring can inject even to private and protected fields
+    @SpringBean 
     protected MonsterWeaponService service;
-    
     @SpringBean
     protected WeaponService weaponService;
-    
     @SpringBean
     protected MonsterService monsterService;
-    //--- part for showing a list of monsterMonsterWeapons ----
     private List<MonsterWeaponDto> efficiencies;
     private List<WeaponDto> weapons;
     private List<MonsterDto> monsters;
+
     
-
-
-    //@DontValidate
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
         efficiencies = service.findAll();
-        
-        
         return new ForwardResolution("/efficiencies/list.jsp");
     }
 
     public List<MonsterWeaponDto> getEfficiencies() {
         return efficiencies;
     }
-   
+
     public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
         this.efficiencies = efficiencies;
     }
 
     public List<WeaponDto> getWeapons() {
-         weapons = weaponService.findAll();
+        weapons = weaponService.findAll();
         return weapons;
     }
 
@@ -78,26 +71,17 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     public void setMonsters(List<MonsterDto> monsters) {
         this.monsters = monsters;
     }
-    
-    
 
-//    public Resolution EfficienciesActionBean()
-//    {
-//        log.debug("default or constructor()");
-//        monsterMonsterWeapons = service.findAll();
-//        return new ForwardResolution("/monsterMonsterWeapon/lolololol.jsp");
-//    }
     public List<MonsterWeaponDto> getMonsterWeapons() {
         return efficiencies;
     }
-//    --- part for adding a monsterMonsterWeapon ----
-         @ValidateNestedProperties(value = {
-         @Validate(on = {"add", "save"}, field = "monster.id", required = true),
-         @Validate(on = {"add", "save"}, field = "weapon.id", required = true),
-         @Validate(on = {"add", "save"}, field = "hitRate", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "damage", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "efficiency", required = false, minvalue = 0),
-         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
+    @ValidateNestedProperties(value = {
+        @Validate(on = {"add", "save"}, field = "monster.id", required = true),
+        @Validate(on = {"add", "save"}, field = "weapon.id", required = true),
+        @Validate(on = {"add", "save"}, field = "hitRate", required = false, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "damage", required = false, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "efficiency", required = true, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
     private MonsterWeaponDto monsterWeapon;
 
     public Resolution add() {
@@ -110,18 +94,14 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
             monsterWeapon.setWeapon(weapon);
             monsterWeapon = service.save(monsterWeapon);
         } catch (Exception ex) {
-            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-            // getContext().getMessages().add(new LocalizableMessage("add.message", escapeHTML(monsterMonsterWeapon.getName()), escapeHTML(monsterMonsterWeapon.getDescription().toString())));
-
+            log.error(ex.getMessage());
         }
         return new RedirectResolution(this.getClass(), "list");
     }
 
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
-        //fill up the data for the table if validation errors occured
         efficiencies = service.findAll();
-        //return null to let the event handling continue
         return null;
     }
 
@@ -133,23 +113,19 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         this.monsterWeapon = monsterMonsterWeapon;
     }
 
-    //--- part for deleting a monsterMonsterWeapon ----
     public Resolution delete() {
         getContext().getMessages().add(new SimpleMessage("Called method delete"));
         log.debug("delete({})", monsterWeapon.getMonster());
-        //only id is filled by the form
         try {
             Long monsterId = Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id"));
             Long weaponId = Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.weapon.id"));
-
             service.delete(service.getCompositeKey(monsterId, weaponId));
         } catch (Exception ex) {
-            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+            log.error(ex.getMessage());
         }
         return new RedirectResolution(this.getClass(), "list");
     }
 
-    //--- part for editing a monsterMonsterWeapon ----
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadMonsterWeaponFromDatabase() {
         String monsterId = getContext().getRequest().getParameter("monsterWeapon.monster.id");
@@ -157,11 +133,10 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         if (monsterId == null || weaponId == null) {
             return;
         }
-        
         try {
             monsterWeapon = service.findById(Long.parseLong(monsterId), Long.parseLong(weaponId));
         } catch (Exception ex) {
-            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
+            log.error(ex.getMessage());
         }
         getContext().getMessages().add(new SimpleMessage("Loaded monsterMonsterWeapon from DB"));
     }
@@ -183,14 +158,13 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         efficiencies = service.findByWeaponId(Long.parseLong(weaponId));
         return new ForwardResolution("/efficiencies/list.jsp");
     }
-    
-     public Resolution clearFilters() {
+
+    public Resolution clearFilters() {
         log.debug("edit() monsterMonsterWeapon={}", monsterWeapon);
         getContext().getMessages().add(new SimpleMessage("Called method edit"));
         efficiencies = service.findAll();
         return new ForwardResolution("/efficiencies/edit.jsp");
     }
-
 
     public Resolution edit() {
         log.debug("edit() monsterMonsterWeapon={}", monsterWeapon);
@@ -201,16 +175,11 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     public Resolution save() {
         getContext().getMessages().add(new SimpleMessage("Called method save"));
         try {
-
-            monsterWeapon =  service.update(monsterWeapon);
-            
-            
+            monsterWeapon = service.update(monsterWeapon);
         } catch (Exception ex) {
-            getContext().getMessages().add(new SimpleMessage(ex.getMessage()));
-          
+            log.error(ex.getMessage());
         }
         log.debug("save() monsterMonsterWeapon={}", monsterWeapon);
-       
         return new RedirectResolution(this.getClass(), "list");
     }
 
