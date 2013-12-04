@@ -6,6 +6,8 @@ package com.muni.fi.pa165.dto;
 
 import com.muni.fi.pa165.enums.TerrainType;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 //import javax.persistence.Enumerated;
 
@@ -19,7 +21,7 @@ public class AreaDto implements Serializable {
     private String name;
     private TerrainType terrain;
     private String description;
-    //private List<MonsterAreaDto> locations = new ArrayList<>();
+    private List<MonsterAreaDto> locations = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -53,13 +55,13 @@ public class AreaDto implements Serializable {
         this.description = description;
     }
 
-//     public List<MonsterAreaDto> getLocations() {
-//        return locations;
-//    }
-//
-//    public void setLocations(List<MonsterAreaDto> efficiencies) {
-//        this.locations = locations;
-//    }
+     public List<MonsterAreaDto> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<MonsterAreaDto> efficiencies) {
+        this.locations = locations;
+    }
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

@@ -26,8 +26,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Monsterarea.findAll", query = "SELECT m FROM Monsterarea m"),
     @NamedQuery(name = "Monsterarea.findByMonsterquantity", query = "SELECT m FROM Monsterarea m WHERE m.monsterquantity = :monsterquantity"),
-    @NamedQuery(name = "Monsterarea.findByMonsterId", query = "SELECT m FROM Monsterarea m WHERE m.monsterareaPK.monsterId = :monsterId"),
-    @NamedQuery(name = "Monsterarea.findByAreaId", query = "SELECT m FROM Monsterarea m WHERE m.monsterareaPK.areaId = :areaId")})
+//    @NamedQuery(name = "Monsterarea.findByMonsterId", query = "SELECT m FROM Monsterarea m WHERE m.monsterareaPK.monsterid = :monsterid"),
+//    @NamedQuery(name = "Monsterarea.findByAreaId", query = "SELECT m FROM Monsterarea m WHERE m.monsterareaPK.areaid = :areaid")
+})
 public class Monsterarea implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId

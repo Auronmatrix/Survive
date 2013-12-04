@@ -31,7 +31,6 @@ public class MonsterServiceImpl implements MonsterService {
     private Mapper mapper;
 
     @Override
-    @Transactional
     public MonsterDto save(MonsterDto dto) {
         Monster entity = mapper.map(dto, Monster.class);
         entity = monsterDao.save(entity);
@@ -40,7 +39,6 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    @Transactional
     public MonsterDto update(MonsterDto dto) {
 
         Monster entity = mapper.map(dto, Monster.class);
@@ -50,7 +48,6 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    @Transactional
     public void delete(MonsterDto dto) {
 
         monsterDao.delete(mapper.map(dto, Monster.class));
@@ -58,13 +55,11 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    @Transactional
     public void delete(Long id) {
         monsterDao.delete(id);
     }
 
     @Override
-    @Transactional
     public MonsterDto findById(Long id) {
         return mapper.map(monsterDao.findById(id), MonsterDto.class);
 
@@ -79,7 +74,6 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    @Transactional
     public List<MonsterDto> findAll() {
         List<MonsterDto> dtoList = new ArrayList<>();
         for (Monster o : monsterDao.findAll()) {

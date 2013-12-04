@@ -8,16 +8,22 @@
     <class-a>com.muni.fi.pa165.dto.MonsterAreaDto</class-a>
     <class-b>com.muni.fi.pa165.entities.Monsterarea</class-b>   
     <field>  
-      <a>monsterId</a>
-      <b>monster.id</b>
+      <a>monster</a>
+      <b>monster</b>
+      <a-deep-index-hint>com.muni.fi.pa165.dto.MonsterDto</a-deep-index-hint>
+      <b-deep-index-hint>com.muni.fi.pa165.entities.Monster</b-deep-index-hint>
+     
     </field>
     <field>
-      <a>areaId</a>
-      <b>area.id</b>
+      <a>area</a>
+      <b>area</b>
+      <a-deep-index-hint>com.muni.fi.pa165.dto.AreaDto</a-deep-index-hint>
+      <b-deep-index-hint>com.muni.fi.pa165.entities.Area</b-deep-index-hint>
+     
     </field> 
     <field>
       <a>monsterQuantity</a>
-      <b>monsterQuantity</b>
+      <b>monsterquantity</b>
     </field>  
   </mapping> 
 </mappings>

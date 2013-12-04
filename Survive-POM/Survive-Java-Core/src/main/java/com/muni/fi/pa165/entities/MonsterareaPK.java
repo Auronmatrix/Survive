@@ -17,40 +17,40 @@ import javax.persistence.Embeddable;
 public class MonsterareaPK implements Serializable {
     @Basic(optional = false)
     @Column(name = "MONSTER_ID")
-    private long monsterId;
+    private long monsterid;
     @Basic(optional = false)
     @Column(name = "AREA_ID")
-    private long areaId;
+    private long areaid;
 
     public MonsterareaPK() {
     }
 
-    public MonsterareaPK(long monsterId, long areaId) {
-        this.monsterId = monsterId;
-        this.areaId = areaId;
+    public MonsterareaPK(long monsterid, long areaid) {
+        this.monsterid = monsterid;
+        this.areaid = areaid;
     }
 
-    public long getMonsterId() {
-        return monsterId;
+    public long getMonsterid() {
+        return monsterid;
     }
 
-    public void setMonsterId(long monsterId) {
-        this.monsterId = monsterId;
+    public void setMonsterid(long monsterid) {
+        this.monsterid = monsterid;
     }
 
-    public long getAreaId() {
-        return areaId;
+    public long getAreaid() {
+        return areaid;
     }
 
-    public void setAreaId(long areaId) {
-        this.areaId = areaId;
+    public void setAreaid(long areaid) {
+        this.areaid = areaid;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) monsterId;
-        hash += (int) areaId;
+        hash += (int) monsterid;
+        hash += (int) areaid;
         return hash;
     }
 
@@ -61,10 +61,10 @@ public class MonsterareaPK implements Serializable {
             return false;
         }
         MonsterareaPK other = (MonsterareaPK) object;
-        if (this.monsterId != other.monsterId) {
+        if (this.monsterid != other.monsterid) {
             return false;
         }
-        if (this.areaId != other.areaId) {
+        if (this.areaid != other.areaid) {
             return false;
         }
         return true;
@@ -72,7 +72,7 @@ public class MonsterareaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "com.muni.fi.pa165.entities.MonsterareaPK[ monsterId=" + monsterId + ", areaId=" + areaId + " ]";
+        return "com.muni.fi.pa165.entities.MonsterareaPK[ monsterId=" + monsterid + ", areaId=" + areaid + " ]";
     }
     
 }

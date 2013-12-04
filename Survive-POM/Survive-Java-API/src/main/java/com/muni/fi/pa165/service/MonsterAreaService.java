@@ -5,6 +5,7 @@
 package com.muni.fi.pa165.service;
 
 import com.muni.fi.pa165.dto.MonsterAreaDto;
+import com.muni.fi.pa165.dto.MonsterAreaPkDto;
 import java.util.List;
 
 /**
@@ -14,38 +15,43 @@ import java.util.List;
 public interface MonsterAreaService {
 
     public MonsterAreaDto save(MonsterAreaDto dto);
+    
+    public MonsterAreaPkDto getCompositeKey(Long keyone, Long keytwo);
 
     /**
-     * Updates MonsterAreaDto
+     * Updates MonsterWeaponDto
      *
-     * @param dto object of type MonsterAreaDto
+     * @param dto object of type MonsterWeaponDto
      */
     public MonsterAreaDto update(MonsterAreaDto dto);
 
-    /**
-     * Deletes MonsterAreaDto
-     *
-     * @param dto object of type MonsterAreaDto
-     */
-    public void delete(MonsterAreaDto dto);
 
     /**
-     * Finds MonsterAreaDto by areaId
+     * Deletes MonsterWeaponDto
      *
-     * @param id ID of the area
-     * @return list object of type MonsterAreaDto
+     * @param dto object of type MonsterWeaponDto
      */
-    public List<MonsterAreaDto> findByAreaId(Long id);
+    public void delete(MonsterAreaPkDto dto);
 
     /**
-     * Finds MonsterAreaDto by monster
+     * Finds MonsterWeaponDto by monsterId
      *
      * @param id ID of the monster
-     * @return list object of type MonsterAreaDto
+     * @return list object of type MonsterWeaponDto
      */
     public List<MonsterAreaDto> findByMonsterId(Long id);
 
+    /**
+     * Finds MonsterWeaponDto by weaponId
+     *
+     * @param id ID of the weapon
+     * @return list object of type MonsterWeaponDto
+     */
+    public List<MonsterAreaDto> findByAreaId(Long id);
+
     public List<MonsterAreaDto> findAll();
 
-    public void delete(Long id);
+    public void delete(Long id, Long id2);
+    
+    public MonsterAreaDto findById(Long monsterId, Long areaId);
 }

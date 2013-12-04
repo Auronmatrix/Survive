@@ -13,7 +13,7 @@ import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 /**
  *
@@ -28,7 +28,6 @@ public class WeaponServiceImpl implements WeaponService {
     private Mapper mapper;
 
     @Override
-    @Transactional
     public WeaponDto save(WeaponDto dto) {
         Weapon entity = mapper.map(dto, Weapon.class);
         weaponDao.save(entity);
@@ -36,7 +35,6 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
-    @Transactional
     public WeaponDto update(WeaponDto dto) {
         Weapon entity = mapper.map(dto, Weapon.class);
         weaponDao.update(entity);
@@ -44,13 +42,11 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
-    @Transactional
     public void delete(WeaponDto dto) {
         weaponDao.delete(mapper.map(dto, Weapon.class));
     }
 
     @Override
-    @Transactional
     public WeaponDto findById(Long id) {
         return mapper.map(weaponDao.findById(id), WeaponDto.class);
     }

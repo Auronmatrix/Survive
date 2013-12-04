@@ -86,7 +86,15 @@
                                 <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" event="gallery"><f:message key="navigation.gallery"/></s:link></li>
                                 </ul>
                                 </li>
-                                <li ><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><f:message key="navigation.areas"/></s:link></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.areas"/><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><span class="glyphicon glyphicon-screenshot">&nbsp;<f:message key="navigation.areas.management"/></span></s:link></li>
+                                        <li class="divider"></li>
+                                        <li><s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean"><span class="glyphicon glyphicon-flash">&nbsp;<f:message key="navigation.areas.locations"/></span></s:link></li>
+                                </ul>
+                                </li>
+                                
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.weapons"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">

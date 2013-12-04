@@ -36,6 +36,7 @@
                 <value>MonsterMapper.xml</value>
                 <!--<value>MonsterWeaponMapper.xml</value>-->
                 <value>MonsterWeaponPKMapper.xml</value>
+                <value>MonsterAreaPKMapper.xml</value>
             </list>
         </property>
     </bean>

@@ -12,26 +12,30 @@ import java.util.Objects;
  */
 public class MonsterAreaDto {
 
-    private Long monsterID;
-    private Long areaID;
+    
+
+    private MonsterDto monster;
+    private AreaDto area;
     private int monsterQuantity;
 
-    public Long getMonsterID() {
-        return monsterID;
+   
+
+    public MonsterDto getMonster() {
+        return monster;
     }
 
-    public void setMonsterID(Long monsterID) {
-        this.monsterID = monsterID;
+    public void setMonster(MonsterDto monster) {
+        this.monster = monster;
     }
 
-    public Long getAreaID() {
-        return areaID;
+    public AreaDto getArea() {
+        return area;
     }
 
-    public void setAreaID(Long areaID) {
-        this.areaID = areaID;
-    }
-
+    public void setArea(AreaDto area) {
+        this.area = area;
+    } 
+    
     public int getMonsterQuantity() {
         return monsterQuantity;
     }
@@ -49,10 +53,10 @@ public class MonsterAreaDto {
             return false;
         }
         final MonsterAreaDto other = (MonsterAreaDto) obj;
-        if (!Objects.equals(this.monsterID, other.monsterID)) {
+        if (!Objects.equals(this.monster, other.monster)) {
             return false;
         }
-        if (!Objects.equals(this.areaID, other.areaID)) {
+        if (!Objects.equals(this.area, other.area)) {
             return false;
         }
         if (this.monsterQuantity != other.monsterQuantity) {
