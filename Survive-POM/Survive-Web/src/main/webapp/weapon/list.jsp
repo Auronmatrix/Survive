@@ -8,7 +8,7 @@
         <h1><f:message key="weapon.title"/></h1>
 
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean" var="actionBean"/>
-
+        <s:errors/> 
         <p><f:message key="weapon.list.allweapons"/></p>
         <div class="table-responsive">
             <table class="table">

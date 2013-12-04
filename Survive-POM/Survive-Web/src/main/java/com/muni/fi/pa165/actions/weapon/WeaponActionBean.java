@@ -53,12 +53,12 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
     //--- part for adding a weapon ----
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
-        @Validate(on = {"add", "save"}, field = "weaponType", required = true, maxlength = 10), 
-        @Validate(on = {"add", "save"}, field = "weaponClass", required = true, maxlength = 10),
+        @Validate(on = {"add", "save"}, field = "weaponType", required = true), 
+        @Validate(on = {"add", "save"}, field = "weaponClass", required = true),
         @Validate(on = {"add", "save"}, field = "range", required = false, maxlength = 10),
-         @Validate(on = {"add", "save"}, field = "caliber", required = false, maxlength = 10),
-         @Validate(on = {"add", "save"}, field = "rounds", required = false, maxlength = 10),
-         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)
+        @Validate(on = {"add", "save"}, field = "caliber", required = false, maxlength = 10),
+        @Validate(on = {"add", "save"}, field = "rounds", required = false, maxlength = 10),
+        @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)
     })
     private WeaponDto weapon;
     
