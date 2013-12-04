@@ -44,7 +44,7 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
      protected AreaService areaService;
     //--- part for adding a area ----
     @ValidateNestedProperties(value = {
-        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 10),
+        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
         @Validate(on = {"add", "save"}, field = "terrain", required = true), 
         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255),
      
@@ -66,7 +66,7 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
         //fill up the data for the table if validation errors occured
-//        areas = areaService.findAll();
+       areas = areaService.findAll();
         //return null to let the event handling continue
         return null;
     }

@@ -8,7 +8,7 @@
         <h1><f:message key="area.title"/></h1>
 
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" var="actionBean"/>
-
+        <s:errors/>
         <p><f:message key="area.list.allareas"/></p>
         <div class="table-responsive">
             <table class="table">
@@ -45,7 +45,6 @@
         </div>
             <s:form beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" class="form-horizontal" action="add">
             <fieldset><legend><f:message key="area.list.newarea"/></legend>
-                <s:hidden id="_sourcePage" name="_sourcePage" />
                 <s:hidden  name="area.id" value="${area.id}" />
                 <%@include file="form.jsp"%>
                 <s:submit class="btn btn-info" name="add">Save new area</s:submit>

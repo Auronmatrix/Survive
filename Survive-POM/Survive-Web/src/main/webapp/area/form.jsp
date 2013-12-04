@@ -1,7 +1,6 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<s:errors/> 
-
+<s:errors/>
 <div class="form-group">
            <div class="form-group">
             <div class="form-group">
