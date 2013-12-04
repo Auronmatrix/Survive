@@ -86,12 +86,7 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
     public List<MonsterAreaDto> getMonsterAreas() {
         return locations;
     }
-    //--- part for adding a monsterMonsterArea ----
-//    @ValidateNestedProperties(value = {
-//        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
-//     @Validate(on = {"add", "save"}, field = "damage", required = true, maxlength = 10),
-//        @Validate(on = {"add", "save"}, field = "location", required = true, maxlength = 10),
-//         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
+
     private MonsterAreaDto monsterArea;
 
     public Resolution add() {
