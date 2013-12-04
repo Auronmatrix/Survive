@@ -8,7 +8,7 @@
         <h1><f:message key="monster.title"/></h1>
 
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" var="actionBean"/>
-
+        <s:errors/> 
         <p><f:message key="monsterWeapon.list.allmonsterWeapons"/></p>
         <p> <s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" event="clearFilter">
                                  <span class="glyphicon glyphicon-filter">Clear filters</span>

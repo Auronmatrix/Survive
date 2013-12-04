@@ -90,12 +90,14 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     public List<MonsterWeaponDto> getMonsterWeapons() {
         return efficiencies;
     }
-    //--- part for adding a monsterMonsterWeapon ----
-//    @ValidateNestedProperties(value = {
-//        @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
-//     @Validate(on = {"add", "save"}, field = "damage", required = true, maxlength = 10),
-//        @Validate(on = {"add", "save"}, field = "efficiency", required = true, maxlength = 10),
-//         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
+//    --- part for adding a monsterMonsterWeapon ----
+         @ValidateNestedProperties(value = {
+         @Validate(on = {"add", "save"}, field = "monster.id", required = true),
+         @Validate(on = {"add", "save"}, field = "weapon.id", required = true),
+         @Validate(on = {"add", "save"}, field = "hitRate", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "damage", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "efficiency", required = false, minvalue = 0),
+         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
     private MonsterWeaponDto monsterWeapon;
 
     public Resolution add() {
