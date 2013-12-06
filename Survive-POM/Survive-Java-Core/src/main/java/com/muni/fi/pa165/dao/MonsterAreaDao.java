@@ -5,6 +5,7 @@
  */
 package com.muni.fi.pa165.dao;
 
+
 import com.muni.fi.pa165.entities.Monsterarea;
 import com.muni.fi.pa165.entities.MonsterareaPK;
 import java.util.List;

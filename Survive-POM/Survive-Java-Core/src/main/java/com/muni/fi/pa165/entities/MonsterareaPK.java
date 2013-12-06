@@ -16,10 +16,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class MonsterareaPK implements Serializable {
     @Basic(optional = false)
-    @Column(name = "MONSTER_ID")
+    @Column(name = "MONSTERID")
     private long monsterid;
     @Basic(optional = false)
-    @Column(name = "AREA_ID")
+    @Column(name = "AREAID")
     private long areaid;
 
     public MonsterareaPK() {

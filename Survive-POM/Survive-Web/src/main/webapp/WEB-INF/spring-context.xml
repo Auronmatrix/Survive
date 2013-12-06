@@ -62,7 +62,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 <bean name="systemUserDao" class="com.muni.fi.pa165.dao.impl.SystemUserDaoImpl"/>-->
 
 <!-- Mapping DTO -->
-<bean name="areaDto" class="com.muni.fi.pa165.dto.AreaDto" />
+
 
 
 <!--        <bean id="area" name="area" class="com.muni.fi.pa165.dto.AreaDto" ></bean>

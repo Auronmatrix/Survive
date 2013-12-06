@@ -37,10 +37,10 @@ public class Monsterarea implements Serializable {
     @Basic(optional = false)
     @Column(name = "MONSTERQUANTITY")
     private int monsterquantity;
-    @JoinColumn(name = "MONSTER_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @JoinColumn(name = "MONSTERID", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Monster monster;
-    @JoinColumn(name = "AREA_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @JoinColumn(name = "AREAID", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Area area;
 
