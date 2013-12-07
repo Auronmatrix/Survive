@@ -45,3 +45,4 @@ nb-configuration.xml
 *.RTF  diff=astextplain
 
 !/Survive-POM/Survive-Java-API/nb-configuration.xml
+/Survive-POM/Survive-REST-Client/target/
