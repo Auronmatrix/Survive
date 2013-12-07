@@ -62,5 +62,17 @@
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
+    
+    
+    <servlet>
+        <servlet-name>Survive.Rest</servlet-name>
+    </servlet>
+ 
+
+    <servlet-mapping>
+        <servlet-name>Survive.Rest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

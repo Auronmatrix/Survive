@@ -63,7 +63,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 <!-- Mapping DTO -->
 
-
+<!--<bean name="areaDto" class="com.muni.fi.pa165.dto.AreaDto" />-->
 
 <!--        <bean id="area" name="area" class="com.muni.fi.pa165.dto.AreaDto" ></bean>
     -->
