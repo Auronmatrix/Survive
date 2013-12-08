@@ -22,7 +22,7 @@ import javax.ws.rs.core.Response;
  *
  * @author Auron
  */
-public class WeaponServiceImpl extends BaseRestService implements CustomRestService<WeaponDto, CustomerResource> {
+public class WeaponServiceImpl extends BaseRestService implements CustomRestService<CustomerResource> {
 
     static final String WEB_TARGET_JSON = "customers/json/";
     static final String WEB_TARGET = "customers/";
@@ -31,17 +31,19 @@ public class WeaponServiceImpl extends BaseRestService implements CustomRestServ
     static final String HEADER_XML = "application/XML";
     static final String HEADER_TEXT = "application/Plain";
 
-    public Response create(WeaponDto dto) {
-            WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
-            Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
-            invocationBuilder.header(ACCEPT, HEADER_XML);
-            CustomerResource cust = new CustomerResource();
-            cust.setId("99");
-            cust.setName("Dougy");
-            cust.setOccupation("Mastermind");
-            cust.setSurname("Oosthuizen");
-            cust.setInvention("Life");
-            Response response = invocationBuilder.post(Entity.entity(cust, MediaType.APPLICATION_XML));
+//    public Response create(WeaponDto dto) {
+//        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
+//        Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
+//        invocationBuilder.header(ACCEPT, HEADER_XML);
+//        Response response = invocationBuilder.post(Entity.entity(dto, MediaType.APPLICATION_XML));
+//        return response;
+//    }
+
+    public Response create(CustomerResource dto) {
+        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
+        Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
+        invocationBuilder.header(ACCEPT, HEADER_XML);
+        Response response = invocationBuilder.post(Entity.entity(dto, MediaType.APPLICATION_XML));
         return response;
     }
 
@@ -54,22 +56,24 @@ public class WeaponServiceImpl extends BaseRestService implements CustomRestServ
         return response;
     }
 
-    public Response update(WeaponDto dto) {
-        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
+//    public Response update(WeaponDto dto) {
+//        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
+//        Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
+//        invocationBuilder.header(ACCEPT, HEADER_XML);
+//        Response response = invocationBuilder.put(Entity.entity(dto, MediaType.APPLICATION_XML));
+//        return response;
+//    }
+    
+        public Response update(CustomerResource dto) {
+        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + dto.getId());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
         invocationBuilder.header(ACCEPT, HEADER_XML);
-        CustomerResource cust = new CustomerResource();
-        cust.setId("99");
-        cust.setName("Bill");
-        cust.setOccupation("The absolute greatest person in the whole world");
-        cust.setSurname("Dolphin");
-        cust.setInvention("Life");
-        Response response = invocationBuilder.put(Entity.entity(cust, MediaType.APPLICATION_XML));
+        Response response = invocationBuilder.put(Entity.entity(dto, MediaType.APPLICATION_XML));
         return response;
     }
 
     public Response delete(Long id) {
-        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET+ id.toString());
+        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + id.toString());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.TEXT_PLAIN);
         invocationBuilder.header(ACCEPT, HEADER_JSON);
         Response response = invocationBuilder.delete();
@@ -84,16 +88,13 @@ public class WeaponServiceImpl extends BaseRestService implements CustomRestServ
         return response;
     }
 
-
     public List<CustomerResource> getDtoList() {
         WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
-        List<CustomerResource> customers = invocationBuilder               
+        List<CustomerResource> customers = invocationBuilder
                 .accept(MediaType.APPLICATION_XML)
                 .get(new GenericType<List<CustomerResource>>() {
         });
         return customers;
-
-
     }
 }

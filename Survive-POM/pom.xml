@@ -11,6 +11,7 @@
         <module>Survive-Java-Core</module>
         <module>Survive-Java-API</module>
     <module>Survive-REST-Client</module>
-  </modules>   
+        <module>Surive-Commons</module>
+    </modules>   
 
 </project>

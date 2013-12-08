@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
  *
  * @author Auron
  */
-public interface CustomRestService<T, T2> {
+public interface CustomRestService<T> {
 
     Response create(T dto);
 
@@ -19,7 +19,7 @@ public interface CustomRestService<T, T2> {
 
     Response update(T dto);
     
-    List<T2> getDtoList();
+    List<T> getDtoList();
 
     Response delete(Long id);
 
