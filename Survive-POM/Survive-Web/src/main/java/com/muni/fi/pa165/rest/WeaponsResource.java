@@ -9,27 +9,29 @@ package com.muni.fi.pa165.rest;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.service.WeaponService;
 import java.util.Collection;
+import javax.ejb.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import net.sourceforge.stripes.integration.spring.SpringBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author xvinkle1
  */
 
-@Path("weapons")
-@Component
+@Path("/weapons")
+@Singleton
 public class WeaponsResource implements EntityResource {
     
 //    @Inject
-    @Autowired
-    WeaponService weaponService;
+   @Autowired
+    protected WeaponService weaponService;
     
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -55,7 +57,6 @@ public class WeaponsResource implements EntityResource {
        
         try {
             Collection<WeaponDto> weaponsDto = weaponService.findAll();
-
             
             GenericEntity<Collection<WeaponDto>> ge =
                     new GenericEntity<Collection<WeaponDto>>(weaponsDto) {

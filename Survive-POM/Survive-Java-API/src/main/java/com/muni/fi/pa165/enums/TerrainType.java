@@ -10,5 +10,16 @@ package com.muni.fi.pa165.enums;
  */
 public enum TerrainType {
 
-    OCEANIC, DESERT, SNOW, JUNGLE, SAVANNA, MOUNTAIN
+    OCEANIC, DESERT, SNOW, JUNGLE, SAVANNA, MOUNTAIN;
+
+
+public static String getList()
+    {
+        String list = "";
+        for(TerrainType t : values())
+        {
+            list += t.name() + ",";
+        }
+        return list;
+    }
 }
