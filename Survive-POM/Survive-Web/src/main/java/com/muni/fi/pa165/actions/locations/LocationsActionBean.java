@@ -87,7 +87,13 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         return locations;
     }
 
-    private MonsterAreaDto monsterArea;
+     
+        @ValidateNestedProperties(value = {
+        @Validate(on = {"add", "save"}, field = "monster.id", required = true),
+        @Validate(on = {"add", "save"}, field = "area.id", required = true), 
+        @Validate(on = {"add", "save"}, field = "monsterQuantity", required = true, minvalue=1)})
+    
+        private MonsterAreaDto monsterArea;
 
     public Resolution add() {
         log.debug("add() monsterMonsterArea={}", monsterArea);

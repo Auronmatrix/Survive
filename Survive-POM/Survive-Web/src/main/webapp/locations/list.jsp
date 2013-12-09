@@ -8,13 +8,13 @@
         <h1><f:message key="monster.title"/></h1>
 
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" var="actionBean"/>
-
+        <s:errors/>
         <p><f:message key="monsterArea.list.allmonsterAreas"/></p>
         <p> <s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" event="clearFilter">
-                                 <span class="glyphicon glyphicon-filter">Clear filters</span>
-                            </s:link>
+                <span class="glyphicon glyphicon-filter">Clear filters</span>
+            </s:link>
         <p>
-                        
+
         <div class="table-responsive">
             <table class="table">
                 <tr>                    
@@ -36,8 +36,8 @@
                         <td><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" event="edit">
                                 <s:param name="monster.id" value="${monsterArea.monster.id}" />
                                 <c:out value="${monsterArea.monster.id}" /></s:link>
-                        </td>
-                        <td><s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" event="findByMonster">
+                            </td>
+                            <td><s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" event="findByMonster">
                                 <s:param name="filter.monster.id" value="${monsterArea.monster.id}" />
                                 <span class="glyphicon glyphicon-filter"></span>
                             </s:link>
@@ -48,9 +48,9 @@
                         <td><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" event="edit">
                                 <s:param name="area.id" value="${monsterArea.area.id}"/>
                                 <c:out value="${monsterArea.area.id}" /></s:link>
-                        </td>
-                        
-                        <td><s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" event="findByArea">
+                            </td>
+
+                            <td><s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" event="findByArea">
                                 <s:param name="filter.area.id" value="${monsterArea.area.id}" />
                                 <span class="glyphicon glyphicon-filter"></span>
                             </s:link>
@@ -58,7 +58,7 @@
                         <td><c:out value="${monsterArea.area.name}" /></td>
 
                         <td><c:out value="${monsterArea.monsterQuantity}" /></td>
-                         
+
                         <td>         
                             <s:form beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" action="edit">
                                 <s:hidden name="monsterArea.monster.id" value="${monsterArea.monster.id}"/>
@@ -79,23 +79,24 @@
         </div>
         <s:form beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean"  action="add" class="form-horizontal">
             <fieldset><legend><f:message key="monsterArea.list.newmonsterArea"/></legend>
-                   <div class="form-group">
-        <div class="form-group">
-            <s:label for="monsterArea.monster.id"  class="col-sm-2 control-label" name="monsterArea.monster.id" />
-            <div class="col-sm-10">
-                <s:select class="form-control"   id="monsterArea.monster.id" name="monsterArea.monster.id"><s:options-collection collection="${actionBean.monsters}"  label="name" value="id" /></s:select>
-           </div>
-        </div>
-           
-            <div class="form-group">
-            <s:label for="monsterArea.area.id"  class="col-sm-2 control-label" name="monsterArea.area.id" />
-            <div class="col-sm-10">
-                <s:select class="form-control"   id="monsterArea.area.id" name="monsterArea.area.id"><s:options-collection collection="${actionBean.areas}"  label="name" value="id" /></s:select>
-           </div>
-        </div>
- <%@include file="form.jsp"%>
-                <s:submit class="btn btn-info" name="add"><f:message key="forms.save" /></s:submit>
-                </fieldset>
+                <div class="form-group">
+                    <div class="form-group">
+                        <s:label for="monsterArea.monster.id"  class="col-sm-2 control-label" name="monsterArea.monster.id" />
+                        <div class="col-sm-10">
+                            <s:select class="form-control"   id="monsterArea.monster.id" name="monsterArea.monster.id"><s:options-collection collection="${actionBean.monsters}"  label="name" value="id" /></s:select>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <s:label for="monsterArea.area.id"  class="col-sm-2 control-label" name="monsterArea.area.id" />
+                        <div class="col-sm-10">
+                            <s:select class="form-control"   id="monsterArea.area.id" name="monsterArea.area.id"><s:options-collection collection="${actionBean.areas}"  label="name" value="id" /></s:select>
+                            </div>
+                        </div>
+                    <%@include file="form.jsp"%>
+                    <s:submit class="btn btn-info" name="add"><f:message key="forms.save" /></s:submit>
+                </div>    
+            </fieldset>
         </s:form>
     </s:layout-component>
 </s:layout-render>

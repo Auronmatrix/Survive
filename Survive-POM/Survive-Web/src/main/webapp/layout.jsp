@@ -91,7 +91,7 @@
                                 <ul class="dropdown-menu">
                                     <li><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><span class="glyphicon glyphicon-screenshot">&nbsp;<f:message key="navigation.areas.management"/></span></s:link></li>
                                         <li class="divider"></li>
-                                        <li><s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean"><span class="glyphicon glyphicon-flash">&nbsp;<f:message key="navigation.areas.locations"/></span></s:link></li>
+                                        <li><s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean"><span class="glyphicon glyphicon-eye-open">&nbsp;<f:message key="navigation.areas.locations"/></span></s:link></li>
                                 </ul>
                                 </li>
                                 
