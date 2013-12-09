@@ -18,10 +18,10 @@ import javax.ws.rs.core.Response;
  */
 public interface EntityResource {
 
-    @GET
-    @Path(value = "/all")
-    @Produces(value = {MediaType.APPLICATION_JSON})
-    Response getAll();
+//    @GET
+//    @Path(value = "/all")
+//    @Produces(value = {MediaType.APPLICATION_JSON})
+//    Response getAll();
 
     @GET
     @Produces(value = MediaType.TEXT_PLAIN)

@@ -5,11 +5,13 @@
 package com.muni.fi.pa165.dto;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author irina
  */
+@XmlRootElement
 public class SystemUserDto {
 
     private Long id;

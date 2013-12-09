@@ -10,6 +10,7 @@ import com.muni.fi.pa165.enums.MonsterClass;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Data transfer object for the {@link Monster}.
@@ -17,6 +18,7 @@ import java.util.Objects;
  *
  * @author Michal Vinkler
  */
+@XmlRootElement
 public class MonsterDto {
 
     private Long id;
