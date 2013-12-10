@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.jpa.impl;
 
 import com.muni.fi.pa165.dao.AreaDao;
@@ -19,7 +15,7 @@ import org.springframework.dao.DataAccessException;
 
 /**
  *
- * @author Aubrey Oosthuizen / Irina Serdyukova
+ * @author Aubrey Oosthuizen 
  */
 public class AreaDaoImplTest extends AbstractDaoIntegrationTest {
 
@@ -57,7 +53,6 @@ public class AreaDaoImplTest extends AbstractDaoIntegrationTest {
     public void testCheckAvailable() {
 
 
-//        System.out.println("checkAvailable");
         String areaName = "CAVS";
 
         boolean expResult = true;
@@ -65,16 +60,13 @@ public class AreaDaoImplTest extends AbstractDaoIntegrationTest {
         assertEquals(expResult, result);
 
     }
-
 //    @Test(expected = IllegalArgumentException.class)
 //    public void testCheckAvailableWithNull() {
 //
 //        dao.checkAvailable(null);
 //
 //    }
-
     /**
      * Test of getAreanByName method, of class AreaJpaDoa.
      */
-
 }

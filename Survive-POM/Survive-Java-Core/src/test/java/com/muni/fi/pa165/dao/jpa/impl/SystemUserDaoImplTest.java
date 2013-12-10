@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.jpa.impl;
 
 import com.muni.fi.pa165.dao.SystemUserDao;

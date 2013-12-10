@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.entities;
 
 import com.muni.fi.pa165.enums.WeaponClass;
@@ -15,7 +11,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Aubrey Oosthuizen / Irina Serdyukova
+ * @author Aubrey Oosthuizen
  */
 public class WeaponTest {
 
@@ -123,7 +119,6 @@ public class WeaponTest {
         instance.setWeaponclass(weaponClass);
         assertEquals(weaponClass, instance.getWeaponclass());
     }
-    
 
     /**
      * Test of getRange method, of class Weapon.

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.service.impl;
 
 import com.muni.fi.pa165.service.impl.AreaServiceImpl;
@@ -50,7 +46,6 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
 
     @Test
     public void testSave() {
-//        System.out.println("Testing save");
         AreaDto dto = new AreaDto();
         dto.setName("Farm");
         dto.setTerrain(TerrainType.SNOW);
@@ -65,8 +60,6 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testUpdate() {
-//        System.out.println("Testing update");
-
         AreaDto dto = new AreaDto();
         dto.setName("Farm");
         dto.setTerrain(TerrainType.SNOW);
@@ -85,7 +78,6 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testDelete() {
-//        System.out.println("Testing delete");
 
         AreaDto dto = new AreaDto();
         dto.setId(1L);
@@ -108,7 +100,6 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testFindById() {
-//        System.out.println("Testing FindById");
 
         AreaDto dto = new AreaDto();
 

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.jpa.impl;
 
 import com.muni.fi.pa165.dao.MonsterDao;
@@ -57,16 +53,13 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
      */
     @Test
     public void testCheckAvailable() {
-//        System.out.println("Test checkAvailable method with valid arguments.");
         MonsterClass monsterClass = MonsterClass.Zombie;
         assertTrue(dao.checkAvailable(monsterClass));
     }
-
 //    @Test(expected = IllegalArgumentException.class)
 //    public void testCheckAvailableWithNull() {
 //
 //        dao.checkAvailable(null);
 //
 //    }
-
 }

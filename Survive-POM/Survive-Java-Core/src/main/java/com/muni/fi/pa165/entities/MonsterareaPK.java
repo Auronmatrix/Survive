@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.entities;
 
 import java.io.Serializable;
@@ -15,6 +11,7 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class MonsterareaPK implements Serializable {
+
     @Basic(optional = false)
     @Column(name = "MONSTERID")
     private long monsterid;
@@ -74,5 +71,4 @@ public class MonsterareaPK implements Serializable {
     public String toString() {
         return "com.muni.fi.pa165.entities.MonsterareaPK[ monsterId=" + monsterid + ", areaId=" + areaid + " ]";
     }
-    
 }

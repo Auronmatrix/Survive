@@ -1,8 +1,3 @@
-/* ------------------------------------------------
- * MonsterweaponDaoImpl.java
- * 
- * ------------------------------------------------
- */
 package com.muni.fi.pa165.dao.impl;
 
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
@@ -28,7 +23,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> implements MonsterWeaponDao {
 
-    
     public MonsterWeaponDaoImpl() {
         super(Monsterweapon.class);
     }
@@ -38,19 +32,18 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
         Query query = em.createNamedQuery("Monsterweapon.findByMonsterid").setParameter("monsterid", id);
         EntityTransaction tx = em.getTransaction();
-        List <Monsterweapon> list = new ArrayList();
+        List<Monsterweapon> list = new ArrayList();
         try {
-                tx.begin();
-                list = query.getResultList();
-                tx.commit();        
-        }
-        finally {
-            
+            tx.begin();
+            list = query.getResultList();
+            tx.commit();
+        } finally {
+
             if (em != null) {
                 em.close();
             }
         }
-       return list;
+        return list;
     }
 
     @Override
@@ -58,85 +51,80 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
         Query query = em.createNamedQuery("Monsterweapon.findByWeaponid").setParameter("weaponid", id);
         EntityTransaction tx = em.getTransaction();
-        List <Monsterweapon> list = new ArrayList();
+        List<Monsterweapon> list = new ArrayList();
         try {
-                tx.begin();
-                list = query.getResultList();
-                tx.commit();        
-        }
-        finally {
-            
+            tx.begin();
+            list = query.getResultList();
+            tx.commit();
+        } finally {
+
             if (em != null) {
                 em.close();
             }
         }
-       return list;
-    
+        return list;
+
     }
-    
+
     @Override
-    public void delete(MonsterweaponPK pk)
-    {    
+    public void delete(MonsterweaponPK pk) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        EntityTransaction tx = em.getTransaction(); 
+        EntityTransaction tx = em.getTransaction();
         Query query = em.createNamedQuery("Monsterweapon.findById");
         query.setParameter("monsterweaponPK", pk);
         Monsterweapon obj = null;
         try {
-                tx.begin();
-                 obj = (Monsterweapon) query.getSingleResult();
-                //em.merge(pk);
-               em.merge(obj);
-               em.remove(obj);
-               tx.commit();
-               }
-        finally {
+            tx.begin();
+            obj = (Monsterweapon) query.getSingleResult();
+            //em.merge(pk);
+            em.merge(obj);
+            em.remove(obj);
+            tx.commit();
+        } finally {
             if (em != null) {
                 em.close();
             }
         }
-        
+
     }
 
     @Override
     public List<Monsterweapon> findAll() {
-        EntityManager em = this.getEntityManagerFactory().createEntityManager();      
+        EntityManager em = this.getEntityManagerFactory().createEntityManager();
         Query query = em.createNamedQuery("Monsterweapon.findAll");
         EntityTransaction tx = em.getTransaction();
-        List <Monsterweapon> list = new ArrayList();
+        List<Monsterweapon> list = new ArrayList();
         try {
-                tx.begin();
-                list = query.getResultList();
-                tx.commit();        
-        }
-        finally {
-            
+            tx.begin();
+            list = query.getResultList();
+            tx.commit();
+        } finally {
+
             if (em != null) {
                 em.close();
             }
         }
-       return list;
-     }
-    
+        return list;
+    }
+
     @Override
     public Monsterweapon findById(MonsterweaponPK id) {
-      EntityManager em = this.getEntityManagerFactory().createEntityManager();      
+        EntityManager em = this.getEntityManagerFactory().createEntityManager();
         Query query = em.createNamedQuery("Monsterweapon.findById");
         query.setParameter("monsterweaponPK", id);
         EntityTransaction tx = em.getTransaction();
         Monsterweapon obj = null;
         try {
-                tx.begin();
-                obj = (Monsterweapon) query.getSingleResult();
-                tx.commit();        
-        }
-        finally {
-            
+            tx.begin();
+            obj = (Monsterweapon) query.getSingleResult();
+            tx.commit();
+        } finally {
+
             if (em != null) {
                 em.close();
             }
         }
-       return obj;
-        
+        return obj;
+
     }
 }

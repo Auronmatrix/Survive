@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.service.impl;
 
 import com.muni.fi.pa165.service.impl.MonsterServiceImpl;
@@ -54,7 +50,6 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
 
     @Test
     public void testSave() {
-//        System.out.println("Testing save");
         MonsterDto dto = new MonsterDto();
 
         dto.setId(1L);
@@ -82,7 +77,7 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
 //        List<MonsterAreaDto> list = new ArrayList<>();
 //        list.add(monsterAreaDto1);
 //        list.add(monsterAreaDto2);
-        // dto.setLocations(list);
+//        dto.setLocations(list);
 
 
         Monster entity = mapper.map(dto, Monster.class);
@@ -127,7 +122,6 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testDelete() {
-//        System.out.println("Testing delete");
 
         MonsterDto dto = new MonsterDto();
         dto.setId(1L);

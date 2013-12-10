@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.entities;
 
 import com.muni.fi.pa165.enums.TerrainType;
@@ -37,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Area.findByName", query = "SELECT a FROM Area a WHERE a.name = :name"),
     @NamedQuery(name = "Area.findByTerrain", query = "SELECT a FROM Area a WHERE a.terrain = :terrain")})
 public class Area implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,8 +89,6 @@ public class Area implements Serializable {
         this.terrain = terrain;
     }
 
-
-
     @XmlTransient
     public Collection<Monsterarea> getMonsterareaCollection() {
         return monsterareaCollection;
@@ -127,5 +122,4 @@ public class Area implements Serializable {
     public String toString() {
         return "com.muni.fi.pa165.entities.Area[ id=" + id + " ]";
     }
-    
 }

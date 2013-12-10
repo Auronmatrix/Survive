@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.MonsterAreaDao;
@@ -15,7 +11,6 @@ import org.dozer.Mapper;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -32,7 +27,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
 
     @Override
     public MonsterAreaPkDto getCompositeKey(Long monsterId, Long areaId) {
-        return new MonsterAreaPkDto(monsterId, areaId);      
+        return new MonsterAreaPkDto(monsterId, areaId);
     }
 
     @Override
@@ -40,7 +35,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
         Monsterarea entity = mapper.map(dto, Monsterarea.class);
         Long monster = dto.getMonster().getId();
         Long area = dto.getArea().getId();
-        MonsterAreaPkDto dtoPk = new MonsterAreaPkDto(monster,area);
+        MonsterAreaPkDto dtoPk = new MonsterAreaPkDto(monster, area);
         MonsterareaPK pk = mapper.map(dtoPk, MonsterareaPK.class);
         entity.setMonsterareaPK(pk);
         entity = monsterAreaDao.save(entity);

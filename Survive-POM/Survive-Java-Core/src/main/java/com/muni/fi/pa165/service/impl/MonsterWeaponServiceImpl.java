@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
@@ -31,7 +27,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     @Override
     public MonsterWeaponPkDto getCompositeKey(Long monsterId, Long weaponId) {
-        return new MonsterWeaponPkDto(monsterId, weaponId);      
+        return new MonsterWeaponPkDto(monsterId, weaponId);
     }
 
     @Override

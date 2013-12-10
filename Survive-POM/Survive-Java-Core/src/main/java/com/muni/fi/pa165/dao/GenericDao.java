@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao;
 
 import java.util.List;
@@ -20,7 +16,7 @@ public interface GenericDao<T, ID> {
     T update(T entity);
 
     void delete(T entity);
-    
+
     void delete(Long id);
 
     T findById(ID id);

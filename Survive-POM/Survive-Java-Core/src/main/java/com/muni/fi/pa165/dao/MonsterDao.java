@@ -1,8 +1,3 @@
-/* ------------------------------------------------
- * MonsterDao.java
- * 
- * ------------------------------------------------
- */
 package com.muni.fi.pa165.dao;
 
 import com.muni.fi.pa165.entities.Monster;

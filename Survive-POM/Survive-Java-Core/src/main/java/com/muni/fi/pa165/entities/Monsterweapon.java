@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.entities;
 
 import java.io.Serializable;
@@ -30,9 +26,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Monsterweapon.findByHitrate", query = "SELECT m FROM Monsterweapon m WHERE m.hitrate = :hitrate"),
     @NamedQuery(name = "Monsterweapon.findByEfficiency", query = "SELECT m FROM Monsterweapon m WHERE m.efficiency = :efficiency"),
     @NamedQuery(name = "Monsterweapon.findByDamage", query = "SELECT m FROM Monsterweapon m WHERE m.damage = :damage"),
-   @NamedQuery(name = "Monsterweapon.findById", query = "SELECT m FROM Monsterweapon m WHERE m.monsterweaponPK = :monsterweaponPK"),    
+    @NamedQuery(name = "Monsterweapon.findById", query = "SELECT m FROM Monsterweapon m WHERE m.monsterweaponPK = :monsterweaponPK"),
     @NamedQuery(name = "Monsterweapon.findByDescription", query = "SELECT m FROM Monsterweapon m WHERE m.description = :description")})
 public class Monsterweapon implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected MonsterweaponPK monsterweaponPK;
@@ -142,5 +139,4 @@ public class Monsterweapon implements Serializable {
     public String toString() {
         return "com.muni.fi.pa165.entities.Monsterweapon[ monsterweaponPK=" + monsterweaponPK + " ]";
     }
-    
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.entities;
 
 import com.muni.fi.pa165.enums.TerrainType;
@@ -11,7 +7,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Aubrey Oosthuizen / Irina Serdyukova
+ * @author Aubrey Oosthuizen 
  */
 public class AreaTest {
 

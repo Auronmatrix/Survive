@@ -1,23 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.impl;
 
 import com.muni.fi.pa165.dao.WeaponDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
 import com.muni.fi.pa165.entities.Weapon;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.Assert;
 
 /**
- * Typed JpaDao objects extending the GenericDaoAbs abstract class and implementing a Type specific interface. This Dao
- * object will be used to perform all operations within the business layer.
+ * Typed JpaDao objects extending the GenericDaoAbs abstract class and
+ * implementing a Type specific interface. This Dao object will be used to
+ * perform all operations within the business layer.
  *
- * @author Aubrey Oosthuizen / Irina Serdyukova
+ * @author Aubrey Oosthuizen 
  */
 @Repository
 public class WeaponDaoImpl extends GenericDaoAbs<Weapon, Long> implements WeaponDao {
@@ -33,8 +28,6 @@ public class WeaponDaoImpl extends GenericDaoAbs<Weapon, Long> implements Weapon
             throw new IllegalArgumentException("Null argument.");
         }
 
-//        Assert.notNull(name); //Use to make sure no null object is passed. org.springframework.util.Assert;
-
         System.out.println("Trying to look for weapon named " + name);
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
         TypedQuery<Weapon> query = em.createQuery("select p from Weapon  p where p.name = :name", Weapon.class);
@@ -44,6 +37,4 @@ public class WeaponDaoImpl extends GenericDaoAbs<Weapon, Long> implements Weapon
         }
         return false;
     }
-
-   
 }

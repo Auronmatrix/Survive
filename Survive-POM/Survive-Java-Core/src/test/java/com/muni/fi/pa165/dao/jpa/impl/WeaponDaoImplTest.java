@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.jpa.impl;
 
 import com.muni.fi.pa165.dao.WeaponDao;
@@ -16,7 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 
 /**
  *
@@ -60,7 +55,6 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
 //        dao.save(null);
 //
 //    }
-
     /**
      * Test of checkAvailable method, of class WeaponJpaDaoImpl.
      */
@@ -74,14 +68,10 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
         assertEquals(expResult, result);
 
     }
-
 //    @Test(expected = IllegalArgumentException.class)
 //    public void testCheckAvailableWithNull() {
 //        
 //        dao.checkAvailable(null);
 //        
 //    }
-
-
-
 }
