@@ -4,8 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
-    <!-- Spring -->
-
+<!-- Spring -->
     <context-param>
         <description>config file for Spring</description>
         <param-name>contextConfigLocation</param-name>
@@ -15,9 +14,9 @@
         <description>activates Spring IoC container during start</description>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-<!--    <listener>
+    <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-    </listener>-->
+    </listener>
     
     
     
@@ -29,6 +28,16 @@
   </servlet-class>
   <load-on-startup>1</load-on-startup>
  </servlet>
+ 
+ <servlet>
+    <servlet-name>Jersey Web Application</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+        <param-name>com.sun.jersey.config.property.packages</param-name>
+        <param-value>com.muni.fi.pa165.rest.WeaponsResource</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+</servlet>
  
 
     <!-- JSTL -->
@@ -80,7 +89,7 @@
     </filter-mapping>
     
     
-    <servlet>
+<!--    <servlet>
         <servlet-name>javax.ws.rs.core.Application</servlet-name>
     </servlet>
  
@@ -88,7 +97,7 @@
     <servlet-mapping>
         <servlet-name>javax.ws.rs.core.Application</servlet-name>
         <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     
  
 
