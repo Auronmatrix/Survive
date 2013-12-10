@@ -9,12 +9,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlRootElement;
 //import javax.persistence.Enumerated;
 
 /**
  *
  * @author irina
  */
+@XmlRootElement
 public class AreaDto implements Serializable {
 
     private Long id;

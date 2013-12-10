@@ -9,10 +9,8 @@ package com.muni.fi.pa165.rest;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.service.WeaponService;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import javax.ejb.Singleton;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -21,14 +19,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import net.sourceforge.stripes.integration.spring.SpringBean;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
@@ -36,14 +31,16 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 
 @Path("/weapons")
-@Singleton
+@Component
+//@Scope("request")
+//@Singleton
 public class WeaponsResource implements EntityResource {
     
      @Context
     private UriInfo context;
     
 //    @Inject
-   @Autowired
+  // @Autowired
     protected WeaponService weaponService;
     
 //    @GET
@@ -55,28 +52,29 @@ public class WeaponsResource implements EntityResource {
 //        return test;
 //    }
     
+
     
-//    @GET
-//    @Path("/all")
-//    @Produces({MediaType.APPLICATION_JSON})
-//    @Override
-//    public Response getAll() {
-//        
-//        if(weaponService == null) {
-//            System.out.println("WEAPON SERVICE: NULL" );
-//        }
-//       
-//        try {
-//            Collection<WeaponDto> weaponsDto = weaponService.findAll();
-//            
-//            GenericEntity<Collection<WeaponDto>> ge =
-//                    new GenericEntity<Collection<WeaponDto>>(weaponsDto) {
-//                    };
-//            return Response.ok().entity(ge).build();
-//        } catch (Exception ex) {
-//            return Response.status(Response.Status.CONFLICT).build();
-//        }
-//    }
+    
+    @GET
+    @Path("/all")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAll() {
+        
+        if(weaponService == null) {
+            System.out.println("WEAPON SERVICE: NULL" );
+        }
+       
+        try {
+            Collection<WeaponDto> weaponsDto = weaponService.findAll();
+            
+            GenericEntity<Collection<WeaponDto>> ge =
+                    new GenericEntity<Collection<WeaponDto>>(weaponsDto) {
+                    };
+            return Response.ok().entity(ge).build();
+        } catch (Exception ex) {
+            return Response.status(Response.Status.CONFLICT).build();
+        }
+    }
     
     
         @GET
@@ -92,16 +90,16 @@ public class WeaponsResource implements EntityResource {
         return returnString.toString();
     }
     
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public List<WeaponDto> getAll() {
-        List<WeaponDto> weapons = new ArrayList<WeaponDto>();
-//      for(CustomerResource c: customerDB.values())
-//      {
-//          customers.add(c);
-//      }
-        return weapons;
-    }
+//    @GET
+//    @Produces(MediaType.APPLICATION_XML)
+//    public List<WeaponDto> getAll() {
+//        List<WeaponDto> weapons = new ArrayList<WeaponDto>();
+////      for(CustomerResource c: customerDB.values())
+////      {
+////          customers.add(c);
+////      }
+//        return weapons;
+//    }
 
 
     @Path("{id}")

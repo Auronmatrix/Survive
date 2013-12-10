@@ -5,15 +5,31 @@
          version="3.0">
 
     <!-- Spring -->
-    <listener>
-        <description>activates Spring IoC container during start</description>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+
     <context-param>
         <description>config file for Spring</description>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/spring-context.xml</param-value>
     </context-param>
+    <listener>
+        <description>activates Spring IoC container during start</description>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+<!--    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>-->
+    
+    
+    
+    <!-- Jersey -->
+ <servlet>
+  <servlet-name>jersey-servlet</servlet-name>
+  <servlet-class>
+         com.sun.jersey.spi.spring.container.servlet.SpringServlet
+  </servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ 
 
     <!-- JSTL -->
     <context-param>
@@ -73,6 +89,9 @@
         <servlet-name>javax.ws.rs.core.Application</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+    
+ 
 
+    
 
 </web-app>

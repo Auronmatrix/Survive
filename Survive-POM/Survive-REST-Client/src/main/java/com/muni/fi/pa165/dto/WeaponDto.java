@@ -10,12 +10,14 @@ import com.muni.fi.pa165.enums.WeaponType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Data transfer object for the {@link Weapon}.
  *
- * @author Michal Vinkler
+ * @author Aubrey Oosthuizen
  */
+@XmlRootElement
 public class WeaponDto {
 
     private Long id;
