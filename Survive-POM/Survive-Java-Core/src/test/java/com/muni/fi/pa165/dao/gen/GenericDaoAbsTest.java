@@ -61,12 +61,12 @@ public class GenericDaoAbsTest extends AbstractDaoIntegrationTest {
     /**
      * Test of save method, of class GenericDAO.
      */
-//    @Test(expected = IllegalArgumentException.class)
-//    public void testSaveWithNull() {
-//
-//        dao.save(null);
-//
-//    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testSaveWithNull() {
+
+        dao.save(null);
+
+    }
 
     /**
      * Test of update method, of class GenericDAO.

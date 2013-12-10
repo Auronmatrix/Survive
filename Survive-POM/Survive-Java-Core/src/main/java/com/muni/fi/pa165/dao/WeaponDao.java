@@ -7,8 +7,10 @@ import com.muni.fi.pa165.entities.Weapon;
  * methods.
  *
  * @author Aubrey Oosthuizen
+ * 
+ * @throws IllegalArgumentException when null is passed
  */
 public interface WeaponDao extends GenericDao<Weapon, Long> {
 
-    boolean checkAvailable(String weaponName);
+    boolean checkAvailable(String weaponName)throws IllegalArgumentException;
 }

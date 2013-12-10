@@ -17,12 +17,8 @@ public interface MonsterDao extends GenericDao<Monster, Long> {
      * This method checks if there is a record of monster with given monsterClass.
      *
      * @return true if such a monsterClass exists
+     * @throws IllegalArgumentException when null is passed
      */
-    boolean checkAvailable(MonsterClass monsterClass);
+    boolean checkAvailable(MonsterClass monsterClass) throws IllegalArgumentException;
 
-    /**
-     * This method returns one type of a creature according to given monsterClass.
-     *
-     * @return a single monster type when record in db exists, null otherwise
-     */
 }

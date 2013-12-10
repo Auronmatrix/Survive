@@ -49,7 +49,6 @@ public class WeaponTest {
      */
     @Test
     public void testGetName() {
-//        System.out.println("getName");
         Weapon instance = weapon;
         String expResult = "AK47";
         String result = instance.getName();
@@ -62,7 +61,6 @@ public class WeaponTest {
      */
     @Test
     public void testSetName() {
-//        System.out.println("setName");
         String name = "UZI";
         Weapon instance = new Weapon();
         instance.setName(name);
@@ -75,7 +73,6 @@ public class WeaponTest {
      */
     @Test
     public void testGetWeaponType() {
-//        System.out.println("getWeaponType");
         Weapon instance = weapon;
         WeaponType expResult = WeaponType.Gun;
         WeaponType result = instance.getWeapontype();
@@ -88,7 +85,6 @@ public class WeaponTest {
      */
     @Test
     public void testSetWeaponType() {
-//        System.out.println("setWeaponType");
         WeaponType weaponType = WeaponType.Explosive;
         Weapon instance = new Weapon();
         instance.setWeapontype(weaponType);
@@ -100,7 +96,6 @@ public class WeaponTest {
      */
     @Test
     public void testGetWeaponClass() {
-//        System.out.println("getWeaponClass");
         Weapon instance = weapon;
         WeaponClass expResult = WeaponClass.Ranged;
         WeaponClass result = instance.getWeaponclass();
@@ -113,7 +108,6 @@ public class WeaponTest {
      */
     @Test
     public void testSetWeaponClass() {
-//        System.out.println("setWeaponClass");
         WeaponClass weaponClass = WeaponClass.Melee;
         Weapon instance = new Weapon();
         instance.setWeaponclass(weaponClass);
@@ -125,7 +119,6 @@ public class WeaponTest {
      */
     @Test
     public void testGetRange() {
-//        System.out.println("getRange");
         Weapon instance = weapon;
         Integer expResult = 100;
         Integer result = instance.getRange();
@@ -138,7 +131,6 @@ public class WeaponTest {
      */
     @Test
     public void testSetRange() {
-//        System.out.println("setRange");
         Integer range = 333;
         Weapon instance = new Weapon();
         instance.setRange(range);
@@ -150,7 +142,6 @@ public class WeaponTest {
      */
     @Test
     public void testGetCaliber() {
-//        System.out.println("getCaliber");
         Weapon instance = weapon;
         double expResult = 0.44;
         double result = instance.getCaliber();
@@ -163,7 +154,6 @@ public class WeaponTest {
      */
     @Test
     public void testSetCaliber() {
-//        System.out.println("setCaliber");
         double caliber = 0.25;
         Weapon instance = new Weapon();
         instance.setCaliber(caliber);
@@ -175,7 +165,6 @@ public class WeaponTest {
      */
     @Test
     public void testGetRounds() {
-//        System.out.println("getRounds");
         Weapon instance = weapon;
         Integer expResult = 44;
         Integer result = instance.getRounds();
@@ -188,7 +177,6 @@ public class WeaponTest {
      */
     @Test
     public void testSetRounds() {
-//        System.out.println("setRounds");
         Integer rounds = 99;
         Weapon instance = new Weapon();
         instance.setRounds(rounds);
@@ -200,7 +188,6 @@ public class WeaponTest {
      */
     @Test
     public void testGetDescription() {
-//        System.out.println("getDescription");
         Weapon instance = weapon;
         String expResult = "Africa's favourite";
         String result = instance.getDescription();
@@ -213,35 +200,10 @@ public class WeaponTest {
      */
     @Test
     public void testSetDescription() {
-//        System.out.println("setDescription");
         String description = "One killing machine";
         Weapon instance = new Weapon();
         instance.setDescription(description);
         assertEquals(description, instance.getDescription());
     }
-    /**
-     * Test of getEfficiencies method, of class Weapon.
-     */
-//    @Test
-//    public void testGetEfficiencies() {
-//        System.out.println("getEfficiencies");
-//        Weapon instance = new Weapon();
-//        List expResult = null;
-//        List result = instance.getEfficiencies();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-    /**
-     * Test of setEfficiencies method, of class Weapon.
-     */
-//    @Test
-//    public void testSetEfficiencies() {
-//        System.out.println("setEfficiencies");
-//        List<MonsterTypeWeaponEfficiency> efficiencies = null;
-//        Weapon instance = new Weapon();
-//        instance.setEfficiencies(efficiencies);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+
 }

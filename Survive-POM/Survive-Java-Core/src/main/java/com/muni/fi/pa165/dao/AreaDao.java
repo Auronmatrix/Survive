@@ -7,8 +7,10 @@ import com.muni.fi.pa165.entities.Area;
  * methods.
  *
  * @author Aubrey Oosthuizen
+ * 
+ * @throws IllegalArgumentException when null is passed
  */
 public interface AreaDao extends GenericDao<Area, Long> {
 
-    boolean checkAvailable(String areaName);
+    boolean checkAvailable(String areaName) throws IllegalArgumentException;
 }

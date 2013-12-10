@@ -68,10 +68,10 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
         assertEquals(expResult, result);
 
     }
-//    @Test(expected = IllegalArgumentException.class)
-//    public void testCheckAvailableWithNull() {
-//        
-//        dao.checkAvailable(null);
-//        
-//    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testCheckAvailableWithNull() {
+        
+        dao.checkAvailable(null);
+        
+    }
 }

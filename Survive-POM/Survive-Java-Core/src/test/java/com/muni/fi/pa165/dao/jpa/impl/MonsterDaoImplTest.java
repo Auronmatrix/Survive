@@ -56,10 +56,10 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
         MonsterClass monsterClass = MonsterClass.Zombie;
         assertTrue(dao.checkAvailable(monsterClass));
     }
-//    @Test(expected = IllegalArgumentException.class)
-//    public void testCheckAvailableWithNull() {
-//
-//        dao.checkAvailable(null);
-//
-//    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testCheckAvailableWithNull() {
+
+        dao.checkAvailable(null);
+
+    }
 }

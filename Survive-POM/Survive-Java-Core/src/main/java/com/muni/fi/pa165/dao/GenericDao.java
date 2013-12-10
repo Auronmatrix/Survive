@@ -8,10 +8,12 @@ import java.util.List;
  *
  * GenericDao class that acts as Interface for all JPA DAO objects. Contains
  * CRUD operations on generic types T
+ * 
+ * @throws IllegalArgumentException when null is passed
  */
 public interface GenericDao<T, ID> {
 
-    T save(T entity);
+    T save(T entity)throws IllegalArgumentException;
 
     T update(T entity);
 
