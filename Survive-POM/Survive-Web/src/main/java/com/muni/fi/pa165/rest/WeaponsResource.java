@@ -7,6 +7,7 @@ package com.muni.fi.pa165.rest;
 
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.service.WeaponService;
+import com.sun.jersey.spi.inject.Inject;
 import java.net.URI;
 import java.util.List;
 import javax.ws.rs.core.Context;
@@ -22,7 +23,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import net.sourceforge.stripes.integration.spring.SpringBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -39,8 +39,8 @@ public class WeaponsResource implements EntityResource {
     @Context
     private UriInfo context;
 
-    @SpringBean
-    protected WeaponService weaponService;
+    @Inject
+    WeaponService weaponService;
 
 
     @GET

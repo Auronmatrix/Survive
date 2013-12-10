@@ -27,6 +27,12 @@
         <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
    
+<repositories>
+    <repository>
+      <id>java.net</id>
+      <url>https://maven.java.net/content/repositories/public/</url>
+    </repository>
+ </repositories>
 
     <dependencies>
         <dependency>
@@ -167,62 +173,28 @@
         </dependency>
         
         
-<!--        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-             if your container implements Servlet API older than 3.0, use "jersey-container-servlet-core"  
-            <artifactId>jersey-container-servlet</artifactId>
-            <version>2.4.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>javax.ws.rs-api</artifactId>
-                    <groupId>javax.ws.rs</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jersey-client</artifactId>
-                    <groupId>org.glassfish.jersey.core</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>-->
-        
-<!--        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-moxy</artifactId>
-            <version>2.4.1</version>
-        </dependency>-->
-        
+             <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.17.1</version>
+        </dependency>
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-spring</artifactId>
             <version>1.17.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-aop</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-beans</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-context</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-web</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        <!--  
-          <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-multipart</artifactId>
-            <version>1.17.1</version>
-        </dependency>-->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        
 
     </dependencies>
 
