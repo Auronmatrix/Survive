@@ -11,7 +11,7 @@
         <s:errors/>
         <p><f:message key="monsterArea.list.allmonsterAreas"/></p>
         <p> <s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" event="clearFilter">
-                <span class="glyphicon glyphicon-filter">Clear filters</span>
+                <span class="glyphicon glyphicon-filter"><f:message key="clear.filters"/></span>
             </s:link>
         <p>
 
@@ -21,11 +21,9 @@
                     <th><f:message key="monsterArea.monsterID"/></th> 
                     <th></th>
                     <th><f:message key="monsterArea.monster.name"/></th>
-
                     <th><f:message key="monsterArea.areaID"/></th>   
                     <th></th>
                     <th><f:message key="monsterArea.area.name"/></th>                   
-
                     <th><f:message key="monsterArea.monsterQuantity"/></th>
                     <th></th>
                     <th></th>
@@ -55,6 +53,7 @@
                                 <span class="glyphicon glyphicon-filter"></span>
                             </s:link>
                         </td>
+                        
                         <td><c:out value="${monsterArea.area.name}" /></td>
 
                         <td><c:out value="${monsterArea.monsterQuantity}" /></td>
@@ -81,6 +80,7 @@
             <fieldset><legend><f:message key="monsterArea.list.newmonsterArea"/></legend>
                 <div class="form-group">
                     <div class="form-group">
+                        
                         <s:label for="monsterArea.monster.id"  class="col-sm-2 control-label" name="monsterArea.monster.id" />
                         <div class="col-sm-10">
                             <s:select class="form-control"   id="monsterArea.monster.id" name="monsterArea.monster.id"><s:options-collection collection="${actionBean.monsters}"  label="name" value="id" /></s:select>
