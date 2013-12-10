@@ -1,24 +1,13 @@
 package com.muni.fi.pa165.survive.rest.client;
 
 import com.muni.fi.pa165.dto.WeaponDto;
-import com.muni.fi.pa165.survive.rest.client.dto.CustomMapper;
+import com.muni.fi.pa165.enums.WeaponClass;
+import com.muni.fi.pa165.enums.WeaponType;
 import com.muni.fi.pa165.survive.rest.client.dto.CustomerResource;
-import com.muni.fi.pa165.survive.rest.client.helpers.OptionsProvider;
-import com.muni.fi.pa165.survive.rest.client.helpers.Validator;
 import com.muni.fi.pa165.survive.rest.client.services.CustomRestService;
 import com.muni.fi.pa165.survive.rest.client.services.impl.WeaponServiceImpl;
 import java.util.List;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-import org.apache.commons.cli.PosixParser;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -37,15 +26,19 @@ public class App {
 
         System.out.println("RUNNING CREATE");
         
-        CustomerResource cust = new CustomerResource();
-        cust.setId("999");
-        cust.setName("Dougy");
-        cust.setOccupation("Something");
-        cust.setSurname("Oosthuizen");
-        cust.setInvention("Life");        
+         WeaponDto dto = new WeaponDto();
+         
+        dto.setId(1L);
+        dto.setName("REST AK TESTAK47");
+        dto.setCaliber(Double.MIN_NORMAL);
+        dto.setDescription("Africa's favourite");
+        dto.setRounds(44);
+        dto.setRange(100);
+        dto.setWeaponClass(WeaponClass.Ranged);
+        dto.setWeaponType(WeaponType.Gun);
         
         
-        Response response = weaponService.create(cust);
+        Response response = weaponService.create(dto);
         System.out.println("Response 0 : " + response.getStatus());
         System.out.println("Response entity : " + response.readEntity(String.class));
 
@@ -59,14 +52,17 @@ public class App {
         response = weaponService.getById(Long.parseLong("999"));
         System.out.println("Response 2 : " + response.getStatus());
         System.out.println("Response entity : " + response.readEntity(String.class));
+       
         
-        cust.setName("Douglas");
-        cust.setOccupation("Doing java things");
-        cust.setSurname("Oosthuizenova");
-        cust.setInvention("Nothing of particular importance");
+        dto.setName("New Rest Updated Name");       
+        dto.setDescription("Not a toy boy");
+        dto.setRounds(99);
+        dto.setRange(99);
+        dto.setWeaponClass(WeaponClass.Ranged);
+        dto.setWeaponType(WeaponType.Gun);
         
         System.out.println("RUNNING UPDATE");
-        response = weaponService.update(cust);
+        response = weaponService.update(dto);
         System.out.println("Response 2 : " + response.getStatus());
         System.out.println("Response entity : " + response.readEntity(String.class));
 

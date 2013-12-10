@@ -14,5 +14,5 @@ import javax.ws.rs.client.WebTarget;
  */
 public class BaseRestService {
     protected Client client = ClientBuilder.newClient();
-    protected WebTarget webTarget = client.target("http://localhost:8080/rest-jersey-server/webresources");
+    protected WebTarget webTarget = client.target("http://localhost:8080/pa165/rest");
 }

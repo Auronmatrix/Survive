@@ -22,24 +22,17 @@ import javax.ws.rs.core.Response;
  *
  * @author Auron
  */
-public class WeaponServiceImpl extends BaseRestService implements CustomRestService<CustomerResource> {
+public class WeaponServiceImpl extends BaseRestService implements CustomRestService<WeaponDto> {
 
-    static final String WEB_TARGET_JSON = "customers/json/";
-    static final String WEB_TARGET = "customers/";
+    static final String WEB_TARGET_JSON = "weapons/json/";
+    static final String WEB_TARGET = "weapons/";
     static final String ACCEPT = "accept";
     static final String HEADER_JSON = "application/json";
     static final String HEADER_XML = "application/XML";
     static final String HEADER_TEXT = "application/Plain";
 
-//    public Response create(WeaponDto dto) {
-//        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
-//        Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
-//        invocationBuilder.header(ACCEPT, HEADER_XML);
-//        Response response = invocationBuilder.post(Entity.entity(dto, MediaType.APPLICATION_XML));
-//        return response;
-//    }
 
-    public Response create(CustomerResource dto) {
+    public Response create(WeaponDto dto) {
         WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
         invocationBuilder.header(ACCEPT, HEADER_XML);
@@ -56,15 +49,8 @@ public class WeaponServiceImpl extends BaseRestService implements CustomRestServ
         return response;
     }
 
-//    public Response update(WeaponDto dto) {
-//        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
-//        Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
-//        invocationBuilder.header(ACCEPT, HEADER_XML);
-//        Response response = invocationBuilder.put(Entity.entity(dto, MediaType.APPLICATION_XML));
-//        return response;
-//    }
     
-        public Response update(CustomerResource dto) {
+        public Response update(WeaponDto dto) {
         WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + dto.getId());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
         invocationBuilder.header(ACCEPT, HEADER_XML);
@@ -81,20 +67,20 @@ public class WeaponServiceImpl extends BaseRestService implements CustomRestServ
     }
 
     public Response getAll() {
-        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
+        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + "/all");
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.TEXT_PLAIN);
         //invocationBuilder.header(ACCEPT, HEADER_JSON);
         Response response = invocationBuilder.get();
         return response;
     }
 
-    public List<CustomerResource> getDtoList() {
-        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
+    public List<WeaponDto> getDtoList() {
+        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + "/all");
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
-        List<CustomerResource> customers = invocationBuilder
+        List<WeaponDto> list = invocationBuilder
                 .accept(MediaType.APPLICATION_XML)
-                .get(new GenericType<List<CustomerResource>>() {
+                .get(new GenericType<List<WeaponDto>>() {
         });
-        return customers;
+        return list;
     }
 }
