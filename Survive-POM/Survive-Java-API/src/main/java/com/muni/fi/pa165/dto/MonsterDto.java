@@ -1,10 +1,4 @@
-/* ------------------------------------------------
- * MonsterDto.java
- * 
- * ------------------------------------------------
- */
 package com.muni.fi.pa165.dto;
-
 
 import com.muni.fi.pa165.enums.MonsterClass;
 import java.util.ArrayList;
@@ -33,7 +27,7 @@ public class MonsterDto {
     private Double dangerLevel;
     private String imagePath;
     private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
-   // private List<MonsterAreaDto> locations = new ArrayList<>();
+    private List<MonsterAreaDto> locations = new ArrayList<>();
 
     //Getters and setters
     public Long getId() {
@@ -132,14 +126,14 @@ public class MonsterDto {
         this.efficiencies = efficiencies;
     }
 
-//    public List<MonsterAreaDto> getLocations() {
-//        return locations;
-//    }
-//
-//    public void setLocations(List<MonsterAreaDto> locations) {
-//        this.locations = locations;
-//    }
-    
+    public List<MonsterAreaDto> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<MonsterAreaDto> locations) {
+        this.locations = locations;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;

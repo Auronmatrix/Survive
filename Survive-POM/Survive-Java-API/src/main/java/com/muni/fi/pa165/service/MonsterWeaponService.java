@@ -1,13 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.service;
 
-import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.dto.MonsterWeaponPkDto;
-import com.muni.fi.pa165.dto.WeaponDto;
 import java.util.List;
 
 /**

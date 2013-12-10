@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dto;
 
 import com.muni.fi.pa165.enums.TerrainType;
@@ -10,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
-//import javax.persistence.Enumerated;
 
 /**
  *
@@ -57,13 +52,14 @@ public class AreaDto implements Serializable {
         this.description = description;
     }
 
-     public List<MonsterAreaDto> getLocations() {
+    public List<MonsterAreaDto> getLocations() {
         return locations;
     }
 
-    public void setLocations(List<MonsterAreaDto> efficiencies) {
+    public void setLocations(List<MonsterAreaDto> locations) {
         this.locations = locations;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

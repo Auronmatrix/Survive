@@ -1,10 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dto;
 
-//import com.muni.fi.pa165.entities.Weapon;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import java.util.ArrayList;
@@ -101,7 +96,7 @@ public class WeaponDto {
     public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
         this.efficiencies = efficiencies;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;

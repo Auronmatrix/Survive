@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dto;
 
 import java.util.Objects;
@@ -12,13 +8,9 @@ import java.util.Objects;
  */
 public class MonsterAreaDto {
 
-    
-
     private MonsterDto monster;
     private AreaDto area;
     private int monsterQuantity;
-
-   
 
     public MonsterDto getMonster() {
         return monster;
@@ -34,8 +26,8 @@ public class MonsterAreaDto {
 
     public void setArea(AreaDto area) {
         this.area = area;
-    } 
-    
+    }
+
     public int getMonsterQuantity() {
         return monsterQuantity;
     }
@@ -65,8 +57,6 @@ public class MonsterAreaDto {
         return true;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 3;

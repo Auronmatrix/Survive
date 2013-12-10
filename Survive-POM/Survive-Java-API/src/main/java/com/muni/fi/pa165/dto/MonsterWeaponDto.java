@@ -1,12 +1,4 @@
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dto;
-
-//import com.muni.fi.pa165.entities.Monster;
-//import com.muni.fi.pa165.entities.Weapon;
 
 import java.util.Objects;
 
@@ -16,7 +8,6 @@ import java.util.Objects;
  */
 public class MonsterWeaponDto {
 
- 
     private MonsterDto monster;
     private WeaponDto weapon;
     private Integer hitRate;
@@ -31,14 +22,6 @@ public class MonsterWeaponDto {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    public MonsterWeaponPkDto getId() {
-//        return id;
-//    }
-////
-//    public void setId(MonsterWeaponPkDto id) {
-//        this.id = id;
-//    }
 
     public MonsterDto getMonster() {
         return monster;
@@ -55,12 +38,6 @@ public class MonsterWeaponDto {
     public void setWeapon(WeaponDto weapon) {
         this.weapon = weapon;
     }
-    
-    
-    
-
-
-   
 
     public Integer getHitRate() {
         return hitRate;
@@ -78,7 +55,6 @@ public class MonsterWeaponDto {
         this.damage = damage;
     }
 
- 
     public Integer getEfficiency() {
         return efficiency;
     }
@@ -86,8 +62,6 @@ public class MonsterWeaponDto {
     public void setEfficiency(Integer efficiency) {
         this.efficiency = efficiency;
     }
-
-
 
     @Override
     public int hashCode() {
@@ -106,10 +80,4 @@ public class MonsterWeaponDto {
         final MonsterWeaponDto other = (MonsterWeaponDto) obj;
         return true;
     }
-
-
-
-
-    
-    
 }

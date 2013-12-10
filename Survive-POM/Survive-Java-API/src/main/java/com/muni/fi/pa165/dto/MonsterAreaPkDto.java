@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dto;
 
 /**
@@ -9,18 +5,14 @@ package com.muni.fi.pa165.dto;
  * @author Auron
  */
 public class MonsterAreaPkDto {
-    
+
     private Long monsterId;
     private Long areaId;
-    
-    public MonsterAreaPkDto()
-    {
-        
+
+    public MonsterAreaPkDto() {
     }
-    
-    
-    public MonsterAreaPkDto(Long monsterId, Long areaId)
-    {
+
+    public MonsterAreaPkDto(Long monsterId, Long areaId) {
         this.monsterId = monsterId;
         this.areaId = areaId;
     }
@@ -40,7 +32,4 @@ public class MonsterAreaPkDto {
     public void setAreaId(Long areaId) {
         this.areaId = areaId;
     }
-    
-    
-    
 }
