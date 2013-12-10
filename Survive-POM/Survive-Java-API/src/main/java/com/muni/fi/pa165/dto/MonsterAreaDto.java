@@ -3,7 +3,8 @@ package com.muni.fi.pa165.dto;
 import java.util.Objects;
 
 /**
- *
+ *Data transfer object for the {@link Monsterarea}.
+ * 
  * @author irina
  */
 public class MonsterAreaDto {

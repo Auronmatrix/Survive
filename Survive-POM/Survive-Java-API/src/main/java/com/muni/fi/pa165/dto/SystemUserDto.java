@@ -4,7 +4,8 @@ import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ *Data transfer object for the {@link Systemuser}.
+ * 
  * @author irina
  */
 @XmlRootElement
