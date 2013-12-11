@@ -29,7 +29,7 @@ public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> impleme
     @Override
     public List<Monsterarea> getByMonsterId(Long id) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterweapon.findByMonsterid").setParameter("monsterid", id);
+        Query query = em.createNamedQuery("Monsterarea.findByMonsterId").setParameter("monsterid", id);
         EntityTransaction tx = em.getTransaction();
         List<Monsterarea> list = new ArrayList();
         try {
@@ -48,7 +48,7 @@ public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> impleme
     @Override
     public List<Monsterarea> getByAreaId(Long id) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterweapon.findByAreaid").setParameter("areaid", id);
+        Query query = em.createNamedQuery("Monsterarea.findByAreaId").setParameter("areaid", id);
         EntityTransaction tx = em.getTransaction();
         List<Monsterarea> list = new ArrayList();
         try {
