@@ -24,7 +24,7 @@ import javax.ws.rs.core.Response;
  */
 public class AreaServiceImpl extends BaseRestService implements CustomRestService<AreaDto> {
 
-    static final String WEB_TARGET_JSON = "areas/area/";
+    static final String WEB_TARGET_SPECIFIC = "areas/area/";
     static final String WEB_TARGET = "areas/";
     static final String ACCEPT = "accept";
 
@@ -41,7 +41,7 @@ public class AreaServiceImpl extends BaseRestService implements CustomRestServic
     }
 
     public AreaDto getById(Long id) {
-        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET_JSON + id.toString());
+        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET_SPECIFIC + id.toString());
         System.out.println(resourceWebTarget.getUri().toString());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_JSON);
         invocationBuilder.header(ACCEPT, HEADER_XML);
