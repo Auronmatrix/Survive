@@ -21,8 +21,9 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.*;
+
+import static org.junit.Assert.*;
 
 /**
  *
@@ -35,9 +36,9 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
     private MonsterWeaponServiceImpl service;
     @Inject
     private Mapper mapper;
-    private Monster monster = new Monster();
-    private Weapon weapon = new Weapon();
-    private MonsterWeaponDto monsterWeaponDto = new MonsterWeaponDto();
+    private MonsterDto monsterDto;
+    private WeaponDto weaponDto;
+    private MonsterWeaponDto monsterWeaponDto;
 
     @Before
     public void setUp() {
@@ -46,33 +47,36 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
         service.setDao(mockDAO);
         service.setMapper(mapper);
 
-        monster.setId(Long.MIN_VALUE);
-        monster.setAgility(11.0);
-        monster.setDangerlevel(22.4);
-        monster.setDescription("Headless Zombie");
-        monster.setHeight(11.4);
-        monster.setImagepath("C:\\image.png");
-        monster.setMonsterclass(MonsterClass.Zombie);
-        monster.setStamina(11.5);
-        monster.setStrength(11.8);
-        monster.setWeight(11.2);
-        monster.setName("HeadlessNick");
+        monsterDto = new MonsterDto();
+        monsterDto.setId(Long.MIN_VALUE);
+        monsterDto.setAgility(11.0);
+        monsterDto.setDangerLevel(22.4);
+        monsterDto.setDescription("Headless Zombie");
+        monsterDto.setHeight(11.4);
+        monsterDto.setImagePath("C:\\image.png");
+        monsterDto.setMonsterClass(MonsterClass.Zombie);
+        monsterDto.setStamina(11.5);
+        monsterDto.setStrength(11.8);
+        monsterDto.setWeight(11.2);
+        monsterDto.setName("HeadlessNick");
 
-        weapon.setId(Long.MIN_VALUE);
-        weapon.setName("TESTAK47");
-        weapon.setCaliber(Double.MIN_NORMAL);
-        weapon.setDescription("Africa's favourite");
-        weapon.setRounds(44);
-        weapon.setRange(100);
-        weapon.setWeaponclass(WeaponClass.Ranged);
-        weapon.setWeapontype(WeaponType.Gun);
+        weaponDto = new WeaponDto();
+        weaponDto.setId(Long.MIN_VALUE);
+        weaponDto.setName("TESTAK47");
+        weaponDto.setCaliber(Double.MIN_NORMAL);
+        weaponDto.setDescription("Africa's favourite");
+        weaponDto.setRounds(44);
+        weaponDto.setRange(100);
+        weaponDto.setWeaponClass(WeaponClass.Ranged);
+        weaponDto.setWeaponType(WeaponType.Gun);
         
-        MonsterweaponPK pk = new MonsterweaponPK();
-        pk.setMonsterid(monster.getId());
-        pk.setWeaponid(weapon.getId());
+       // MonsterweaponPK pk = new MonsterweaponPK();
+       // pk.setMonsterid(monster.getId());
+       // pk.setWeaponid(weapon.getId());
 
-     monsterWeaponDto.setWeapon(mapper.map(weapon, WeaponDto.class));
-       monsterWeaponDto.setMonster(mapper.map(monster, MonsterDto.class));
+        monsterWeaponDto = new MonsterWeaponDto();
+        monsterWeaponDto.setWeapon(weaponDto);
+        monsterWeaponDto.setMonster(monsterDto);
         monsterWeaponDto.setHitRate(5);
         monsterWeaponDto.setDamage(12);
         monsterWeaponDto.setEfficiency(55);
@@ -93,31 +97,28 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
     //TEST NEEDS TO BE CHANGED TO IMPLEMENT PK (MONSTERWEAPONPK)
     
     
-//    @Test
-//    public void testSave() {
-//
-//        Monsterweapon entity = mapper.map(monsterWeaponDto, Monsterweapon.class);
-//        when(mockDAO.save(any(Monsterweapon.class))).thenReturn(entity);
-//        MonsterWeaponDto returned = service.save(monsterWeaponDto);
-//        verify(mockDAO, times(1)).save(entity);
-//        assertEquals(returned, monsterWeaponDto);
-//    }
+    @Test
+    public void testSave() {
+
+        Monsterweapon entity = mapper.map(monsterWeaponDto, Monsterweapon.class);
+        when(mockDAO.save(any(Monsterweapon.class))).thenReturn(entity);
+        MonsterWeaponDto returned = service.save(monsterWeaponDto);
+        assertEquals(returned, monsterWeaponDto);
+    }
 
     /**
      * Test of update method, of class MonsterWeaponServiceImpl.
      */
     
-        //TEST NEEDS TO BE CHANGED TO IMPLEMENT PK (MONSTERWEAPONPK)
-//    @Test
-//    public void testUpdate() {
-//
-//        Monsterweapon entity = mapper.map(monsterWeaponDto, Monsterweapon.class);
-//        when(mockDAO.update(any(Monsterweapon.class))).thenReturn(entity);
-//        MonsterWeaponDto returned = service.update(monsterWeaponDto);
-//        verify(mockDAO, times(1)).update(entity);
-//        verifyNoMoreInteractions(mockDAO);
-//        assertEquals(returned, monsterWeaponDto);
-//    }
+    //TEST NEEDS TO BE CHANGED TO IMPLEMENT PK (MONSTERWEAPONPK)
+    @Test
+    public void testUpdate() {
+
+        Monsterweapon entity = mapper.map(monsterWeaponDto, Monsterweapon.class);
+        when(mockDAO.update(any(Monsterweapon.class))).thenReturn(entity);
+        MonsterWeaponDto returned = service.update(monsterWeaponDto);
+        assertEquals(returned, monsterWeaponDto);
+    }
 
     /**
      * Test of delete method, of class MonsterWeaponServiceImpl.
