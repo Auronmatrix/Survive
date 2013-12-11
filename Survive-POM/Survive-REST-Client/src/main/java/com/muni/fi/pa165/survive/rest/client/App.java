@@ -1,13 +1,13 @@
 package com.muni.fi.pa165.survive.rest.client;
 
-import com.muni.fi.pa165.dto.MonsterWeaponDto;
+import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.dto.WeaponDto;
+import com.muni.fi.pa165.enums.TerrainType;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
-import com.muni.fi.pa165.survive.rest.client.dto.CustomerResource;
 import com.muni.fi.pa165.survive.rest.client.services.CustomRestService;
+import com.muni.fi.pa165.survive.rest.client.services.impl.AreaServiceImpl;
 import com.muni.fi.pa165.survive.rest.client.services.impl.WeaponServiceImpl;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.Response;
 import org.springframework.http.HttpStatus;
@@ -22,14 +22,22 @@ public class App {
 
     public static void main(String[] args) {
 
-         System.out.println("EXECUTING RESTFUL CRUD OPERATIONS ON " + DEFAULT_URI);
+        System.out.println("EXECUTING RESTFUL CRUD OPERATIONS ON " + DEFAULT_URI);
+
         
-        CustomRestService weaponService = new WeaponServiceImpl();
+        WeaponCrudTest();
+        AreaCrudTest();
+
+
+    }
+
+    private static void WeaponCrudTest() {
+        CustomRestService service = new WeaponServiceImpl();
 
         System.out.println("RUNNING CREATE");
-        
-         WeaponDto dto = new WeaponDto();
-         
+
+        WeaponDto dto = new WeaponDto();
+
         dto.setId(Long.valueOf("88"));
         dto.setName("R543523545235");
         dto.setCaliber(Double.parseDouble("53"));
@@ -38,52 +46,104 @@ public class App {
         dto.setRange(100);
         dto.setWeaponClass(WeaponClass.Melee);
         dto.setWeaponType(WeaponType.Explosive);
-       // dto.setEfficiencies(new ArrayList<MonsterWeaponDto>());
-        
-        
+        // dto.setEfficiencies(new ArrayList<MonsterWeaponDto>());
+
+
         Response response;
-        dto = (WeaponDto) weaponService.create(dto);        
+        dto = (WeaponDto) service.create(dto);
         System.out.println("Response returned DTO object with assigned ID " + dto.getId());
 
 
-                  System.out.println("RUNNING Get all");
-        for(WeaponDto o : (List<WeaponDto>) weaponService.getAll())
-        {
+        System.out.println("RUNNING Get all");
+        for (WeaponDto o : (List<WeaponDto>) service.getAll()) {
             System.out.println(o.getId().toString());
             System.out.println(o.getName());
             System.out.println(o.getDescription());
             System.out.println(o.getCaliber().toString());
         }
-        
+
 //        
-          System.out.println("RUNNING FINDBYID ");
-          WeaponDto dto2 = (WeaponDto) weaponService.getById(dto.getId());
-          System.out.println("Fetched dto object with attributes " + dto2.getName() + " " + dto2.getDescription());
+        System.out.println("RUNNING FINDBYID ");
+        WeaponDto dto2 = (WeaponDto) service.getById(dto.getId());
+        System.out.println("Fetched dto object with attributes " + dto2.getName() + " " + dto2.getDescription());
 //       
 //        
-        dto2.setName("New Rest Updated Name");       
+        dto2.setName("New Rest Updated Name");
         dto2.setDescription("Not a toy 99999");
         dto2.setRounds(99);
         dto2.setRange(99);
         dto2.setWeaponClass(WeaponClass.Ranged);
         dto2.setWeaponType(WeaponType.Gun);
-        
+
         System.out.println("RUNNING UPDATE");
-        response = weaponService.update(dto2);
+        response = service.update(dto2);
         System.out.println("Response 2 : " + response.getStatus());
         System.out.println("Response entity : " + response.readEntity(String.class));
 //
 //
-         System.out.println("RUNNING FINDBYID AFTER Update");
-        dto2 = (WeaponDto) weaponService.getById(dto.getId());
-          System.out.println("Fetched dto object with attributes " + dto2.getName() + " " + dto2.getDescription());
+        System.out.println("RUNNING FINDBYID AFTER Update");
+        dto2 = (WeaponDto) service.getById(dto.getId());
+        System.out.println("Fetched dto object with attributes " + dto2.getName() + " " + dto2.getDescription());
 //
 //       
         System.out.println("RUNNING DELETE");
-        response = weaponService.delete(dto.getId());
+        response = service.delete(dto.getId());
         System.out.println("Response 2 : " + response.getStatus() + " " + HttpStatus.valueOf(response.getStatus()).getReasonPhrase());
-
     }
+    
+    
+    private static void AreaCrudTest() {
+        CustomRestService service = new AreaServiceImpl();
+
+        System.out.println("RUNNING CREATE");
+
+        AreaDto dto = new AreaDto();
+
+    
+        dto.setName("New Area");
+        dto.setDescription("First Description");
+        dto.setTerrain(TerrainType.OCEANIC);
+
+
+        Response response;
+        dto = (AreaDto) service.create(dto);
+        System.out.println("Response returned DTO object with assigned ID " + dto.getId());
+
+
+        System.out.println("RUNNING Get all");
+        for (AreaDto o : (List<AreaDto>) service.getAll()) {
+            System.out.println(o.getId().toString());
+            System.out.println(o.getName());
+            System.out.println(o.getDescription());
+            System.out.println(o.getTerrain());
+        }
+
+//        
+        System.out.println("RUNNING FINDBYID ");
+        AreaDto dto2 = (AreaDto) service.getById(dto.getId());
+        System.out.println("Fetched dto object with attributes " + dto2.getName() + " " + dto2.getDescription());
+//       
+//        
+        dto2.setName("Changed Area Name");
+        dto2.setDescription("Changed Area Description");
+     
+
+        System.out.println("RUNNING UPDATE");
+        response = service.update(dto2);
+        System.out.println("Response 2 : " + response.getStatus());
+        System.out.println("Response entity : " + response.readEntity(String.class));
+//
+//
+        System.out.println("RUNNING FINDBYID AFTER Update");
+        dto2 = (AreaDto) service.getById(dto.getId());
+        System.out.println("Fetched dto object with attributes " + dto2.getName() + " " + dto2.getDescription());
+//
+//       
+        System.out.println("RUNNING DELETE");
+        response = service.delete(dto.getId());
+        System.out.println("Response 2 : " + response.getStatus() + " " + HttpStatus.valueOf(response.getStatus()).getReasonPhrase());
+    }
+    
 }
 //    public static void main(String[] args)  {
 //     CommandLineParser parser = new PosixParser();

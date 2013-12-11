@@ -5,10 +5,9 @@
  */
 package com.muni.fi.pa165.rest;
 
-import com.muni.fi.pa165.dto.WeaponDto;
-import com.muni.fi.pa165.enums.WeaponClass;
-import com.muni.fi.pa165.enums.WeaponType;
-import com.muni.fi.pa165.service.WeaponService;
+import com.muni.fi.pa165.dto.AreaDto;
+import com.muni.fi.pa165.enums.TerrainType;
+import com.muni.fi.pa165.service.AreaService;
 import com.sun.jersey.spi.inject.Inject;
 import java.net.URI;
 import java.util.List;
@@ -32,22 +31,22 @@ import org.springframework.stereotype.Component;
  *
  * @author Aubrey Oosthuizen
  */
-@Path("/weapons")
+@Path("/areas")
 @Component
 @Scope("request")
 //@Singleton
-public class WeaponsResource implements EntityResource {
+public class AreasResource implements EntityResource {
 
     @Context
     private UriInfo context;
     @Inject
-    WeaponService weaponService;
+    AreaService areaService;
 
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_XML)
-    public List<WeaponDto> getAll() {
-        return weaponService.findAll();
+    public List<AreaDto> getAll() {
+        return areaService.findAll();
     }
 
     @GET
@@ -56,7 +55,7 @@ public class WeaponsResource implements EntityResource {
     public String getPlain() {
         StringBuilder returnString = new StringBuilder();
 
-        for (WeaponDto dto : weaponService.findAll()) {
+        for (AreaDto dto : areaService.findAll()) {
             returnString.append(dto);
             returnString.append(" ");
         }
@@ -65,31 +64,27 @@ public class WeaponsResource implements EntityResource {
     }
 
     @GET
-    @Path("weapon/{id}")
+    @Path("area/{id}")
     @Produces({MediaType.APPLICATION_XML})
-    public WeaponDto getById(@PathParam("id") Integer id) {
-        WeaponDto dto = weaponService.findById(Long.valueOf(id.toString()));
+    public AreaDto getById(@PathParam("id") Integer id) {
+        AreaDto dto = areaService.findById(Long.valueOf(id.toString()));
         return dto;
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public WeaponDto postXml(WeaponDto dto) {
+    public AreaDto postXml(AreaDto dto) {
 
         URI uri = context.getAbsolutePath();
         Response response;
-        WeaponDto mapped = new WeaponDto();
+        AreaDto mapped = new AreaDto();
         mapped.setName(dto.getName() != null ? dto.getName() : "No name");
-        mapped.setWeaponType(dto.getWeaponType() != null ? dto.getWeaponType() : WeaponType.Gun);
-        mapped.setWeaponClass(dto.getWeaponClass() != null ? dto.getWeaponClass() : WeaponClass.Ranged);
-        mapped.setCaliber(dto.getCaliber() != null ? dto.getCaliber() : Double.parseDouble("0"));
-        mapped.setRange(dto.getRange() != null ? dto.getRange() : 0);
-        mapped.setRounds(dto.getRounds() != null ? dto.getRounds() : 0);
+        mapped.setTerrain(dto.getTerrain()!= null ? dto.getTerrain(): TerrainType.DESERT);
         mapped.setDescription(dto.getDescription() != null ? dto.getDescription() : "No Description");
         try {
             dto.setId(null);
-            dto = weaponService.save(mapped);
+            dto = areaService.save(mapped);
             response = Response.created(URI.create(context.getAbsolutePath() + "/" + dto.getId())).build();
         } catch (Exception ex) {
             response = Response.noContent().build();
@@ -101,10 +96,10 @@ public class WeaponsResource implements EntityResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_XML)
-    public Response putXml(@PathParam("id") Integer id, WeaponDto dto) {
+    public Response putXml(@PathParam("id") Integer id, AreaDto dto) {
         Response response;
         try {
-            dto = weaponService.update(dto);
+            dto = areaService.update(dto);
             response = Response.ok(dto).build();
         } catch (Exception ex) {
             response = Response.noContent().build();
@@ -115,11 +110,11 @@ public class WeaponsResource implements EntityResource {
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Integer id) {
-        WeaponDto dto = weaponService.findById(Long.valueOf(id));
+        AreaDto dto = areaService.findById(Long.valueOf(id));
         if (dto == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
-        weaponService.delete(dto.getId());
+        areaService.delete(dto.getId());
         Response response = Response.ok().build();
         return response;
     }
