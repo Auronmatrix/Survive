@@ -48,10 +48,13 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
     @After
     public void tearDown() {
     }
+    
+    /**
+     * Test of save method, of class WeaponServiceImpl.
+     */
 
     @Test
     public void testSave() {
-//        System.out.println("Testing save");
         WeaponDto dto = new WeaponDto();
         dto.setId(1L);
         dto.setName("TESTAK47");
@@ -73,8 +76,6 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testUpdate() {
-//        System.out.println("Testing update");
-
         WeaponDto dto = new WeaponDto();
         dto.setId(1L);
         dto.setName("TESTAK47");
@@ -99,7 +100,6 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testDelete() {
-//        System.out.println("Testing delete");
 
         WeaponDto dto = new WeaponDto();
         dto.setId(1L);
@@ -129,7 +129,6 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testFindById() {
-//        System.out.println("Testing FindById");
 
         WeaponDto dto = new WeaponDto();
 

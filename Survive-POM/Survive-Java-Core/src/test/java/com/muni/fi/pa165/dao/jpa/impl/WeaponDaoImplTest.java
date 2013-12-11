@@ -60,7 +60,6 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
      */
     @Test
     public void testCheckAvailable() {
-//        System.out.println("checkAvailable");
         String weaponName = "TESTAK47";
 
         boolean expResult = true;
@@ -68,6 +67,10 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
         assertEquals(expResult, result);
 
     }
+    
+    /**
+     * Test of checkAvailable method when null is passed, of class WeaponJpaDaoImpl.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testCheckAvailableWithNull() {
         

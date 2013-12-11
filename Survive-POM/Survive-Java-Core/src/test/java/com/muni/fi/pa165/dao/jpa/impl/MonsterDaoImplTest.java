@@ -41,9 +41,6 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
     public void tearDown() {
     }
 
-    /**
-     *
-     */
     @Before
     public void setUpClass() {
     }
@@ -56,6 +53,9 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
         MonsterClass monsterClass = MonsterClass.Zombie;
         assertTrue(dao.checkAvailable(monsterClass));
     }
+    /**
+     * Test of checkAvailable method when null is passed, of class MonsterJpaDaoImpl.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testCheckAvailableWithNull() {
 

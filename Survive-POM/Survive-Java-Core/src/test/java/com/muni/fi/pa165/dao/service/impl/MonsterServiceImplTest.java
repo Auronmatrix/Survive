@@ -92,7 +92,6 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testUpdate() {
-//        System.out.println("Testing update");
 
         MonsterDto dto = new MonsterDto();
 
@@ -155,7 +154,6 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testFindById() {
-//        System.out.println("Testing FindById");
 
         MonsterDto dto = new MonsterDto();
 
@@ -180,7 +178,6 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
         verifyNoMoreInteractions(mockDAO);
 
         assertEquals(returned, dto);
-
 
     }
 }

@@ -11,7 +11,6 @@ import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 
 /**
  *
@@ -47,26 +46,25 @@ public class AreaDaoImplTest extends AbstractDaoIntegrationTest {
     }
 
     /**
-     * Test of testCheckAvailable method, of class AreaJpaDoa.
+     * Test of testCheckAvailable method, of class AreaJpaDaoImpl.
      */
     @Test
     public void testCheckAvailable() {
 
-
         String areaName = "CAVS";
-
         boolean expResult = true;
         boolean result = dao.checkAvailable(areaName);
         assertEquals(expResult, result);
 
     }
     @Test(expected = IllegalArgumentException.class)
+    
+    /**
+     * Test of testCheckAvailable method when null is passed, of class AreaJpaDaoImpl.
+     */
     public void testCheckAvailableWithNull() {
 
         dao.checkAvailable(null);
 
     }
-    /**
-     * Test of getAreanByName method, of class AreaJpaDoa.
-     */
 }

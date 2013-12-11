@@ -45,7 +45,7 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
     }
 
     /**
-     *
+     * Test of Delete method of class SystemUserJpaDaoImpl
      */
     @Test
     public void testDelete() {
@@ -53,13 +53,17 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
         Systemuser deletedUser = dao.findById(entity.getId());
         Assert.assertNull(deletedUser);
     }
-
+     /**
+     * Test of createTest method of class SystemUserJpaDaoImpl
+     */
     @Test
     public void createTest() {
         Assert.assertNotNull(entity);
         Assert.assertNotNull(entity.getId());
     }
-
+     /**
+     * Test of findTest method of class SystemUserJpaDaoImpl
+     */
     @Test
     public void findTest() {
         Systemuser systemUserFound = dao.findById(entity.getId());

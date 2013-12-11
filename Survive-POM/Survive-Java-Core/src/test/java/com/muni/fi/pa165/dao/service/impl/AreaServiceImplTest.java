@@ -43,7 +43,9 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
     @After
     public void tearDown() {
     }
-
+/**
+     * Test of Save method, of class AreaServiceImpl.
+     */
     @Test
     public void testSave() {
         AreaDto dto = new AreaDto();
@@ -90,8 +92,6 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
 
         verify(mockDAO, times(1)).delete(entity.getId());
         verifyNoMoreInteractions(mockDAO);
-
-
 
     }
 

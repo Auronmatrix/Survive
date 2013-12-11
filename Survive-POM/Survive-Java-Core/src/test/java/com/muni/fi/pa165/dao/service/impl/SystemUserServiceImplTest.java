@@ -49,7 +49,6 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
 
     @Test
     public void testSave() {
-//        System.out.println("Testing save");
         SystemUserDto dto = new SystemUserDto();
 
         dto.setUsername("user");
@@ -87,7 +86,6 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testDelete() {
-//        System.out.println("Testing delete");
 
         SystemUserDto dto = new SystemUserDto();
         dto.setId(1L);
@@ -104,7 +102,6 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
         verifyNoMoreInteractions(mockDAO);
 
 
-
     }
 
     /**
@@ -112,7 +109,6 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testFindById() {
-//        System.out.println("Testing FindById");
 
         SystemUserDto dto = new SystemUserDto();
 
