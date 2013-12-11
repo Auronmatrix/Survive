@@ -5,6 +5,5 @@
 <s:layout-render name="/layout.jsp" titlekey="index.title">
     <s:layout-component name="body">
         <!-- PUT CONTENT HERE --/>
-         
     </s:layout-component>
 </s:layout-render>

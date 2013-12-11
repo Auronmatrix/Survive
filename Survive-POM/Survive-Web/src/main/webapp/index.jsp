@@ -13,13 +13,6 @@
             
         </div>
 
-       
-
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-<!--        <div >
-            <p><a href="#" class="btn btn-primary btn-lg" role="button">Help human kind survive, log in and contribute today &raquo;</a></p>
-        </div>-->
-        
          <div class="row">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">

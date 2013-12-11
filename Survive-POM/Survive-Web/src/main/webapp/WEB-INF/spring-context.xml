@@ -11,7 +11,6 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 <context:component-scan base-package="com.muni.fi.pa165"/>
 
-<!--    <tx:annotation-driven transaction-manager="transactionManager" />-->
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
              <property name="persistenceUnitName" value="ProjectPU"/>
@@ -41,30 +40,4 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
             </list>
         </property>
     </bean>
-    
-    
-
-
- <!--Mapping Services--> 
-<!--<bean name="areaService" class="com.muni.fi.pa165.service.impl.AreaServiceImpl"/>
-<bean name="monsterAreaService" class="com.muni.fi.pa165.service.impl.MonsterAreaServiceImpl"/>
-<bean name="monsterService" class="com.muni.fi.pa165.service.impl.MonsterServiceImpl"/>
-<bean name="monsterWeaponService" class="com.muni.fi.pa165.service.impl.MonsterWeaponServiceImpl"/>
-<bean name="weaponService" class="com.muni.fi.pa165.service.impl.WeaponServiceImpl"/>
-<bean name="systemUserService" class="com.muni.fi.pa165.service.impl.SystemUserServiceImpl"/>-->
-
- <!--Mapping DAO--> 
-<!--<bean name="areaDao" class="com.muni.fi.pa165.dao.impl.AreaDaoImpl"/>
-<bean name="monsterAreaDao" class="com.muni.fi.pa165.dao.impl.MonsterAreaDaoImpl"/>
-<bean name="monsterDao" class="com.muni.fi.pa165.dao.impl.MonsterDaoImpl"/>
-<bean name="monsterWeaponDao" class="com.muni.fi.pa165.dao.impl.MonsterWeaponDaoImpl"/>
-<bean name="weaponDao" class="com.muni.fi.pa165.dao.impl.WeaponDaoImpl"/>
-<bean name="systemUserDao" class="com.muni.fi.pa165.dao.impl.SystemUserDaoImpl"/>-->
-
-<!-- Mapping DTO -->
-
-<!--<bean name="areaDto" class="com.muni.fi.pa165.dto.AreaDto" />-->
-
-<!--        <bean id="area" name="area" class="com.muni.fi.pa165.dto.AreaDto" ></bean>
-    -->
 </beans>
