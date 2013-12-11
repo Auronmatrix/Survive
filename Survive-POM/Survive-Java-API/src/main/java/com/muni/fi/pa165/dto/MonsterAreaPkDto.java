@@ -1,9 +1,12 @@
 package com.muni.fi.pa165.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author Auron
  */
+@XmlRootElement
 public class MonsterAreaPkDto {
 
     private Long monsterId;

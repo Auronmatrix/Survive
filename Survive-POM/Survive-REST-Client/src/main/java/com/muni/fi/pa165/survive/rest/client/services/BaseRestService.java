@@ -15,4 +15,8 @@ import javax.ws.rs.client.WebTarget;
 public class BaseRestService {
     protected Client client = ClientBuilder.newClient();
     protected WebTarget webTarget = client.target("http://localhost:8080/pa165/rest");
+    
+    protected static final String HEADER_JSON = "application/json";
+    protected static final String HEADER_XML = "application/XML";
+    protected static final String HEADER_TEXT = "application/Plain";
 }

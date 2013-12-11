@@ -24,63 +24,61 @@ import javax.ws.rs.core.Response;
  */
 public class WeaponServiceImpl extends BaseRestService implements CustomRestService<WeaponDto> {
 
-    static final String WEB_TARGET_JSON = "weapons/json/";
+    static final String WEB_TARGET_JSON = "weapons/weapon/";
     static final String WEB_TARGET = "weapons/";
     static final String ACCEPT = "accept";
-    static final String HEADER_JSON = "application/json";
-    static final String HEADER_XML = "application/XML";
-    static final String HEADER_TEXT = "application/Plain";
 
+    private Response response;
 
-    public Response create(WeaponDto dto) {
+    public WeaponDto create(WeaponDto dto) {
         WebTarget resourceWebTarget = webTarget.path(WEB_TARGET);
+        System.out.println(resourceWebTarget.getUri().toString());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
         invocationBuilder.header(ACCEPT, HEADER_XML);
-        Response response = invocationBuilder.post(Entity.entity(dto, MediaType.APPLICATION_XML));
-        return response;
+        response = invocationBuilder.post(Entity.entity(dto, MediaType.APPLICATION_XML));
+        WeaponDto obj = response.readEntity(WeaponDto.class);
+        return obj;
     }
 
-    public Response getById(Long id) {
+    public WeaponDto getById(Long id) {
         WebTarget resourceWebTarget = webTarget.path(WEB_TARGET_JSON + id.toString());
+        System.out.println(resourceWebTarget.getUri().toString());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_JSON);
-        invocationBuilder.header(ACCEPT, HEADER_JSON);
-        Response response = invocationBuilder.get();
+        invocationBuilder.header(ACCEPT, HEADER_XML);
+       response = invocationBuilder.get();
         //Object entity = response.getEntity();
-        return response;
+       WeaponDto obj = response.readEntity(WeaponDto.class);
+        return obj;
     }
 
-    
-        public Response update(WeaponDto dto) {
+    public Response update(WeaponDto dto) {
         WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + dto.getId());
+        System.out.println(resourceWebTarget.getUri().toString());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
         invocationBuilder.header(ACCEPT, HEADER_XML);
-        Response response = invocationBuilder.put(Entity.entity(dto, MediaType.APPLICATION_XML));
+        response = invocationBuilder.put(Entity.entity(dto, MediaType.APPLICATION_XML));
         return response;
     }
 
     public Response delete(Long id) {
         WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + id.toString());
+        System.out.println(resourceWebTarget.getUri().toString());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.TEXT_PLAIN);
         invocationBuilder.header(ACCEPT, HEADER_JSON);
-        Response response = invocationBuilder.delete();
+        response = invocationBuilder.delete();
         return response;
     }
 
-    public Response getAll() {
-        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + "/all");
-        Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.TEXT_PLAIN);
-        //invocationBuilder.header(ACCEPT, HEADER_JSON);
-        Response response = invocationBuilder.get();
-        return response;
-    }
-
-    public List<WeaponDto> getDtoList() {
-        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + "/all");
+    public List<WeaponDto> getAll() {
+        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + "all");
+        System.out.println(resourceWebTarget.getUri().toString());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_XML);
-        List<WeaponDto> list = invocationBuilder
-                .accept(MediaType.APPLICATION_XML)
-                .get(new GenericType<List<WeaponDto>>() {
-        });
+        response = invocationBuilder.accept(MediaType.APPLICATION_XML).get();
+        List<WeaponDto> list = response.readEntity(new GenericType<List<WeaponDto>>() {  });
         return list;
+    }
+
+    public Response getResponse() {
+        return response;
     }
 }

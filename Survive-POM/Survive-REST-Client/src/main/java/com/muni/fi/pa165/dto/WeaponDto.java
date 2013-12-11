@@ -10,6 +10,7 @@ import com.muni.fi.pa165.enums.WeaponType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -28,6 +29,7 @@ public class WeaponDto {
     private Double caliber;
     private Integer rounds;
     private String description;
+    //@XmlElement(type=MonsterWeaponDto.class)
     private List<MonsterWeaponDto> efficiencies = new ArrayList<MonsterWeaponDto>();
 
     public Double getCaliber() {

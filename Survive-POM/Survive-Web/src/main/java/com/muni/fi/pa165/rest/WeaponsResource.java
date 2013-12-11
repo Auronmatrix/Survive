@@ -6,6 +6,8 @@
 package com.muni.fi.pa165.rest;
 
 import com.muni.fi.pa165.dto.WeaponDto;
+import com.muni.fi.pa165.enums.WeaponClass;
+import com.muni.fi.pa165.enums.WeaponType;
 import com.muni.fi.pa165.service.WeaponService;
 import com.sun.jersey.spi.inject.Inject;
 import java.net.URI;
@@ -38,10 +40,8 @@ public class WeaponsResource implements EntityResource {
 
     @Context
     private UriInfo context;
-
     @Inject
     WeaponService weaponService;
-
 
     @GET
     @Path("all")
@@ -64,7 +64,6 @@ public class WeaponsResource implements EntityResource {
         return returnString.toString();
     }
 
-
     @GET
     @Path("weapon/{id}")
     @Produces({MediaType.APPLICATION_XML})
@@ -76,22 +75,29 @@ public class WeaponsResource implements EntityResource {
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public Response postXml(WeaponDto dto) {
+    public WeaponDto postXml(WeaponDto dto) {
 
         URI uri = context.getAbsolutePath();
         Response response;
-
+        WeaponDto mapped = new WeaponDto();
+        mapped.setName(dto.getName() != null ? dto.getName() : "No name");
+        mapped.setWeaponType(dto.getWeaponType() != null ? dto.getWeaponType() : WeaponType.Gun);
+        mapped.setWeaponClass(dto.getWeaponClass() != null ? dto.getWeaponClass() : WeaponClass.Ranged);
+        mapped.setCaliber(dto.getCaliber() != null ? dto.getCaliber() : Double.parseDouble("0"));
+        mapped.setRange(dto.getRange() != null ? dto.getRange() : 0);
+        mapped.setRounds(dto.getRounds() != null ? dto.getRounds() : 0);
+        mapped.setDescription(dto.getDescription() != null ? dto.getDescription() : "No Description");
         try {
-            dto = weaponService.save(dto);
+            dto.setId(null);
+            dto = weaponService.save(mapped);
             response = Response.created(URI.create(context.getAbsolutePath() + "/" + dto.getId())).build();
         } catch (Exception ex) {
             response = Response.noContent().build();
         }
 
-        return response;
+        return dto;
     }
-    
-    
+
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_XML)
@@ -108,11 +114,14 @@ public class WeaponsResource implements EntityResource {
 
     @DELETE
     @Path("{id}")
-    public void delete(@PathParam("id") Integer id) {
+    public Response delete(@PathParam("id") Integer id) {
         WeaponDto dto = weaponService.findById(Long.valueOf(id));
         if (dto == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
         weaponService.delete(dto.getId());
+        Response response = Response.ok().build();
+        return response;
     }
+
 }

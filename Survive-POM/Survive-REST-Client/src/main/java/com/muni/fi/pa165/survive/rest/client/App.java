@@ -1,11 +1,13 @@
 package com.muni.fi.pa165.survive.rest.client;
 
+import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import com.muni.fi.pa165.survive.rest.client.dto.CustomerResource;
 import com.muni.fi.pa165.survive.rest.client.services.CustomRestService;
 import com.muni.fi.pa165.survive.rest.client.services.impl.WeaponServiceImpl;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.Response;
 import org.springframework.http.HttpStatus;
@@ -28,65 +30,58 @@ public class App {
         
          WeaponDto dto = new WeaponDto();
          
-        dto.setId(1L);
-        dto.setName("REST AK TESTAK47");
-        dto.setCaliber(Double.MIN_NORMAL);
+        dto.setId(Long.valueOf("88"));
+        dto.setName("R543523545235");
+        dto.setCaliber(Double.parseDouble("53"));
         dto.setDescription("Africa's favourite");
         dto.setRounds(44);
         dto.setRange(100);
-        dto.setWeaponClass(WeaponClass.Ranged);
-        dto.setWeaponType(WeaponType.Gun);
+        dto.setWeaponClass(WeaponClass.Melee);
+        dto.setWeaponType(WeaponType.Explosive);
+       // dto.setEfficiencies(new ArrayList<MonsterWeaponDto>());
         
         
-        Response response = weaponService.create(dto);
-        System.out.println("Response 0 : " + response.getStatus());
-        System.out.println("Response entity : " + response.readEntity(String.class));
+        Response response;
+        dto = (WeaponDto) weaponService.create(dto);        
+        System.out.println("Response returned DTO object with assigned ID " + dto.getId());
 
 
-        System.out.println("RUNNING FINDALL");
-        response = weaponService.getAll();
-        System.out.println("Response 1 : " + response.getStatus());
-        System.out.println("Response entity : " + response.readEntity(String.class));
+                  System.out.println("RUNNING Get all");
+        for(WeaponDto o : (List<WeaponDto>) weaponService.getAll())
+        {
+            System.out.println(o.getId().toString());
+            System.out.println(o.getName());
+            System.out.println(o.getDescription());
+            System.out.println(o.getCaliber().toString());
+        }
         
-          System.out.println("RUNNING FINDBYID BEFORE UPDATE");
-        response = weaponService.getById(Long.parseLong("999"));
-        System.out.println("Response 2 : " + response.getStatus());
-        System.out.println("Response entity : " + response.readEntity(String.class));
-       
-        
-        dto.setName("New Rest Updated Name");       
-        dto.setDescription("Not a toy boy");
-        dto.setRounds(99);
-        dto.setRange(99);
-        dto.setWeaponClass(WeaponClass.Ranged);
-        dto.setWeaponType(WeaponType.Gun);
+//        
+          System.out.println("RUNNING FINDBYID ");
+          WeaponDto dto2 = (WeaponDto) weaponService.getById(dto.getId());
+          System.out.println("Fetched dto object with attributes " + dto2.getName() + " " + dto2.getDescription());
+//       
+//        
+        dto2.setName("New Rest Updated Name");       
+        dto2.setDescription("Not a toy 99999");
+        dto2.setRounds(99);
+        dto2.setRange(99);
+        dto2.setWeaponClass(WeaponClass.Ranged);
+        dto2.setWeaponType(WeaponType.Gun);
         
         System.out.println("RUNNING UPDATE");
-        response = weaponService.update(dto);
+        response = weaponService.update(dto2);
         System.out.println("Response 2 : " + response.getStatus());
         System.out.println("Response entity : " + response.readEntity(String.class));
-
-
-        System.out.println("RUNNING FINDBYID AFTER UPDATE");
-        response = weaponService.getById(Long.parseLong("999"));
-        System.out.println("Response 2 : " + response.getStatus());
-        System.out.println("Response entity : " + response.readEntity(String.class));
-
-       
+//
+//
+         System.out.println("RUNNING FINDBYID AFTER Update");
+        dto2 = (WeaponDto) weaponService.getById(dto.getId());
+          System.out.println("Fetched dto object with attributes " + dto2.getName() + " " + dto2.getDescription());
+//
+//       
         System.out.println("RUNNING DELETE");
-        response = weaponService.delete(Long.parseLong("999"));
+        response = weaponService.delete(dto.getId());
         System.out.println("Response 2 : " + response.getStatus() + " " + HttpStatus.valueOf(response.getStatus()).getReasonPhrase());
-
-
-        System.out.println("RUNNING GETCUSTOMERS");
-        List<CustomerResource> customers = weaponService.getDtoList();
-        for (CustomerResource r : customers) {
-            System.out.println(r.getId() + " : " + r.getName() + " " + r.getSurname());
-        }
-
-        System.out.println("RUNNING COUNT");
-        System.out.println("Response : " + response.getStatus() + " " + HttpStatus.valueOf(response.getStatus()).getReasonPhrase());
-        System.out.println("Response entity : " + response.readEntity(String.class));
 
     }
 }

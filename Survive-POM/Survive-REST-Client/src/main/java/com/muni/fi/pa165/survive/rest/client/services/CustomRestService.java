@@ -12,17 +12,19 @@ import javax.ws.rs.core.Response;
  * @author Auron
  */
 public interface CustomRestService<T> {
+ 
+    T create(T dto);
 
-    Response create(T dto);
-
-    Response getById(Long id);
+    T getById(Long id);
 
     Response update(T dto);
     
-    List<T> getDtoList();
+    List<T> getAll();
 
     Response delete(Long id);
+    
+    Response getResponse();
+           
 
-    Response getAll();
 
 }
