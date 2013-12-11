@@ -23,7 +23,7 @@ public interface MonsterService {
      *
      * @param weapon object of type WeaponDto
      */
-    public void delete(MonsterDto dto);
+   
 
     public void delete(Long id);
 

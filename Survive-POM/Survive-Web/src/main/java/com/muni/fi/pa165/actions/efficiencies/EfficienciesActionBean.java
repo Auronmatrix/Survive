@@ -28,7 +28,7 @@ import java.util.List;
 public class EfficienciesActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(EfficienciesActionBean.class);
-    @SpringBean 
+    @SpringBean
     protected MonsterWeaponService service;
     @SpringBean
     protected WeaponService weaponService;
@@ -38,7 +38,6 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     private List<WeaponDto> weapons;
     private List<MonsterDto> monsters;
 
-    
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
@@ -86,7 +85,7 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
 
     public Resolution add() {
         log.debug("add() monsterMonsterWeapon={}", monsterWeapon);
-        getContext().getMessages().add(new SimpleMessage("Called method add"));
+
         try {
             MonsterDto monster = monsterService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id")));
             WeaponDto weapon = weaponService.findById(Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.weapon.id")));
@@ -114,7 +113,7 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     }
 
     public Resolution delete() {
-        getContext().getMessages().add(new SimpleMessage("Called method delete"));
+
         log.debug("delete({})", monsterWeapon.getMonster());
         try {
             Long monsterId = Long.parseLong(getContext().getRequest().getParameter("monsterWeapon.monster.id"));
@@ -138,7 +137,7 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
         } catch (Exception ex) {
             log.error(ex.getMessage());
         }
-        getContext().getMessages().add(new SimpleMessage("Loaded monsterMonsterWeapon from DB"));
+        log.debug("Loaded monsterMonsterWeapon from DB");
     }
 
     public Resolution findByMonster() {
@@ -161,19 +160,17 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
 
     public Resolution clearFilters() {
         log.debug("edit() monsterMonsterWeapon={}", monsterWeapon);
-        getContext().getMessages().add(new SimpleMessage("Called method edit"));
         efficiencies = service.findAll();
         return new ForwardResolution("/efficiencies/edit.jsp");
     }
 
     public Resolution edit() {
         log.debug("edit() monsterMonsterWeapon={}", monsterWeapon);
-        getContext().getMessages().add(new SimpleMessage("Called method edit"));
         return new ForwardResolution("/efficiencies/edit.jsp");
     }
 
     public Resolution save() {
-        getContext().getMessages().add(new SimpleMessage("Called method save"));
+        log.debug("Called method save");
         try {
             monsterWeapon = service.update(monsterWeapon);
         } catch (Exception ex) {
@@ -184,8 +181,7 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     }
 
     public Resolution cancel() {
-        getContext().getMessages().add(new SimpleMessage("Called method cancel"));
-        log.debug("cancel");
+        log.debug("Called method cancel");
         return new RedirectResolution(this.getClass(), "list");
     }
 }

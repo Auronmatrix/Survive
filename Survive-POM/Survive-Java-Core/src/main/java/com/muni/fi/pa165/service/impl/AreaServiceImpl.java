@@ -45,12 +45,7 @@ public class AreaServiceImpl implements AreaService {
 
     }
 
-    @Override
-    public void delete(AreaDto dto) {
 
-        areaDao.delete(mapper.map(dto, Area.class));
-
-    }
 
     @Override
     public AreaDto findById(Long id) {

@@ -86,9 +86,9 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
         entity.setId(1L);
         entity.setName("Farm");
 
-        service.delete(dto);
+        service.delete(dto.getId());
 
-        verify(mockDAO, times(1)).delete(entity);
+        verify(mockDAO, times(1)).delete(entity.getId());
         verifyNoMoreInteractions(mockDAO);
 
 

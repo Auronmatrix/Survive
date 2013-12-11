@@ -18,7 +18,6 @@ import org.apache.taglibs.standard.functions.Functions;
     @Override
     public void setContext(ActionBeanContext context) {
         this.context = context;
-        preBind();
     }
 
     @Override
@@ -30,7 +29,5 @@ import org.apache.taglibs.standard.functions.Functions;
         return Functions.escapeXml(s);
     }
     
-    protected void preBind()
-	{
-	}
+
 }

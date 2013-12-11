@@ -23,7 +23,7 @@ public interface AreaService {
      *
      * @param weapon object of type WeaponDto
      */
-    public void delete(AreaDto dto);
+   
 
     public void delete(Long id);
 

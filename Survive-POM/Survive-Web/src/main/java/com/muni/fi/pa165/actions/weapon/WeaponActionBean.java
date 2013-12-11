@@ -51,7 +51,7 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
 
     public Resolution add() {
         log.debug("add() weapon={}", weapon);
-        getContext().getMessages().add(new SimpleMessage("Called method add"));
+
         try {
             weapon = weaponService.save(weapon);
         } catch (Exception ex) {
@@ -75,7 +75,7 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
     }
 
     public Resolution delete() {
-        getContext().getMessages().add(new SimpleMessage("Called method delete"));
+
         log.debug("delete({})", weapon.getId());
         try {
             //weapon = weaponService.findById(weapon.getId());
@@ -93,24 +93,22 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
             return;
         }
         weapon = weaponService.findById(Long.parseLong(ids));
-        getContext().getMessages().add(new SimpleMessage("Loaded weapon from DB"));
     }
 
     public Resolution edit() {
         log.debug("edit() weapon={}", weapon);
-        getContext().getMessages().add(new SimpleMessage("Called method edit"));
         return new ForwardResolution("/weapon/edit.jsp");
     }
 
     public Resolution save() {
-        getContext().getMessages().add(new SimpleMessage("Called method save"));
+
         log.debug("save() weapon={}", weapon);
         weaponService.update(weapon);
         return new RedirectResolution(this.getClass(), "list");
     }
 
     public Resolution cancel() {
-        getContext().getMessages().add(new SimpleMessage("Called method cancel"));
+
         log.debug("cancel");
         return new RedirectResolution(this.getClass(), "list");
     }

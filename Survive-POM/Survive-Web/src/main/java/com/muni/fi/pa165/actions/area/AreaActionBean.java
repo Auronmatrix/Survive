@@ -23,10 +23,9 @@ import java.util.List;
  */
 @UrlBinding("/area/{$event}/{area.id}")
 public class AreaActionBean extends BaseActionBean implements ValidationErrorHandler {
-    final static Logger log = (Logger)LoggerFactory.getLogger(AreaActionBean.class);
-   
-        private List<AreaDto> areas;
 
+    final static Logger log = (Logger) LoggerFactory.getLogger(AreaActionBean.class);
+    private List<AreaDto> areas;
 
     @DefaultHandler
     public Resolution list() {
@@ -35,33 +34,31 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
         return new ForwardResolution("/area/list.jsp");
     }
 
-
-     public List<AreaDto> getAreas() {
+    public List<AreaDto> getAreas() {
         return areas;
     }
-     @SpringBean 
-     protected AreaService areaService;
+    @SpringBean
+    protected AreaService areaService;
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 25),
-        @Validate(on = {"add", "save"}, field = "terrain", required = true), 
+        @Validate(on = {"add", "save"}, field = "terrain", required = true),
         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
     private AreaDto area;
-    
-    
+
     public Resolution add() {
         log.debug("add() area={}", area);
         try {
             area = areaService.save(area);
         } catch (Exception ex) {
-          log.error(ex.getMessage());
+            log.error(ex.getMessage());
         }
-        getContext().getMessages().add(new LocalizableMessage("area.add.message", escapeHTML(area.getName())));
+         log.debug("area.add.message", escapeHTML(area.getName()));
         return new RedirectResolution(this.getClass(), "list");
     }
 
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
-       areas = areaService.findAll();
+        areas = areaService.findAll();
         return null;
     }
 
@@ -73,11 +70,12 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
         this.area = area;
     }
 
-public Resolution delete() throws Exception{
+    public Resolution delete() throws Exception {
         log.debug("delete({})", area.getId());
-        areaService.delete(area);
+        areaService.delete(area.getId());
         return new RedirectResolution(this.getClass(), "all");
-}
+    }
+
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadAreaFromDatabase() {
         String ids = getContext().getRequest().getParameter("area.id");
@@ -85,7 +83,7 @@ public Resolution delete() throws Exception{
             return;
         }
         area = areaService.findById(Long.parseLong(ids));
-        getContext().getMessages().add(new SimpleMessage("Loaded area from DB"));
+        log.debug("Loaded area from DB");
     }
 
     public Resolution edit() {
@@ -105,10 +103,8 @@ public Resolution delete() throws Exception{
         return new RedirectResolution(this.getClass(), "list");
     }
 
- public Resolution cancel() {
+    public Resolution cancel() {
         log.debug("cancel");
         return new RedirectResolution(this.getClass(), "list");
     }
-
-  
 }
