@@ -6,10 +6,8 @@ import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.dto.WeaponDto;
-import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.entities.Monsterweapon;
 import com.muni.fi.pa165.entities.MonsterweaponPK;
-import com.muni.fi.pa165.entities.Weapon;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
@@ -19,8 +17,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.*;
 
 import static org.junit.Assert.*;
@@ -70,9 +66,9 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
         weaponDto.setWeaponClass(WeaponClass.Ranged);
         weaponDto.setWeaponType(WeaponType.Gun);
         
-       // MonsterweaponPK pk = new MonsterweaponPK();
-       // pk.setMonsterid(monster.getId());
-       // pk.setWeaponid(weapon.getId());
+        MonsterweaponPK pk = new MonsterweaponPK();
+        pk.setMonsterid(monsterDto.getId());
+        pk.setWeaponid(weaponDto.getId());
 
         monsterWeaponDto = new MonsterWeaponDto();
         monsterWeaponDto.setWeapon(weaponDto);
@@ -95,8 +91,6 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
      */
     
     //TEST NEEDS TO BE CHANGED TO IMPLEMENT PK (MONSTERWEAPONPK)
-    
-    
     @Test
     public void testSave() {
 

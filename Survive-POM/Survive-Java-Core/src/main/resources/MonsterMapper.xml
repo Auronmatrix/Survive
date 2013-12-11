@@ -55,15 +55,5 @@
       <a>imagePath</a>
       <b>imagePath</b>
     </field> 
-<!--    <field>
-      <a>efficiencies</a>
-      <b>efficiencies</b>
-      <b-hint>com.muni.fi.pa165.entities.MonsterWeapon</b-hint>
-    </field>
-    <field>
-      <a>locations</a>
-      <b>locations</b>
-      <b-hint>com.muni.fi.pa165.entities.MonsterArea</b-hint>
-    </field>-->
   </mapping> 
 </mappings>

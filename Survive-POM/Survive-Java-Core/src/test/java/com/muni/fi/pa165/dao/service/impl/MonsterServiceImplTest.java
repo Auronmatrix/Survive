@@ -64,27 +64,11 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setWeight(11.2);
         dto.setName("HeadlessNick");
 
-//        Area area1 = new Area();
-//        area1.setName("Australie");
-//        Area area2 = new Area();
-//        area1.setName("New Zeland");
-//        MonsterAreaDto monsterAreaDto1 = new MonsterAreaDto();
-//        monsterAreaDto1.setArea(area1);
-//        monsterAreaDto1.setMonsterQuantity(10);
-//        MonsterAreaDto monsterAreaDto2 = new MonsterAreaDto();
-//        monsterAreaDto2.setArea(area2);
-//        monsterAreaDto2.setMonsterQuantity(20);
-//        List<MonsterAreaDto> list = new ArrayList<>();
-//        list.add(monsterAreaDto1);
-//        list.add(monsterAreaDto2);
-//        dto.setLocations(list);
-
 
         Monster entity = mapper.map(dto, Monster.class);
         when(mockDAO.save(any(Monster.class))).thenReturn(entity);
         MonsterDto returned = service.save(dto);
         assertEquals(returned, dto);
-        // assertEquals(list, returned.getLocations());
     }
 
     /**
