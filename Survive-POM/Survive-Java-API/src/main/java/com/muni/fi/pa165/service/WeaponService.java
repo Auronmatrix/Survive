@@ -28,6 +28,7 @@ public interface WeaponService {
      *
      * @param weapon object of type WeaponDto
      */
+    @Deprecated
     public void delete(WeaponDto dto);
 
     /**
@@ -40,6 +41,8 @@ public interface WeaponService {
 
     public List<WeaponDto> findAll();
 
+   
+    @Deprecated
     public boolean checkAvailable(String name);
 
     public void delete(Long id);

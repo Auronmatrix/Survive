@@ -12,26 +12,26 @@ public interface MonsterService {
     public MonsterDto save(MonsterDto dto);
 
     /**
-     * Updates WeaponDto
+     * Updates MonsterDto
      *
-     * @param weapon object of type WeaponDto
+     * @param dto object of type MonsterDto
      */
     public MonsterDto update(MonsterDto dto);
 
     /**
-     * Deletes WeaponDto
+     * Deletes MonsterDto
      *
-     * @param weapon object of type WeaponDto
+     * @param id object of type MonsterDto
      */
    
 
     public void delete(Long id);
 
     /**
-     * Finds WeaponDto by id
+     * Finds MonsterDto by id
      *
-     * @param id ID of the weapon
-     * @return Weapon object of type WeaponDto
+     * @param id ID of the monster
+     * @return Monster object of type MonsterDto
      */
     public MonsterDto findById(Long id);
 

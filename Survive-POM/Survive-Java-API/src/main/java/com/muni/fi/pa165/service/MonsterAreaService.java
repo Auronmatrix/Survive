@@ -15,33 +15,33 @@ public interface MonsterAreaService {
     public MonsterAreaPkDto getCompositeKey(Long keyone, Long keytwo);
 
     /**
-     * Updates MonsterWeaponDto
+     * Updates MonsterAreaDto
      *
-     * @param dto object of type MonsterWeaponDto
+     * @param dto object of type MonsterAreaDto
      */
     public MonsterAreaDto update(MonsterAreaDto dto);
 
 
     /**
-     * Deletes MonsterWeaponDto
+     * Deletes MonsterAreaDto
      *
-     * @param dto object of type MonsterWeaponDto
+     * @param dto object of type MonsterAreaDto
      */
     public void delete(MonsterAreaPkDto dto);
 
     /**
-     * Finds MonsterWeaponDto by monsterId
+     * Finds MonsterAreaDto by monsterId
      *
      * @param id ID of the monster
-     * @return list object of type MonsterWeaponDto
+     * @return list object of type MonsterAreaDto
      */
     public List<MonsterAreaDto> findByMonsterId(Long id);
 
     /**
-     * Finds MonsterWeaponDto by weaponId
+     * Finds MonsterAreaDto by areaId
      *
-     * @param id ID of the weapon
-     * @return list object of type MonsterWeaponDto
+     * @param id ID of the area
+     * @return list object of type MonsterAreaDto
      */
     public List<MonsterAreaDto> findByAreaId(Long id);
 

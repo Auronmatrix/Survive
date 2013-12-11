@@ -8,30 +8,38 @@ import java.util.List;
  * @author Auron
  */
 public interface SystemUserService {
+    /**
+     * 
+     * @throws IllegalArgumentException when null is passed
+     */
 
     boolean exists(Long id) throws IllegalArgumentException;
-
+/**
+     * Saves SystemUserDto
+     *
+     * @param dto object of type SystemUserDto
+     */
     public SystemUserDto save(SystemUserDto dto);
 
     /**
-     * Updates WeaponDto
+     * Updates SystemUserDto
      *
-     * @param weapon object of type WeaponDto
+     * @param dto object of type SystemUserDto
      */
     public SystemUserDto update(SystemUserDto dto);
 
     /**
-     * Deletes WeaponDto
+     * Deletes SystemUserDto
      *
-     * @param weapon object of type WeaponDto
+     * @param dto object of type SystemUserDto
      */
     public void delete(SystemUserDto dto);
 
     /**
-     * Finds WeaponDto by id
+     * Finds SystemUserDto by id
      *
-     * @param id ID of the weapon
-     * @return Weapon object of type WeaponDto
+     * @param id ID of the systemUser
+     * @return SystemUser object of type SystemUserDto
      */
     public SystemUserDto findById(Long id);
 

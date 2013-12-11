@@ -12,26 +12,26 @@ public interface AreaService {
     public AreaDto save(AreaDto dto);
 
     /**
-     * Updates WeaponDto
+     * Updates AreaDto
      *
-     * @param weapon object of type WeaponDto
+     * @param dto object of type AreaDto
      */
     public AreaDto update(AreaDto dto);
 
     /**
-     * Deletes WeaponDto
+     * Deletes AreaDto
      *
-     * @param weapon object of type WeaponDto
+     * @param id object of type AreaDto
      */
    
 
     public void delete(Long id);
 
     /**
-     * Finds WeaponDto by id
+     * Finds AreaDto by id
      *
-     * @param id ID of the weapon
-     * @return Weapon object of type WeaponDto
+     * @param id ID of the area
+     * @return Area object of type AreaDto
      */
     public AreaDto findById(Long id);
 
