@@ -47,7 +47,7 @@ public interface MonsterAreaService {
 
     public List<MonsterAreaDto> findAll();
 
-    public void delete(Long id, Long id2);
+   
     
     public MonsterAreaDto findById(Long monsterId, Long areaId);
 }

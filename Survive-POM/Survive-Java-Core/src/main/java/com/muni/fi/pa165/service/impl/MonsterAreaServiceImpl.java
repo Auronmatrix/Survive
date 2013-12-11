@@ -113,10 +113,5 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
         return mapper.map(entity, MonsterAreaDto.class);
     }
 
-    @Override
-    public void delete(Long monsterId, Long areaId) {
-        MonsterAreaPkDto pk = new MonsterAreaPkDto(monsterId, areaId);
-        Monsterarea entity = monsterAreaDao.findById(mapper.map(pk, MonsterareaPK.class));
-        monsterAreaDao.delete(entity);
-    }
+
 }

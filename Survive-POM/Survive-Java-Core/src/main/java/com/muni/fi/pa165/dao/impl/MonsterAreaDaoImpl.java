@@ -74,8 +74,7 @@ public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> impleme
         Monsterarea obj = null;
         try {
             tx.begin();
-            obj = (Monsterarea) query.getSingleResult();
-            //em.merge(pk);
+            obj = (Monsterarea) query.getSingleResult();          
             em.merge(obj);
             em.remove(obj);
             tx.commit();

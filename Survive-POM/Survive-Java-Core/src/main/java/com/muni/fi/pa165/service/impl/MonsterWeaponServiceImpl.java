@@ -110,10 +110,5 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
         return mapper.map(entity, MonsterWeaponDto.class);
     }
 
-    @Override
-    public void delete(Long monsterId, Long weaponId) {
-        MonsterWeaponPkDto pk = new MonsterWeaponPkDto(monsterId, weaponId);
-        Monsterweapon entity = monsterWeaponDao.findById(mapper.map(pk, MonsterweaponPK.class));
-        monsterWeaponDao.delete(entity);
-    }
+
 }

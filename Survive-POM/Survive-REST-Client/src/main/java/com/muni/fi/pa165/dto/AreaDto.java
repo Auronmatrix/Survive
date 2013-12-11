@@ -61,7 +61,7 @@ public class AreaDto implements Serializable {
         return locations;
     }
 
-    public void setLocations(List<MonsterAreaDto> efficiencies) {
+    public void setLocations(List<MonsterAreaDto> locations) {
         this.locations = locations;
     }
     @Override

@@ -2,9 +2,11 @@ package com.muni.fi.pa165.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -35,10 +37,10 @@ public class Monsterarea implements Serializable {
     @Column(name = "MONSTERQUANTITY")
     private int monsterquantity;
     @JoinColumn(name = "MONSTERID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Monster monster;
     @JoinColumn(name = "AREAID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Area area;
 
     public Monsterarea() {
