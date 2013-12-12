@@ -2,7 +2,6 @@ package com.muni.fi.pa165.dao.impl;
 
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
-import com.muni.fi.pa165.entities.Monsterarea;
 import com.muni.fi.pa165.entities.Monsterweapon;
 import com.muni.fi.pa165.entities.MonsterweaponPK;
 import java.util.ArrayList;

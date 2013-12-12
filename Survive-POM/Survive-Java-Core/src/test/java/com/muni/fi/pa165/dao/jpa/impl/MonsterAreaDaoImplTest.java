@@ -16,9 +16,9 @@ import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.TerrainType;
 import java.util.List;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

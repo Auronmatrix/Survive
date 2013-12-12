@@ -7,9 +7,7 @@ package com.muni.fi.pa165.survive.rest.client.services.impl;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.survive.rest.client.services.BaseRestService;
 import com.muni.fi.pa165.survive.rest.client.services.CustomRestService;
-
 import java.util.List;
-
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;

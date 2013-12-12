@@ -1,9 +1,7 @@
 package com.muni.fi.pa165.dao.service.impl;
 
-import com.muni.fi.pa165.service.impl.MonsterWeaponServiceImpl;
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dto.MonsterDto;
-import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Monsterweapon;
@@ -11,15 +9,16 @@ import com.muni.fi.pa165.entities.MonsterweaponPK;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
+import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
+import com.muni.fi.pa165.service.impl.MonsterWeaponServiceImpl;
 import javax.inject.Inject;
 import org.dozer.Mapper;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
-
-import static org.junit.Assert.*;
 
 /**
  *

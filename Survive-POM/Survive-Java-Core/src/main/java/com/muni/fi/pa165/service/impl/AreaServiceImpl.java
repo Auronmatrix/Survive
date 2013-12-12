@@ -1,9 +1,9 @@
 package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.AreaDao;
-import com.muni.fi.pa165.service.AreaService;
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.entities.Area;
+import com.muni.fi.pa165.service.AreaService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;

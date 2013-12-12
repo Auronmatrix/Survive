@@ -2,8 +2,9 @@ package com.muni.fi.pa165.actions.area;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
 import static com.muni.fi.pa165.actions.base.BaseActionBean.escapeHTML;
-import com.muni.fi.pa165.service.AreaService;
 import com.muni.fi.pa165.dto.AreaDto;
+import com.muni.fi.pa165.service.AreaService;
+import java.util.List;
 import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.integration.spring.SpringBean;
@@ -13,8 +14,6 @@ import net.sourceforge.stripes.validation.ValidationErrorHandler;
 import net.sourceforge.stripes.validation.ValidationErrors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 /**
  * Stripes ActionBean for handling area operations.

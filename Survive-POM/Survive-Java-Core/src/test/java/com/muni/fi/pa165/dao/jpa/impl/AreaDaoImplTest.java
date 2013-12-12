@@ -5,11 +5,11 @@ import com.muni.fi.pa165.dao.gen.AbstractDaoIntegrationTest;
 import com.muni.fi.pa165.entities.Area;
 import com.muni.fi.pa165.enums.TerrainType;
 import org.junit.After;
+import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.AfterClass;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

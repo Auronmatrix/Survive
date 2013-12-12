@@ -1,8 +1,9 @@
 package com.muni.fi.pa165.actions.weapon;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
-import com.muni.fi.pa165.service.WeaponService;
 import com.muni.fi.pa165.dto.WeaponDto;
+import com.muni.fi.pa165.service.WeaponService;
+import java.util.List;
 import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.integration.spring.SpringBean;
@@ -12,8 +13,6 @@ import net.sourceforge.stripes.validation.ValidationErrorHandler;
 import net.sourceforge.stripes.validation.ValidationErrors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 /**
  * Stripes ActionBean for handling weapon operations.

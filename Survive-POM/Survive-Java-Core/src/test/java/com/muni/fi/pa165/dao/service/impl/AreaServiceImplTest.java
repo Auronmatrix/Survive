@@ -1,20 +1,19 @@
 package com.muni.fi.pa165.dao.service.impl;
 
-import com.muni.fi.pa165.service.impl.AreaServiceImpl;
 import com.muni.fi.pa165.dao.AreaDao;
-import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.entities.Area;
 import com.muni.fi.pa165.enums.TerrainType;
+import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
+import com.muni.fi.pa165.service.impl.AreaServiceImpl;
 import javax.inject.Inject;
 import org.dozer.Mapper;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
-
-import static org.junit.Assert.*;
 
 /**
  *

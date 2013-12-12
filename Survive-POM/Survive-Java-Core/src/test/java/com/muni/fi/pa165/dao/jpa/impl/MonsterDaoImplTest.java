@@ -5,9 +5,9 @@ import com.muni.fi.pa165.dao.gen.AbstractDaoIntegrationTest;
 import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.enums.MonsterClass;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

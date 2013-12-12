@@ -1,10 +1,9 @@
 package com.muni.fi.pa165.service.impl;
 
-import com.muni.fi.pa165.service.MonsterService;
 import com.muni.fi.pa165.dao.MonsterDao;
 import com.muni.fi.pa165.dto.MonsterDto;
-
 import com.muni.fi.pa165.entities.Monster;
+import com.muni.fi.pa165.service.MonsterService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;

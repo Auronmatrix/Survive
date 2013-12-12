@@ -6,8 +6,6 @@ import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.MonsterAreaDto;
 import com.muni.fi.pa165.dto.MonsterDto;
-import com.muni.fi.pa165.entities.Area;
-import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.entities.Monsterarea;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.TerrainType;

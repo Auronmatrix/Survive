@@ -1,6 +1,5 @@
 package com.muni.fi.pa165.dto;
 
-import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**

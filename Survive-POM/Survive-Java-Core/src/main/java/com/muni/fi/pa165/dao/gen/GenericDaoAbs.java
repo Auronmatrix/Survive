@@ -1,7 +1,6 @@
 package com.muni.fi.pa165.dao.gen;
 
 import com.muni.fi.pa165.dao.GenericDao;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;

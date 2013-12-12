@@ -1,9 +1,9 @@
 package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.SystemUserDao;
-import com.muni.fi.pa165.service.SystemUserService;
 import com.muni.fi.pa165.dto.SystemUserDto;
 import com.muni.fi.pa165.entities.Systemuser;
+import com.muni.fi.pa165.service.SystemUserService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;

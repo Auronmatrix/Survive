@@ -1,9 +1,9 @@
 package com.muni.fi.pa165.entities;
 
 import com.muni.fi.pa165.enums.TerrainType;
+import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *

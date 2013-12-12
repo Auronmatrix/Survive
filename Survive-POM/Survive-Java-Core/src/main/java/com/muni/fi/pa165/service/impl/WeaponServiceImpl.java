@@ -1,9 +1,9 @@
 package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.WeaponDao;
-import com.muni.fi.pa165.service.WeaponService;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Weapon;
+import com.muni.fi.pa165.service.WeaponService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
