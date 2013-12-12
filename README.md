@@ -24,6 +24,10 @@ NOTE: Please ensure that all prerequisites from the TODO.md file has been met be
 
 3. mvn clean install 
 
+#####To additionally run all project test
+
+4. mvn test
+
 
 ####To run the web application on context /pa165 and the rest-server 
 
