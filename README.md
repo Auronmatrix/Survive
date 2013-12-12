@@ -20,13 +20,22 @@ NOTE: Please ensure that all prerequisites from the TODO.md file has been met be
 
 1. Open terminal/cmd 
 
-2. Go to project root Survive/Survive-POM  
+2. Go to project root Survive\Survive-POM  
 
 3. mvn clean install 
 
-4. cd /Surive-Web  
 
-5. mvn tomcat7:run 
+To run the web application on context /pa165 and the rest-server 
+
+1. cd Survive\Survive-POM\Surive-Web  
+
+2. mvn tomcat7:run 
 
 
 
+To run the rest-client application
+
+NOTE: Please ensure that the rest-server is running through completing above steps
+
+1. cd Survive\Survive-POM\Survive-REST-Client
+2. mvn exec:java
