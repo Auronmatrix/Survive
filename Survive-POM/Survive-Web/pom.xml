@@ -27,12 +27,12 @@
         <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
    
-<repositories>
-    <repository>
-      <id>java.net</id>
-      <url>https://maven.java.net/content/repositories/public/</url>
-    </repository>
- </repositories>
+    <repositories>
+        <repository>
+            <id>java.net</id>
+            <url>https://maven.java.net/content/repositories/public/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -136,7 +136,7 @@
         </dependency>
         
         
-             <dependency>
+        <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>1.17.1</version>
@@ -241,6 +241,7 @@
                     </execution>
                 </executions>
             </plugin>
+           
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -287,6 +288,7 @@
                     </execution>
                 </executions>
             </plugin>
+  
         </plugins>
     </build>
 
