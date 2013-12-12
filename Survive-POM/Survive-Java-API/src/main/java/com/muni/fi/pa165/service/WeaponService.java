@@ -39,11 +39,25 @@ public interface WeaponService {
      */
     public WeaponDto findById(Long id);
 
+    /**
+     *
+     * @return
+     */
     public List<WeaponDto> findAll();
 
    
+    /**
+     *
+     * @param name
+     * @return
+     * @deprecated
+     */
     @Deprecated
     public boolean checkAvailable(String name);
 
+    /**
+     *
+     * @param id
+     */
     public void delete(Long id);
 }

@@ -15,26 +15,50 @@ public class MonsterAreaDto {
     private AreaDto area;
     private int monsterQuantity;
 
+    /**
+     *
+     * @return
+     */
     public MonsterDto getMonster() {
         return monster;
     }
 
+    /**
+     *
+     * @param monster
+     */
     public void setMonster(MonsterDto monster) {
         this.monster = monster;
     }
 
+    /**
+     *
+     * @return
+     */
     public AreaDto getArea() {
         return area;
     }
 
+    /**
+     *
+     * @param area
+     */
     public void setArea(AreaDto area) {
         this.area = area;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMonsterQuantity() {
         return monsterQuantity;
     }
 
+    /**
+     *
+     * @param monsterQuantity
+     */
     public void setMonsterQuantity(int monsterQuantity) {
         this.monsterQuantity = monsterQuantity;
     }

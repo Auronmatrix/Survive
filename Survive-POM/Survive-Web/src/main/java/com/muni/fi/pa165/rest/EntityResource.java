@@ -21,6 +21,10 @@ public interface EntityResource {
 //    @Produces(value = {MediaType.APPLICATION_JSON})
 //    Response getAll();
 
+    /**
+     *
+     * @return
+     */
     @GET
     @Produces(value = MediaType.TEXT_PLAIN)
     String getPlain();

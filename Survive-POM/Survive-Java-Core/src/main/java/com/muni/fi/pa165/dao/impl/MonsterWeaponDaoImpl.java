@@ -2,8 +2,8 @@ package com.muni.fi.pa165.dao.impl;
 
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
-import com.muni.fi.pa165.entities.Monsterweapon;
-import com.muni.fi.pa165.entities.MonsterweaponPK;
+import com.muni.fi.pa165.entities.MonsterWeapon;
+import com.muni.fi.pa165.entities.MonsterWeaponPK;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,18 +20,26 @@ import org.springframework.stereotype.Repository;
  * @author Michal Vikler
  */
 @Repository
-public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> implements MonsterWeaponDao {
+public class MonsterWeaponDaoImpl extends GenericDaoAbs<MonsterWeapon, Long> implements MonsterWeaponDao {
 
+    /**
+     *
+     */
     public MonsterWeaponDaoImpl() {
-        super(Monsterweapon.class);
+        super(MonsterWeapon.class);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
-    public List<Monsterweapon> getByMonsterId(Long id) {
+    public List<MonsterWeapon> getByMonsterId(Long id) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterweapon.findByMonsterid").setParameter("monsterid", id);
+        Query query = em.createNamedQuery("MonsterWeapon.findByMonsterid").setParameter("monsterid", id);
         EntityTransaction tx = em.getTransaction();
-        List<Monsterweapon> list = new ArrayList();
+        List<MonsterWeapon> list = new ArrayList();
         try {
             tx.begin();
             list = query.getResultList();
@@ -45,12 +53,17 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
         return list;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
-    public List<Monsterweapon> getByWeaponId(Long id) {
+    public List<MonsterWeapon> getByWeaponId(Long id) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterweapon.findByWeaponid").setParameter("weaponid", id);
+        Query query = em.createNamedQuery("MonsterWeapon.findByWeaponid").setParameter("weaponid", id);
         EntityTransaction tx = em.getTransaction();
-        List<Monsterweapon> list = new ArrayList();
+        List<MonsterWeapon> list = new ArrayList();
         try {
             tx.begin();
             list = query.getResultList();
@@ -65,16 +78,20 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
 
     }
 
+    /**
+     *
+     * @param pk
+     */
     @Override
-    public void delete(MonsterweaponPK pk) {
+    public void delete(MonsterWeaponPK pk) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        Query query = em.createNamedQuery("Monsterweapon.findById");
+        Query query = em.createNamedQuery("MonsterWeapon.findById");
         query.setParameter("monsterweaponPK", pk);
-        Monsterweapon obj = null;
+        MonsterWeapon obj = null;
         try {
             tx.begin();
-            obj = (Monsterweapon) query.getSingleResult();
+            obj = (MonsterWeapon) query.getSingleResult();
             //em.merge(pk);
             em.merge(obj);
             em.remove(obj);
@@ -87,12 +104,16 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
-    public List<Monsterweapon> findAll() {
+    public List<MonsterWeapon> findAll() {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterweapon.findAll");
+        Query query = em.createNamedQuery("MonsterWeapon.findAll");
         EntityTransaction tx = em.getTransaction();
-        List<Monsterweapon> list = new ArrayList();
+        List<MonsterWeapon> list = new ArrayList();
         try {
             tx.begin();
             list = query.getResultList();
@@ -106,16 +127,21 @@ public class MonsterWeaponDaoImpl extends GenericDaoAbs<Monsterweapon, Long> imp
         return list;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
-    public Monsterweapon findById(MonsterweaponPK id) {
+    public MonsterWeapon findById(MonsterWeaponPK id) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterweapon.findById");
+        Query query = em.createNamedQuery("MonsterWeapon.findById");
         query.setParameter("monsterweaponPK", id);
         EntityTransaction tx = em.getTransaction();
-        Monsterweapon obj = null;
+        MonsterWeapon obj = null;
         try {
             tx.begin();
-            obj = (Monsterweapon) query.getSingleResult();
+            obj = (MonsterWeapon) query.getSingleResult();
             tx.commit();
         } finally {
 

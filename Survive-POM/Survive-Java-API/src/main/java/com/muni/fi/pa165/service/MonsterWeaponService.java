@@ -11,8 +11,19 @@ import java.util.List;
 public interface MonsterWeaponService {
 
 
+    /**
+     *
+     * @param dto
+     * @return
+     */
     public MonsterWeaponDto save(MonsterWeaponDto dto);
     
+    /**
+     *
+     * @param keyone
+     * @param keytwo
+     * @return
+     */
     public MonsterWeaponPkDto getCompositeKey(Long keyone, Long keytwo);
 
     /**
@@ -46,8 +57,18 @@ public interface MonsterWeaponService {
      */
     public List<MonsterWeaponDto> findByWeaponId(Long id);
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterWeaponDto> findAll();
 
     
+    /**
+     *
+     * @param monsterId
+     * @param weaponId
+     * @return
+     */
     public MonsterWeaponDto findById(Long monsterId, Long weaponId);
 }

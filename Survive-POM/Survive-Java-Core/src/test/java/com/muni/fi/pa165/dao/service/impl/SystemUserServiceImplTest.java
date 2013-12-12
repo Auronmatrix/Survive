@@ -2,7 +2,7 @@ package com.muni.fi.pa165.dao.service.impl;
 
 import com.muni.fi.pa165.dao.SystemUserDao;
 import com.muni.fi.pa165.dto.SystemUserDto;
-import com.muni.fi.pa165.entities.Systemuser;
+import com.muni.fi.pa165.entities.SystemUser;
 import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.service.impl.SystemUserServiceImpl;
 import javax.inject.Inject;
@@ -31,6 +31,9 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
     @Inject
     private Mapper mapper;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         service = new SystemUserServiceImpl();
@@ -39,14 +42,23 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
         service.setMapper(mapper);
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void testSave() {
         SystemUserDto dto = new SystemUserDto();
@@ -55,8 +67,8 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setPassword("1234");
         dto.setAccessLevel(1);
 
-        Systemuser entity = mapper.map(dto, Systemuser.class);
-        when(mockDAO.save(any(Systemuser.class))).thenReturn(entity);
+        SystemUser entity = mapper.map(dto, SystemUser.class);
+        when(mockDAO.save(any(SystemUser.class))).thenReturn(entity);
         SystemUserDto returned = service.save(dto);
         assertEquals(returned, dto);
     }
@@ -73,8 +85,8 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setPassword("1234");
         dto.setAccessLevel(1);
 
-        Systemuser entity = mapper.map(dto, Systemuser.class);
-        when(mockDAO.update(any(Systemuser.class))).thenReturn(entity);
+        SystemUser entity = mapper.map(dto, SystemUser.class);
+        when(mockDAO.update(any(SystemUser.class))).thenReturn(entity);
         SystemUserDto returned = service.update(dto);
         verify(mockDAO, times(1)).update(entity);
         verifyNoMoreInteractions(mockDAO);
@@ -93,7 +105,7 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setPassword("1234");
         dto.setAccessLevel(1);
 
-        Systemuser entity = mapper.map(dto, Systemuser.class);
+        SystemUser entity = mapper.map(dto, SystemUser.class);
 
 
         service.delete(dto);
@@ -117,7 +129,7 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setPassword("1234");
         dto.setAccessLevel(Integer.MIN_VALUE);
 
-        Systemuser entity = mapper.map(dto, Systemuser.class);
+        SystemUser entity = mapper.map(dto, SystemUser.class);
 
         when(mockDAO.findById(dto.getId())).thenReturn(entity);
 

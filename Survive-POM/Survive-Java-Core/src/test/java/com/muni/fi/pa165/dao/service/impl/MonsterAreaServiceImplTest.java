@@ -6,7 +6,7 @@ import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.MonsterAreaDto;
 import com.muni.fi.pa165.dto.MonsterDto;
-import com.muni.fi.pa165.entities.Monsterarea;
+import com.muni.fi.pa165.entities.MonsterArea;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.TerrainType;
 import javax.inject.Inject;
@@ -35,6 +35,9 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
     private AreaDto areaDto;
     private MonsterAreaDto monsterAreaDto;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         service = new MonsterAreaServiceImpl();
@@ -68,10 +71,16 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
         monsterAreaDto.setMonsterQuantity(5);
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -81,8 +90,8 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testSave() {
-        Monsterarea entity = mapper.map(monsterAreaDto, Monsterarea.class);
-        when(mockDAO.save(any(Monsterarea.class))).thenReturn(entity);
+        MonsterArea entity = mapper.map(monsterAreaDto, MonsterArea.class);
+        when(mockDAO.save(any(MonsterArea.class))).thenReturn(entity);
         MonsterAreaDto returned = service.save(monsterAreaDto);
         assertEquals(returned, monsterAreaDto);
     }
@@ -92,8 +101,8 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testUpdate() {
-        Monsterarea entity = mapper.map(monsterAreaDto, Monsterarea.class);
-        when(mockDAO.update(any(Monsterarea.class))).thenReturn(entity);
+        MonsterArea entity = mapper.map(monsterAreaDto, MonsterArea.class);
+        when(mockDAO.update(any(MonsterArea.class))).thenReturn(entity);
         MonsterAreaDto returned = service.update(monsterAreaDto);
         assertEquals(returned, monsterAreaDto);
     }
@@ -104,7 +113,7 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
     @Test
     public void testDelete() {
 
-        Monsterarea entity = mapper.map(monsterAreaDto, Monsterarea.class);
+        MonsterArea entity = mapper.map(monsterAreaDto, MonsterArea.class);
         service.delete(monsterAreaDto);
         verify(mockDAO, times(1)).delete(entity);
         verifyNoMoreInteractions(mockDAO);

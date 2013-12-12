@@ -9,8 +9,8 @@ import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dao.WeaponDao;
 import com.muni.fi.pa165.dao.gen.AbstractDaoIntegrationTest;
 import com.muni.fi.pa165.entities.Monster;
-import com.muni.fi.pa165.entities.Monsterweapon;
-import com.muni.fi.pa165.entities.MonsterweaponPK;
+import com.muni.fi.pa165.entities.MonsterWeapon;
+import com.muni.fi.pa165.entities.MonsterWeaponPK;
 import com.muni.fi.pa165.entities.Weapon;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.WeaponClass;
@@ -37,8 +37,11 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
     Weapon weapon;
     @Autowired
     MonsterWeaponDao monsterWeaponDao;
-    Monsterweapon monsterWeapon;
+    MonsterWeapon monsterWeapon;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         monster = new Monster();
@@ -64,8 +67,8 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
         weapon.setWeapontype(WeaponType.Gun);
         weaponDao.save(weapon);
                 
-        monsterWeapon = new Monsterweapon();
-        monsterWeapon.setMonsterweaponPK(new MonsterweaponPK(monster.getId(), weapon.getId()));
+        monsterWeapon = new MonsterWeapon();
+        monsterWeapon.setMonsterweaponPK(new MonsterWeaponPK(monster.getId(), weapon.getId()));
         monsterWeapon.setWeapon(weapon);
         monsterWeapon.setMonster(monster);
         monsterWeapon.setHitrate(22);
@@ -74,43 +77,61 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
         monsterWeaponDao.save(monsterWeapon);           
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
-        for (Monsterweapon item : monsterWeaponDao.findAll()){
+        for (MonsterWeapon item : monsterWeaponDao.findAll()){
             monsterWeaponDao.delete(item.getMonsterweaponPK());
         }
     }
 
 
+    /**
+     *
+     */
     @Before
     public void setUpClass() {
     }
     
-     @Test
+     /**
+     *
+     */
+    @Test
      public void testFindAll() {
-         List<Monsterweapon> monsterWeapons = monsterWeaponDao.findAll();
+         List<MonsterWeapon> monsterWeapons = monsterWeaponDao.findAll();
          assertEquals("List contains only one monsterWeapon.",1 , monsterWeapons.size());
          assertEquals("In the is proper monsterWeapon.", monsterWeapon, monsterWeapons.get(0));
      }
 
+    /**
+     *
+     */
     @Test
     public void testFindByMonsterId() {
-         List<Monsterweapon> monsterWeapons = monsterWeaponDao.getByMonsterId(monster.getId());
+         List<MonsterWeapon> monsterWeapons = monsterWeaponDao.getByMonsterId(monster.getId());
          assertEquals("List contains only one monsterWeapon.",1 , monsterWeapons.size());
          assertEquals("In the is proper monsterWeapon.", monsterWeapon, monsterWeapons.get(0));
  }
+    /**
+     *
+     */
     @Test
     public void testFindByWeaponId() {
-         List<Monsterweapon> monsterWeapons = monsterWeaponDao.getByWeaponId(weapon.getId());
+         List<MonsterWeapon> monsterWeapons = monsterWeaponDao.getByWeaponId(weapon.getId());
          assertEquals("List contains only one monsterWeapon.",1 , monsterWeapons.size());
          assertEquals("In the is proper monsterWeapon.", monsterWeapon, monsterWeapons.get(0));
          
     
 }
+    /**
+     *
+     */
     @Test
     public void testDelete(){
         monsterWeaponDao.delete(monsterWeapon.getMonsterweaponPK());
-        List<Monsterweapon> monsterWeapons = monsterWeaponDao.findAll();
+        List<MonsterWeapon> monsterWeapons = monsterWeaponDao.findAll();
         assertEquals("List should be empty.", 0, monsterWeapons.size());
     }
 }

@@ -26,6 +26,10 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
     final static Logger log = (Logger) LoggerFactory.getLogger(AreaActionBean.class);
     private List<AreaDto> areas;
 
+    /**
+     *
+     * @return
+     */
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
@@ -33,9 +37,16 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
         return new ForwardResolution("/area/list.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public List<AreaDto> getAreas() {
         return areas;
     }
+    /**
+     *
+     */
     @SpringBean
     protected AreaService areaService;
     @ValidateNestedProperties(value = {
@@ -44,6 +55,10 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})
     private AreaDto area;
 
+    /**
+     *
+     * @return
+     */
     public Resolution add() {
         log.debug("add() area={}", area);
         try {
@@ -55,26 +70,48 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @param errors
+     * @return
+     * @throws Exception
+     */
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
         areas = areaService.findAll();
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public AreaDto getArea() {
         return area;
     }
 
+    /**
+     *
+     * @param area
+     */
     public void setArea(AreaDto area) {
         this.area = area;
     }
 
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public Resolution delete() throws Exception {
         log.debug("delete({})", area.getId());
         areaService.delete(area.getId());
         return new RedirectResolution(this.getClass(), "all");
     }
 
+    /**
+     *
+     */
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadAreaFromDatabase() {
         String ids = getContext().getRequest().getParameter("area.id");
@@ -85,23 +122,39 @@ public class AreaActionBean extends BaseActionBean implements ValidationErrorHan
         log.debug("Loaded area from DB");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution edit() {
         log.debug("edit() area={}", area);
         return new ForwardResolution("/area/edit.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution save() {
         log.debug("save() area={}", area);
         areaService.update(area);
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution select() {
         log.debug("select() area={}", area);
         this.setArea(areaService.findById(Long.parseLong(getContext().getRequest().getParameter("area.id"))));
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution cancel() {
         log.debug("cancel");
         return new RedirectResolution(this.getClass(), "list");

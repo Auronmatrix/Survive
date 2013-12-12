@@ -26,6 +26,11 @@ public class AreaServiceImpl implements AreaService {
     @Inject
     private Mapper mapper;
 
+    /**
+     *
+     * @param dto
+     * @return
+     */
     @Override
     public AreaDto save(AreaDto dto) {
 
@@ -54,10 +59,18 @@ public class AreaServiceImpl implements AreaService {
 
     }
 
+    /**
+     *
+     * @param dao
+     */
     public void setDao(AreaDao dao) {
         this.areaDao = dao;
     }
 
+    /**
+     *
+     * @param mapper
+     */
     public void setMapper(Mapper mapper) {
         this.mapper = mapper;
     }
@@ -67,6 +80,10 @@ public class AreaServiceImpl implements AreaService {
         areaDao.delete(id);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<AreaDto> findAll() {
         List<AreaDto> dtoList = new ArrayList<>();

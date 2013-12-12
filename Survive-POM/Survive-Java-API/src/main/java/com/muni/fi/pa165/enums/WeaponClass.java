@@ -7,7 +7,14 @@ package com.muni.fi.pa165.enums;
  */
 public enum WeaponClass {
 
-    Ranged, Melee;
+    /**
+     *
+     */
+    Ranged,
+    /**
+     *
+     */
+    Melee;
 
    /** 
      * Gives all possible weapon classes separated by comma.

@@ -9,6 +9,11 @@ import java.util.List;
  */
 public interface AreaService {
 
+    /**
+     *
+     * @param dto
+     * @return
+     */
     public AreaDto save(AreaDto dto);
 
     /**
@@ -35,5 +40,9 @@ public interface AreaService {
      */
     public AreaDto findById(Long id);
 
+    /**
+     *
+     * @return
+     */
     public List<AreaDto> findAll();
 }

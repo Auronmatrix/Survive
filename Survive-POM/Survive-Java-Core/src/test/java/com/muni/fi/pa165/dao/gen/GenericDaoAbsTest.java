@@ -23,17 +23,29 @@ public class GenericDaoAbsTest extends AbstractDaoIntegrationTest {
     AreaDao dao;
     Area entity;
 
+    /**
+     *
+     */
     public GenericDaoAbsTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         entity = new Area();
@@ -42,6 +54,9 @@ public class GenericDaoAbsTest extends AbstractDaoIntegrationTest {
         entity.setTerrain(TerrainType.JUNGLE);
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }

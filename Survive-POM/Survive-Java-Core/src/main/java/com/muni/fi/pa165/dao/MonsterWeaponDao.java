@@ -1,7 +1,7 @@
 package com.muni.fi.pa165.dao;
 
-import com.muni.fi.pa165.entities.Monsterweapon;
-import com.muni.fi.pa165.entities.MonsterweaponPK;
+import com.muni.fi.pa165.entities.MonsterWeapon;
+import com.muni.fi.pa165.entities.MonsterWeaponPK;
 import java.util.List;
 
 /**
@@ -10,13 +10,32 @@ import java.util.List;
  *
  * @author Michal Vinkler
  */
-public interface MonsterWeaponDao extends GenericDao<Monsterweapon, Long> {
+public interface MonsterWeaponDao extends GenericDao<MonsterWeapon, Long> {
 
-    public List<Monsterweapon> getByMonsterId(Long id);
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public List<MonsterWeapon> getByMonsterId(Long id);
 
-    public List<Monsterweapon> getByWeaponId(Long id);
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public List<MonsterWeapon> getByWeaponId(Long id);
 
-    public void delete(MonsterweaponPK id);
+    /**
+     *
+     * @param id
+     */
+    public void delete(MonsterWeaponPK id);
 
-    public Monsterweapon findById(MonsterweaponPK id);
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public MonsterWeapon findById(MonsterWeaponPK id);
 }

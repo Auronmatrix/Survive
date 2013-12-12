@@ -27,10 +27,19 @@ import org.slf4j.LoggerFactory;
 public class LocationsActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(LocationsActionBean.class);
+    /**
+     *
+     */
     @SpringBean 
     protected MonsterAreaService service;
+    /**
+     *
+     */
     @SpringBean
     protected AreaService areaService;
+    /**
+     *
+     */
     @SpringBean
     protected MonsterService monsterService;
     private List<MonsterAreaDto> locations;
@@ -38,6 +47,10 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
     private List<MonsterDto> monsters;
 
    
+    /**
+     *
+     * @return
+     */
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
@@ -47,32 +60,60 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         return new ForwardResolution("/locations/list.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterAreaDto> getLocations() {
         return locations;
     }
 
+    /**
+     *
+     * @param locations
+     */
     public void setLocations(List<MonsterAreaDto> locations) {
         this.locations = locations;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<AreaDto> getAreas() {
         areas = areaService.findAll();
         return areas;
     }
 
+    /**
+     *
+     * @param areas
+     */
     public void setAreas(List<AreaDto> areas) {
         this.areas = areas;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterDto> getMonsters() {
         monsters = monsterService.findAll();
         return monsters;
     }
 
+    /**
+     *
+     * @param monsters
+     */
     public void setMonsters(List<MonsterDto> monsters) {
         this.monsters = monsters;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterAreaDto> getMonsterAreas() {
         return locations;
     }
@@ -82,6 +123,10 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         @Validate(on = {"add", "save"}, field = "monsterQuantity", required = true, minvalue = 1)})
     private MonsterAreaDto monsterArea;
 
+    /**
+     *
+     * @return
+     */
     public Resolution add() {
         log.debug("add() monsterMonsterArea={}", monsterArea);
         try {
@@ -98,6 +143,12 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @param errors
+     * @return
+     * @throws Exception
+     */
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
         //fill up the data for the table if validation errors occured
@@ -106,15 +157,27 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public MonsterAreaDto getMonsterArea() {
         return monsterArea;
     }
 
+    /**
+     *
+     * @param monsterMonsterArea
+     */
     public void setMonsterArea(MonsterAreaDto monsterMonsterArea) {
         this.monsterArea = monsterMonsterArea;
     }
 
     //--- part for deleting a monsterMonsterArea ----
+    /**
+     *
+     * @return
+     */
     public Resolution delete() {
         log.debug("delete({})", monsterArea.getMonster());
         //only id is filled by the form
@@ -130,6 +193,9 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
     }
 
     //--- part for editing a monsterMonsterArea ----
+    /**
+     *
+     */
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadMonsterAreaFromDatabase() {
         String monsterId = getContext().getRequest().getParameter("monsterArea.monster.id");
@@ -146,6 +212,10 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         log.debug("Loaded monsterMonsterArea from DB");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution findByMonster() {
         String monsterId = getContext().getRequest().getParameter("filter.monster.id");
         if (monsterId == null) {
@@ -155,6 +225,10 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         return new ForwardResolution("/locations/list.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution findByArea() {
         String areaId = getContext().getRequest().getParameter("filter.area.id");
         if (areaId == null) {
@@ -164,18 +238,30 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         return new ForwardResolution("/locations/list.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution clearFilters() {
         log.debug("edit() monsterMonsterArea={}", monsterArea);
         locations = service.findAll();
         return new ForwardResolution("/locations/edit.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution edit() {
         log.debug("edit() monsterMonsterArea={}", monsterArea);
 
         return new ForwardResolution("/locations/edit.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution save() {
         log.debug("Called method save");
         try {
@@ -192,6 +278,10 @@ public class LocationsActionBean extends BaseActionBean implements ValidationErr
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution cancel() {
         log.debug("Called method cancel");
         log.debug("cancel");

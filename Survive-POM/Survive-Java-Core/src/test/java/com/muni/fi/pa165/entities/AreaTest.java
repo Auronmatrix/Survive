@@ -13,6 +13,9 @@ public class AreaTest {
 
     static Area area;
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
         area = new Area();

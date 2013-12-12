@@ -69,122 +69,233 @@ public class Monster implements Serializable {
     @Column(name = "WEIGHT")
     private Double weight;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "monster")
-    private Collection<Monsterweapon> monsterweaponCollection;
+    private Collection<MonsterWeapon> monsterweaponCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "monster")
-    private Collection<Monsterarea> monsterareaCollection;
+    private Collection<MonsterArea> monsterareaCollection;
 
+    /**
+     *
+     */
     public Monster() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Monster(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getAgility() {
         return agility;
     }
 
+    /**
+     *
+     * @param agility
+     */
     public void setAgility(Double agility) {
         this.agility = agility;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getDangerlevel() {
         return dangerlevel;
     }
 
+    /**
+     *
+     * @param dangerlevel
+     */
     public void setDangerlevel(Double dangerlevel) {
         this.dangerlevel = dangerlevel;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getHeight() {
         return height;
     }
 
+    /**
+     *
+     * @param height
+     */
     public void setHeight(Double height) {
         this.height = height;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getImagepath() {
         return imagepath;
     }
 
+    /**
+     *
+     * @param imagepath
+     */
     public void setImagepath(String imagepath) {
         this.imagepath = imagepath;
     }
 
+    /**
+     *
+     * @return
+     */
     public MonsterClass getMonsterclass() {
         return monsterclass;
     }
 
+    /**
+     *
+     * @param monsterclass
+     */
     public void setMonsterclass(MonsterClass monsterclass) {
         this.monsterclass = monsterclass;
     }
 
 
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getStamina() {
         return stamina;
     }
 
+    /**
+     *
+     * @param stamina
+     */
     public void setStamina(Double stamina) {
         this.stamina = stamina;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getStrength() {
         return strength;
     }
 
+    /**
+     *
+     * @param strength
+     */
     public void setStrength(Double strength) {
         this.strength = strength;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getWeight() {
         return weight;
     }
 
+    /**
+     *
+     * @param weight
+     */
     public void setWeight(Double weight) {
         this.weight = weight;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
-    public Collection<Monsterweapon> getMonsterweaponCollection() {
+    public Collection<MonsterWeapon> getMonsterweaponCollection() {
         return monsterweaponCollection;
     }
 
-    public void setMonsterweaponCollection(Collection<Monsterweapon> monsterweaponCollection) {
+    /**
+     *
+     * @param monsterweaponCollection
+     */
+    public void setMonsterweaponCollection(Collection<MonsterWeapon> monsterweaponCollection) {
         this.monsterweaponCollection = monsterweaponCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
-    public Collection<Monsterarea> getMonsterareaCollection() {
+    public Collection<MonsterArea> getMonsterareaCollection() {
         return monsterareaCollection;
     }
 
-    public void setMonsterareaCollection(Collection<Monsterarea> monsterareaCollection) {
+    /**
+     *
+     * @param monsterareaCollection
+     */
+    public void setMonsterareaCollection(Collection<MonsterArea> monsterareaCollection) {
         this.monsterareaCollection = monsterareaCollection;
     }
 

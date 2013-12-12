@@ -16,34 +16,66 @@ public class SystemUserDto {
     private String password;
     private Integer accessLevel;
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getAccessLevel() {
         return accessLevel;
     }
 
+    /**
+     *
+     * @param accessLevel
+     */
     public void setAccessLevel(Integer accessLevel) {
         this.accessLevel = accessLevel;
     }

@@ -7,7 +7,30 @@ package com.muni.fi.pa165.enums;
  */
 public enum TerrainType {
 
-    OCEANIC, DESERT, SNOW, JUNGLE, SAVANNA, MOUNTAIN;
+    /**
+     *
+     */
+    OCEANIC,
+    /**
+     *
+     */
+    DESERT,
+    /**
+     *
+     */
+    SNOW,
+    /**
+     *
+     */
+    JUNGLE,
+    /**
+     *
+     */
+    SAVANNA,
+    /**
+     *
+     */
+    MOUNTAIN;
 
     /** 
      * Gives all possible terrain types separated by comma.

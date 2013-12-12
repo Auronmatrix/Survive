@@ -10,7 +10,7 @@ import javax.persistence.Embeddable;
  * @author Auron
  */
 @Embeddable
-public class MonsterareaPK implements Serializable {
+public class MonsterAreaPK implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "MONSTERID")
@@ -19,26 +19,50 @@ public class MonsterareaPK implements Serializable {
     @Column(name = "AREAID")
     private long areaid;
 
-    public MonsterareaPK() {
+    /**
+     *
+     */
+    public MonsterAreaPK() {
     }
 
-    public MonsterareaPK(long monsterid, long areaid) {
+    /**
+     *
+     * @param monsterid
+     * @param areaid
+     */
+    public MonsterAreaPK(long monsterid, long areaid) {
         this.monsterid = monsterid;
         this.areaid = areaid;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getMonsterid() {
         return monsterid;
     }
 
+    /**
+     *
+     * @param monsterid
+     */
     public void setMonsterid(long monsterid) {
         this.monsterid = monsterid;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getAreaid() {
         return areaid;
     }
 
+    /**
+     *
+     * @param areaid
+     */
     public void setAreaid(long areaid) {
         this.areaid = areaid;
     }
@@ -54,10 +78,10 @@ public class MonsterareaPK implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MonsterareaPK)) {
+        if (!(object instanceof MonsterAreaPK)) {
             return false;
         }
-        MonsterareaPK other = (MonsterareaPK) object;
+        MonsterAreaPK other = (MonsterAreaPK) object;
         if (this.monsterid != other.monsterid) {
             return false;
         }

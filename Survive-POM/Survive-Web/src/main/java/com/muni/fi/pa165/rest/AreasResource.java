@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * Rest resource for manipulating Area 
  * @author Aubrey Oosthuizen
  */
 @Path("/areas")
@@ -55,6 +55,10 @@ public class AreasResource implements EntityResource {
         return list;
     }
 
+    /**
+     *
+     * @return
+     */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Override
@@ -73,6 +77,11 @@ public class AreasResource implements EntityResource {
         return returnString.toString();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML})
@@ -89,6 +98,11 @@ public class AreasResource implements EntityResource {
         return dto;
     }
 
+    /**
+     *
+     * @param dto
+     * @return
+     */
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
@@ -111,6 +125,12 @@ public class AreasResource implements EntityResource {
         return dto;
     }
 
+    /**
+     *
+     * @param id
+     * @param dto
+     * @return
+     */
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_XML)
@@ -130,6 +150,11 @@ public class AreasResource implements EntityResource {
         return response;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Integer id) {

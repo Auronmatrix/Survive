@@ -27,6 +27,9 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
     @Inject
     private Mapper mapper;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         service = new AreaServiceImpl();
@@ -35,10 +38,16 @@ public class AreaServiceImplTest extends AbstractServiceIntegrationTest {
         service.setMapper(mapper);
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }

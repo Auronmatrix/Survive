@@ -24,10 +24,17 @@ import org.slf4j.LoggerFactory;
 public class MonsterActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(MonsterActionBean.class);
+    /**
+     *
+     */
     @SpringBean
     protected MonsterService monsterService;
     private List<MonsterDto> monsters;
 
+    /**
+     *
+     * @return
+     */
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
@@ -35,6 +42,10 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         return new ForwardResolution("/monster/list.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterDto> getMonsters() {
         return monsters;
     }
@@ -52,11 +63,15 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     })
     private MonsterDto monster;
 
+    /**
+     *
+     * @return
+     */
     public Resolution add() {
         log.debug("add() monster={}", monster);
         try {
             if (monster.getImagePath() == null || monster.getImagePath().isEmpty()) {
-                monster.setImagePath("http://careerconfidential.com/images/no-monsterX400.jpg");
+                monster.setImagePath("http://static.zerochan.net/SlenderMan.full.1338548.jpg");
             }
             monster = monsterService.save(monster);
         } catch (Exception ex) {
@@ -66,26 +81,48 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @param errors
+     * @return
+     * @throws Exception
+     */
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
         monsters = monsterService.findAll();
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public MonsterDto getMonster() {
         return monster;
     }
 
+    /**
+     *
+     * @param monster
+     */
     public void setMonster(MonsterDto monster) {
         this.monster = monster;
     }
 
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public Resolution delete() throws Exception {
         log.debug("delete({})", monster.getId());
         monsterService.delete(monster.getId());
         return new RedirectResolution(this.getClass(), "all");
     }
 
+    /**
+     *
+     */
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadMonsterFromDatabase() {
         String ids = getContext().getRequest().getParameter("monster.id");
@@ -96,17 +133,29 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         log.debug("Loaded monster from DB");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution edit() {
         log.debug("edit() monster={}", monster);
         return new ForwardResolution("/monster/edit.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution gallery() {
         log.debug("edit() monster={}", monster);
         monsters = monsterService.findAll();
         return new ForwardResolution("/monster/gallery.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution save() {
         log.debug("save() monster={}", monster);
         monster = getMonster();
@@ -114,6 +163,10 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution cancel() {
         log.debug("cancel");
         return new RedirectResolution(this.getClass(), "list");

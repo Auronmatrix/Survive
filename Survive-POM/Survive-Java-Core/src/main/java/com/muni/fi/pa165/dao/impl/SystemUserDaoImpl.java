@@ -2,7 +2,7 @@ package com.muni.fi.pa165.dao.impl;
 
 import com.muni.fi.pa165.dao.SystemUserDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
-import com.muni.fi.pa165.entities.Systemuser;
+import com.muni.fi.pa165.entities.SystemUser;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
  * @author Maria
  */
 @Repository
-public class SystemUserDaoImpl extends GenericDaoAbs<Systemuser, Long> implements SystemUserDao {
+public class SystemUserDaoImpl extends GenericDaoAbs<SystemUser, Long> implements SystemUserDao {
 
     public SystemUserDaoImpl() {
-        super(Systemuser.class);
+        super(SystemUser.class);
     }
 }

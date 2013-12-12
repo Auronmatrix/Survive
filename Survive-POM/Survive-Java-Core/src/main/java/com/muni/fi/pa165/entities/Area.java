@@ -48,7 +48,7 @@ public class Area implements Serializable {
     @Enumerated(EnumType.STRING)
     private TerrainType terrain;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
-    private Collection<Monsterarea> monsterareaCollection;
+    private Collection<MonsterArea> monsterareaCollection;
 
     public Area() {
     }
@@ -90,11 +90,11 @@ public class Area implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Monsterarea> getMonsterareaCollection() {
+    public Collection<MonsterArea> getMonsterareaCollection() {
         return monsterareaCollection;
     }
 
-    public void setMonsterareaCollection(Collection<Monsterarea> monsterareaCollection) {
+    public void setMonsterareaCollection(Collection<MonsterArea> monsterareaCollection) {
         this.monsterareaCollection = monsterareaCollection;
     }
 

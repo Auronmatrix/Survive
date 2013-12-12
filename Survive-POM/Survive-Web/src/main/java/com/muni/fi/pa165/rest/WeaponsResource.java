@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * Rest resource for manipulating Weapons
  * @author Aubrey Oosthuizen
  */
 @Path("/weapons")

@@ -17,10 +17,18 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class WeaponDaoImpl extends GenericDaoAbs<Weapon, Long> implements WeaponDao {
 
+    /**
+     *
+     */
     public WeaponDaoImpl() {
         super(Weapon.class);
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @Override
     public boolean checkAvailable(String name) {
 

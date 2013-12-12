@@ -32,6 +32,9 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
     @Inject
     private Mapper mapper;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         service = new MonsterServiceImpl();
@@ -40,14 +43,23 @@ public class MonsterServiceImplTest extends AbstractServiceIntegrationTest {
         service.setMapper(mapper);
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void testSave() {
         MonsterDto dto = new MonsterDto();

@@ -1,7 +1,7 @@
 package com.muni.fi.pa165.dao;
 
-import com.muni.fi.pa165.entities.Monsterarea;
-import com.muni.fi.pa165.entities.MonsterareaPK;
+import com.muni.fi.pa165.entities.MonsterArea;
+import com.muni.fi.pa165.entities.MonsterAreaPK;
 import java.util.List;
 
 /**
@@ -10,15 +10,15 @@ import java.util.List;
  *
  * @author Michal Vinkler
  */
-public interface MonsterAreaDao extends GenericDao<Monsterarea, Long> {
+public interface MonsterAreaDao extends GenericDao<MonsterArea, Long> {
 
-    List<Monsterarea> getByMonsterId(Long id);
+    List<MonsterArea> getByMonsterId(Long id);
 
-    List<Monsterarea> getByAreaId(Long id);
+    List<MonsterArea> getByAreaId(Long id);
 
-    List<Monsterarea> findAll();
+    List<MonsterArea> findAll();
 
-    Monsterarea findById(MonsterareaPK id);
+    MonsterArea findById(MonsterAreaPK id);
 
-    void delete(MonsterareaPK pk);
+    void delete(MonsterAreaPK pk);
 }

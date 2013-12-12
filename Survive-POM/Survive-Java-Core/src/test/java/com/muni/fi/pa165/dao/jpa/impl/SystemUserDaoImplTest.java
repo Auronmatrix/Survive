@@ -2,7 +2,7 @@ package com.muni.fi.pa165.dao.jpa.impl;
 
 import com.muni.fi.pa165.dao.SystemUserDao;
 import com.muni.fi.pa165.dao.gen.AbstractDaoIntegrationTest;
-import com.muni.fi.pa165.entities.Systemuser;
+import com.muni.fi.pa165.entities.SystemUser;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -20,7 +20,7 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
     @Autowired
     SystemUserDao dao;
     
-    Systemuser entity;
+    SystemUser entity;
 
     @BeforeClass
     public static void setUpClass() {
@@ -32,7 +32,7 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
 
     @Before
     public void setUp() {
-        entity = new Systemuser();
+        entity = new SystemUser();
         entity.setUsername("user");
         entity.setPassword("1234");
         entity.setAccesslevel(1);
@@ -50,7 +50,7 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
     @Test
     public void testDelete() {
         dao.delete(entity);
-        Systemuser deletedUser = dao.findById(entity.getId());
+        SystemUser deletedUser = dao.findById(entity.getId());
         Assert.assertNull(deletedUser);
     }
      /**
@@ -66,7 +66,7 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
      */
     @Test
     public void findTest() {
-        Systemuser systemUserFound = dao.findById(entity.getId());
+        SystemUser systemUserFound = dao.findById(entity.getId());
         Assert.assertNotNull(systemUserFound);
     }
 }

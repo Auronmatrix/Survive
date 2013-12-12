@@ -23,10 +23,17 @@ import org.slf4j.LoggerFactory;
 public class WeaponActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(WeaponActionBean.class);
+    /**
+     *
+     */
     @SpringBean
     protected WeaponService weaponService;
     private List<WeaponDto> weapons;
 
+    /**
+     *
+     * @return
+     */
     @DefaultHandler
     public Resolution list() {
         log.debug("list()");
@@ -34,6 +41,10 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
         return new ForwardResolution("/weapon/list.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public List<WeaponDto> getWeapons() {
         return weapons;
     }
@@ -48,6 +59,10 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
     })
     private WeaponDto weapon;
 
+    /**
+     *
+     * @return
+     */
     public Resolution add() {
         log.debug("add() weapon={}", weapon);
 
@@ -59,20 +74,38 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @param errors
+     * @return
+     * @throws Exception
+     */
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
         weapons = weaponService.findAll();
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public WeaponDto getWeapon() {
         return weapon;
     }
 
+    /**
+     *
+     * @param weapon
+     */
     public void setWeapon(WeaponDto weapon) {
         this.weapon = weapon;
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution delete() {
 
         log.debug("delete({})", weapon.getId());
@@ -85,6 +118,9 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     */
     @Before(stages = LifecycleStage.BindingAndValidation, on = {"edit", "save"})
     public void loadWeaponFromDatabase() {
         String ids = getContext().getRequest().getParameter("weapon.id");
@@ -94,11 +130,19 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
         weapon = weaponService.findById(Long.parseLong(ids));
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution edit() {
         log.debug("edit() weapon={}", weapon);
         return new ForwardResolution("/weapon/edit.jsp");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution save() {
 
         log.debug("save() weapon={}", weapon);
@@ -106,6 +150,10 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
         return new RedirectResolution(this.getClass(), "list");
     }
 
+    /**
+     *
+     * @return
+     */
     public Resolution cancel() {
 
         log.debug("cancel");

@@ -33,6 +33,9 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
     @Inject
     private Mapper mapper;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         service = new WeaponServiceImpl();
@@ -41,10 +44,16 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         service.setMapper(mapper);
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }

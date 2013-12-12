@@ -13,17 +13,48 @@ import java.util.List;
  */
 public interface GenericDao<T, ID> {
 
+    /**
+     *
+     * @param entity
+     * @return
+     * @throws IllegalArgumentException
+     */
     T save(T entity)throws IllegalArgumentException;
 
+    /**
+     *
+     * @param entity
+     * @return
+     */
     T update(T entity);
 
+    /**
+     *
+     * @param entity
+     */
     void delete(T entity);
 
+    /**
+     *
+     * @param id
+     */
     void delete(Long id);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     T findById(ID id);
 
+    /**
+     *
+     * @return
+     */
     List<T> findAll();
 
+    /**
+     *
+     */
     void flush();
 }

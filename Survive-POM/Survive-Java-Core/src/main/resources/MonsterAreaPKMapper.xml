@@ -6,7 +6,7 @@
           
   <mapping wildcard="false"> 
     <class-a>com.muni.fi.pa165.dto.MonsterAreaPkDto</class-a>
-    <class-b>com.muni.fi.pa165.entities.MonsterareaPK</class-b>   
+    <class-b>com.muni.fi.pa165.entities.MonsterAreaPK</class-b>   
     <field>  
       <a>monsterId</a>
       <b>monsterid</b>

@@ -2,7 +2,7 @@ package com.muni.fi.pa165.service.impl;
 
 import com.muni.fi.pa165.dao.SystemUserDao;
 import com.muni.fi.pa165.dto.SystemUserDto;
-import com.muni.fi.pa165.entities.Systemuser;
+import com.muni.fi.pa165.entities.SystemUser;
 import com.muni.fi.pa165.service.SystemUserService;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class SystemUserServiceImpl implements SystemUserService {
     @Override
     public SystemUserDto save(SystemUserDto dto) {
 
-        Systemuser entity = mapper.map(dto, Systemuser.class);
+        SystemUser entity = mapper.map(dto, SystemUser.class);
         systemUserDao.save(entity);
         return mapper.map(entity, SystemUserDto.class);
 
@@ -39,7 +39,7 @@ public class SystemUserServiceImpl implements SystemUserService {
     @Override
     public SystemUserDto update(SystemUserDto dto) {
 
-        Systemuser entity = mapper.map(dto, Systemuser.class);
+        SystemUser entity = mapper.map(dto, SystemUser.class);
         systemUserDao.update(entity);
         return mapper.map(entity, SystemUserDto.class);
 
@@ -48,7 +48,7 @@ public class SystemUserServiceImpl implements SystemUserService {
     @Override
     public void delete(SystemUserDto dto) {
 
-        systemUserDao.delete(mapper.map(dto, Systemuser.class));
+        systemUserDao.delete(mapper.map(dto, SystemUser.class));
 
     }
 
@@ -64,23 +64,39 @@ public class SystemUserServiceImpl implements SystemUserService {
         throw new NoSuchMethodError();
     }
 
+    /**
+     *
+     * @param dao
+     */
     public void setDao(SystemUserDao dao) {
         this.systemUserDao = dao;
     }
 
+    /**
+     *
+     * @param mapper
+     */
     public void setMapper(Mapper mapper) {
         this.mapper = mapper;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<SystemUserDto> findAll() {
         List<SystemUserDto> dtoList = new ArrayList<>();
-        for (Systemuser o : systemUserDao.findAll()) {
+        for (SystemUser o : systemUserDao.findAll()) {
             dtoList.add(this.mapper.map(o, SystemUserDto.class));
         }
         return dtoList;
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void delete(Long id) {
         systemUserDao.delete(id);

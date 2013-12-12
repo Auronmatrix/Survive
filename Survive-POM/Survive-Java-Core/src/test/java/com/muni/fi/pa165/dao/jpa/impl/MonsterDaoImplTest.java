@@ -20,6 +20,9 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
     MonsterDao dao;
     Monster entity;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         entity = new Monster();
@@ -37,10 +40,16 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
 
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUpClass() {
     }

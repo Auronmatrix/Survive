@@ -52,9 +52,9 @@ public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
             tx.commit();
             return entity;
         } finally {
-            if (em != null) {
-                em.close();
-            }
+
+            em.close();
+
         }
     }
 
@@ -68,9 +68,9 @@ public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
             tx.commit();
             return mergedEntity;
         } finally {
-            if (em != null) {
-                em.close();
-            }
+
+            em.close();
+
         }
     }
 
@@ -83,12 +83,16 @@ public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
             em.remove(em.contains(entity) ? entity : em.merge(entity));
             tx.commit();
         } finally {
-            if (em != null) {
-                em.close();
-            }
+
+            em.close();
+
         }
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void delete(Long id) {
         EntityManager em = this.emf.createEntityManager();
@@ -100,12 +104,17 @@ public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
             em.remove(entity);
             tx.commit();
         } finally {
-            if (em != null) {
-                em.close();
-            }
+
+            em.close();
+
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return Generic entity
+     */
     @Override
     public T findById(ID id) {
         EntityManager em = this.emf.createEntityManager();
@@ -116,12 +125,16 @@ public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
             tx.commit();
             return entity;
         } finally {
-            if (em != null) {
-                em.close();
-            }
+
+            em.close();
+
         }
     }
 
+    /**
+     *
+     * @return List<T> 
+     */
     @Override
     public List<T> findAll() {
         EntityManager em = this.emf.createEntityManager();
@@ -132,13 +145,16 @@ public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
             list = em.createQuery("select e from  " + getPersistentClass().getSimpleName() + " e").getResultList();
             tx.commit();
         } finally {
-            if (em != null) {
-                em.close();
-            }
+
+            em.close();
+
         }
         return list;
     }
 
+    /**
+     * Flushed current transaction
+     */
     @Override
     public void flush() {
         EntityManager em = this.emf.createEntityManager();
@@ -148,9 +164,9 @@ public abstract class GenericDaoAbs<T, ID> implements GenericDao<T, ID> {
             em.flush();
             tx.commit();
         } finally {
-            if (em != null) {
-                em.close();
-            }
+
+            em.close();
+
         }
     }
 }

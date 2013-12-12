@@ -30,106 +30,210 @@ public class MonsterDto {
     private List<MonsterAreaDto> locations = new ArrayList<>();
 
     //Getters and setters
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param monsterId
+     */
     public void setId(Long monsterId) {
         this.id = monsterId;
     }
 
+    /**
+     *
+     * @return
+     */
     public MonsterClass getMonsterClass() {
         return monsterClass;
     }
 
+    /**
+     *
+     * @param monsterClass
+     */
     public void setMonsterClass(MonsterClass monsterClass) {
         this.monsterClass = monsterClass;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getHeight() {
         return height;
     }
 
+    /**
+     *
+     * @param height
+     */
     public void setHeight(Double height) {
         this.height = height;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getWeight() {
         return weight;
     }
 
+    /**
+     *
+     * @param weight
+     */
     public void setWeight(Double weight) {
         this.weight = weight;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getAgility() {
         return agility;
     }
 
+    /**
+     *
+     * @param agility
+     */
     public void setAgility(Double agility) {
         this.agility = agility;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getStrength() {
         return strength;
     }
 
+    /**
+     *
+     * @param strength
+     */
     public void setStrength(Double strength) {
         this.strength = strength;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getStamina() {
         return stamina;
     }
 
+    /**
+     *
+     * @param stamina
+     */
     public void setStamina(Double stamina) {
         this.stamina = stamina;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getDangerLevel() {
         return dangerLevel;
     }
 
+    /**
+     *
+     * @param dangerLevel
+     */
     public void setDangerLevel(Double dangerLevel) {
         this.dangerLevel = dangerLevel;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getImagePath() {
         return imagePath;
     }
 
+    /**
+     *
+     * @param imagePath
+     */
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterWeaponDto> getEfficiencies() {
         return efficiencies;
     }
 
+    /**
+     *
+     * @param efficiencies
+     */
     public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
         this.efficiencies = efficiencies;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterAreaDto> getLocations() {
         return locations;
     }
 
+    /**
+     *
+     * @param locations
+     */
     public void setLocations(List<MonsterAreaDto> locations) {
         this.locations = locations;
     }

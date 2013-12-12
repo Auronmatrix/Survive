@@ -15,16 +15,29 @@ import org.apache.taglibs.standard.functions.Functions;
     public abstract class BaseActionBean implements ActionBean {
     private ActionBeanContext context = null;
 
+    /**
+     *
+     * @param context
+     */
     @Override
     public void setContext(ActionBeanContext context) {
         this.context = context;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public ActionBeanContext getContext() {
         return context;
     }
 
+    /**
+     *
+     * @param s
+     * @return
+     */
     public static String escapeHTML(String s) {
         return Functions.escapeXml(s);
     }

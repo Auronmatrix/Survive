@@ -19,10 +19,18 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AreaDaoImpl extends GenericDaoAbs<Area, Long> implements AreaDao {
 
+    /**
+     *
+     */
     public AreaDaoImpl() {
         super(Area.class);
     }
 
+    /**
+     *
+     * @param areaName
+     * @return
+     */
     @Override
     public boolean checkAvailable(String areaName) {
         if (areaName == null) {

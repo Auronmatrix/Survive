@@ -2,8 +2,8 @@ package com.muni.fi.pa165.dao.impl;
 
 import com.muni.fi.pa165.dao.MonsterAreaDao;
 import com.muni.fi.pa165.dao.gen.GenericDaoAbs;
-import com.muni.fi.pa165.entities.Monsterarea;
-import com.muni.fi.pa165.entities.MonsterareaPK;
+import com.muni.fi.pa165.entities.MonsterArea;
+import com.muni.fi.pa165.entities.MonsterAreaPK;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,18 +20,26 @@ import org.springframework.stereotype.Repository;
  * @author Michal Vikler
  */
 @Repository
-public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> implements MonsterAreaDao {
+public class MonsterAreaDaoImpl extends GenericDaoAbs<MonsterArea, Long> implements MonsterAreaDao {
 
+    /**
+     *
+     */
     public MonsterAreaDaoImpl() {
-        super(Monsterarea.class);
+        super(MonsterArea.class);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
-    public List<Monsterarea> getByMonsterId(Long id) {
+    public List<MonsterArea> getByMonsterId(Long id) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterarea.findByMonsterId").setParameter("monsterid", id);
+        Query query = em.createNamedQuery("MonsterArea.findByMonsterId").setParameter("monsterid", id);
         EntityTransaction tx = em.getTransaction();
-        List<Monsterarea> list = new ArrayList();
+        List<MonsterArea> list = new ArrayList();
         try {
             tx.begin();
             list = query.getResultList();
@@ -45,12 +53,17 @@ public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> impleme
         return list;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
-    public List<Monsterarea> getByAreaId(Long id) {
+    public List<MonsterArea> getByAreaId(Long id) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterarea.findByAreaId").setParameter("areaid", id);
+        Query query = em.createNamedQuery("MonsterArea.findByAreaId").setParameter("areaid", id);
         EntityTransaction tx = em.getTransaction();
-        List<Monsterarea> list = new ArrayList();
+        List<MonsterArea> list = new ArrayList();
         try {
             tx.begin();
             list = query.getResultList();
@@ -65,16 +78,20 @@ public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> impleme
 
     }
 
+    /**
+     *
+     * @param pk
+     */
     @Override
-    public void delete(MonsterareaPK pk) {
+    public void delete(MonsterAreaPK pk) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        Query query = em.createNamedQuery("Monsterarea.findById");
+        Query query = em.createNamedQuery("MonsterArea.findById");
         query.setParameter("monsterareaPK", pk);
-        Monsterarea obj = null;
+        MonsterArea obj = null;
         try {
             tx.begin();
-            obj = (Monsterarea) query.getSingleResult();          
+            obj = (MonsterArea) query.getSingleResult();          
             em.merge(obj);
             em.remove(obj);
             tx.commit();
@@ -86,12 +103,16 @@ public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> impleme
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
-    public List<Monsterarea> findAll() {
+    public List<MonsterArea> findAll() {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterarea.findAll");
+        Query query = em.createNamedQuery("MonsterArea.findAll");
         EntityTransaction tx = em.getTransaction();
-        List<Monsterarea> list = new ArrayList();
+        List<MonsterArea> list = new ArrayList();
         try {
             tx.begin();
             list = query.getResultList();
@@ -105,16 +126,21 @@ public class MonsterAreaDaoImpl extends GenericDaoAbs<Monsterarea, Long> impleme
         return list;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
-    public Monsterarea findById(MonsterareaPK id) {
+    public MonsterArea findById(MonsterAreaPK id) {
         EntityManager em = this.getEntityManagerFactory().createEntityManager();
-        Query query = em.createNamedQuery("Monsterarea.findById");
+        Query query = em.createNamedQuery("MonsterArea.findById");
         query.setParameter("monsterareaPK", id);
         EntityTransaction tx = em.getTransaction();
-        Monsterarea obj = null;
+        MonsterArea obj = null;
         try {
             tx.begin();
-            obj = (Monsterarea) query.getSingleResult();
+            obj = (MonsterArea) query.getSingleResult();
             tx.commit();
         } finally {
 

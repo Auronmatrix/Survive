@@ -19,6 +19,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MonsterDaoImpl extends GenericDaoAbs<Monster, Long> implements MonsterDao {
 
+    /**
+     *
+     */
     public MonsterDaoImpl() {
         super(Monster.class);
     }

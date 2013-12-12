@@ -10,8 +10,19 @@ import java.util.List;
  */
 public interface MonsterAreaService {
 
+    /**
+     *
+     * @param dto
+     * @return
+     */
     public MonsterAreaDto save(MonsterAreaDto dto);
     
+    /**
+     *
+     * @param keyone
+     * @param keytwo
+     * @return
+     */
     public MonsterAreaPkDto getCompositeKey(Long keyone, Long keytwo);
 
     /**
@@ -45,9 +56,19 @@ public interface MonsterAreaService {
      */
     public List<MonsterAreaDto> findByAreaId(Long id);
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterAreaDto> findAll();
 
    
     
+    /**
+     *
+     * @param monsterId
+     * @param areaId
+     * @return
+     */
     public MonsterAreaDto findById(Long monsterId, Long areaId);
 }

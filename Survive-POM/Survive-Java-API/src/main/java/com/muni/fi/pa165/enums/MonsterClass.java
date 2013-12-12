@@ -7,7 +7,18 @@ package com.muni.fi.pa165.enums;
  */
 public enum MonsterClass {
 
-    Zombie, Robot, Mutant;
+    /**
+     *
+     */
+    Zombie,
+    /**
+     *
+     */
+    Robot,
+    /**
+     *
+     */
+    Mutant;
 
     /** 
      * Gives all possible monster classes separated by comma.

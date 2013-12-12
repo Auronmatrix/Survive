@@ -25,6 +25,11 @@ public class MonsterServiceImpl implements MonsterService {
     @Inject
     private Mapper mapper;
 
+    /**
+     *
+     * @param dto
+     * @return
+     */
     @Override
     public MonsterDto save(MonsterDto dto) {
         Monster entity = mapper.map(dto, Monster.class);
@@ -55,14 +60,26 @@ public class MonsterServiceImpl implements MonsterService {
 
     }
 
+    /**
+     *
+     * @param dao
+     */
     public void setDao(MonsterDao dao) {
         this.monsterDao = dao;
     }
 
+    /**
+     *
+     * @param mapper
+     */
     public void setMapper(Mapper mapper) {
         this.mapper = mapper;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<MonsterDto> findAll() {
         List<MonsterDto> dtoList = new ArrayList<>();

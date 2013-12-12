@@ -62,87 +62,166 @@ public class Weapon implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private WeaponType weapontype;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "weapon")
-    private Collection<Monsterweapon> monsterweaponCollection;
+    private Collection<MonsterWeapon> monsterweaponCollection;
 
+    /**
+     *
+     */
     public Weapon() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Weapon(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getCaliber() {
         return caliber;
     }
 
+    /**
+     *
+     * @param caliber
+     */
     public void setCaliber(Double caliber) {
         this.caliber = caliber;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getRange() {
         return range;
     }
 
+    /**
+     *
+     * @param range
+     */
     public void setRange(Integer range) {
         this.range = range;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getRounds() {
         return rounds;
     }
 
+    /**
+     *
+     * @param rounds
+     */
     public void setRounds(Integer rounds) {
         this.rounds = rounds;
     }
 
+    /**
+     *
+     * @return
+     */
     public WeaponClass getWeaponclass() {
         return weaponclass;
     }
 
+    /**
+     *
+     * @param weaponclass
+     */
     public void setWeaponclass(WeaponClass weaponclass) {
         this.weaponclass = weaponclass;
     }
 
+    /**
+     *
+     * @return
+     */
     public WeaponType getWeapontype() {
         return weapontype;
     }
 
+    /**
+     *
+     * @param weapontype
+     */
     public void setWeapontype(WeaponType weapontype) {
         this.weapontype = weapontype;
     }
 
 
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
-    public Collection<Monsterweapon> getMonsterweaponCollection() {
+    public Collection<MonsterWeapon> getMonsterweaponCollection() {
         return monsterweaponCollection;
     }
 
-    public void setMonsterweaponCollection(Collection<Monsterweapon> monsterweaponCollection) {
+    /**
+     *
+     * @param monsterweaponCollection
+     */
+    public void setMonsterweaponCollection(Collection<MonsterWeapon> monsterweaponCollection) {
         this.monsterweaponCollection = monsterweaponCollection;
     }
 

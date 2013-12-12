@@ -23,14 +23,23 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
     WeaponDao dao;
     private Weapon entity;
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         entity = new Weapon();
@@ -45,6 +54,9 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
 
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }

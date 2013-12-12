@@ -12,5 +12,11 @@ import com.muni.fi.pa165.entities.Area;
  */
 public interface AreaDao extends GenericDao<Area, Long> {
 
+    /**
+     *
+     * @param areaName
+     * @return
+     * @throws IllegalArgumentException
+     */
     boolean checkAvailable(String areaName) throws IllegalArgumentException;
 }

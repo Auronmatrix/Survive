@@ -1,6 +1,6 @@
 package com.muni.fi.pa165.dao;
 
-import com.muni.fi.pa165.entities.Systemuser;
+import com.muni.fi.pa165.entities.SystemUser;
 
 /**
  * Interface implemented by typed JpaDao objects containing type specific
@@ -8,5 +8,5 @@ import com.muni.fi.pa165.entities.Systemuser;
  *
  * @author Maria
  */
-public interface SystemUserDao extends GenericDao<Systemuser, Long> {
+public interface SystemUserDao extends GenericDao<SystemUser, Long> {
 }

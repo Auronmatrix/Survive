@@ -4,8 +4,8 @@ import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dto.MonsterDto;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.dto.WeaponDto;
-import com.muni.fi.pa165.entities.Monsterweapon;
-import com.muni.fi.pa165.entities.MonsterweaponPK;
+import com.muni.fi.pa165.entities.MonsterWeapon;
+import com.muni.fi.pa165.entities.MonsterWeaponPK;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
@@ -35,6 +35,9 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
     private WeaponDto weaponDto;
     private MonsterWeaponDto monsterWeaponDto;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         service = new MonsterWeaponServiceImpl();
@@ -65,7 +68,7 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
         weaponDto.setWeaponClass(WeaponClass.Ranged);
         weaponDto.setWeaponType(WeaponType.Gun);
         
-        MonsterweaponPK pk = new MonsterweaponPK();
+        MonsterWeaponPK pk = new MonsterWeaponPK();
         pk.setMonsterid(monsterDto.getId());
         pk.setWeaponid(weaponDto.getId());
 
@@ -77,10 +80,16 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
         monsterWeaponDto.setEfficiency(55);
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -93,8 +102,8 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
     @Test
     public void testSave() {
 
-        Monsterweapon entity = mapper.map(monsterWeaponDto, Monsterweapon.class);
-        when(mockDAO.save(any(Monsterweapon.class))).thenReturn(entity);
+        MonsterWeapon entity = mapper.map(monsterWeaponDto, MonsterWeapon.class);
+        when(mockDAO.save(any(MonsterWeapon.class))).thenReturn(entity);
         MonsterWeaponDto returned = service.save(monsterWeaponDto);
         assertEquals(returned, monsterWeaponDto);
     }
@@ -107,8 +116,8 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
     @Test
     public void testUpdate() {
 
-        Monsterweapon entity = mapper.map(monsterWeaponDto, Monsterweapon.class);
-        when(mockDAO.update(any(Monsterweapon.class))).thenReturn(entity);
+        MonsterWeapon entity = mapper.map(monsterWeaponDto, MonsterWeapon.class);
+        when(mockDAO.update(any(MonsterWeapon.class))).thenReturn(entity);
         MonsterWeaponDto returned = service.update(monsterWeaponDto);
         assertEquals(returned, monsterWeaponDto);
     }
@@ -119,7 +128,7 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
     @Test
     public void testDelete() {
 
-        Monsterweapon entity = mapper.map(monsterWeaponDto, Monsterweapon.class);
+        MonsterWeapon entity = mapper.map(monsterWeaponDto, MonsterWeapon.class);
         service.delete(monsterWeaponDto);
         verify(mockDAO, times(1)).delete(entity);
         verifyNoMoreInteractions(mockDAO);

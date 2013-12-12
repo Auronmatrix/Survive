@@ -21,17 +21,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "MONSTERAREA")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Monsterarea.findAll", query = "SELECT m FROM Monsterarea m"),
-    @NamedQuery(name = "Monsterarea.findByMonsterquantity", query = "SELECT m FROM Monsterarea m WHERE m.monsterquantity = :monsterquantity"),
-    @NamedQuery(name = "Monsterarea.findByMonsterId", query = "SELECT m FROM Monsterarea m WHERE m.monsterareaPK.monsterid = :monsterid"),
-    @NamedQuery(name = "Monsterarea.findById", query = "SELECT m FROM Monsterarea m WHERE m.monsterareaPK = :monsterareaPK"),
-    @NamedQuery(name = "Monsterarea.findByAreaId", query = "SELECT m FROM Monsterarea m WHERE m.monsterareaPK.areaid = :areaid")
+    @NamedQuery(name = "MonsterArea.findAll", query = "SELECT m FROM MonsterArea m"),
+    @NamedQuery(name = "MonsterArea.findByMonsterquantity", query = "SELECT m FROM MonsterArea m WHERE m.monsterquantity = :monsterquantity"),
+    @NamedQuery(name = "MonsterArea.findByMonsterId", query = "SELECT m FROM MonsterArea m WHERE m.monsterareaPK.monsterid = :monsterid"),
+    @NamedQuery(name = "MonsterArea.findById", query = "SELECT m FROM MonsterArea m WHERE m.monsterareaPK = :monsterareaPK"),
+    @NamedQuery(name = "MonsterArea.findByAreaId", query = "SELECT m FROM MonsterArea m WHERE m.monsterareaPK.areaid = :areaid")
 })
-public class Monsterarea implements Serializable {
+public class MonsterArea implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
     @EmbeddedId
-    protected MonsterareaPK monsterareaPK;
+    protected MonsterAreaPK monsterareaPK;
     @Basic(optional = false)
     @Column(name = "MONSTERQUANTITY")
     private int monsterquantity;
@@ -42,50 +45,99 @@ public class Monsterarea implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Area area;
 
-    public Monsterarea() {
+    /**
+     *
+     */
+    public MonsterArea() {
     }
 
-    public Monsterarea(MonsterareaPK monsterareaPK) {
+    /**
+     *
+     * @param monsterareaPK
+     */
+    public MonsterArea(MonsterAreaPK monsterareaPK) {
         this.monsterareaPK = monsterareaPK;
     }
 
-    public Monsterarea(MonsterareaPK monsterareaPK, int monsterquantity) {
+    /**
+     *
+     * @param monsterareaPK
+     * @param monsterquantity
+     */
+    public MonsterArea(MonsterAreaPK monsterareaPK, int monsterquantity) {
         this.monsterareaPK = monsterareaPK;
         this.monsterquantity = monsterquantity;
     }
 
-    public Monsterarea(long monsterId, long areaId) {
-        this.monsterareaPK = new MonsterareaPK(monsterId, areaId);
+    /**
+     *
+     * @param monsterId
+     * @param areaId
+     */
+    public MonsterArea(long monsterId, long areaId) {
+        this.monsterareaPK = new MonsterAreaPK(monsterId, areaId);
     }
 
-    public MonsterareaPK getMonsterareaPK() {
+    /**
+     *
+     * @return
+     */
+    public MonsterAreaPK getMonsterareaPK() {
         return monsterareaPK;
     }
 
-    public void setMonsterareaPK(MonsterareaPK monsterareaPK) {
+    /**
+     *
+     * @param monsterareaPK
+     */
+    public void setMonsterareaPK(MonsterAreaPK monsterareaPK) {
         this.monsterareaPK = monsterareaPK;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMonsterquantity() {
         return monsterquantity;
     }
 
+    /**
+     *
+     * @param monsterquantity
+     */
     public void setMonsterquantity(int monsterquantity) {
         this.monsterquantity = monsterquantity;
     }
 
+    /**
+     *
+     * @return
+     */
     public Monster getMonster() {
         return monster;
     }
 
+    /**
+     *
+     * @param monster
+     */
     public void setMonster(Monster monster) {
         this.monster = monster;
     }
 
+    /**
+     *
+     * @return
+     */
     public Area getArea() {
         return area;
     }
 
+    /**
+     *
+     * @param area
+     */
     public void setArea(Area area) {
         this.area = area;
     }
@@ -100,10 +152,10 @@ public class Monsterarea implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Monsterarea)) {
+        if (!(object instanceof MonsterArea)) {
             return false;
         }
-        Monsterarea other = (Monsterarea) object;
+        MonsterArea other = (MonsterArea) object;
         if ((this.monsterareaPK == null && other.monsterareaPK != null) || (this.monsterareaPK != null && !this.monsterareaPK.equals(other.monsterareaPK))) {
             return false;
         }

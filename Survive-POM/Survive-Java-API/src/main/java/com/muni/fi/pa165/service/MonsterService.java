@@ -9,6 +9,11 @@ import java.util.List;
  */
 public interface MonsterService {
 
+    /**
+     *
+     * @param dto
+     * @return
+     */
     public MonsterDto save(MonsterDto dto);
 
     /**
@@ -35,5 +40,9 @@ public interface MonsterService {
      */
     public MonsterDto findById(Long id);
 
+    /**
+     *
+     * @return
+     */
     public List<MonsterDto> findAll();
 }

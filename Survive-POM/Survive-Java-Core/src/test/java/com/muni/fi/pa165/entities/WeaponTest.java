@@ -17,9 +17,15 @@ public class WeaponTest {
 
     static Weapon weapon;
 
+    /**
+     *
+     */
     public WeaponTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
         weapon = new Weapon();
@@ -32,14 +38,23 @@ public class WeaponTest {
         weapon.setWeapontype(WeaponType.Gun);
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
