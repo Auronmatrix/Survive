@@ -12,20 +12,15 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <context:component-scan base-package="com.muni.fi.pa165"/>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
-    
+    <tx:annotation-driven transaction-manager="transactionManager" />    
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="ProjectPU"/>
     </bean>
-
    <bean id="translator" class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
-
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
-    </bean>
-    
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-    
+    </bean>    
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>    
     <bean id="mapper" class="org.dozer.DozerBeanMapper">
         <property name="mappingFiles">
             <list>
@@ -40,8 +35,4 @@
             </list>
         </property>
     </bean>
-
-
-    
-
 </beans>

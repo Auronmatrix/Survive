@@ -5,7 +5,6 @@
 package com.muni.fi.pa165.survive.rest.client.services.impl;
 
 import com.muni.fi.pa165.dto.AreaDto;
-import com.muni.fi.pa165.survive.rest.client.dto.CustomerResource;
 import com.muni.fi.pa165.survive.rest.client.services.BaseRestService;
 import com.muni.fi.pa165.survive.rest.client.services.CustomRestService;
 
