@@ -47,7 +47,13 @@ public class WeaponsResource implements EntityResource {
     @Path("all")
     @Produces(MediaType.APPLICATION_XML)
     public List<WeaponDto> getAll() {
-        return weaponService.findAll();
+        List<WeaponDto> list = null;
+        try {
+            list = weaponService.findAll();
+        } catch (Exception ex) {
+            throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
+        }
+        return list;
     }
 
     @GET
@@ -55,20 +61,32 @@ public class WeaponsResource implements EntityResource {
     @Override
     public String getPlain() {
         StringBuilder returnString = new StringBuilder();
-
-        for (WeaponDto dto : weaponService.findAll()) {
-            returnString.append(dto);
-            returnString.append(" ");
+        try {
+            for (WeaponDto dto : weaponService.findAll()) {
+                returnString.append(dto.getName());
+                returnString.append("\n");
+                
+            }
+        } catch (Exception ex) {
+            throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
         }
 
         return returnString.toString();
     }
 
     @GET
-    @Path("weapon/{id}")
+    @Path("{id}")
     @Produces({MediaType.APPLICATION_XML})
     public WeaponDto getById(@PathParam("id") Integer id) {
-        WeaponDto dto = weaponService.findById(Long.valueOf(id.toString()));
+        WeaponDto dto = null;
+        try{
+        dto = weaponService.findById(Long.valueOf(id.toString()));
+        if (dto == null) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+        } catch (Exception ex) {
+            throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
+        }
         return dto;
     }
 
@@ -92,7 +110,7 @@ public class WeaponsResource implements EntityResource {
             dto = weaponService.save(mapped);
             response = Response.created(URI.create(context.getAbsolutePath() + "/" + dto.getId())).build();
         } catch (Exception ex) {
-            response = Response.noContent().build();
+            throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
         }
 
         return dto;
@@ -103,11 +121,16 @@ public class WeaponsResource implements EntityResource {
     @Consumes(MediaType.APPLICATION_XML)
     public Response putXml(@PathParam("id") Integer id, WeaponDto dto) {
         Response response;
+        WeaponDto returned = null;
         try {
-            dto = weaponService.update(dto);
+            returned = weaponService.update(dto);
+            if (returned == null)
+            {
+              throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);                
+            }                
             response = Response.ok(dto).build();
         } catch (Exception ex) {
-            response = Response.noContent().build();
+            throw new WebApplicationException(ex, Response.Status.NOT_MODIFIED);
         }
         return response;
     }
@@ -115,13 +138,17 @@ public class WeaponsResource implements EntityResource {
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Integer id) {
-        WeaponDto dto = weaponService.findById(Long.valueOf(id));
+        WeaponDto dto = null;
+        try{
+       dto = weaponService.findById(Long.valueOf(id));
         if (dto == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
         weaponService.delete(dto.getId());
+        } catch (Exception ex) {
+            throw new WebApplicationException(ex);
+        }
         Response response = Response.ok().build();
         return response;
     }
-
 }

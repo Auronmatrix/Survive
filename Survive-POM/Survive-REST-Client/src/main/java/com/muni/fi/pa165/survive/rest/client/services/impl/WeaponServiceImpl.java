@@ -24,7 +24,7 @@ import javax.ws.rs.core.Response;
  */
 public class WeaponServiceImpl extends BaseRestService implements CustomRestService<WeaponDto> {
 
-    static final String WEB_TARGET_SPECIFIC = "weapons/weapon/";
+ 
     static final String WEB_TARGET = "weapons/";
     static final String ACCEPT = "accept";
 
@@ -41,7 +41,7 @@ public class WeaponServiceImpl extends BaseRestService implements CustomRestServ
     }
 
     public WeaponDto getById(Long id) {
-        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET_SPECIFIC + id.toString());
+        WebTarget resourceWebTarget = webTarget.path(WEB_TARGET + id.toString());
         System.out.println(resourceWebTarget.getUri().toString());
         Invocation.Builder invocationBuilder = resourceWebTarget.request(MediaType.APPLICATION_JSON);
         invocationBuilder.header(ACCEPT, HEADER_XML);

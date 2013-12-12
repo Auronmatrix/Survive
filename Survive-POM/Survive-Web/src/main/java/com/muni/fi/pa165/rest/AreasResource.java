@@ -46,7 +46,13 @@ public class AreasResource implements EntityResource {
     @Path("all")
     @Produces(MediaType.APPLICATION_XML)
     public List<AreaDto> getAll() {
-        return areaService.findAll();
+        List<AreaDto> list = null;
+        try {
+            list = areaService.findAll();
+        } catch (Exception ex) {
+            throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
+        }
+        return list;
     }
 
     @GET
@@ -54,20 +60,32 @@ public class AreasResource implements EntityResource {
     @Override
     public String getPlain() {
         StringBuilder returnString = new StringBuilder();
-
-        for (AreaDto dto : areaService.findAll()) {
-            returnString.append(dto);
-            returnString.append(" ");
+        try {
+            for (AreaDto dto : areaService.findAll()) {
+                returnString.append(dto.getName());
+                returnString.append("\n");
+                
+            }
+        } catch (Exception ex) {
+            throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
         }
 
         return returnString.toString();
     }
 
     @GET
-    @Path("area/{id}")
+    @Path("{id}")
     @Produces({MediaType.APPLICATION_XML})
     public AreaDto getById(@PathParam("id") Integer id) {
-        AreaDto dto = areaService.findById(Long.valueOf(id.toString()));
+        AreaDto dto = null;
+        try{
+        dto = areaService.findById(Long.valueOf(id.toString()));
+        if (dto == null) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+        } catch (Exception ex) {
+            throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
+        }
         return dto;
     }
 
@@ -87,7 +105,7 @@ public class AreasResource implements EntityResource {
             dto = areaService.save(mapped);
             response = Response.created(URI.create(context.getAbsolutePath() + "/" + dto.getId())).build();
         } catch (Exception ex) {
-            response = Response.noContent().build();
+            throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
         }
 
         return dto;
@@ -98,11 +116,16 @@ public class AreasResource implements EntityResource {
     @Consumes(MediaType.APPLICATION_XML)
     public Response putXml(@PathParam("id") Integer id, AreaDto dto) {
         Response response;
+        AreaDto returned = null;
         try {
-            dto = areaService.update(dto);
+            returned = areaService.update(dto);
+            if (returned == null)
+            {
+              throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);                
+            }                
             response = Response.ok(dto).build();
         } catch (Exception ex) {
-            response = Response.noContent().build();
+            throw new WebApplicationException(ex, Response.Status.NOT_MODIFIED);
         }
         return response;
     }
@@ -110,13 +133,17 @@ public class AreasResource implements EntityResource {
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Integer id) {
-        AreaDto dto = areaService.findById(Long.valueOf(id));
+        AreaDto dto = null;
+        try{
+       dto = areaService.findById(Long.valueOf(id));
         if (dto == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
         areaService.delete(dto.getId());
+        } catch (Exception ex) {
+            throw new WebApplicationException(ex);
+        }
         Response response = Response.ok().build();
         return response;
     }
-
 }
