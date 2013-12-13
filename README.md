@@ -51,6 +51,8 @@ REST cmd client application explanation
 
 NOTE: Please ensure that the rest-server is running through completing above steps
 
+<pre>
+<code>
 1. Open terminal/cmd 
 
 2. Go to project root Survive/Survive-POM/Survive-REST-Client
