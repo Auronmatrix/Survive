@@ -1,9 +1,7 @@
 package com.muni.fi.pa165.dao.service.impl;
 
-import com.muni.fi.pa165.service.impl.MonsterWeaponServiceImpl;
 import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dto.MonsterDto;
-import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.MonsterWeaponDto;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.MonsterWeapon;
@@ -11,15 +9,18 @@ import com.muni.fi.pa165.entities.MonsterWeaponPK;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
+import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
+import com.muni.fi.pa165.service.impl.MonsterWeaponServiceImpl;
+import java.util.LinkedList;
+import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
-
-import static org.junit.Assert.*;
 
 /**
  *
@@ -76,6 +77,7 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
         monsterWeaponDto.setHitRate(5);
         monsterWeaponDto.setDamage(12);
         monsterWeaponDto.setEfficiency(55);
+        monsterWeaponDto.setDescription("Testing MW.");
     }
 
     @AfterClass
@@ -126,4 +128,40 @@ public class MonsterWeaponServiceImplTest extends AbstractServiceIntegrationTest
         verifyNoMoreInteractions(mockDAO);
 
     }
+    
+    @Test
+    public void testFindByMonsterId() {
+        MonsterWeapon entity = mapper.map(monsterWeaponDto, MonsterWeapon.class);
+        List<MonsterWeapon> mw = new LinkedList();
+        mw.add(entity);
+        when(mockDAO.getByMonsterId(any(Long.class))).thenReturn(mw);
+        List<MonsterWeaponDto> returned = service.findByMonsterId(monsterDto.getId());
+        assertNotNull(returned);
+        assertEquals(returned.size(), 1);
+        assertEquals(returned.get(0), monsterWeaponDto);
+    }
+   @Test
+    public void testFindByWeaponId() {
+        MonsterWeapon entity = mapper.map(monsterWeaponDto, MonsterWeapon.class);
+        List<MonsterWeapon> mw = new LinkedList();
+        mw.add(entity);
+        when(mockDAO.getByWeaponId(any(Long.class))).thenReturn(mw);
+        List<MonsterWeaponDto> returned = service.findByWeaponId(weaponDto.getId());
+        assertNotNull(returned);
+        assertEquals(returned.size(), 1);
+        assertEquals(returned.get(0), monsterWeaponDto);
+    } 
+   
+   @Test
+    public void testFindAll() {
+        MonsterWeapon entity = mapper.map(monsterWeaponDto, MonsterWeapon.class);
+        List<MonsterWeapon> mw = new LinkedList();
+        mw.add(entity);
+        when(mockDAO.findAll()).thenReturn(mw);
+        List<MonsterWeaponDto> returned = service.findAll();
+        assertNotNull(returned);
+        assertEquals(returned.size(), 1);
+        assertEquals(entity.getDescription(), returned.get(0).getDescription());
+    } 
+   
 }

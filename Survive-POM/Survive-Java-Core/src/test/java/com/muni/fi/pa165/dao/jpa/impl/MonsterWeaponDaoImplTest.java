@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.jpa.impl;
 
 import com.muni.fi.pa165.dao.MonsterDao;
@@ -18,9 +14,7 @@ import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import java.util.List;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +36,9 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
     MonsterWeaponDao monsterWeaponDao;
     MonsterWeapon monsterWeapon;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         monster = new Monster();
@@ -89,7 +86,7 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
     public void setUpClass() {
     }
     
-     @Test
+    @Test
      public void testFindAll() {
          List<MonsterWeapon> monsterWeapons = monsterWeaponDao.findAll();
          assertEquals("List contains only one monsterWeapon.",1 , monsterWeapons.size());
@@ -116,5 +113,11 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
         List<MonsterWeapon> monsterWeapons = monsterWeaponDao.findAll();
         assertEquals("List should be empty.", 0, monsterWeapons.size());
     }
+    @Test
+     public void testFindById() {
+         MonsterWeapon returned = monsterWeaponDao.findById(monsterWeapon.getMonsterweaponPK());         
+         assertEquals("In the is proper monsterArea.", returned, monsterWeapon);
+     }
+    
 }
     

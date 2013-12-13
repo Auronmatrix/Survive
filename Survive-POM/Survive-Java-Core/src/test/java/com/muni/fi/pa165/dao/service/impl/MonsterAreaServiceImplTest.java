@@ -6,11 +6,11 @@ import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.MonsterAreaDto;
 import com.muni.fi.pa165.dto.MonsterDto;
-import com.muni.fi.pa165.entities.Area;
-import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.entities.MonsterArea;
 import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.TerrainType;
+import java.util.LinkedList;
+import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
 import org.junit.After;
@@ -37,6 +37,9 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
     private AreaDto areaDto;
     private MonsterAreaDto monsterAreaDto;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         service = new MonsterAreaServiceImpl();
@@ -70,12 +73,20 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
         monsterAreaDto.setMonsterQuantity(5);
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
+    
+    
     }
 
     /**
@@ -112,4 +123,38 @@ public class MonsterAreaServiceImplTest extends AbstractServiceIntegrationTest {
         verifyNoMoreInteractions(mockDAO);
 
     }
+    @Test
+    public void testFindByMonsterId() {
+        MonsterArea entity = mapper.map(monsterAreaDto, MonsterArea.class);
+        List<MonsterArea> mw = new LinkedList();
+        mw.add(entity);
+        when(mockDAO.getByMonsterId(any(Long.class))).thenReturn(mw);
+        List<MonsterAreaDto> returned = service.findByMonsterId(monsterDto.getId());
+        assertNotNull(returned);
+        assertEquals(1, returned.size());
+        assertEquals(returned.get(0), monsterAreaDto);
+    }
+    
+    @Test
+    public void testFindByArearId() {
+        MonsterArea entity = mapper.map(monsterAreaDto, MonsterArea.class);
+        List<MonsterArea> mw = new LinkedList();
+        mw.add(entity);
+        when(mockDAO.getByAreaId(any(Long.class))).thenReturn(mw);
+        List<MonsterAreaDto> returned = service.findByAreaId(monsterDto.getId());
+        assertNotNull(returned);
+        assertEquals(1, returned.size());
+        assertEquals(returned.get(0), monsterAreaDto);
+    }
+    @Test
+    public void testFindAll() {
+        MonsterArea entity = mapper.map(monsterAreaDto, MonsterArea.class);
+        List<MonsterArea> mw = new LinkedList();
+        mw.add(entity);
+        when(mockDAO.findAll()).thenReturn(mw);
+        List<MonsterAreaDto> returned = service.findAll();
+        assertNotNull(returned);
+        assertEquals(returned.size(), 1);
+        assertEquals(entity.getMonsterquantity(), returned.get(0).getMonsterQuantity());
+}
 }

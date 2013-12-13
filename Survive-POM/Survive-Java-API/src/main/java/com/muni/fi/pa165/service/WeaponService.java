@@ -25,13 +25,7 @@ public interface WeaponService {
      */
     public WeaponDto update(WeaponDto dto);
 
-    /**
-     * Deletes WeaponDto
-     *
-     * @param dto object of type WeaponDto
-     */
-    @Deprecated
-    public void delete(WeaponDto dto);
+  
 
     /**
      * Finds WeaponDto by id
@@ -47,14 +41,6 @@ public interface WeaponService {
      */
     public List<WeaponDto> findAll();
 
-    /**
-     *
-     * @param name
-     * @return
-     * @deprecated
-     */
-    @Deprecated
-    public boolean checkAvailable(String name);
 
     /**
      *

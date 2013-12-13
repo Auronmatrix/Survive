@@ -4,7 +4,6 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <!--<exclude-unlisted-classes>false</exclude-unlisted-classes>-->
     <class>com.muni.fi.pa165.entities.Area</class>
-    <class>com.muni.fi.pa165.entities.GenericEntity</class>
     <class>com.muni.fi.pa165.entities.Monster</class>
     <class>com.muni.fi.pa165.entities.MonsterArea</class>
     <class>com.muni.fi.pa165.entities.MonsterWeapon</class>

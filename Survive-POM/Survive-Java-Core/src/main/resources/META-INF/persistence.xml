@@ -5,7 +5,6 @@
     <class>com.muni.fi.pa165.entities.Area</class>
     <class>com.muni.fi.pa165.entities.Monster</class>
     <class>com.muni.fi.pa165.entities.Weapon</class>
-    <class>com.muni.fi.pa165.entities.GenericEntity</class>
     <class>com.muni.fi.pa165.entities.MonsterArea</class>
     <class>com.muni.fi.pa165.entities.MonsterWeapon</class>
     <class>com.muni.fi.pa165.entities.SystemUser</class>

@@ -36,20 +36,12 @@ public class WeaponServiceImpl implements WeaponService {
         return mapper.map(entity, WeaponDto.class);
     }
 
-    @Override
-    public void delete(WeaponDto dto) {
-        weaponDao.delete(mapper.map(dto, Weapon.class));
-    }
 
     @Override
     public WeaponDto findById(Long id) {
         return mapper.map(weaponDao.findById(id), WeaponDto.class);
     }
 
-    @Override
-    public boolean checkAvailable(String name) {
-        return weaponDao.checkAvailable(name);
-    }
 
     public void setDao(WeaponDao dao) {
         this.weaponDao = dao;

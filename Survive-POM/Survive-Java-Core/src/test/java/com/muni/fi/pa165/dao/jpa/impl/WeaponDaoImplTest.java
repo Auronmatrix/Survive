@@ -7,10 +7,10 @@ import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -49,12 +49,6 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
     public void tearDown() {
     }
 
-//    @Test(expected = IllegalArgumentException.class)
-//    public void testSaveWithNull() {
-//
-//        dao.save(null);
-//
-//    }
     /**
      * Test of checkAvailable method, of class WeaponJpaDaoImpl.
      */
@@ -77,4 +71,15 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
         dao.checkAvailable(null);
         
     }
+    /**
+     * Test of checkAvailable method with not existing name, of class WeaponJpaDaoImpl.
+     */
+        @Test
+        public void testCheckAvailableWithNonExistingName() {
+        String weaponName = "BLABLA";
+        boolean result = dao.checkAvailable(weaponName);
+        assertEquals(false, result);
+
+    }
+        
 }
