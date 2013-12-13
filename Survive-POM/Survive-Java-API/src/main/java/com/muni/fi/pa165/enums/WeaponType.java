@@ -7,7 +7,7 @@ package com.muni.fi.pa165.enums;
  */
 public enum WeaponType {
 
-    GUN, BALDE, BLUNT, EXPLOSIVE;
+    GUN, BLADE, BLUNT, EXPLOSIVE;
 
     /**
      * Gives all possible weapon types separated by comma.

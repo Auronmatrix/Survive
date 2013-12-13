@@ -10,6 +10,7 @@ https://github.com/Auronspan/Survive/wiki/home
 
 Team members: 
 Aubrey Oosthuizen,
+Michal Vinkler,
 Irina Serdyukova,
 Maria Dolgikh
 
