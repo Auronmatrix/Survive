@@ -33,6 +33,7 @@ import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.survive.rest.client.services.impl.AreaServiceImpl;
 import java.util.List;
 import javax.ws.rs.core.Response;
+import org.glassfish.jersey.message.internal.MessageBodyProviderNotFoundException;
 
 /**
  * Main class of the REST client application.
@@ -146,7 +147,12 @@ public class SurviveRESTClient {
             printHelp(options);
             System.exit(1);
         } catch (NumberFormatException ex) {
-            System.exit(1);
+            System.out.println(ex.getMessage());
+            printHelp(options);
+            System.exit(2);
+        } catch (MessageBodyProviderNotFoundException ex) {
+            System.out.println("Couldn't connect to the server! Please make sure that the server side is running.");
+            System.exit(3);
         }
     }
 
