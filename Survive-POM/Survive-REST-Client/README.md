@@ -12,6 +12,11 @@ NOTE: Please ensure that all prerequisites from the TODO.md and README.md file h
 4. cd target  
 
 5. Run the cmd app rest-client-jar-with-dependencies.jar with the correct parameters, see the description below
+   
+   You can also use maven exec plugin (from the Survive-REST-Client folder)
+   
+   mvn clean compile exec:java -Dexec.args="<command line args>"
+
 
 usage: [mode] -o [operation] [arguments]...
  -a                  Area Management
@@ -73,6 +78,11 @@ $ java -jar rest-client-jar-with-dependencies.jar -w -o D -i 2
 a weapon (-w): Update (-o U) the weapon of id 1 (-i 1) -  name (-n) "Big knife", type (-t) BLADE, description (-d) "New description"
 -w -o U -i 1 -n "Big knife" -t BLADE -c Melee -d "New description"
 
+an area (-a): Create (-o C) an area of name Brno (-n Brno),
+$ java -jar rest-client-jar-with-dependencies.jar -a -o C -n Brno
+
+an area (-a): Read (-o R) an area of id 1 (-i 1)
+$ java -jar rest-client-jar-with-dependencies.jar -a -o R -i 1
 
 The resource base url is by default as http://localhost:8080/pa165/rest/.
 
@@ -82,6 +92,3 @@ http://localhost:8080/pa165/rest/weapons/1
 http://localhost:8080/pa165/rest/weapons/all
 http://localhost:8080/pa165/rest/areas/1 
 http://localhost:8080/pa165/rest/areas/all	
-	
-
-

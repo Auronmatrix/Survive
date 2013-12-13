@@ -148,6 +148,5 @@ public class WeaponDto extends AbstractDto {
     public String toString() {
         return "WeaponDto{" + "id=" + id + ", name=" + name + ", weaponType=" + weaponType + ", weaponClass=" + weaponClass + ", range=" + range + ", caliber=" + caliber + ", rounds=" + rounds + ", description=" + description + '}';
     }
-    
-    
+
 }

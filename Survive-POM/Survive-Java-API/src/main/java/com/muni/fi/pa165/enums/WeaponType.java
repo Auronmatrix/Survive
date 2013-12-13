@@ -21,7 +21,6 @@ public enum WeaponType {
 
             builder.append(t.name());
             builder.append(", ");
-
         }
 
         builder.deleteCharAt(builder.length() - 1);

@@ -47,21 +47,24 @@ NOTE: Please ensure that all prerequisites from the TODO.md file has been met be
 ####To run the rest-client application
 
 
-
 REST cmd client application explanation
 
 NOTE: Please ensure that the rest-server is running through completing above steps
 
-<pre>
-<code>
-1. Open terminal/cmd
+1. Open terminal/cmd 
+
 2. Go to project root Survive/Survive-POM/Survive-REST-Client
+
 3. mvn clean package
-4. cd target
-</code>
-</pre>
+
+4. cd target  
 
 5. Run the cmd app rest-client-jar-with-dependencies.jar with the correct parameters, see the description below
+   
+   You can also use maven exec plugin (from the Survive-REST-Client folder)
+   
+   mvn clean compile exec:java -Dexec.args="<command line args>"
+
 
 usage: [mode] -o [operation] [arguments]...
  -a                  Area Management
@@ -108,8 +111,6 @@ Based on the chosen operation, you need to specify some mandatory arguments (see
 You can also specify optional arguments if needed.
 
 Examples:
-<pre>
-<code>
 a weapon (-w): Create (-o C) a weapon of name Automatic shotgun (-n "Automatic shotgun"), weapon class Ranged (-c Ranged)
 $ java -jar rest-client-jar-with-dependencies.jar -w -o C -n "Automatic shotgun" -c Ranged
 
@@ -124,18 +125,18 @@ $ java -jar rest-client-jar-with-dependencies.jar -w -o D -i 2
 
 a weapon (-w): Update (-o U) the weapon of id 1 (-i 1) -  name (-n) "Big knife", type (-t) BLADE, description (-d) "New description"
 -w -o U -i 1 -n "Big knife" -t BLADE -c Melee -d "New description"
-</code>
-</pre>
+
+an area (-a): Create (-o C) an area of name Brno (-n Brno),
+$ java -jar rest-client-jar-with-dependencies.jar -a -o C -n Brno
+
+an area (-a): Read (-o R) an area of id 1 (-i 1)
+$ java -jar rest-client-jar-with-dependencies.jar -a -o R -i 1
 
 The resource base url is by default as http://localhost:8080/pa165/rest/.
 
 The "GET" requests (-o R, -o A) have also its browser counterparts. You can try links as
 
-<pre>
-<code>
 http://localhost:8080/pa165/rest/weapons/1 
 http://localhost:8080/pa165/rest/weapons/all
 http://localhost:8080/pa165/rest/areas/1 
-http://localhost:8080/pa165/rest/areas/all
-</code>
-</pre>
+http://localhost:8080/pa165/rest/areas/all	

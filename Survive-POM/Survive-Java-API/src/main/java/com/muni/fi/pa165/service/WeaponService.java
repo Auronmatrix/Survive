@@ -12,21 +12,23 @@ public interface WeaponService {
     /**
      * Saves WeaponDto
      *
-     * @param weapon object of type WeaponDto
+     * @param dto object of type WeaponDto
+     * @return 
      */
     public WeaponDto save(WeaponDto dto);
 
     /**
      * Updates WeaponDto
      *
-     * @param weapon object of type WeaponDto
+     * @param dto object of type WeaponDto
+     * @return 
      */
     public WeaponDto update(WeaponDto dto);
 
     /**
      * Deletes WeaponDto
      *
-     * @param weapon object of type WeaponDto
+     * @param dto object of type WeaponDto
      */
     @Deprecated
     public void delete(WeaponDto dto);
@@ -45,7 +47,6 @@ public interface WeaponService {
      */
     public List<WeaponDto> findAll();
 
-   
     /**
      *
      * @param name

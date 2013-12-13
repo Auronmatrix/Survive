@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Service;
 
-
 /**
  *
  * @author Michal Vinkler
@@ -69,7 +68,7 @@ public class WeaponServiceImpl implements WeaponService {
         return dtoList;
     }
 
-    @Override   
+    @Override
     public void delete(Long id) {
         weaponDao.delete(id);
     }

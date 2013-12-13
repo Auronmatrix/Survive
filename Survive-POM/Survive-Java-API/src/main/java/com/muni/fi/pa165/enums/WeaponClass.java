@@ -2,16 +2,16 @@ package com.muni.fi.pa165.enums;
 
 /**
  * Represents different classes of Weapons.
- * 
+ *
  * @author Aubrey Oosthuizen
  */
 public enum WeaponClass {
 
     RANGED, MELEE;
 
-   /** 
+    /**
      * Gives all possible weapon classes separated by comma.
-     * 
+     *
      * @return string with all values in WeaponClass
      */
     public static String getList() {

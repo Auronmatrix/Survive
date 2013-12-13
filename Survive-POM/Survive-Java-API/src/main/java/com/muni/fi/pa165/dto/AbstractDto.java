@@ -7,8 +7,9 @@
 package com.muni.fi.pa165.dto;
 
 /**
- *
- * @author xvinkle1
+ * Abstract class needed only for administrative purposes.
+ * 
+ * @author Michal 
  */
 public class AbstractDto {
 

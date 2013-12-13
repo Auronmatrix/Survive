@@ -8,12 +8,12 @@ import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *Data transfer object for the {@link Area}.
- * 
+ * Data transfer object for the {@link Area}.
+ *
  * @author irina
  */
 @XmlRootElement
-public class AreaDto extends AbstractDto implements Serializable  {
+public class AreaDto extends AbstractDto implements Serializable {
 
     private Long id;
     private String name;
@@ -87,6 +87,5 @@ public class AreaDto extends AbstractDto implements Serializable  {
     public String toString() {
         return "AreaDto{" + "id=" + id + ", name=" + name + ", terrain=" + terrain + ", description=" + description + '}';
     }
-    
-    
+
 }

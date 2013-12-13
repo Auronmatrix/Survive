@@ -32,6 +32,7 @@ import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.survive.rest.client.services.impl.AreaServiceImpl;
 import java.util.List;
+import javax.ws.rs.ProcessingException;
 import javax.ws.rs.core.Response;
 import org.glassfish.jersey.message.internal.MessageBodyProviderNotFoundException;
 
@@ -142,7 +143,7 @@ public class SurviveRESTClient {
             } else {
                 printHelp(options);
             }
-        } catch (ParseException ex) {
+            } catch (ParseException ex) {
             System.out.println(ex.getMessage());
             printHelp(options);
             System.exit(1);
@@ -150,9 +151,14 @@ public class SurviveRESTClient {
             System.out.println(ex.getMessage());
             printHelp(options);
             System.exit(2);
-        } catch (MessageBodyProviderNotFoundException ex) {
+        } catch (MessageBodyProviderNotFoundException ex ) {
             System.out.println("Couldn't connect to the server! Please make sure that the server side is running.");
             System.exit(3);
+        } catch (ProcessingException ex) {
+            System.out.println("Couldn't connect to the server! Please make sure that the server side is running.");
+            System.exit(4);
+        } catch (Exception ex) {
+            System.out.println(" There was an error when connecting to the server. Please make sure that the server side is running.");
         }
     }
 
