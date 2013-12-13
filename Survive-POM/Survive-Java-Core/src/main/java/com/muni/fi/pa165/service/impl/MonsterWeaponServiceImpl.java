@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
-    //private static final Logger logger = Logger.getLogger(MonsterServiceImpl.class.getName());
     @Inject
     private MonsterWeaponDao monsterWeaponDao;
     @Inject
@@ -27,9 +26,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     /**
      *
-     * @param monsterId
-     * @param weaponId
-     * @return
+     * @return CompositeKey of MonsterWeaponClass
      */
     @Override
     public MonsterWeaponPkDto getCompositeKey(Long monsterId, Long weaponId) {
@@ -38,8 +35,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
 
     /**
      *
-     * @param dto
-     * @return
+     * @return MonsterWeaponDto of MonsterWeaponClass
      */
     @Override
     public MonsterWeaponDto save(MonsterWeaponDto dto) {
@@ -60,35 +56,22 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
         return mapper.map(entity, MonsterWeaponDto.class);
     }
 
-    /**
-     *
-     * @param dto
-     */
     public void delete(MonsterWeaponDto dto) {
 
         monsterWeaponDao.delete(mapper.map(dto, MonsterWeapon.class));
 
     }
 
-    /**
-     *
-     * @param dao
-     */
     public void setDao(MonsterWeaponDao dao) {
         this.monsterWeaponDao = dao;
     }
 
-    /**
-     *
-     * @param mapper
-     */
     public void setMapper(Mapper mapper) {
         this.mapper = mapper;
     }
 
     @Override
     public List<MonsterWeaponDto> findByMonsterId(Long id) {
-        //     Monster monster = mapper.map(service.findById(id), Monster.class);
         List<MonsterWeapon> mw = monsterWeaponDao.getByMonsterId(id);
         List<MonsterWeaponDto> result = new ArrayList<>();
         for (MonsterWeapon monsterW : mw) {
@@ -106,10 +89,6 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
         return result;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public List<MonsterWeaponDto> findAll() {
         List<MonsterWeaponDto> dtoList = new ArrayList<>();
@@ -129,12 +108,6 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
         monsterWeaponDao.delete(pk);
     }
 
-    /**
-     *
-     * @param monsterId
-     * @param weaponId
-     * @return
-     */
     @Override
     public MonsterWeaponDto findById(Long monsterId, Long weaponId) {
 
@@ -143,5 +116,8 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
         return mapper.map(entity, MonsterWeaponDto.class);
     }
 
+    public MonsterWeaponDto findByMonsterId(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 
 }

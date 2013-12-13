@@ -23,23 +23,14 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
     WeaponDao dao;
     private Weapon entity;
 
-    /**
-     *
-     */
     @BeforeClass
     public static void setUpClass() {
     }
 
-    /**
-     *
-     */
     @AfterClass
     public static void tearDownClass() {
     }
 
-    /**
-     *
-     */
     @Before
     public void setUp() {
         entity = new Weapon();
@@ -54,19 +45,10 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
 
     }
 
-    /**
-     *
-     */
     @After
     public void tearDown() {
     }
 
-//    @Test(expected = IllegalArgumentException.class)
-//    public void testSaveWithNull() {
-//
-//        dao.save(null);
-//
-//    }
     /**
      * Test of checkAvailable method, of class WeaponJpaDaoImpl.
      */
@@ -89,4 +71,15 @@ public class WeaponDaoImplTest extends AbstractDaoIntegrationTest {
         dao.checkAvailable(null);
         
     }
+    /**
+     * Test of checkAvailable method with not existing name, of class WeaponJpaDaoImpl.
+     */
+        @Test
+        public void testCheckAvailableWithNonExistingName() {
+        String weaponName = "BLABLA";
+        boolean result = dao.checkAvailable(weaponName);
+        assertEquals(false, result);
+
+    }
+        
 }

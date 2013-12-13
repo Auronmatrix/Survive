@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.muni.fi.pa165.dao.jpa.impl;
 
 import com.muni.fi.pa165.dao.AreaDao;
@@ -37,9 +33,7 @@ public class MonsterAreaDaoImplTest extends AbstractDaoIntegrationTest {
     MonsterAreaDao monsterAreaDao;
     MonsterArea monsterArea;
     
-    /**
-     *
-     */
+    
     @Before
     public void setUp() {
         monster = new Monster();
@@ -67,25 +61,19 @@ public class MonsterAreaDaoImplTest extends AbstractDaoIntegrationTest {
         monsterArea.setMonsterareaPK(new MonsterAreaPK(monster.getId(), area.getId()));
         monsterAreaDao.save(monsterArea);
 }
-    /**
-     *
-     */
+   
     @After
     public void tearDown() {
         for (MonsterArea item : monsterAreaDao.findAll()){
             monsterAreaDao.delete(item.getMonsterareaPK());
         }
     }
-    /**
-     *
-     */
+
     @Before
     public void setUpClass() {
     }
     
-    /**
-     *
-     */
+
     @Test
      public void testFindAll() {
          List<MonsterArea> monsterAreas = monsterAreaDao.findAll();
@@ -93,31 +81,28 @@ public class MonsterAreaDaoImplTest extends AbstractDaoIntegrationTest {
          assertEquals("In the is proper monsterArea.", monsterArea, monsterAreas.get(0));
      }
     
-    /**
-     *
-     */
     @Test
      public void testFindByMonsterId() {
          List<MonsterArea> monsterAreas = monsterAreaDao.getByMonsterId(monster.getId());
          assertEquals("List contains only one monsterArea.",1 , monsterAreas.size());
          assertEquals("In the is proper monsterArea.", monsterArea, monsterAreas.get(0));
      }
-    /**
-     *
-     */
     @Test
      public void testFindByAreaId() {
          List<MonsterArea> monsterAreas = monsterAreaDao.getByAreaId(area.getId());
          assertEquals("List contains only one monsterArea.",1 , monsterAreas.size());
          assertEquals("In the is proper monsterArea.", monsterArea, monsterAreas.get(0));
      }
-    /**
-     *
-     */
     @Test
     public void testDelete(){
         monsterAreaDao.delete(monsterArea.getMonsterareaPK());
         List<MonsterArea> monsterAreas = monsterAreaDao.findAll();
         assertEquals("List should be empty.", 0, monsterAreas.size());
     }
+    
+    @Test
+     public void testFindById() {
+         MonsterArea returned = monsterAreaDao.findById(monsterArea.getMonsterareaPK());         
+         assertEquals("In the is proper monsterArea.", returned, monsterArea);
+     }
 }

@@ -71,4 +71,13 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
         dao.checkAvailable(null);
 
     }
+    /**
+     * Test of checkAvailable method with not existing name, of class MonsterJpaDaoImpl.
+     */
+        @Test
+        public void testCheckAvailableWithNonExistingName() {
+        boolean result = dao.checkAvailable(MonsterClass.Mutant);
+        assertEquals(false, result);
+
+    }
 }

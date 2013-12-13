@@ -9,6 +9,7 @@ import com.muni.fi.pa165.dao.MonsterWeaponDao;
 import com.muni.fi.pa165.dao.WeaponDao;
 import com.muni.fi.pa165.dao.gen.AbstractDaoIntegrationTest;
 import com.muni.fi.pa165.entities.Monster;
+import com.muni.fi.pa165.entities.MonsterArea;
 import com.muni.fi.pa165.entities.MonsterWeapon;
 import com.muni.fi.pa165.entities.MonsterWeaponPK;
 import com.muni.fi.pa165.entities.Weapon;
@@ -77,9 +78,6 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
         monsterWeaponDao.save(monsterWeapon);           
     }
 
-    /**
-     *
-     */
     @After
     public void tearDown() {
         for (MonsterWeapon item : monsterWeaponDao.findAll()){
@@ -88,16 +86,10 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
     }
 
 
-    /**
-     *
-     */
     @Before
     public void setUpClass() {
     }
     
-     /**
-     *
-     */
     @Test
      public void testFindAll() {
          List<MonsterWeapon> monsterWeapons = monsterWeaponDao.findAll();
@@ -105,18 +97,12 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
          assertEquals("In the is proper monsterWeapon.", monsterWeapon, monsterWeapons.get(0));
      }
 
-    /**
-     *
-     */
     @Test
     public void testFindByMonsterId() {
          List<MonsterWeapon> monsterWeapons = monsterWeaponDao.getByMonsterId(monster.getId());
          assertEquals("List contains only one monsterWeapon.",1 , monsterWeapons.size());
          assertEquals("In the is proper monsterWeapon.", monsterWeapon, monsterWeapons.get(0));
  }
-    /**
-     *
-     */
     @Test
     public void testFindByWeaponId() {
          List<MonsterWeapon> monsterWeapons = monsterWeaponDao.getByWeaponId(weapon.getId());
@@ -125,14 +111,17 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
          
     
 }
-    /**
-     *
-     */
     @Test
     public void testDelete(){
         monsterWeaponDao.delete(monsterWeapon.getMonsterweaponPK());
         List<MonsterWeapon> monsterWeapons = monsterWeaponDao.findAll();
         assertEquals("List should be empty.", 0, monsterWeapons.size());
     }
+    @Test
+     public void testFindById() {
+         MonsterWeapon returned = monsterWeaponDao.findById(monsterWeapon.getMonsterweaponPK());         
+         assertEquals("In the is proper monsterArea.", returned, monsterWeapon);
+     }
+    
 }
     

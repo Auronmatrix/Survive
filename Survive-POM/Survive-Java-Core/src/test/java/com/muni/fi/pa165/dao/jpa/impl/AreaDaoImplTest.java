@@ -67,4 +67,15 @@ public class AreaDaoImplTest extends AbstractDaoIntegrationTest {
         dao.checkAvailable(null);
 
     }
+    
+/**
+     * Test of checkAvailable method with not existing name, of class AreaJpaDaoImpl.
+     */
+        @Test
+        public void testCheckAvailableWithNonExistingName() {
+        String areaName = "TRALALA";
+        boolean result = dao.checkAvailable(areaName);
+        assertEquals(false, result);
+
+    }
 }

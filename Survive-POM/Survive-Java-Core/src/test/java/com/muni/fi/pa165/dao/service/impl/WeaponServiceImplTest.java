@@ -33,9 +33,6 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
     @Inject
     private Mapper mapper;
 
-    /**
-     *
-     */
     @Before
     public void setUp() {
         service = new WeaponServiceImpl();
@@ -44,16 +41,10 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         service.setMapper(mapper);
     }
 
-    /**
-     *
-     */
     @AfterClass
     public static void tearDownClass() {
     }
 
-    /**
-     *
-     */
     @After
     public void tearDown() {
     }
@@ -130,7 +121,6 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         verifyNoMoreInteractions(mockDAO);
 
 
-
     }
 
     /**
@@ -161,5 +151,16 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         assertEquals(returned, dto);
 
 
+    }
+    
+    @Test
+    public void testCheckAvailable() {   
+        String name  = "Some name";
+        
+        when(mockDAO.checkAvailable(any(String.class))).thenReturn(true);
+        Boolean returned = service.checkAvailable(name);
+        assertEquals(returned, true);
+        verify(mockDAO, times(1)).checkAvailable(name);
+        verifyNoMoreInteractions(mockDAO);
     }
 }
