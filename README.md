@@ -53,20 +53,22 @@ NOTE: Please ensure that the rest-server is running through completing above ste
 
 <pre>
 <code>
-1. Open terminal/cmd 
-
+1. Open terminal/cmd
 2. Go to project root Survive/Survive-POM/Survive-REST-Client
-
 3. mvn clean package
-
-4. cd target  
-
+4. cd target
 5. Run the cmd app rest-client-jar-with-dependencies.jar with the correct parameters, see the description below
-   
-   You can also use maven exec plugin (from the Survive-REST-Client folder)
-   
-   mvn clean compile exec:java -Dexec.args="<command line args>"
+</code>
+</pre>   
 
+
+You can also use maven exec plugin (from the Survive-REST-Client folder)
+   
+ <pre>
+<code>
+ mvn clean compile exec:java -Dexec.args="<command line args>"
+</code>
+</pre>
 
 usage: [mode] -o [operation] [arguments]...
  -a                  Area Management
@@ -86,21 +88,29 @@ usage: [mode] -o [operation] [arguments]...
 
 First of all, you have to choose which [mode] of the application you are going to use. You can choose between the two:
 
+<pre>
+<code>
     -a 		area mode
     -w 		weapon mode
-	
+</code>
+</pre>	
 After choosing the mode, you have to specify which [operation] you want to perform on this type of entity. You can choose from 5 operations:
 
-    -o C  	Create an entity
-    -o R  	Read an entity
+<pre>
+<code>
+	-o C  	Create an entity
+	-o R  	Read an entity
 	-o U  	Update an entity
 	-o D  	Delete an entity
 	-o A  	get All entities
-	
+</code>
+</pre>	
 Based on the chosen operation, you need to specify some mandatory arguments (see the list of mandatory arguments for each operation below):
 
+<pre>
+<code>
     -o C 
-		-n <name> The name of the new entity
+	-n <name> The name of the new entity
     -o R 
         -i <id> The ID of the entity to be read
     -o U 
@@ -109,36 +119,62 @@ Based on the chosen operation, you need to specify some mandatory arguments (see
         -i <id> The ID of the entity to be deleted
     -o A 
 		(no mandatory arguments)
-		
+</code>
+</pre>		
 You can also specify optional arguments if needed.
 
-Examples:
+Examples of arguments that can be used when executing REST-Client app:
 a weapon (-w): Create (-o C) a weapon of name Automatic shotgun (-n "Automatic shotgun"), weapon class Ranged (-c Ranged)
-$ java -jar rest-client-jar-with-dependencies.jar -w -o C -n "Automatic shotgun" -c Ranged
-
+<pre>
+<code>
+-w -o C -n "Automatic shotgun" -c Ranged
+</code>
+</pre>
 a weapon (-w): Read (-o R) a weapon of id 1 (-i 1)
-$ java -jar rest-client-jar-with-dependencies.jar -w -o R -i 1
-
+<pre>
+<code>
+-w -o R -i 1
+</code>
+</pre>
 a weapon (-w): Read (-o A) all weapons
-$ java -jar rest-client-jar-with-dependencies.jar -w -o A
-
+<pre>
+<code>
+-w -o A
+</code>
+</pre>
 a weapon (-w): Delete (-o D) a weapon of id 2 (-i 2) 
-$ java -jar rest-client-jar-with-dependencies.jar -w -o D -i 2
-
+<pre>
+<code>
+-w -o D -i 2
+</code>
+</pre>
 a weapon (-w): Update (-o U) the weapon of id 1 (-i 1) -  name (-n) "Big knife", type (-t) BLADE, description (-d) "New description"
+<pre>
+<code>
 -w -o U -i 1 -n "Big knife" -t BLADE -c Melee -d "New description"
-
+</code>
+</pre>
 an area (-a): Create (-o C) an area of name Brno (-n Brno),
-$ java -jar rest-client-jar-with-dependencies.jar -a -o C -n Brno
-
+<pre>
+<code>
+ -a -o C -n Brno
+</code>
+</pre>
 an area (-a): Read (-o R) an area of id 1 (-i 1)
-$ java -jar rest-client-jar-with-dependencies.jar -a -o R -i 1
-
+<pre>
+<code>
+-a -o R -i 1
+</code>
+</pre>
 The resource base url is by default as http://localhost:8080/pa165/rest/.
 
 The "GET" requests (-o R, -o A) have also its browser counterparts. You can try links as
 
+<pre>
+<code>
 http://localhost:8080/pa165/rest/weapons/1 
 http://localhost:8080/pa165/rest/weapons/all
 http://localhost:8080/pa165/rest/areas/1 
 http://localhost:8080/pa165/rest/areas/all	
+</code>
+</pre>
