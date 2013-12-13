@@ -4,10 +4,10 @@ import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -17,15 +17,9 @@ public class WeaponTest {
 
     static Weapon weapon;
 
-    /**
-     *
-     */
     public WeaponTest() {
     }
 
-    /**
-     *
-     */
     @BeforeClass
     public static void setUpClass() {
         weapon = new Weapon();
@@ -34,27 +28,18 @@ public class WeaponTest {
         weapon.setDescription("Africa's favourite");
         weapon.setRounds(44);
         weapon.setRange(100);
-        weapon.setWeaponclass(WeaponClass.Ranged);
-        weapon.setWeapontype(WeaponType.Gun);
+        weapon.setWeaponclass(WeaponClass.RANGED);
+        weapon.setWeapontype(WeaponType.GUN);
     }
 
-    /**
-     *
-     */
     @AfterClass
     public static void tearDownClass() {
     }
 
-    /**
-     *
-     */
     @Before
     public void setUp() {
     }
 
-    /**
-     *
-     */
     @After
     public void tearDown() {
     }
@@ -89,7 +74,7 @@ public class WeaponTest {
     @Test
     public void testGetWeaponType() {
         Weapon instance = weapon;
-        WeaponType expResult = WeaponType.Gun;
+        WeaponType expResult = WeaponType.GUN;
         WeaponType result = instance.getWeapontype();
         assertEquals(expResult, result);
 
@@ -100,7 +85,7 @@ public class WeaponTest {
      */
     @Test
     public void testSetWeaponType() {
-        WeaponType weaponType = WeaponType.Explosive;
+        WeaponType weaponType = WeaponType.EXPLOSIVE;
         Weapon instance = new Weapon();
         instance.setWeapontype(weaponType);
         assertEquals(weaponType, instance.getWeapontype());
@@ -112,7 +97,7 @@ public class WeaponTest {
     @Test
     public void testGetWeaponClass() {
         Weapon instance = weapon;
-        WeaponClass expResult = WeaponClass.Ranged;
+        WeaponClass expResult = WeaponClass.RANGED;
         WeaponClass result = instance.getWeaponclass();
         assertEquals(expResult, result);
 
@@ -123,7 +108,7 @@ public class WeaponTest {
      */
     @Test
     public void testSetWeaponClass() {
-        WeaponClass weaponClass = WeaponClass.Melee;
+        WeaponClass weaponClass = WeaponClass.MELEE;
         Weapon instance = new Weapon();
         instance.setWeaponclass(weaponClass);
         assertEquals(weaponClass, instance.getWeaponclass());

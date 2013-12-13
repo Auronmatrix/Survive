@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Michal Vinkler
  */
 @XmlRootElement
-public class WeaponDto {
+public class WeaponDto extends AbstractDto {
 
     private Long id;
     private String name;
@@ -25,146 +25,74 @@ public class WeaponDto {
     private String description;
     private List<MonsterWeaponDto> efficiencies = new ArrayList<>();
 
-    /**
-     *
-     * @return
-     */
     public Double getCaliber() {
         return caliber;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     *
-     * @param name
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     *
-     * @return
-     */
     public Long getId() {
         return id;
     }
 
-    /**
-     *
-     * @param weaponId
-     */
     public void setId(Long weaponId) {
         this.id = weaponId;
     }
 
-    /**
-     *
-     * @return
-     */
     public WeaponType getWeaponType() {
         return weaponType;
     }
 
-    /**
-     *
-     * @param weaponType
-     */
     public void setWeaponType(WeaponType weaponType) {
         this.weaponType = weaponType;
     }
 
-    /**
-     *
-     * @return
-     */
     public WeaponClass getWeaponClass() {
         return weaponClass;
     }
 
-    /**
-     *
-     * @param weaponClass
-     */
     public void setWeaponClass(WeaponClass weaponClass) {
         this.weaponClass = weaponClass;
     }
 
-    /**
-     *
-     * @return
-     */
     public Integer getRange() {
         return range;
     }
 
-    /**
-     *
-     * @param range
-     */
     public void setRange(Integer range) {
         this.range = range;
     }
 
-    /**
-     *
-     * @param caliber
-     */
     public void setCaliber(Double caliber) {
         this.caliber = caliber;
     }
 
-    /**
-     *
-     * @return
-     */
     public Integer getRounds() {
         return rounds;
     }
 
-    /**
-     *
-     * @param rounds
-     */
     public void setRounds(Integer rounds) {
         this.rounds = rounds;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     *
-     * @param description
-     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     *
-     * @return
-     */
     public List<MonsterWeaponDto> getEfficiencies() {
         return efficiencies;
     }
 
-    /**
-     *
-     * @param efficiencies
-     */
     public void setEfficiencies(List<MonsterWeaponDto> efficiencies) {
         this.efficiencies = efficiencies;
     }
@@ -215,4 +143,11 @@ public class WeaponDto {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "WeaponDto{" + "id=" + id + ", name=" + name + ", weaponType=" + weaponType + ", weaponClass=" + weaponClass + ", range=" + range + ", caliber=" + caliber + ", rounds=" + rounds + ", description=" + description + '}';
+    }
+    
+    
 }

@@ -2,38 +2,31 @@ package com.muni.fi.pa165.enums;
 
 /**
  * Represents different types of Weapons.
- * 
+ *
  * @author Aubrey Oosthuizen
  */
 public enum WeaponType {
 
-    /**
-     *
-     */
-    Gun,
-    /**
-     *
-     */
-    Blade,
-    /**
-     *
-     */
-    Blunt,
-    /**
-     *
-     */
-    Explosive;
+    GUN, BALDE, BLUNT, EXPLOSIVE;
 
-    /** 
+    /**
      * Gives all possible weapon types separated by comma.
-     * 
+     *
      * @return string with all values in WeaponType
      */
     public static String getList() {
-        String list = "";
+        StringBuilder builder = new StringBuilder();
+
         for (WeaponType t : values()) {
-            list += t.name() + ",";
+
+            builder.append(t.name());
+            builder.append(", ");
+
         }
-        return list;
+
+        builder.deleteCharAt(builder.length() - 1);
+        builder.deleteCharAt(builder.length() - 1);
+
+        return builder.toString();
     }
 }

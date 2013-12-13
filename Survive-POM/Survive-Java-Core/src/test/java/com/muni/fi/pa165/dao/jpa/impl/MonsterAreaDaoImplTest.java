@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.muni.fi.pa165.dao.jpa.impl;
 
 import com.muni.fi.pa165.dao.AreaDao;
@@ -12,9 +16,9 @@ import com.muni.fi.pa165.enums.MonsterClass;
 import com.muni.fi.pa165.enums.TerrainType;
 import java.util.List;
 import org.junit.After;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -33,7 +37,6 @@ public class MonsterAreaDaoImplTest extends AbstractDaoIntegrationTest {
     MonsterAreaDao monsterAreaDao;
     MonsterArea monsterArea;
     
-    
     @Before
     public void setUp() {
         monster = new Monster();
@@ -42,7 +45,7 @@ public class MonsterAreaDaoImplTest extends AbstractDaoIntegrationTest {
         monster.setDescription("Headless Zombie");
         monster.setHeight(11.4);
         monster.setImagepath("C:\\image.png");
-        monster.setMonsterclass(MonsterClass.Zombie);
+        monster.setMonsterclass(MonsterClass.ZOMBIE);
         monster.setStamina(11.5);
         monster.setStrength(11.8);
         monster.setWeight(11.2);
@@ -61,19 +64,16 @@ public class MonsterAreaDaoImplTest extends AbstractDaoIntegrationTest {
         monsterArea.setMonsterareaPK(new MonsterAreaPK(monster.getId(), area.getId()));
         monsterAreaDao.save(monsterArea);
 }
-   
     @After
     public void tearDown() {
         for (MonsterArea item : monsterAreaDao.findAll()){
             monsterAreaDao.delete(item.getMonsterareaPK());
         }
     }
-
     @Before
     public void setUpClass() {
     }
     
-
     @Test
      public void testFindAll() {
          List<MonsterArea> monsterAreas = monsterAreaDao.findAll();
@@ -99,10 +99,4 @@ public class MonsterAreaDaoImplTest extends AbstractDaoIntegrationTest {
         List<MonsterArea> monsterAreas = monsterAreaDao.findAll();
         assertEquals("List should be empty.", 0, monsterAreas.size());
     }
-    
-    @Test
-     public void testFindById() {
-         MonsterArea returned = monsterAreaDao.findById(monsterArea.getMonsterareaPK());         
-         assertEquals("In the is proper monsterArea.", returned, monsterArea);
-     }
 }

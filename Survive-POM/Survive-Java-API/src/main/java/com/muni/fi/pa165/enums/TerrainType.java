@@ -7,30 +7,7 @@ package com.muni.fi.pa165.enums;
  */
 public enum TerrainType {
 
-    /**
-     *
-     */
-    OCEANIC,
-    /**
-     *
-     */
-    DESERT,
-    /**
-     *
-     */
-    SNOW,
-    /**
-     *
-     */
-    JUNGLE,
-    /**
-     *
-     */
-    SAVANNA,
-    /**
-     *
-     */
-    MOUNTAIN;
+    OCEANIC, DESERT, SNOW, JUNGLE, SAVANNA, MOUNTAIN;
 
     /** 
      * Gives all possible terrain types separated by comma.
@@ -38,10 +15,18 @@ public enum TerrainType {
      * @return string with all values in TerrainType
      */
     public static String getList() {
-        String list = "";
+        StringBuilder builder = new StringBuilder();
+
         for (TerrainType t : values()) {
-            list += t.name() + ",";
+
+            builder.append(t.name());
+            builder.append(", ");
+
         }
-        return list;
+
+        builder.deleteCharAt(builder.length() - 1);
+        builder.deleteCharAt(builder.length() - 1);
+
+        return builder.toString();
     }
 }

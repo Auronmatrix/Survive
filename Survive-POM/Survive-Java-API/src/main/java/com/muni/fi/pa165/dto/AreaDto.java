@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author irina
  */
 @XmlRootElement
-public class AreaDto implements Serializable {
+public class AreaDto extends AbstractDto implements Serializable  {
 
     private Long id;
     private String name;
@@ -21,82 +21,42 @@ public class AreaDto implements Serializable {
     private String description;
     private List<MonsterAreaDto> locations = new ArrayList<>();
 
-    /**
-     *
-     * @return
-     */
     public Long getId() {
         return id;
     }
 
-    /**
-     *
-     * @param id
-     */
     public void setId(Long id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     *
-     * @param name
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     *
-     * @return
-     */
     public TerrainType getTerrain() {
         return terrain;
     }
 
-    /**
-     *
-     * @param terrain
-     */
     public void setTerrain(TerrainType terrain) {
         this.terrain = terrain;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     *
-     * @param description
-     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     *
-     * @return
-     */
     public List<MonsterAreaDto> getLocations() {
         return locations;
     }
 
-    /**
-     *
-     * @param locations
-     */
     public void setLocations(List<MonsterAreaDto> locations) {
         this.locations = locations;
     }
@@ -122,4 +82,11 @@ public class AreaDto implements Serializable {
         hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
+
+    @Override
+    public String toString() {
+        return "AreaDto{" + "id=" + id + ", name=" + name + ", terrain=" + terrain + ", description=" + description + '}';
+    }
+    
+    
 }

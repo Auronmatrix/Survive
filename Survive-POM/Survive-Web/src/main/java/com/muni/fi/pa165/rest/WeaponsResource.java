@@ -99,8 +99,8 @@ public class WeaponsResource implements EntityResource {
         Response response;
         WeaponDto mapped = new WeaponDto();
         mapped.setName(dto.getName() != null ? dto.getName() : "No name");
-        mapped.setWeaponType(dto.getWeaponType() != null ? dto.getWeaponType() : WeaponType.Gun);
-        mapped.setWeaponClass(dto.getWeaponClass() != null ? dto.getWeaponClass() : WeaponClass.Ranged);
+        mapped.setWeaponType(dto.getWeaponType() != null ? dto.getWeaponType() : WeaponType.GUN);
+        mapped.setWeaponClass(dto.getWeaponClass() != null ? dto.getWeaponClass() : WeaponClass.RANGED);
         mapped.setCaliber(dto.getCaliber() != null ? dto.getCaliber() : Double.parseDouble("0"));
         mapped.setRange(dto.getRange() != null ? dto.getRange() : 0);
         mapped.setRounds(dto.getRounds() != null ? dto.getRounds() : 0);

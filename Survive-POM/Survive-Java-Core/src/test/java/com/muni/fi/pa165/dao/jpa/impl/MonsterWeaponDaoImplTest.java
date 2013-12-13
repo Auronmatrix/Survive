@@ -18,7 +18,9 @@ import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
 import java.util.List;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +42,6 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
     MonsterWeaponDao monsterWeaponDao;
     MonsterWeapon monsterWeapon;
 
-    /**
-     *
-     */
     @Before
     public void setUp() {
         monster = new Monster();
@@ -51,7 +50,7 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
         monster.setDescription("Headless Zombie");
         monster.setHeight(11.4);
         monster.setImagepath("C:\\image.png");
-        monster.setMonsterclass(MonsterClass.Zombie);
+        monster.setMonsterclass(MonsterClass.ZOMBIE);
         monster.setStamina(11.5);
         monster.setStrength(11.8);
         monster.setWeight(11.2);
@@ -64,8 +63,8 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
         weapon.setDescription("Africa's favourite");
         weapon.setRounds(44);
         weapon.setRange(100);
-        weapon.setWeaponclass(WeaponClass.Ranged);
-        weapon.setWeapontype(WeaponType.Gun);
+        weapon.setWeaponclass(WeaponClass.RANGED);
+        weapon.setWeapontype(WeaponType.GUN);
         weaponDao.save(weapon);
                 
         monsterWeapon = new MonsterWeapon();
@@ -90,7 +89,7 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
     public void setUpClass() {
     }
     
-    @Test
+     @Test
      public void testFindAll() {
          List<MonsterWeapon> monsterWeapons = monsterWeaponDao.findAll();
          assertEquals("List contains only one monsterWeapon.",1 , monsterWeapons.size());
@@ -117,11 +116,5 @@ public class MonsterWeaponDaoImplTest extends AbstractDaoIntegrationTest {
         List<MonsterWeapon> monsterWeapons = monsterWeaponDao.findAll();
         assertEquals("List should be empty.", 0, monsterWeapons.size());
     }
-    @Test
-     public void testFindById() {
-         MonsterWeapon returned = monsterWeaponDao.findById(monsterWeapon.getMonsterweaponPK());         
-         assertEquals("In the is proper monsterArea.", returned, monsterWeapon);
-     }
-    
 }
     

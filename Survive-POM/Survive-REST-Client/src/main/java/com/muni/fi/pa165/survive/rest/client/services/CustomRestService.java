@@ -9,22 +9,20 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * @author Auron
+ * @author Michal
  */
 public interface CustomRestService<T> {
- 
+
     T create(T dto);
 
     T getById(Long id);
 
-    Response update(T dto);
-    
+    T update(T dto);
+
     List<T> getAll();
 
     Response delete(Long id);
-    
-    Response getResponse();
-           
 
+    Response getResponse();
 
 }

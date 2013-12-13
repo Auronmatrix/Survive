@@ -7,14 +7,7 @@ package com.muni.fi.pa165.enums;
  */
 public enum WeaponClass {
 
-    /**
-     *
-     */
-    Ranged,
-    /**
-     *
-     */
-    Melee;
+    RANGED, MELEE;
 
    /** 
      * Gives all possible weapon classes separated by comma.
@@ -22,10 +15,18 @@ public enum WeaponClass {
      * @return string with all values in WeaponClass
      */
     public static String getList() {
-        String list = "";
+        StringBuilder builder = new StringBuilder();
+
         for (WeaponClass t : values()) {
-            list += t.name() + ",";
+
+            builder.append(t.name());
+            builder.append(", ");
+
         }
-        return list;
+
+        builder.deleteCharAt(builder.length() - 1);
+        builder.deleteCharAt(builder.length() - 1);
+
+        return builder.toString();
     }
 }

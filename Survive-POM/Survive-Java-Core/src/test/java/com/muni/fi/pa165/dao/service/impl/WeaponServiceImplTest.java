@@ -1,19 +1,19 @@
 package com.muni.fi.pa165.dao.service.impl;
 
+import com.muni.fi.pa165.service.impl.WeaponServiceImpl;
 import com.muni.fi.pa165.dao.WeaponDao;
+import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Weapon;
 import com.muni.fi.pa165.enums.WeaponClass;
 import com.muni.fi.pa165.enums.WeaponType;
-import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
-import com.muni.fi.pa165.service.impl.WeaponServiceImpl;
 import javax.inject.Inject;
 import org.dozer.Mapper;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -62,8 +62,8 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setDescription("Africa's favourite");
         dto.setRounds(44);
         dto.setRange(100);
-        dto.setWeaponClass(WeaponClass.Ranged);
-        dto.setWeaponType(WeaponType.Gun);
+        dto.setWeaponClass(WeaponClass.RANGED);
+        dto.setWeaponType(WeaponType.GUN);
 
         Weapon entity = mapper.map(dto, Weapon.class);
         when(mockDAO.save(any(Weapon.class))).thenReturn(entity);
@@ -83,8 +83,8 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setDescription("Africa's favourite");
         dto.setRounds(44);
         dto.setRange(100);
-        dto.setWeaponClass(WeaponClass.Ranged);
-        dto.setWeaponType(WeaponType.Gun);
+        dto.setWeaponClass(WeaponClass.RANGED);
+        dto.setWeaponType(WeaponType.GUN);
 
         Weapon entity = mapper.map(dto, Weapon.class);
 
@@ -109,8 +109,8 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setDescription("Africa's favourite");
         dto.setRounds(44);
         dto.setRange(100);
-        dto.setWeaponClass(WeaponClass.Ranged);
-        dto.setWeaponType(WeaponType.Gun);
+        dto.setWeaponClass(WeaponClass.RANGED);
+        dto.setWeaponType(WeaponType.GUN);
         Weapon entity = new Weapon();
         entity.setId(1L);
         entity.setName("Farm");
@@ -119,6 +119,7 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
 
         verify(mockDAO, times(1)).delete(entity);
         verifyNoMoreInteractions(mockDAO);
+
 
 
     }
@@ -137,8 +138,8 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         dto.setDescription("Africa's favourite");
         dto.setRounds(44);
         dto.setRange(100);
-        dto.setWeaponClass(WeaponClass.Ranged);
-        dto.setWeaponType(WeaponType.Gun);
+        dto.setWeaponClass(WeaponClass.RANGED);
+        dto.setWeaponType(WeaponType.GUN);
 
         Weapon entity = mapper.map(dto, Weapon.class);
 
@@ -151,16 +152,5 @@ public class WeaponServiceImplTest extends AbstractServiceIntegrationTest {
         assertEquals(returned, dto);
 
 
-    }
-    
-    @Test
-    public void testCheckAvailable() {   
-        String name  = "Some name";
-        
-        when(mockDAO.checkAvailable(any(String.class))).thenReturn(true);
-        Boolean returned = service.checkAvailable(name);
-        assertEquals(returned, true);
-        verify(mockDAO, times(1)).checkAvailable(name);
-        verifyNoMoreInteractions(mockDAO);
     }
 }

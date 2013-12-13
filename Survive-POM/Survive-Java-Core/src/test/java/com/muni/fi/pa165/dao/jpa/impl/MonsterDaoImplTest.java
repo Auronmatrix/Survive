@@ -5,9 +5,9 @@ import com.muni.fi.pa165.dao.gen.AbstractDaoIntegrationTest;
 import com.muni.fi.pa165.entities.Monster;
 import com.muni.fi.pa165.enums.MonsterClass;
 import org.junit.After;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -20,9 +20,6 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
     MonsterDao dao;
     Monster entity;
 
-    /**
-     *
-     */
     @Before
     public void setUp() {
         entity = new Monster();
@@ -31,7 +28,7 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
         entity.setDescription("Headless Zombie");
         entity.setHeight(11.4);
         entity.setImagepath("C:\\image.png");
-        entity.setMonsterclass(MonsterClass.Zombie);
+        entity.setMonsterclass(MonsterClass.ZOMBIE);
         entity.setStamina(11.5);
         entity.setStrength(11.8);
         entity.setWeight(11.2);
@@ -40,16 +37,10 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
 
     }
 
-    /**
-     *
-     */
     @After
     public void tearDown() {
     }
 
-    /**
-     *
-     */
     @Before
     public void setUpClass() {
     }
@@ -59,7 +50,7 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
      */
     @Test
     public void testCheckAvailable() {
-        MonsterClass monsterClass = MonsterClass.Zombie;
+        MonsterClass monsterClass = MonsterClass.ZOMBIE;
         assertTrue(dao.checkAvailable(monsterClass));
     }
     /**
@@ -69,15 +60,6 @@ public class MonsterDaoImplTest extends AbstractDaoIntegrationTest {
     public void testCheckAvailableWithNull() {
 
         dao.checkAvailable(null);
-
-    }
-    /**
-     * Test of checkAvailable method with not existing name, of class MonsterJpaDaoImpl.
-     */
-        @Test
-        public void testCheckAvailableWithNonExistingName() {
-        boolean result = dao.checkAvailable(MonsterClass.Mutant);
-        assertEquals(false, result);
 
     }
 }

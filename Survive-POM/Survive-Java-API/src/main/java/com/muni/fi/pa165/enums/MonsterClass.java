@@ -2,34 +2,31 @@ package com.muni.fi.pa165.enums;
 
 /**
  * Represents different classes of Monsters.
- * 
+ *
  * @author Aubrey Oosthuizen
  */
 public enum MonsterClass {
 
-    /**
-     *
-     */
-    Zombie,
-    /**
-     *
-     */
-    Robot,
-    /**
-     *
-     */
-    Mutant;
+    ZOMBIE, ROBOT, MUTANT;
 
-    /** 
+    /**
      * Gives all possible monster classes separated by comma.
-     * 
+     *
      * @return string with all values in MonsterClass
      */
     public static String getList() {
-        String list = "";
+        StringBuilder builder = new StringBuilder();
+
         for (MonsterClass t : values()) {
-            list += t.name() + ",";
+
+            builder.append(t.name());
+            builder.append(", ");
+
         }
-        return list;
+
+        builder.deleteCharAt(builder.length() - 1);
+        builder.deleteCharAt(builder.length() - 1);
+
+        return builder.toString();
     }
 }
