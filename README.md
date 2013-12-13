@@ -11,31 +11,37 @@ https://github.com/Auronspan/Survive/wiki/home
 Team members: 
 Aubrey Oosthuizen,
 Michal Vinkler,
-Irina Serdyukova,
-Maria Dolgikh
+Irina Serdyukova
 
 
 ## To run:
 
 NOTE: Please ensure that all prerequisites from the TODO.md file has been met before attempting to run the application
-
-1. Open terminal/cmd 
-
-2. Go to project root Survive\Survive-POM  
-
-3. mvn clean install 
+<pre>
+<code>
+1. Open terminal/cmd
+2. cd Survive\Survive-POM
+3. mvn clean install
+</code>
+</pre>
 
 #####To additionally run all project test
 
+<pre>
+<code>
 4. mvn test
+</code>
+</pre>
 
 
 ####To run the web application on context /pa165 and the rest-server 
 
-1. cd Survive\Survive-POM\Surive-Web  
-
+<pre>
+<code>
+1. cd Survive\Survive-POM\Surive-Web
 2. mvn tomcat7:run 
-
+</code>
+</pre>
 
 
 ####To run the rest-client application
@@ -46,13 +52,14 @@ REST cmd client application explanation
 
 NOTE: Please ensure that the rest-server is running through completing above steps
 
-1. Open terminal/cmd 
-
+<pre>
+<code>
+1. Open terminal/cmd
 2. Go to project root Survive/Survive-POM/Survive-REST-Client
-
 3. mvn clean package
-
-4. cd target  
+4. cd target
+</code>
+</pre>
 
 5. Run the cmd app rest-client-jar-with-dependencies.jar with the correct parameters, see the description below
 
@@ -101,6 +108,8 @@ Based on the chosen operation, you need to specify some mandatory arguments (see
 You can also specify optional arguments if needed.
 
 Examples:
+<pre>
+<code>
 a weapon (-w): Create (-o C) a weapon of name Automatic shotgun (-n "Automatic shotgun"), weapon class Ranged (-c Ranged)
 $ java -jar rest-client-jar-with-dependencies.jar -w -o C -n "Automatic shotgun" -c Ranged
 
@@ -115,18 +124,18 @@ $ java -jar rest-client-jar-with-dependencies.jar -w -o D -i 2
 
 a weapon (-w): Update (-o U) the weapon of id 1 (-i 1) -  name (-n) "Big knife", type (-t) BLADE, description (-d) "New description"
 -w -o U -i 1 -n "Big knife" -t BLADE -c Melee -d "New description"
-
+</code>
+</pre>
 
 The resource base url is by default as http://localhost:8080/pa165/rest/.
 
 The "GET" requests (-o R, -o A) have also its browser counterparts. You can try links as
 
+<pre>
+<code>
 http://localhost:8080/pa165/rest/weapons/1 
 http://localhost:8080/pa165/rest/weapons/all
 http://localhost:8080/pa165/rest/areas/1 
-http://localhost:8080/pa165/rest/areas/all	
-	
-
-
-
-
+http://localhost:8080/pa165/rest/areas/all
+</code>
+</pre>
