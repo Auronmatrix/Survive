@@ -31,7 +31,13 @@ import org.apache.commons.cli.PosixParser;
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.survive.rest.client.services.impl.AreaServiceImpl;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.core.Response;
 import org.glassfish.jersey.message.internal.MessageBodyProviderNotFoundException;
@@ -45,6 +51,18 @@ public class SurviveRESTClient {
 
     public static void main(String[] args) {
 
+
+        File file = new File("err.txt");
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SurviveRESTClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PrintStream ps = new PrintStream(fos);
+        System.setErr(ps);
+
+
         CommandLineParser parser = new PosixParser();
         Options options = OptionsProvider.getInstance().getOptions();
 
@@ -53,11 +71,11 @@ public class SurviveRESTClient {
             List<String> validate = CommandLineValidator.validate(line);
             if (!validate.isEmpty()) {
                 System.out.println("The following errors occured when parsing the command:");
-                
+
                 for (String string : validate) {
                     System.out.println(string);
                 }
-                
+
                 System.out.println("");
                 printHelp(options);
                 System.exit(1);
@@ -143,7 +161,7 @@ public class SurviveRESTClient {
             } else {
                 printHelp(options);
             }
-            } catch (ParseException ex) {
+        } catch (ParseException ex) {
             System.out.println(ex.getMessage());
             printHelp(options);
             System.exit(1);
@@ -151,14 +169,14 @@ public class SurviveRESTClient {
             System.out.println(ex.getMessage());
             printHelp(options);
             System.exit(2);
-        } catch (MessageBodyProviderNotFoundException ex ) {
+        } catch (MessageBodyProviderNotFoundException ex) {
             System.out.println("Couldn't connect to the server! Please make sure that the server side is running.");
             System.exit(3);
         } catch (ProcessingException ex) {
             System.out.println("Couldn't connect to the server! Please make sure that the server side is running.");
             System.exit(4);
         } catch (Exception ex) {
-            System.out.println(" There was an error when connecting to the server. Please make sure that the server side is running.");
+            System.out.println("There was an error when connecting to the server. Please make sure that the server side is running.");
         }
     }
 
