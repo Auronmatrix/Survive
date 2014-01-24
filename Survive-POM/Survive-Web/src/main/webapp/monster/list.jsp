@@ -2,6 +2,8 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 
 <s:layout-render name="/layout.jsp" titlekey="monster.title">
     <s:layout-component name="body">
@@ -30,10 +32,12 @@
                 <c:forEach items="${actionBean.monsters}" var="monster">
                     <tr>
                         <td>
+                            
                             <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" action="edit">          
                                 <s:hidden name="monster.id" value="${monster.id}"/>
                                 <s:image src="${monster.imagePath}" class="img img-circle" name="${monster.id}.image" style="width: 60px; height: 60px" />
                             </s:form>
+                           
                         </td> 
                         <td>${monster.id}</td>
                         <td><c:out value="${monster.name}" /></td>
@@ -47,10 +51,12 @@
                         <td><f:message key="com.muni.fi.pa165.enums.MonsterClass.${monster.monsterClass}" /></td>
                         <td><c:out value="${monster.description}" /></td>   
                         <td>         
+                             <security:authorize ifAnyGranted="ROLE_ADMIN">
                             <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" action="edit">
                                 <s:hidden name="monster.id" value="${monster.id}"/>
                                 <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
                             </s:form>
+                                  </security:authorize>
                         </td>
                         <td>                            
                             <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" action="delete">

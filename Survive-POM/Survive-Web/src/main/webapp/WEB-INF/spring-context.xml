@@ -9,24 +9,34 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 ">
 
-<context:component-scan base-package="com.muni.fi.pa165"/>
+    <context:component-scan base-package="com.muni.fi.pa165"/>
 
+
+
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+        <property name="url" value="jdbc:derby://localhost:1527/pa165;create=true" />
+        <property name="username" value="pa165" />
+        <property name="password" value="pa165" />
+    </bean>-->
+
+      
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-             <property name="persistenceUnitName" value="ProjectPU"/>
-         </bean>
+        <property name="persistenceUnitName" value="ProjectPU"/>
+    </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
     
       
-     <bean id="translatorWeb" class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
+    <bean id="translatorWeb" class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
      
      
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     
-     <bean id="mapper" class="org.dozer.DozerBeanMapper">
+    <bean id="mapper" class="org.dozer.DozerBeanMapper">
         <property name="mappingFiles">
             <list>
                 <value>AreaMapper.xml</value>

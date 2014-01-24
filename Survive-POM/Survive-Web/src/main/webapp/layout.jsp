@@ -99,7 +99,7 @@
                         </ul>
                        
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="${pageContext.request.contextPath}/signin.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
+                            <li><a href="<c:url value="/j_spring_security_logout" />" ><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
