@@ -35,7 +35,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("request")
 //@Singleton
-public class AreasResource implements EntityResource {
+public class AreasResource {
 
     @Context
     private UriInfo context;
@@ -61,7 +61,6 @@ public class AreasResource implements EntityResource {
      */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Override
     public String getPlain() {
         StringBuilder returnString = new StringBuilder();
         try {
@@ -107,17 +106,13 @@ public class AreasResource implements EntityResource {
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
     public AreaDto postXml(AreaDto dto) {
-
+        AreaDto checkAndSave = areaService.checkAndSave(dto);
+        
         URI uri = context.getAbsolutePath();
         Response response;
-        AreaDto mapped = new AreaDto();
-        mapped.setName(dto.getName() != null ? dto.getName() : "No name");
-        mapped.setTerrain(dto.getTerrain()!= null ? dto.getTerrain(): TerrainType.DESERT);
-        mapped.setDescription(dto.getDescription() != null ? dto.getDescription() : "No Description");
+        
         try {
-            dto.setId(null);
-            dto = areaService.save(mapped);
-            response = Response.created(URI.create(context.getAbsolutePath() + "/" + dto.getId())).build();
+            response = Response.created(URI.create(context.getAbsolutePath() + "/" + checkAndSave.getId())).build();
         } catch (Exception ex) {
             throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
         }

@@ -3,6 +3,8 @@ package com.muni.fi.pa165.service.impl;
 import com.muni.fi.pa165.dao.WeaponDao;
 import com.muni.fi.pa165.dto.WeaponDto;
 import com.muni.fi.pa165.entities.Weapon;
+import com.muni.fi.pa165.enums.WeaponClass;
+import com.muni.fi.pa165.enums.WeaponType;
 import com.muni.fi.pa165.service.WeaponService;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +38,10 @@ public class WeaponServiceImpl implements WeaponService {
         return mapper.map(entity, WeaponDto.class);
     }
 
-
     @Override
     public WeaponDto findById(Long id) {
         return mapper.map(weaponDao.findById(id), WeaponDto.class);
     }
-
 
     public void setDao(WeaponDao dao) {
         this.weaponDao = dao;
@@ -63,5 +63,24 @@ public class WeaponServiceImpl implements WeaponService {
     @Override
     public void delete(Long id) {
         weaponDao.delete(id);
+    }
+
+    @Override
+    public WeaponDto checkAndSave(WeaponDto dto) {
+
+        WeaponDto mapped = new WeaponDto();
+        mapped.setName(dto.getName() != null ? dto.getName() : "No name");
+        mapped.setWeaponType(dto.getWeaponType() != null ? dto.getWeaponType() : WeaponType.GUN);
+        mapped.setWeaponClass(dto.getWeaponClass() != null ? dto.getWeaponClass() : WeaponClass.RANGED);
+        mapped.setCaliber(dto.getCaliber() != null ? dto.getCaliber() : Double.parseDouble("0"));
+        mapped.setRange(dto.getRange() != null ? dto.getRange() : 0);
+        mapped.setRounds(dto.getRounds() != null ? dto.getRounds() : 0);
+        mapped.setDescription(dto.getDescription() != null ? dto.getDescription() : "No Description");
+
+        dto.setId(null);
+        dto = save(mapped);
+
+        
+        return dto;
     }
 }

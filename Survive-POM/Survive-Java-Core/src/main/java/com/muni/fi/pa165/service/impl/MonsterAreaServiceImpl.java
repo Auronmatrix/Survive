@@ -146,5 +146,4 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
         return mapper.map(entity, MonsterAreaDto.class);
     }
 
-
 }

@@ -3,7 +3,9 @@ package com.muni.fi.pa165.service.impl;
 import com.muni.fi.pa165.dao.AreaDao;
 import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.entities.Area;
+import com.muni.fi.pa165.enums.TerrainType;
 import com.muni.fi.pa165.service.AreaService;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -38,7 +40,6 @@ public class AreaServiceImpl implements AreaService {
         areaDao.save(entity);
         return mapper.map(entity, AreaDto.class);
 
-
     }
 
     @Override
@@ -49,8 +50,6 @@ public class AreaServiceImpl implements AreaService {
         return mapper.map(entity, AreaDto.class);
 
     }
-
-
 
     @Override
     public AreaDto findById(Long id) {
@@ -91,5 +90,20 @@ public class AreaServiceImpl implements AreaService {
             dtoList.add(this.mapper.map(o, AreaDto.class));
         }
         return dtoList;
+    }
+
+    @Override
+    public AreaDto checkAndSave(AreaDto dto) {
+
+        AreaDto mapped = new AreaDto();
+        mapped.setName(dto.getName() != null ? dto.getName() : "No name");
+        mapped.setTerrain(dto.getTerrain() != null ? dto.getTerrain() : TerrainType.DESERT);
+        mapped.setDescription(dto.getDescription() != null ? dto.getDescription() : "No Description");
+
+        dto.setId(null);
+        dto = save(mapped);
+
+        return dto;
+
     }
 }

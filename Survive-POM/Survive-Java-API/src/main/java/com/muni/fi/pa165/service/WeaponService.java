@@ -47,4 +47,6 @@ public interface WeaponService {
      * @param id
      */
     public void delete(Long id);
+
+    public WeaponDto checkAndSave(WeaponDto dto);
 }

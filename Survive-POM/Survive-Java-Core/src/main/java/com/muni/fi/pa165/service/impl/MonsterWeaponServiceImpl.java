@@ -117,7 +117,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     public MonsterWeaponDto findByMonsterId(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

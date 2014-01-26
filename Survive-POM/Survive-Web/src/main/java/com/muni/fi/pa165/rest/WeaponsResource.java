@@ -36,7 +36,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("request")
 //@Singleton
-public class WeaponsResource implements EntityResource {
+public class WeaponsResource {
 
     @Context
     private UriInfo context;
@@ -58,7 +58,6 @@ public class WeaponsResource implements EntityResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Override
     public String getPlain() {
         StringBuilder returnString = new StringBuilder();
         try {
@@ -94,21 +93,13 @@ public class WeaponsResource implements EntityResource {
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
     public WeaponDto postXml(WeaponDto dto) {
+        WeaponDto checkAndSave = weaponService.checkAndSave(dto);
 
         URI uri = context.getAbsolutePath();
         Response response;
-        WeaponDto mapped = new WeaponDto();
-        mapped.setName(dto.getName() != null ? dto.getName() : "No name");
-        mapped.setWeaponType(dto.getWeaponType() != null ? dto.getWeaponType() : WeaponType.GUN);
-        mapped.setWeaponClass(dto.getWeaponClass() != null ? dto.getWeaponClass() : WeaponClass.RANGED);
-        mapped.setCaliber(dto.getCaliber() != null ? dto.getCaliber() : Double.parseDouble("0"));
-        mapped.setRange(dto.getRange() != null ? dto.getRange() : 0);
-        mapped.setRounds(dto.getRounds() != null ? dto.getRounds() : 0);
-        mapped.setDescription(dto.getDescription() != null ? dto.getDescription() : "No Description");
+        
         try {
-            dto.setId(null);
-            dto = weaponService.save(mapped);
-            response = Response.created(URI.create(context.getAbsolutePath() + "/" + dto.getId())).build();
+            response = Response.created(URI.create(context.getAbsolutePath() + "/" + checkAndSave.getId())).build();
         } catch (Exception ex) {
             throw new WebApplicationException(ex, Response.Status.NO_CONTENT);
         }

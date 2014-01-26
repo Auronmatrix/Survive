@@ -47,8 +47,6 @@ public class MonsterServiceImpl implements MonsterService {
 
     }
 
-   
-
     @Override
     public void delete(Long id) {
         monsterDao.delete(id);

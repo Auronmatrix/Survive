@@ -45,4 +45,6 @@ public interface AreaService {
      * @return
      */
     public List<AreaDto> findAll();
+
+    public AreaDto checkAndSave(AreaDto dto);
 }

@@ -33,7 +33,6 @@ public class SystemUserServiceImpl implements SystemUserService {
         systemUserDao.save(entity);
         return mapper.map(entity, SystemUserDto.class);
 
-
     }
 
     @Override
