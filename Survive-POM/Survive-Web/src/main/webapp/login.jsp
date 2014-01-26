@@ -6,7 +6,7 @@
     <s:layout-component name="body">
 
 
-          
+     <s:errors/>     
 <c:if test="${not empty error}">
 		<div>
 			Your login attempt was not successful, try again.<br /> Caused :
@@ -20,14 +20,8 @@
                 <br/>
                 <input type="password" class="form-control" placeholder="Password" required type='password' name='j_password'>
                 <br/>
-                <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit"
-					value="submit" >Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="submit" >Sign in</button>
             </form>
         </div>
-	
- 
-	
- 
-        
     </s:layout-component>
 </s:layout-render>

@@ -1193,3 +1193,13 @@ h1[id] {
   margin-top: 15px;
   margin-bottom: 5px;
 }
+
+input.error, textarea.error {
+    color: red;
+    background-color: yellow;
+}
+
+input.error[type="radio"], input.error[type="checkbox"], select.error {
+    background-color: white;
+    border: 2px solid red;
+}

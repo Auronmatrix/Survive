@@ -2,6 +2,8 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <s:layout-definition>
     <!DOCTYPE html>
     <html lang="${pageContext.request.locale}">
@@ -32,6 +34,15 @@
             <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
             <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-image-gallery.min.css">
+
+            <!-- Bootstrap core JavaScript
+================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+            <script src="${pageContext.request.contextPath}/docs-assets/js/holder.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/bootstrap-image-gallery.min.js"></script>
 
             <!-- Custom styles for this template -->
             <!--            <link href="theme.css" rel="stylesheet">-->
@@ -68,16 +79,16 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
 
-                           
+
                             <li ><a href="${pageContext.request.contextPath}/index.jsp"><f:message key="navigation.index"/></a></li>
-                            
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.monsters"/><b class="caret"></b></a>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.monsters"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monsters"/></s:link></li>
-                                 <li class="divider"></li>
-                                <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" event="gallery"><f:message key="navigation.gallery"/></s:link></li>
-                                </ul>
+                                    <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean"><f:message key="navigation.monsters"/></s:link></li>
+                                        <li class="divider"></li>
+                                        <li ><s:link beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" event="gallery"><f:message key="navigation.gallery"/></s:link></li>
+                                    </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.areas"/><b class="caret"></b></a>
@@ -85,21 +96,38 @@
                                     <li><s:link beanclass="com.muni.fi.pa165.actions.area.AreaActionBean"><span class="glyphicon glyphicon-screenshot">&nbsp;<f:message key="navigation.areas.management"/></span></s:link></li>
                                         <li class="divider"></li>
                                         <li><s:link beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean"><span class="glyphicon glyphicon-eye-open">&nbsp;<f:message key="navigation.areas.locations"/></span></s:link></li>
-                                </ul>
+                                    </ul>
                                 </li>
-                                
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.weapons"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><s:link beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean"><span class="glyphicon glyphicon-screenshot">&nbsp;<f:message key="navigation.weapons.management"/></span></s:link></li>
                                         <li class="divider"></li>
                                         <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean"><span class="glyphicon glyphicon-flash">&nbsp;<f:message key="navigation.weapons.efficiencies"/></span></s:link></li>
-                                </ul>
+                                    </ul>
                                 </li>
-                        </ul>
-                       
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="<c:url value="/j_spring_security_logout" />" ><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                <sec:authorize access="isAuthenticated()">
+                                    <a><span  class="glyphicon glyphicon-user">&nbsp;</span> <sec:authentication property="principal.username"></sec:authentication></a>
+                                </sec:authorize>
+
+                            </li>
+                            <sec:authorize var="loggedIn" access="isAuthenticated()" />
+                            <c:choose>
+                                <c:when test="${loggedIn}">
+                                    <li><a href="<c:url value="/j_spring_security_logout" />" ><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.logout"/></a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <li><a href="${pageContext.request.contextPath}/login.jsp" ><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.login"/></a></li>
+                                    </c:otherwise>
+                                </c:choose>
+
+
+
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -110,26 +138,21 @@
                 <!-- Main jumbotron for a primary marketing message or call to action -->
                 <div class="jumbotron">
                     <image src="${pageContext.request.contextPath}/docs-assets/images/banner.png" />
-                   
+
                 </div>
 
 
-                <div id="content">                    
+                <div id="content">   
+                    <div class="alert" style="margin-top: 5px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <s:messages/></div>  
+
                     <s:layout-component name="body"/>
                 </div>
 
             </div> <!-- /container -->
-            <div class="alert alert-info alert-dismissable" style="margin-top: 30px">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><span class="glyphicon glyphicon-fire"></span>&nbsp;<s:messages/></div>  
 
-            <!-- Bootstrap core JavaScript
-            ================================================== -->
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-            <script src="${pageContext.request.contextPath}/docs-assets/js/holder.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-            <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-            <script src="${pageContext.request.contextPath}/js/bootstrap-image-gallery.min.js"></script>
+
         </body>
     </html>
 </s:layout-definition>

@@ -7,15 +7,7 @@
     <s:layout-component name="body">
 
         <h1 style="text-align: center"><f:message key="text.title"/></h1>
-        <div style="text-align: center">         
-            <p><f:message key="index.headline"/></p>
-            <p><f:message key="index.headline2"/></p>
-            Please <a href="/login.jsp">log in </a> to access the SURVIVE resources
-
-        </div>
-            
-           
-         <div class="row">
+          <div class="row">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <img src="docs-assets/images/monsters.png" alt="Monsters" width="400" height="400"/>
@@ -47,6 +39,15 @@
                 </div>
             </div>
         </div>
+        <div style="text-align: center">         
+            <p><f:message key="index.headline"/></p>
+            <p><f:message key="index.headline2"/></p>
+            Please <a href="/login.jsp">log in </a> to access the SURVIVE resources
+
+        </div>
+            
+           
+       
 
     </s:layout-component>
 </s:layout-render>

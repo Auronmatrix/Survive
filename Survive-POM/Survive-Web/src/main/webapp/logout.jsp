@@ -10,7 +10,7 @@
         <div style="text-align: center">         
             <p><f:message key="logout.headline1"/></p>
             <p><f:message key="logout.headline2"/></p>
-            
+            <a href="${pageContext.request.contextPath}/login.jsp" ><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.login"/></a>
         </div>
             
 

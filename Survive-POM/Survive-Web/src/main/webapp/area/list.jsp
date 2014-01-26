@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <s:layout-render name="/layout.jsp" titlekey="index.title">
     <s:layout-component name="body">
@@ -27,17 +28,21 @@
                         <td><c:out value="${area.terrain}" /></td>
                         <td><c:out value="${area.description}" /></td>                 
 
-                        <td>         
+                        <td>     
+                              <security:authorize ifAnyGranted="ROLE_ADMIN">
                              <s:form beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" action="edit">
                                 <s:hidden name="area.id" value="${area.id}"/>
                                 <s:submit class="btn btn-warning" name="edit"><f:message key="area.list.edit"/></s:submit>
                             </s:form>
+                              </security:authorize>
                         </td>
-                        <td>                            
+                        <td>        
+                              <security:authorize ifAnyGranted="ROLE_ADMIN">
                             <s:form beanclass="com.muni.fi.pa165.actions.area.AreaActionBean" action="delete">
                                 <s:hidden name="area.id" value="${area.id}"/>
                                 <s:submit class="btn btn-danger" name="delete"><f:message key="area.list.delete"/></s:submit>
                             </s:form>
+                              </security:authorize>
                         </td>
                     </tr>
                 </c:forEach>

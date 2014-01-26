@@ -58,11 +58,13 @@
                             </s:form>
                                   </security:authorize>
                         </td>
-                        <td>                            
+                        <td>  
+                              <security:authorize ifAnyGranted="ROLE_ADMIN">
                             <s:form beanclass="com.muni.fi.pa165.actions.monster.MonsterActionBean" action="delete">
                                 <s:hidden name="monster.id" value="${monster.id}"/>
                                 <s:submit class="btn btn-danger" name="delete"><f:message key="forms.delete"/></s:submit>
                             </s:form>
+                              </security:authorize>
                         </td>
                     </tr>
                 </c:forEach>

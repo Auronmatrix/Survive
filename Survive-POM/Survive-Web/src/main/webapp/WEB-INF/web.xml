@@ -31,6 +31,17 @@
 	</filter-mapping>    
     
     
+          <error-page>
+  <error-code>404</error-code>
+  <location>/404.jsp</location>
+ </error-page>
+  
+ <!-- With Servlet 3.0 and above general error page is possible -->
+ <error-page>
+  <location>/error.jsp</location>
+ </error-page>
+    
+    
     <!-- Jersey -->
 <servlet>
       <servlet-name>Jersey Spring</servlet-name>
@@ -98,5 +109,7 @@
         <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>  
     
+
+
 
 </web-app>

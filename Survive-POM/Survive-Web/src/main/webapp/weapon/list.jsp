@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <s:layout-render name="/layout.jsp" titlekey="weapon.title">
     <s:layout-component name="body">
@@ -36,17 +37,21 @@
                         <td><c:out value="${weapon.caliber}" /></td>
                         <td><c:out value="${weapon.rounds}" /></td>
                         <td><c:out value="${weapon.description}" /></td>
-                          <td>         
+                          <td>  
+                                <security:authorize ifAnyGranted="ROLE_ADMIN">
                             <s:form beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean" action="edit">
                                 <s:hidden name="weapon.id" value="${weapon.id}"/>
                                 <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
                             </s:form>
+                                </security:authorize>
                         </td>
-                        <td>                            
+                        <td>     
+                              <security:authorize ifAnyGranted="ROLE_ADMIN">
                             <s:form beanclass="com.muni.fi.pa165.actions.weapon.WeaponActionBean" action="delete">
                                 <s:hidden name="weapon.id" value="${weapon.id}"/>
                                 <s:submit class="btn btn-danger" name="delete"><f:message key="forms.delete"/></s:submit>
                             </s:form>
+                              </security:authorize>
                         </td>
                     </tr>
                 </c:forEach>
