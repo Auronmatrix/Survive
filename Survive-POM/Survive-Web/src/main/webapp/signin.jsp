@@ -13,7 +13,7 @@
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> <f:message key="logon.remember"/>
         </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><f:message key="navigation.signin"/></button>
       </form>
         </div>
   
