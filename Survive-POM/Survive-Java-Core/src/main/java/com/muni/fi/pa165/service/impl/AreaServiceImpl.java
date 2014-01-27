@@ -5,12 +5,12 @@ import com.muni.fi.pa165.dto.AreaDto;
 import com.muni.fi.pa165.entities.Area;
 import com.muni.fi.pa165.enums.TerrainType;
 import com.muni.fi.pa165.service.AreaService;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import org.dozer.Mapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +34,7 @@ public class AreaServiceImpl implements AreaService {
      * @return
      */
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public AreaDto save(AreaDto dto) {
 
         Area entity = mapper.map(dto, Area.class);
@@ -43,6 +44,7 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public AreaDto update(AreaDto dto) {
 
         Area entity = mapper.map(dto, Area.class);
@@ -75,6 +77,7 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public void delete(Long id) {
         areaDao.delete(id);
     }

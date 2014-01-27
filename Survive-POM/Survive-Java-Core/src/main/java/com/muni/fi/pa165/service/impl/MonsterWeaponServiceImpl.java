@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 /**
@@ -38,6 +39,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
      * @return MonsterWeaponDto of MonsterWeaponClass
      */
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
     public MonsterWeaponDto save(MonsterWeaponDto dto) {
         MonsterWeapon entity = mapper.map(dto, MonsterWeapon.class);
         MonsterWeaponPK pk = mapper.map(new MonsterWeaponPkDto(dto.getMonster().getId(), dto.getWeapon().getId()), MonsterWeaponPK.class);
@@ -47,6 +49,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
     public MonsterWeaponDto update(MonsterWeaponDto dto) {
 
         MonsterWeapon entity = mapper.map(dto, MonsterWeapon.class);
@@ -56,6 +59,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
         return mapper.map(entity, MonsterWeaponDto.class);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
     public void delete(MonsterWeaponDto dto) {
 
         monsterWeaponDao.delete(mapper.map(dto, MonsterWeapon.class));
@@ -103,6 +107,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
     public void delete(MonsterWeaponPkDto id) {
         MonsterWeaponPK pk = mapper.map(id, MonsterWeaponPK.class);
         monsterWeaponDao.delete(pk);

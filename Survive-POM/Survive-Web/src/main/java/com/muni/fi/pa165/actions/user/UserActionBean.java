@@ -34,7 +34,7 @@ public class UserActionBean extends BaseActionBean implements ValidationErrorHan
      *
      * @return
      */
-    //@DefaultHandler
+    @DefaultHandler
     public Resolution list() {
         log.debug("list()");
         users = userService.findAll();
@@ -51,8 +51,6 @@ public class UserActionBean extends BaseActionBean implements ValidationErrorHan
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "username", required = true, maxlength = 255),
         @Validate(on = {"add", "save"}, field = "password", required = true),
-        @Validate(on = {"add", "save"}, field = "accesslevel", required = true),
-       
     })
     private SystemUserDto user;
 
@@ -107,7 +105,7 @@ public class UserActionBean extends BaseActionBean implements ValidationErrorHan
         log.debug("delete({})", user.getUsername());
         try {
   
-          //  userService.delete(user.getUsername());
+            userService.delete(user);
         } catch (Exception ex) {
             log.error(ex.getMessage());
         }

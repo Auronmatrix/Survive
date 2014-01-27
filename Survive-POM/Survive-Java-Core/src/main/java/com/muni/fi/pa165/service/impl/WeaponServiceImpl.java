@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,6 +26,7 @@ public class WeaponServiceImpl implements WeaponService {
     private Mapper mapper;
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public WeaponDto save(WeaponDto dto) {
         Weapon entity = mapper.map(dto, Weapon.class);
         weaponDao.save(entity);
@@ -32,6 +34,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public WeaponDto update(WeaponDto dto) {
         Weapon entity = mapper.map(dto, Weapon.class);
         weaponDao.update(entity);
@@ -61,6 +64,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public void delete(Long id) {
         weaponDao.delete(id);
     }
@@ -80,7 +84,7 @@ public class WeaponServiceImpl implements WeaponService {
         dto.setId(null);
         dto = save(mapped);
 
-        
+
         return dto;
     }
 }

@@ -8,8 +8,8 @@
 
         <h1 style="text-align: center"><f:message key="logout.title"/></h1>
         <div style="text-align: center">         
-            <p><f:message key="logout.headline1"/></p>
-            <p><f:message key="logout.headline2"/></p>
+            <p class="text-info"><f:message key="logout.headline1"/></p>
+            <p class="text-danger"><f:message key="logout.headline2"/></p>
             <a href="${pageContext.request.contextPath}/login.jsp" ><span class="glyphicon glyphicon-off"></span>&nbsp;<f:message key="navigation.login"/></a>
         </div>
             

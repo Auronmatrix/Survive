@@ -24,12 +24,12 @@
                     <tr>                       
                        
                         <td><c:out value="${user.username}" /></td>
-                        <td><f:message key="com.muni.fi.pa165.enums.UserType.${user.password}" /></td>
-                        <td><f:message key="com.muni.fi.pa165.enums.UserClass.${user.accessLevel}" /></td>                      
+                        <td><c:out value="${user.password}" /></td>
+                        <td><c:out value="${user.accessLevel}" /></td>                      
                           <td>  
                                 <security:authorize ifAnyGranted="ROLE_ADMIN">
                             <s:form beanclass="com.muni.fi.pa165.actions.user.UserActionBean" action="edit">
-                                <s:hidden name="user.id" value="${user.username}"/>
+                                <s:hidden name="user.username" value="${user.username}"/>
                                 <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
                             </s:form>
                                 </security:authorize>
@@ -37,7 +37,7 @@
                         <td>     
                               <security:authorize ifAnyGranted="ROLE_ADMIN">
                             <s:form beanclass="com.muni.fi.pa165.actions.user.UserActionBean" action="delete">
-                                <s:hidden name="user.id" value="${user.username}"/>
+                                <s:hidden name="user.username" value="${user.username}"/>
                                 <s:submit class="btn btn-danger" name="delete"><f:message key="forms.delete"/></s:submit>
                             </s:form>
                               </security:authorize>

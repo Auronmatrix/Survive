@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 /**
@@ -42,6 +43,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
      * @return
      */
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
     public MonsterAreaDto save(MonsterAreaDto dto) {
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
         Long monster = dto.getMonster().getId();
@@ -54,6 +56,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
     public MonsterAreaDto update(MonsterAreaDto dto) {
 
         MonsterArea entity = mapper.map(dto, MonsterArea.class);
@@ -67,6 +70,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
      *
      * @param dto
      */
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
     public void delete(MonsterAreaDto dto) {
 
         monsterAreaDao.delete(mapper.map(dto, MonsterArea.class));
@@ -127,6 +131,7 @@ public class MonsterAreaServiceImpl implements MonsterAreaService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
     public void delete(MonsterAreaPkDto id) {
         MonsterAreaPK pk = mapper.map(id, MonsterAreaPK.class);
         monsterAreaDao.delete(pk);

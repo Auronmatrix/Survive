@@ -60,22 +60,22 @@
                         <td><c:out value="${monsterArea.monsterQuantity}" /></td>
 
                         <td>    
-                              <security:authorize ifAnyGranted="ROLE_ADMIN">
+                             
                             <s:form beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" action="edit">
                                 <s:hidden name="monsterArea.monster.id" value="${monsterArea.monster.id}"/>
                                 <s:hidden name="monsterArea.area.id" value="${monsterArea.area.id}"/>
                                 <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
                             </s:form>
-                              </security:authorize>
+                             
                         </td>
                         <td>     
-                              <security:authorize ifAnyGranted="ROLE_ADMIN">
+                             
                             <s:form beanclass="com.muni.fi.pa165.actions.locations.LocationsActionBean" action="delete">
                                 <s:hidden name="monsterArea.monster.id" value="${monsterArea.monster.id}"/>
                                 <s:hidden name="monsterArea.area.id" value="${monsterArea.area.id}"/>
                                 <s:submit class="btn btn-danger" name="delete"><f:message key="forms.delete"/></s:submit>
                             </s:form>
-                              </security:authorize>
+                              
                         </td>
                     </tr>
                 </c:forEach>

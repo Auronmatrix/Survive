@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import org.dozer.Mapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +32,7 @@ public class MonsterServiceImpl implements MonsterService {
      * @return
      */
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public MonsterDto save(MonsterDto dto) {
         Monster entity = mapper.map(dto, Monster.class);
         entity = monsterDao.save(entity);
@@ -39,6 +41,7 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public MonsterDto update(MonsterDto dto) {
 
         Monster entity = mapper.map(dto, Monster.class);
@@ -48,6 +51,7 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public void delete(Long id) {
         monsterDao.delete(id);
     }
