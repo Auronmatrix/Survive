@@ -41,12 +41,12 @@
                         </td> 
                         <td>${monster.id}</td>
                         <td><c:out value="${monster.name}" /></td>
-                        <td><c:out value="${monster.stamina}" /></td>
+                        <td><c:out value="${monster.stamina.intValue()}" /></td>
 
                         <td><c:out value="${monster.height}" /></td>
-                        <td><c:out value="${monster.strength}" /></td>
-                        <td><c:out value="${monster.agility}" /></td>
-                        <td><c:out value="${monster.dangerLevel}" /></td>
+                        <td><c:out value="${monster.strength.intValue()}" /></td>
+                        <td><c:out value="${monster.agility.intValue()}" /></td>
+                        <td><c:out value="${monster.dangerLevel.intValue()}" /></td>
                         <td><c:out value="${monster.weight}" /></td>
                         <td><f:message key="com.muni.fi.pa165.enums.MonsterClass.${monster.monsterClass}" /></td>
                         <td><c:out value="${monster.description}" /></td>   
