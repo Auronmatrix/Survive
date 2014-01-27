@@ -1,9 +1,9 @@
 package com.muni.fi.pa165.service.impl;
 
-import com.muni.fi.pa165.dao.SystemUserDao;
-import com.muni.fi.pa165.dto.SystemUserDto;
-import com.muni.fi.pa165.entities.SystemUser;
-import com.muni.fi.pa165.service.SystemUserService;
+import com.muni.fi.pa165.dao.UserDao;
+import com.muni.fi.pa165.dto.UsersDto;
+import com.muni.fi.pa165.entities.Users;
+import com.muni.fi.pa165.service.UsersService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -18,43 +18,43 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class SystemUserServiceImpl implements SystemUserService {
+public class UsersServiceImpl implements UsersService {
 
-    private static final Logger logger = Logger.getLogger(SystemUserServiceImpl.class.getName());
+    private static final Logger logger = Logger.getLogger(UsersServiceImpl.class.getName());
     @Inject
-    private SystemUserDao systemUserDao;
+    private UserDao systemUserDao;
     @Inject
     private Mapper mapper;
 
     @Override
-    public SystemUserDto save(SystemUserDto dto) {
+    public UsersDto save(UsersDto dto) {
 
-        SystemUser entity = mapper.map(dto, SystemUser.class);
+        Users entity = mapper.map(dto, Users.class);
         systemUserDao.save(entity);
-        return mapper.map(entity, SystemUserDto.class);
+        return mapper.map(entity, UsersDto.class);
 
     }
 
     @Override
-    public SystemUserDto update(SystemUserDto dto) {
+    public UsersDto update(UsersDto dto) {
 
-        SystemUser entity = mapper.map(dto, SystemUser.class);
+        Users entity = mapper.map(dto, Users.class);
         systemUserDao.update(entity);
-        return mapper.map(entity, SystemUserDto.class);
+        return mapper.map(entity, UsersDto.class);
 
     }
 
     @Override
-    public void delete(SystemUserDto dto) {
+    public void delete(UsersDto dto) {
 
-        systemUserDao.delete(mapper.map(dto, SystemUser.class));
+        systemUserDao.delete(mapper.map(dto, Users.class));
 
     }
 
     @Override
-    public SystemUserDto findById(Long id) {
+    public UsersDto findById(Long id) {
 
-        return mapper.map(systemUserDao.findById(id), SystemUserDto.class);
+        return mapper.map(systemUserDao.findById(id), UsersDto.class);
 
     }
 
@@ -67,7 +67,7 @@ public class SystemUserServiceImpl implements SystemUserService {
      *
      * @param dao
      */
-    public void setDao(SystemUserDao dao) {
+    public void setDao(UserDao dao) {
         this.systemUserDao = dao;
     }
 
@@ -84,10 +84,10 @@ public class SystemUserServiceImpl implements SystemUserService {
      * @return
      */
     @Override
-    public List<SystemUserDto> findAll() {
-        List<SystemUserDto> dtoList = new ArrayList<>();
-        for (SystemUser o : systemUserDao.findAll()) {
-            dtoList.add(this.mapper.map(o, SystemUserDto.class));
+    public List<UsersDto> findAll() {
+        List<UsersDto> dtoList = new ArrayList<>();
+        for (Users o : systemUserDao.findAll()) {
+            dtoList.add(this.mapper.map(o, UsersDto.class));
         }
         return dtoList;
     }

@@ -1,6 +1,6 @@
 package com.muni.fi.pa165.service;
 
-import com.muni.fi.pa165.dto.SystemUserDto;
+import com.muni.fi.pa165.dto.UserDto;
 import java.util.List;
 
 /**
@@ -15,35 +15,35 @@ public interface SystemUserService {
 
     boolean exists(Long id) throws IllegalArgumentException;
 /**
-     * Saves SystemUserDto
+     * Saves UserDto
      *
-     * @param dto object of type SystemUserDto
+     * @param dto object of type UserDto
      */
-    public SystemUserDto save(SystemUserDto dto);
+    public UserDto save(UserDto dto);
 
     /**
-     * Updates SystemUserDto
+     * Updates UserDto
      *
-     * @param dto object of type SystemUserDto
+     * @param dto object of type UserDto
      */
-    public SystemUserDto update(SystemUserDto dto);
+    public UserDto update(UserDto dto);
 
     /**
-     * Deletes SystemUserDto
+     * Deletes UserDto
      *
-     * @param dto object of type SystemUserDto
+     * @param dto object of type UserDto
      */
-    public void delete(SystemUserDto dto);
+    public void delete(UserDto dto);
 
     /**
-     * Finds SystemUserDto by id
+     * Finds UserDto by id
      *
      * @param id ID of the systemUser
-     * @return SystemUser object of type SystemUserDto
+     * @return SystemUser object of type UserDto
      */
-    public SystemUserDto findById(Long id);
+    public UserDto findById(Long id);
 
-    public List<SystemUserDto> findAll();
+    public List<UserDto> findAll();
 
     public void delete(Long id);
 }

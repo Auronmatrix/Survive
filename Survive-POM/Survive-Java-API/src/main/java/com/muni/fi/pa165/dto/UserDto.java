@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author irina
  */
 @XmlRootElement
-public class SystemUserDto {
+public class UserDto {
 
     private Long id;
     private String username;
@@ -83,10 +83,10 @@ public class SystemUserDto {
     @Override
     public boolean equals(Object object) {
 
-        if (!(object instanceof SystemUserDto)) {
+        if (!(object instanceof UserDto)) {
             return false;
         }
-        SystemUserDto other = (SystemUserDto) object;
+        UserDto other = (UserDto) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

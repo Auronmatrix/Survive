@@ -1,6 +1,6 @@
 package com.muni.fi.pa165.dao.jpa.impl;
 
-import com.muni.fi.pa165.dao.SystemUserDao;
+import com.muni.fi.pa165.dao.UserDao;
 import com.muni.fi.pa165.dao.gen.AbstractDaoIntegrationTest;
 import com.muni.fi.pa165.entities.SystemUser;
 import org.junit.After;
@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
 
     @Autowired
-    SystemUserDao dao;
+    UserDao dao;
     
     SystemUser entity;
 

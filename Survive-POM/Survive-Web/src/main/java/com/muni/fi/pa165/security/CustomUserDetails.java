@@ -4,7 +4,7 @@
  */
 package com.muni.fi.pa165.security;
 
-import com.muni.fi.pa165.dto.SystemUserDto;
+import com.muni.fi.pa165.dto.UserDto;
 import com.muni.fi.pa165.service.SystemUserService;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class CustomUserDetails implements UserDetailsService{
     @Override
     public org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
      
-        SystemUserDto user = service.findById(Long.parseLong(string));
+        UserDto user = service.findById(Long.parseLong(string));
         ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
      
         User x = new User(user.getUsername(), user.getPassword(), authorities);

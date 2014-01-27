@@ -1,7 +1,7 @@
 package com.muni.fi.pa165.actions.user;
 
 import com.muni.fi.pa165.actions.base.BaseActionBean;
-import com.muni.fi.pa165.dto.SystemUserDto;
+import com.muni.fi.pa165.dto.UserDto;
 import com.muni.fi.pa165.service.SystemUserService;
 import java.util.List;
 import net.sourceforge.stripes.action.*;
@@ -28,7 +28,7 @@ public class UserActionBean extends BaseActionBean implements ValidationErrorHan
      */
     @SpringBean
     protected SystemUserService userService;
-    private List<SystemUserDto> users;
+    private List<UserDto> users;
 
     /**
      *
@@ -45,14 +45,14 @@ public class UserActionBean extends BaseActionBean implements ValidationErrorHan
      *
      * @return
      */
-    public List<SystemUserDto> getUsers() {
+    public List<UserDto> getUsers() {
         return users;
     }
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "username", required = true, maxlength = 255),
         @Validate(on = {"add", "save"}, field = "password", required = true),
     })
-    private SystemUserDto user;
+    private UserDto user;
 
     /**
      *
@@ -84,7 +84,7 @@ public class UserActionBean extends BaseActionBean implements ValidationErrorHan
      *
      * @return
      */
-    public SystemUserDto getUser() {
+    public UserDto getUser() {
         return user;
     }
 
@@ -92,7 +92,7 @@ public class UserActionBean extends BaseActionBean implements ValidationErrorHan
      *
      * @param user
      */
-    public void setUser(SystemUserDto user) {
+    public void setUser(UserDto user) {
         this.user = user;
     }
 
