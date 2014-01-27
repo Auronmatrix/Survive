@@ -28,19 +28,22 @@
         <div class="form-group">
             <s:label for="range" class="col-sm-2 control-label" name="weapon.range" />
             <div class="col-sm-10">
-                <s:text class="form-control" id="range" name="weapon.range"/>
+               <!-- <s:text class="form-control" id="range" name="weapon.range"/>-->
+               <input type="number" class="form-control" id="range" name="weapon.range" placeholder="Please enter numeric value from 0 till 50"/>
             </div>
         </div>
         <div class="form-group">
             <s:label for="caliber" class="col-sm-2 control-label"  name="weapon.caliber"/>
             <div class="col-sm-10">
-                <s:text  class="form-control" id="caliber" name="weapon.caliber"/>
+               <!-- <s:text  class="form-control" id="caliber" name="weapon.caliber"/>-->
+                <input type="number" class="form-control" id="caliber" name="weapon.caliber" placeholder="Please enter numeric value from 0 till 100 000"/>
             </div>
         </div>
         <div class="form-group">
             <s:label for="rounds" class="col-sm-2 control-label" name="weapon.rounds"/>
             <div class="col-sm-10">
-                <s:text  class="form-control" id="rounds" name="weapon.rounds"/>
+               <!-- <s:text  class="form-control" id="rounds" name="weapon.rounds"/>-->
+                <input type="number" class="form-control" id="rounds" name="weapon.rounds" placeholder="Please enter numeric value from 0 till 100 000"/>
             </div>
         </div>
         

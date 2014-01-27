@@ -30,7 +30,7 @@
             <s:label for="strength" class="col-sm-2 control-label" name="monster.strength"/>
             <div class="col-sm-10">
                <!-- <s:text  class="form-control" id="strength" name="monster.strength"/>-->
-               <input type="number" class="form-control" id="strength" name="monster.strength" placeholder="Please enter numeric valuee from 0 till 100"/>
+               <input type="number" class="form-control" id="strength" name="monster.strength" placeholder="Please enter numeric value from 0 till 100"/>
             </div>
         </div>
         <div class="form-group">
