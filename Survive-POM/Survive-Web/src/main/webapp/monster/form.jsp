@@ -13,39 +13,45 @@
             </div>
         </div>
         <div class="form-group">
-            <s:label for="stamina" class="col-sm-2 control-label" name="monster.stamina" />
+            <s:label for="stamina" class="col-sm-2 control-label" name="monster.stamina" />          
             <div class="col-sm-10">
-                <s:text class="form-control" id="stamina" name="monster.stamina"/>
+                <!--<s:text class="form-control" id="stamina" name="monster.stamina"/>-->
+                <input type="number" class="form-control" id="stamina" name="monster.stamina" placeholder="Please enter numeric value from 0 till 100"/>
             </div>
         </div>
         <div class="form-group">
             <s:label for="height" class="col-sm-2 control-label"  name="monster.height"/>
             <div class="col-sm-10">
-                <s:text  class="form-control" id="height" name="monster.height"/>
+                <!--<s:text  class="form-control" id="height" name="monster.height"/>-->
+                <input type="number" class="form-control" id="height" name="monster.height" placeholder="Please enter numeric value from 0 till 100"/>
             </div>
         </div>
         <div class="form-group">
             <s:label for="strength" class="col-sm-2 control-label" name="monster.strength"/>
             <div class="col-sm-10">
-                <s:text  class="form-control" id="strength" name="monster.strength"/>
+               <!-- <s:text  class="form-control" id="strength" name="monster.strength"/>-->
+               <input type="number" class="form-control" id="strength" name="monster.strength" placeholder="Please enter numeric valuee from 0 till 100"/>
             </div>
         </div>
         <div class="form-group">
             <s:label for="agility" class="col-sm-2 control-label" name="monster.agility"/>
             <div class="col-sm-10">
-                <s:text  class="form-control" id="agility" name="monster.agility"/>
+               <!-- <s:text  class="form-control" id="agility" name="monster.agility"/>-->
+               <input type="number" class="form-control" id="agility" name="monster.agility" placeholder="Please enter numeric value from 0 till 100"/>
             </div>
         </div>
         <div class="form-group">
             <s:label for="dangerLevel" class="col-sm-2 control-label" name="monster.dangerLevel"/>
             <div class="col-sm-10">
-                <s:text  class="form-control" id="dangerLevel" name="monster.dangerLevel"/>
+                <!--<s:text  class="form-control" id="dangerLevel" name="monster.dangerLevel"/>-->
+                <input type="number" class="form-control" id="dangerLevel" name="monster.dangerLevel" placeholder="Please enter numeric value from 0 till 100"/>
             </div>
         </div>
         <div class="form-group">
             <s:label for="weight" class="col-sm-2 control-label" name="monster.weight"/>
             <div class="col-sm-10">
-                <s:text class="form-control" id="weight"  name="monster.weight"/>
+                <!--<s:text class="form-control" id="weight"  name="monster.weight"/>-->
+                <input type="number" class="form-control" id="weight" name="monster.weight" placeholder="Please enter numeric value from 0 till 100"/>
             </div>
         </div>
         <div class="form-group">
