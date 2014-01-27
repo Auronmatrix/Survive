@@ -107,7 +107,12 @@
                                         <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean"><span class="glyphicon glyphicon-flash">&nbsp;<f:message key="navigation.weapons.efficiencies"/></span></s:link></li>
                                     </ul>
                                 </li>
-                            </ul>
+                                 <sec:authorize ifAnyGranted="ROLE_ADMIN">
+                               <li ><a href="${pageContext.request.contextPath}/user/list.jsp"><f:message key="navigation.users"/></a></li>
+                            </sec:authorize>
+                        </ul>
+                                    
+                                    
 
                             <ul class="nav navbar-nav navbar-right">
                                 <li>

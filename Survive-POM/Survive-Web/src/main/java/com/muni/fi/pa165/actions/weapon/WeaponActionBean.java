@@ -13,6 +13,7 @@ import net.sourceforge.stripes.validation.ValidationErrorHandler;
 import net.sourceforge.stripes.validation.ValidationErrors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  * Stripes ActionBean for handling weapon operations.
@@ -63,6 +64,8 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
      *
      * @return
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    
     public Resolution add() {
         log.debug("add() weapon={}", weapon);
 
@@ -106,11 +109,12 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
      *
      * @return
      */
+    
     public Resolution delete() {
 
         log.debug("delete({})", weapon.getId());
         try {
-  
+
             weaponService.delete(weapon.getId());
         } catch (Exception ex) {
             log.error(ex.getMessage());
@@ -134,6 +138,7 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
      *
      * @return
      */
+    
     public Resolution edit() {
         log.debug("edit() weapon={}", weapon);
         return new ForwardResolution("/weapon/edit.jsp");
@@ -143,6 +148,7 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
      *
      * @return
      */
+    
     public Resolution save() {
 
         log.debug("save() weapon={}", weapon);
@@ -154,6 +160,7 @@ public class WeaponActionBean extends BaseActionBean implements ValidationErrorH
      *
      * @return
      */
+    
     public Resolution cancel() {
 
         log.debug("cancel");

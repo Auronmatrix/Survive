@@ -7,7 +7,7 @@
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" var="actionBean"/>
 
         <s:form beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" class="form-horizontal"  focus="" action="/efficiencies/edit.action">
-               <fieldset><legend><f:message key="monsterWeapon.edit.edit"/></legend>
+               <fieldset><legend><f:message key="monsterWeapon.edit.edit"/></legend></fieldset>
                    <s:hidden name="monsterWeapon.monster.id"/>
                    <s:hidden name="monsterWeapon.weapon.id"/>
                       <div class="form-group">
@@ -27,13 +27,16 @@
                 <%@include file="form.jsp"%>
                <div><s:submit class="btn btn-info" name="save"><f:message key="forms.save"/></s:submit> 
                    </div>               
-                </fieldset>
+            
         </s:form>
-        
-        &nbsp;
+                          &nbsp;
+        <div class="form-group">
         <s:form beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean" class="form-horizontal"  focus="" action="/efficiencies/cancel.action">
-                 <s:submit class="btn btn-warning" name="cancel" value="cancel" ><f:message key="forms.cancel"/></s:submit> 
+             <div class="col-sm-10">   
+            <s:submit class="btn btn-warning" name="cancel" value="cancel" ><f:message key="forms.cancel"/></s:submit> 
+             </div>
         </s:form>
+        </div>
         
      
 
