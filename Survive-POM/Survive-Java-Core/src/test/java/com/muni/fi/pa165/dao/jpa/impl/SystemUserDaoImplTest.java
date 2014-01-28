@@ -1,8 +1,10 @@
 package com.muni.fi.pa165.dao.jpa.impl;
 
-import com.muni.fi.pa165.dao.UserDao;
+import com.muni.fi.pa165.dao.SystemUserDao;
 import com.muni.fi.pa165.dao.gen.AbstractDaoIntegrationTest;
 import com.muni.fi.pa165.entities.SystemUser;
+import com.muni.fi.pa165.enums.UserGroup;
+import com.muni.fi.pa165.enums.UserStatus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -18,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
 
     @Autowired
-    UserDao dao;
+    SystemUserDao dao;
     
     SystemUser entity;
 
@@ -32,10 +34,11 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
 
     @Before
     public void setUp() {
-        entity = new SystemUser();
+        entity = new SystemUser();       
         entity.setUsername("user");
         entity.setPassword("1234");
-        entity.setAccesslevel(1);
+        entity.setEnabled(UserStatus.ENABLED);
+        entity.setAuthority(UserGroup.ROLE_USER);
         dao.save(entity);
 
     }
@@ -49,7 +52,7 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
      */
     @Test
     public void testDelete() {
-        dao.delete(entity);
+        dao.delete(entity.getId());
         SystemUser deletedUser = dao.findById(entity.getId());
         Assert.assertNull(deletedUser);
     }
@@ -59,14 +62,14 @@ public class SystemUserDaoImplTest extends AbstractDaoIntegrationTest{
     @Test
     public void createTest() {
         Assert.assertNotNull(entity);
-        Assert.assertNotNull(entity.getId());
+        Assert.assertNotNull(entity.getUsername());
     }
      /**
      * Test of findTest method of class SystemUserJpaDaoImpl
      */
     @Test
     public void findTest() {
-        SystemUser systemUserFound = dao.findById(entity.getId());
+        SystemUser systemUserFound = dao.findByName(entity.getUsername());
         Assert.assertNotNull(systemUserFound);
     }
 }

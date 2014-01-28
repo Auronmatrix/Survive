@@ -1,9 +1,10 @@
 package com.muni.fi.pa165.service.impl;
 
-import com.muni.fi.pa165.dao.UserDao;
-import com.muni.fi.pa165.dto.UsersDto;
-import com.muni.fi.pa165.entities.Users;
-import com.muni.fi.pa165.service.UsersService;
+import com.muni.fi.pa165.dao.SystemUserDao;
+import com.muni.fi.pa165.dto.SystemUserDto;
+import com.muni.fi.pa165.entities.SystemUser;
+import com.muni.fi.pa165.enums.UserGroup;
+import com.muni.fi.pa165.service.SystemUserService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -18,86 +19,79 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class UsersServiceImpl implements UsersService {
+public class SystemUserServiceImpl implements SystemUserService {
 
-    private static final Logger logger = Logger.getLogger(UsersServiceImpl.class.getName());
+    private static final Logger logger = Logger.getLogger(SystemUserServiceImpl.class.getName());
     @Inject
-    private UserDao systemUserDao;
+    private SystemUserDao systemUserDao;
     @Inject
     private Mapper mapper;
 
+ 
     @Override
-    public UsersDto save(UsersDto dto) {
-
-        Users entity = mapper.map(dto, Users.class);
+    public SystemUserDto save(SystemUserDto dto) {
+        SystemUser entity = mapper.map(dto, SystemUser.class);
         systemUserDao.save(entity);
-        return mapper.map(entity, UsersDto.class);
-
+        return mapper.map(entity, SystemUserDto.class);
     }
 
     @Override
-    public UsersDto update(UsersDto dto) {
-
-        Users entity = mapper.map(dto, Users.class);
+    public SystemUserDto update(SystemUserDto dto) {
+        SystemUser entity = mapper.map(dto, SystemUser.class);
         systemUserDao.update(entity);
-        return mapper.map(entity, UsersDto.class);
-
+        return mapper.map(entity, SystemUserDto.class);
+    }
+    
+    
+    @Override
+    public SystemUserDto findById(Long id) {
+        return mapper.map(systemUserDao.findById(id), SystemUserDto.class);
     }
 
     @Override
-    public void delete(UsersDto dto) {
-
-        systemUserDao.delete(mapper.map(dto, Users.class));
-
+    public SystemUserDto findByName(String username) {
+        return mapper.map(systemUserDao.findByName(username), SystemUserDto.class);
     }
 
-    @Override
-    public UsersDto findById(Long id) {
-
-        return mapper.map(systemUserDao.findById(id), UsersDto.class);
-
-    }
-
-    @Override
-    public boolean exists(Long id) {
-        throw new NoSuchMethodError();
-    }
-
-    /**
-     *
-     * @param dao
-     */
-    public void setDao(UserDao dao) {
+  
+    public void setDao(SystemUserDao dao) {
         this.systemUserDao = dao;
     }
 
-    /**
-     *
-     * @param mapper
-     */
     public void setMapper(Mapper mapper) {
         this.mapper = mapper;
     }
 
-    /**
-     *
-     * @return
-     */
+
     @Override
-    public List<UsersDto> findAll() {
-        List<UsersDto> dtoList = new ArrayList<>();
-        for (Users o : systemUserDao.findAll()) {
-            dtoList.add(this.mapper.map(o, UsersDto.class));
+    public List<SystemUserDto> findAll() {
+        List<SystemUserDto> dtoList = new ArrayList<>();
+        for (SystemUser o : systemUserDao.findAll()) {
+            dtoList.add(this.mapper.map(o, SystemUserDto.class));
         }
         return dtoList;
     }
 
-    /**
-     *
-     * @param id
-     */
-    @Override
-    public void delete(Long id) {
-        systemUserDao.delete(id);
+
+    public SystemUserDto checkAndSave(SystemUserDto dto) {
+        
+        SystemUserDto mapped = new SystemUserDto();      
+        mapped.setUsername(dto.getUsername() != null ? dto.getUsername() : "default_user");      
+        mapped.setAuthority(dto.getAuthority() != null ? dto.getAuthority() : UserGroup.ROLE_USER);
+        mapped.setPassword(dto.getPassword() != null ? dto.getPassword() : "1234");
+        dto = save(mapped);
+        return dto;
     }
+
+
+    
+    
+    @Override
+    public void delete(Long id)
+    {
+        systemUserDao.delete(id);
+        
+    }
+
+ 
 }

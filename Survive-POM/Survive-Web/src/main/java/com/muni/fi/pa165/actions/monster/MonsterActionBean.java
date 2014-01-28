@@ -14,6 +14,7 @@ import net.sourceforge.stripes.validation.ValidationErrorHandler;
 import net.sourceforge.stripes.validation.ValidationErrors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  * Stripes ActionBean for handling monster operations.
@@ -21,6 +22,7 @@ import org.slf4j.LoggerFactory;
  * @author Aubrey Oosthuizen
  */
 @UrlBinding("/monster/{$event}/{monster.id}")
+@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST'")
 public class MonsterActionBean extends BaseActionBean implements ValidationErrorHandler {
 
     final static Logger log = LoggerFactory.getLogger(MonsterActionBean.class);
@@ -36,6 +38,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
      * @return
      */
     @DefaultHandler
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST'")
     public Resolution list() {
         log.debug("list()");
         monsters = monsterService.findAll();

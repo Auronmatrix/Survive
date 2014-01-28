@@ -107,9 +107,12 @@
                                         <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean"><span class="glyphicon glyphicon-flash">&nbsp;<f:message key="navigation.weapons.efficiencies"/></span></s:link></li>
                                     </ul>
                                 </li>
-                                 <sec:authorize ifAnyGranted="ROLE_ADMIN">
-                               <li ><a href="${pageContext.request.contextPath}/user/list.jsp"><f:message key="navigation.users"/></a></li>
-                            </sec:authorize>
+                              <sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
+                              <li><s:link beanclass="com.muni.fi.pa165.actions.user.UserActionBean"><f:message key="navigation.users"/></span></s:link></li>
+                               </sec:authorize>
+                                   <sec:authorize ifAnyGranted="ROLE_ADMIN">
+                              <li><s:link beanclass="com.muni.fi.pa165.actions.user.UserActionBean"><f:message key="navigation.users"/></span></s:link></li>
+                               </sec:authorize>
                         </ul>
                                     
                                     

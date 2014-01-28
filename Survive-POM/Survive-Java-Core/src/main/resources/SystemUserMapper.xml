@@ -20,8 +20,12 @@
       <b>password</b>
     </field>
     <field>
-      <a>accessLevel</a>
-      <b>accessLevel</b>
+      <a>authority</a>
+      <b>authority</b>
     </field>   
+        <field>
+      <a>enabled</a>
+      <b>enabled</b>
+    </field>
   </mapping> 
 </mappings>

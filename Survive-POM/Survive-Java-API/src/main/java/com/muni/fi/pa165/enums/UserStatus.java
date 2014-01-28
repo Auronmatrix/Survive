@@ -9,7 +9,7 @@ package com.muni.fi.pa165.enums;
  * @author Auron
  */
 public enum UserStatus {
-    ENABLED(1), DISABLED(2);
+    DISABLED(0), ENABLED(1);
     
     private int value;
 

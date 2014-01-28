@@ -7,7 +7,7 @@
         <s:useActionBean beanclass="com.muni.fi.pa165.actions.user.UserActionBean" var="actionBean"/>
 
         <s:form beanclass="com.muni.fi.pa165.actions.user.UserActionBean" class="form-horizontal"  focus="" action="/user/edit.action">
-            <s:hidden name="user.username"/>
+            <s:hidden name="user.id"/>
             <fieldset><legend><f:message key="user.edit.edit"/></legend>
                 <%@include file="form.jsp"%>
                 <s:submit class="btn btn-info" name="save"><f:message key="forms.save"/></s:submit>

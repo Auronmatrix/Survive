@@ -9,5 +9,5 @@ package com.muni.fi.pa165.enums;
  * @author Auron
  */
 public enum UserGroup {
-    GROUP_ANONYMOUS, GROUP_USER, GROUP_GUEST, GROUP_ADMIN;
+    ROLE_ANONYMOUS, ROLE_USER, ROLE_GUEST, ROLE_ADMIN;
 };

@@ -1,6 +1,6 @@
 package com.muni.fi.pa165.service;
 
-import com.muni.fi.pa165.dto.UserDto;
+import com.muni.fi.pa165.dto.SystemUserDto;
 import java.util.List;
 
 /**
@@ -8,42 +8,42 @@ import java.util.List;
  * @author Auron
  */
 public interface SystemUserService {
-    /**
-     * 
-     * @throws IllegalArgumentException when null is passed
-     */
 
-    boolean exists(Long id) throws IllegalArgumentException;
 /**
-     * Saves UserDto
+     * Saves SystemUserDto
      *
-     * @param dto object of type UserDto
+     * @param dto object of type SystemUserDto
      */
-    public UserDto save(UserDto dto);
+    public SystemUserDto save(SystemUserDto dto);
 
     /**
-     * Updates UserDto
+     * Updates SystemUserDto
      *
-     * @param dto object of type UserDto
+     * @param dto object of type SystemUserDto
      */
-    public UserDto update(UserDto dto);
+    public SystemUserDto update(SystemUserDto dto);
 
     /**
-     * Deletes UserDto
+     * Deletes SystemUserDto
      *
-     * @param dto object of type UserDto
+     * @param dto object of type SystemUserDto
      */
-    public void delete(UserDto dto);
+    
+    public void delete(Long id);
 
+    
+   
     /**
-     * Finds UserDto by id
+     * Finds SystemUserDto by id
      *
      * @param id ID of the systemUser
-     * @return SystemUser object of type UserDto
+     * @return SystemUser object of type SystemUserDto
      */
-    public UserDto findById(Long id);
+    public SystemUserDto findByName(String username);
 
-    public List<UserDto> findAll();
+    public List<SystemUserDto> findAll();
+    
+        public SystemUserDto findById(Long id);
 
-    public void delete(Long id);
+    
 }

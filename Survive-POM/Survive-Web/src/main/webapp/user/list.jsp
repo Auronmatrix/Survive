@@ -14,33 +14,36 @@
         <div class="table-responsive">
             <table class="table">
                 <tr>
+                    <th><f:message key="user.id"/></th>  
                     <th><f:message key="user.username"/></th>                
                     <th><f:message key="user.password"/></th>                    
-                    <th><f:message key="user.accesslevel"/></th>                    
+                    <th><f:message key="user.authority"/></th>      
+                    <th><f:message key="user.enabled"/></th>         
                     <th></th>
                     <th></th>
                 </tr>
                 <c:forEach items="${actionBean.users}" var="user">
                     <tr>                       
-                       
+                        <td><c:out value="${user.id}" /></td>
                         <td><c:out value="${user.username}" /></td>
                         <td><c:out value="${user.password}" /></td>
-                        <td><c:out value="${user.accessLevel}" /></td>                      
-                          <td>  
-                                <security:authorize ifAnyGranted="ROLE_ADMIN">
-                            <s:form beanclass="com.muni.fi.pa165.actions.user.UserActionBean" action="edit">
-                                <s:hidden name="user.username" value="${user.username}"/>
-                                <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
-                            </s:form>
-                                </security:authorize>
+                        <td><c:out value="${user.authority}" /></td>   
+                        <td><c:out value="${user.enabled}" /></td>  
+                        <td>  
+                            <security:authorize ifAnyGranted="ROLE_ADMIN">
+                                <s:form beanclass="com.muni.fi.pa165.actions.user.UserActionBean" action="edit">
+                                    <s:hidden name="user.id" value="${user.id}"/>
+                                    <s:submit class="btn btn-warning" name="edit"><f:message key="forms.edit"/></s:submit>
+                                </s:form>
+                            </security:authorize>
                         </td>
                         <td>     
-                              <security:authorize ifAnyGranted="ROLE_ADMIN">
-                            <s:form beanclass="com.muni.fi.pa165.actions.user.UserActionBean" action="delete">
-                                <s:hidden name="user.username" value="${user.username}"/>
-                                <s:submit class="btn btn-danger" name="delete"><f:message key="forms.delete"/></s:submit>
-                            </s:form>
-                              </security:authorize>
+                            <security:authorize ifAnyGranted="ROLE_ADMIN">
+                                <s:form beanclass="com.muni.fi.pa165.actions.user.UserActionBean" action="delete">
+                                    <s:hidden name="user.id" value="${user.id}"/>
+                                    <s:submit class="btn btn-danger" name="delete"><f:message key="forms.delete"/></s:submit>
+                                </s:form>
+                            </security:authorize>
                         </td>
                     </tr>
                 </c:forEach>

@@ -1,8 +1,10 @@
 package com.muni.fi.pa165.dao.service.impl;
 
-import com.muni.fi.pa165.dao.UserDao;
-import com.muni.fi.pa165.dto.UserDto;
+import com.muni.fi.pa165.dao.SystemUserDao;
+import com.muni.fi.pa165.dto.SystemUserDto;
 import com.muni.fi.pa165.entities.SystemUser;
+import com.muni.fi.pa165.enums.UserGroup;
+import com.muni.fi.pa165.enums.UserStatus;
 import com.muni.fi.pa165.service.AbstractServiceIntegrationTest;
 import com.muni.fi.pa165.service.impl.SystemUserServiceImpl;
 import javax.inject.Inject;
@@ -26,7 +28,7 @@ import static org.mockito.Mockito.when;
 public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
 
     @Inject
-    private UserDao mockDAO;
+    private SystemUserDao mockDAO;
     private SystemUserServiceImpl service;
     @Inject
     private Mapper mapper;
@@ -37,7 +39,7 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
     @Before
     public void setUp() {
         service = new SystemUserServiceImpl();
-        mockDAO = mock(UserDao.class);
+        mockDAO = mock(SystemUserDao.class);
         service.setDao(mockDAO);
         service.setMapper(mapper);
     }
@@ -61,15 +63,17 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
      */
     @Test
     public void testSave() {
-        UserDto dto = new UserDto();
-
+        SystemUserDto dto = new SystemUserDto();
+       
         dto.setUsername("user");
         dto.setPassword("1234");
-        dto.setAccessLevel(1);
+        dto.setEnabled(UserStatus.ENABLED);
+        dto.setAuthority(UserGroup.ROLE_USER);
+      
 
         SystemUser entity = mapper.map(dto, SystemUser.class);
         when(mockDAO.save(any(SystemUser.class))).thenReturn(entity);
-        UserDto returned = service.save(dto);
+        SystemUserDto returned = service.save(dto);
         assertEquals(returned, dto);
     }
 
@@ -80,14 +84,16 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
     public void testUpdate() {
 //        System.out.println("Testing update");
 
-        UserDto dto = new UserDto();
+     SystemUserDto dto = new SystemUserDto();
+       
         dto.setUsername("user");
         dto.setPassword("1234");
-        dto.setAccessLevel(1);
+        dto.setEnabled(UserStatus.ENABLED);
+        dto.setAuthority(UserGroup.ROLE_USER);
 
         SystemUser entity = mapper.map(dto, SystemUser.class);
         when(mockDAO.update(any(SystemUser.class))).thenReturn(entity);
-        UserDto returned = service.update(dto);
+        SystemUserDto returned = service.update(dto);
         verify(mockDAO, times(1)).update(entity);
         verifyNoMoreInteractions(mockDAO);
         assertEquals(returned, dto);
@@ -99,18 +105,19 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
     @Test
     public void testDelete() {
 
-        UserDto dto = new UserDto();
-        dto.setId(1L);
+      SystemUserDto dto = new SystemUserDto();
+        dto.setId(Long.MIN_VALUE);
         dto.setUsername("user");
         dto.setPassword("1234");
-        dto.setAccessLevel(1);
+        dto.setEnabled(UserStatus.ENABLED);
+        dto.setAuthority(UserGroup.ROLE_USER);
 
         SystemUser entity = mapper.map(dto, SystemUser.class);
 
 
-        service.delete(dto);
+        service.delete(dto.getId());
 
-        verify(mockDAO, times(1)).delete(entity);
+        verify(mockDAO, times(1)).delete(entity.getId());
         verifyNoMoreInteractions(mockDAO);
 
 
@@ -122,19 +129,19 @@ public class SystemUserServiceImplTest extends AbstractServiceIntegrationTest {
     @Test
     public void testFindById() {
 
-        UserDto dto = new UserDto();
-
-        dto.setId(1L);
+       SystemUserDto dto = new SystemUserDto();
+       
         dto.setUsername("user");
         dto.setPassword("1234");
-        dto.setAccessLevel(Integer.MIN_VALUE);
+        dto.setEnabled(UserStatus.ENABLED);
+        dto.setAuthority(UserGroup.ROLE_USER);
 
         SystemUser entity = mapper.map(dto, SystemUser.class);
 
-        when(mockDAO.findById(dto.getId())).thenReturn(entity);
+        when(mockDAO.findByName(dto.getUsername())).thenReturn(entity);
 
-        UserDto returned = service.findById(dto.getId());
-        verify(mockDAO, times(1)).findById(dto.getId());
+        SystemUserDto returned = service.findByName(dto.getUsername());
+        verify(mockDAO, times(1)).findByName(dto.getUsername());
         verifyNoMoreInteractions(mockDAO);
 
         assertEquals(returned, dto);
