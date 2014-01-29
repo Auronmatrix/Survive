@@ -81,7 +81,7 @@
 
 
                             <li ><a href="${pageContext.request.contextPath}/index.jsp"><f:message key="navigation.index"/></a></li>
-
+                             <sec:authorize ifNotGranted="ROLE_ANONYMOUS">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.monsters"/><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -107,6 +107,7 @@
                                         <li><s:link beanclass="com.muni.fi.pa165.actions.efficiencies.EfficienciesActionBean"><span class="glyphicon glyphicon-flash">&nbsp;<f:message key="navigation.weapons.efficiencies"/></span></s:link></li>
                                     </ul>
                                 </li>
+                        </sec:authorize>
                               <sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
                               <li><s:link beanclass="com.muni.fi.pa165.actions.user.UserActionBean"><f:message key="navigation.users"/></span></s:link></li>
                                </sec:authorize>

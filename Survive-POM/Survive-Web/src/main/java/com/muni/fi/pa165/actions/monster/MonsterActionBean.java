@@ -38,7 +38,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
      * @return
      */
     @DefaultHandler
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST'")
+    
     public Resolution list() {
         log.debug("list()");
         monsters = monsterService.findAll();
