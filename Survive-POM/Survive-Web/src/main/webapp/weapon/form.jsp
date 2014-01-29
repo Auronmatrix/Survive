@@ -1,7 +1,23 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <s:errors/> 
+<script>
+    if (top.location != location) {
+         top.location.href = document.location.href ;
+    }
+		$(function(){
+			window.prettyPrint && prettyPrint();
 
+        $('.slider-input').slider({
+          formater: function(value) {
+            return 'Current value: '+value;
+          }
+        });
+
+   
+
+    });
+</script>
 
     <div class="form-group">
         <div class="form-group">
@@ -28,23 +44,21 @@
         <div class="form-group">
             <s:label for="range" class="col-sm-2 control-label" name="weapon.range" />
             <div class="col-sm-10">
-               <input type="number" class="form-control" id="dangerLevel" name="weapon.range" value="${actionBean.weapon.range}" placeholder="Please enter numeric value"/>
+            <b>0 m</b> <input type="text" class="form-control slider-input" id="range" name="weapon.range"  value="${actionBean.weapon.range.intValue()}" data-slider-min="0" data-slider-max="1000" data-slider-step="5" data-slider-value="${actionBean.weapon.range.intValue()}" /> <b>1000 m </b>
             </div>
         </div>
         <div class="form-group">
             <s:label for="caliber" class="col-sm-2 control-label"  name="weapon.caliber"/>
             <div class="col-sm-10">
-                <s:text class="form-control" id="caliber"  name="weapon.caliber"/>
+                 <b>0 mm </b> <input type="text" class="form-control slider-input" id="caliber" name="weapon.caliber"  value="${actionBean.weapon.caliber}" data-slider-min="0" data-slider-max="50" data-slider-step="0.1" data-slider-value="${actionBean.weapon.caliber}" /> <b>50 mm </b>
             </div>
         </div>
         <div class="form-group">
-            <s:label for="rounds" class="col-sm-2 control-label" name="weapon.rounds"/>
+           <s:label for="rounds" class="col-sm-2 control-label" name="weapon.rounds"/>
             <div class="col-sm-10">
-               <input type="number" class="form-control" id="dangerLevel" name="weapon.rounds" value="${actionBean.weapon.rounds}" placeholder="Please enter numeric value"/>
+              <b>0 </b> <input type="text" class="form-control slider-input" id="rounds" name="weapon.rounds"  value="${actionBean.weapon.rounds}" data-slider-min="0" data-slider-max="50" data-slider-step="1" data-slider-value="${actionBean.weapon.rounds}" /> <b>50 </b>
             </div>
         </div>
-        
-
             <div class="form-group">
             <s:label for="description" class="col-sm-2 control-label" name="weapon.description"/>
             <div class="col-sm-10">

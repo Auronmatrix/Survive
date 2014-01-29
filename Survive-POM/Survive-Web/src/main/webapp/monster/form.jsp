@@ -37,8 +37,7 @@
         <div class="form-group">
             <s:label for="height" class="col-sm-2 control-label"  name="monster.height"/>
             <div class="col-sm-10">
-                <s:text  class="form-control" id="height" name="monster.height"/>
-                
+                <b>0 kg </b> <input type="text" class="form-control slider-input" id="height" name="monster.height"  value="${actionBean.monster.height}" data-slider-min="0" data-slider-max="1000" data-slider-step="5" data-slider-value="${actionBean.monster.height}" /> <b>1000 kg</b>
             </div>
         </div>
         <div class="form-group">
@@ -62,7 +61,7 @@
         <div class="form-group">
             <s:label for="weight" class="col-sm-2 control-label" name="monster.weight"/>
             <div class="col-sm-10">
-                <s:text class="form-control" id="weight"  name="monster.weight"/>
+                 <b>0 cm </b> <input type="text" class="form-control slider-input" id="weight" name="monster.weight"  value="${actionBean.monster.weight.intValue()}" data-slider-min="0" data-slider-max="10000" data-slider-step="5" data-slider-value="${actionBean.monster.weight.intValue()}" /> <b>10000 cm</b>
             </div>
         </div>
         <div class="form-group">

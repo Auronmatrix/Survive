@@ -117,7 +117,7 @@ public class EfficienciesActionBean extends BaseActionBean implements Validation
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "monster.id", required = true),
         @Validate(on = {"add", "save"}, field = "weapon.id", required = true),
-        @Validate(on = {"add", "save"}, field = "hitRate", required = false, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "hitRate", required = false, minvalue = 0, maxvalue = 1000),
         @Validate(on = {"add", "save"}, field = "damage", required = false, minvalue = 0, maxvalue = 100),
         @Validate(on = {"add", "save"}, field = "efficiency", required = true, minvalue = 0, maxvalue = 100),
         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255)})

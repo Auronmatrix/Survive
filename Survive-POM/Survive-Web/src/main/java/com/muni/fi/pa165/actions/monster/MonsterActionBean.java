@@ -54,12 +54,12 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
     @ValidateNestedProperties(value = {
         @Validate(on = {"add", "save"}, field = "name", required = true, maxlength = 255),
         @Validate(on = {"add", "save"}, field = "stamina", required = false, minvalue = 0, maxvalue = 100),
-        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0, maxvalue = 100),
+        @Validate(on = {"add", "save"}, field = "height", required = false, minvalue = 0, maxvalue = 1000),
         @Validate(on = {"add", "save"}, field = "strength", required = false, minvalue = 0, maxvalue = 100),
         @Validate(on = {"add", "save"}, field = "agility", required = false, minvalue = 0, maxvalue = 100),
         @Validate(on = {"add", "save"}, field = "dangerLevel", required = true, minvalue = 0, maxvalue = 100),
         @Validate(on = {"add", "save"}, field = "monsterclass", required = false),
-        @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 0, maxvalue = 999999),
+        @Validate(on = {"add", "save"}, field = "weight", required = false, minvalue = 0, maxvalue = 10000),
         @Validate(on = {"add", "save"}, field = "description", required = false, maxlength = 255),
         @Validate(on = {"add", "save"}, field = "imagePath", required = false, maxlength = 255)
     })
