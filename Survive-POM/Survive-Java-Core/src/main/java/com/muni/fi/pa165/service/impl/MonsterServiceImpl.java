@@ -32,7 +32,7 @@ public class MonsterServiceImpl implements MonsterService {
      * @return
      */
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public MonsterDto save(MonsterDto dto) {
         Monster entity = mapper.map(dto, Monster.class);
         entity = monsterDao.save(entity);
@@ -41,7 +41,7 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public MonsterDto update(MonsterDto dto) {
 
         Monster entity = mapper.map(dto, Monster.class);
@@ -51,12 +51,13 @@ public class MonsterServiceImpl implements MonsterService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public void delete(Long id) {
         monsterDao.delete(id);
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public MonsterDto findById(Long id) {
         return mapper.map(monsterDao.findById(id), MonsterDto.class);
 
@@ -83,6 +84,7 @@ public class MonsterServiceImpl implements MonsterService {
      * @return
      */
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public List<MonsterDto> findAll() {
         List<MonsterDto> dtoList = new ArrayList<>();
         for (Monster o : monsterDao.findAll()) {

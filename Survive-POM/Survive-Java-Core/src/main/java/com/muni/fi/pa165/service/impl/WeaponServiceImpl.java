@@ -26,7 +26,7 @@ public class WeaponServiceImpl implements WeaponService {
     private Mapper mapper;
 
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public WeaponDto save(WeaponDto dto) {
         Weapon entity = mapper.map(dto, Weapon.class);
         weaponDao.save(entity);
@@ -34,7 +34,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public WeaponDto update(WeaponDto dto) {
         Weapon entity = mapper.map(dto, Weapon.class);
         weaponDao.update(entity);
@@ -42,6 +42,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public WeaponDto findById(Long id) {
         return mapper.map(weaponDao.findById(id), WeaponDto.class);
     }
@@ -55,6 +56,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public List<WeaponDto> findAll() {
         List<WeaponDto> dtoList = new ArrayList<>();
         for (Weapon o : weaponDao.findAll()) {
@@ -64,7 +66,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public void delete(Long id) {
         weaponDao.delete(id);
     }

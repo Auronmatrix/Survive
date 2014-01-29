@@ -39,7 +39,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
      * @return MonsterWeaponDto of MonsterWeaponClass
      */
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public MonsterWeaponDto save(MonsterWeaponDto dto) {
         MonsterWeapon entity = mapper.map(dto, MonsterWeapon.class);
         MonsterWeaponPK pk = mapper.map(new MonsterWeaponPkDto(dto.getMonster().getId(), dto.getWeapon().getId()), MonsterWeaponPK.class);
@@ -49,7 +49,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
+   @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public MonsterWeaponDto update(MonsterWeaponDto dto) {
 
         MonsterWeapon entity = mapper.map(dto, MonsterWeapon.class);
@@ -59,7 +59,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
         return mapper.map(entity, MonsterWeaponDto.class);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public void delete(MonsterWeaponDto dto) {
 
         monsterWeaponDao.delete(mapper.map(dto, MonsterWeapon.class));
@@ -75,6 +75,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public List<MonsterWeaponDto> findByMonsterId(Long id) {
         List<MonsterWeapon> mw = monsterWeaponDao.getByMonsterId(id);
         List<MonsterWeaponDto> result = new ArrayList<>();
@@ -85,6 +86,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public List<MonsterWeaponDto> findByWeaponId(Long id) {
         List<MonsterWeaponDto> result = new ArrayList<>();
         for (MonsterWeapon monsterW : monsterWeaponDao.getByWeaponId(id)) {
@@ -94,6 +96,7 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public List<MonsterWeaponDto> findAll() {
         List<MonsterWeaponDto> dtoList = new ArrayList<>();
         for (MonsterWeapon o : monsterWeaponDao.findAll()) {
@@ -107,13 +110,14 @@ public class MonsterWeaponServiceImpl implements MonsterWeaponService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_GUEST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public void delete(MonsterWeaponPkDto id) {
         MonsterWeaponPK pk = mapper.map(id, MonsterWeaponPK.class);
         monsterWeaponDao.delete(pk);
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public MonsterWeaponDto findById(Long monsterId, Long weaponId) {
 
         MonsterWeaponPkDto pk = new MonsterWeaponPkDto(monsterId, weaponId);

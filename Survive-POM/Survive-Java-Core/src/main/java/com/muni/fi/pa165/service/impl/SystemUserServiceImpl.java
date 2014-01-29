@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import org.dozer.Mapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,13 +30,14 @@ public class SystemUserServiceImpl implements SystemUserService {
 
  
     @Override
-    public SystemUserDto save(SystemUserDto dto) {
+        public SystemUserDto save(SystemUserDto dto) {
         SystemUser entity = mapper.map(dto, SystemUser.class);
         systemUserDao.save(entity);
         return mapper.map(entity, SystemUserDto.class);
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public SystemUserDto update(SystemUserDto dto) {
         SystemUser entity = mapper.map(dto, SystemUser.class);
         systemUserDao.update(entity);
@@ -87,6 +89,7 @@ public class SystemUserServiceImpl implements SystemUserService {
     
     
     @Override
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
     public void delete(Long id)
     {
         systemUserDao.delete(id);
