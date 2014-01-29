@@ -30,7 +30,7 @@
             <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
             <!-- Bootstrap theme -->
             <link href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css" rel="stylesheet">
-
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slider.css">
             <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
             <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-image-gallery.min.css">
@@ -41,6 +41,7 @@
             <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
             <script src="${pageContext.request.contextPath}/docs-assets/js/holder.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/bootstrap-slider.js"></script>
             <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/bootstrap-image-gallery.min.js"></script>
 

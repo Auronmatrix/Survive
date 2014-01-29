@@ -3,7 +3,23 @@
 <s:errors/> 
 
 
- 
+<script>
+    if (top.location != location) {
+         top.location.href = document.location.href ;
+    }
+		$(function(){
+			window.prettyPrint && prettyPrint();
+
+        $('.slider-input').slider({
+          formater: function(value) {
+            return 'Current value: '+value;
+          }
+        });
+
+   
+
+    });
+</script>
             
     <div class="form-group">
         <div class="form-group">
@@ -15,7 +31,7 @@
         <div class="form-group">
             <s:label for="stamina" class="col-sm-2 control-label" name="monster.stamina" />          
             <div class="col-sm-10">
-               <input type="number" class="form-control" id="stamina" name="monster.stamina"  value="${actionBean.monster.stamina.intValue()}"placeholder="Please enter numeric value from 0 till 100"/>
+                 <b>0 % </b> <input type="text" class="form-control slider-input" id="stamina" name="monster.stamina"  value="${actionBean.monster.stamina.intValue()}" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="${actionBean.monster.stamina.intValue()}" /> <b>100 % </b>
             </div>
         </div>
         <div class="form-group">
