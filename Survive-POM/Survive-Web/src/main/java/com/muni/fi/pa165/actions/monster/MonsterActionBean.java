@@ -38,8 +38,7 @@ public class MonsterActionBean extends BaseActionBean implements ValidationError
      * @return
      */
     @DefaultHandler
-    
-    public Resolution list() {
+       public Resolution list() {
         log.debug("list()");
         monsters = monsterService.findAll();
         return new ForwardResolution("/monster/list.jsp");

@@ -34,7 +34,7 @@ public class AreaServiceImpl implements AreaService {
      * @return
      */
     @Override
-    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_ANONYMOUS')")
     public AreaDto save(AreaDto dto) {
 
         Area entity = mapper.map(dto, Area.class);
@@ -44,7 +44,7 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
-    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_ANONYMOUS')")
     public AreaDto update(AreaDto dto) {
 
         Area entity = mapper.map(dto, Area.class);
@@ -54,7 +54,7 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
-    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_ANONYMOUS')")
     public AreaDto findById(Long id) {
 
         return mapper.map(areaDao.findById(id), AreaDto.class);
@@ -78,7 +78,7 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
-    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_ANONYMOUS')")
     public void delete(Long id) {
         areaDao.delete(id);
     }
@@ -88,7 +88,7 @@ public class AreaServiceImpl implements AreaService {
      * @return
      */
     @Override
-    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN', 'ROLE_REST', 'ROLE_ANONYMOUS')")
     public List<AreaDto> findAll() {
         List<AreaDto> dtoList = new ArrayList<>();
         for (Area o : areaDao.findAll()) {
