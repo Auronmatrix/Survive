@@ -44,19 +44,19 @@
         <div class="form-group">
             <s:label for="strength" class="col-sm-2 control-label" name="monster.strength"/>
             <div class="col-sm-10">
-               <input type="number" class="form-control" id="strength" name="monster.strength" value="${actionBean.monster.strength.intValue()}" placeholder="Please enter numeric value from 0 till 100" />
+              <b>0 % </b> <input type="text" class="form-control slider-input" id="strength" name="monster.strength" value="${actionBean.monster.strength.intValue()}" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="${actionBean.monster.strength.intValue()}" /> <b>100 % </b>
             </div>
         </div>
         <div class="form-group">
             <s:label for="agility" class="col-sm-2 control-label" name="monster.agility"/>
             <div class="col-sm-10">
-               <input type="number" class="form-control" id="agility" name="monster.agility" value="${actionBean.monster.agility.intValue()}" placeholder="Please enter numeric value from 0 till 100"/>
+                <b>0 % </b> <input type="text" class="form-control slider-input" id="agility" name="monster.agility" value="${actionBean.monster.agility.intValue()}" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="${actionBean.monster.strength.intValue()}" /> <b>100 % </b>
             </div>
         </div>
         <div class="form-group">
             <s:label for="dangerLevel" class="col-sm-2 control-label" name="monster.dangerLevel"/>
             <div class="col-sm-10">
-                <input type="number" class="form-control" id="dangerLevel" name="monster.dangerLevel" value="${actionBean.monster.dangerLevel.intValue()}" placeholder="Please enter numeric value from 0 till 100"/>
+             <b>0 % </b> <input type="text" class="form-control slider-input" id="dangerLevel" name="monster.dangerLevel" value="${actionBean.monster.dangerLevel.intValue()}" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="${actionBean.monster.dangerLevel.intValue()}" /> <b>100 % </b>
             </div>
         </div>
         <div class="form-group">
